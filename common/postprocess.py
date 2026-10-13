@@ -71,6 +71,11 @@ STATUSES = ["incorrect", "no-result", "memout", "timeout", "ok"]
 # reported as a memout rather than as a failure of the tool.
 SIGKILL_CODE = -9
 
+# Tools that notice themselves that they ran out of memory. mcsta still exits
+# with code 0 in that case and PRISM with code 1, so the output has to say so.
+OUT_OF_MEMORY = re.compile(r"out of memory|java\.lang\.OutOfMemoryError|std::bad_alloc",
+                           re.I)
+
 # The configuration whose model size is reported as the size of a benchmark. The
 # tools disagree here: storm and mcsta build the model for the property at hand
 # and drop states that cannot influence it, prism does not. Taking the number
@@ -84,7 +89,7 @@ EXACT_CONFIGURATIONS = lambda c: "exact" in c
 RESULT_PATTERNS = [
     re.compile(r"^Result \(for initial states\):\s*(\S+)", re.M),   # storm
     re.compile(r"^Result:\s*([^\s(]+)", re.M),                      # prism
-    re.compile(r"^\s+(?:Probability|Value):\s*(\S+)", re.M),        # mcsta
+    re.compile(r"^\s+(?:Probability|Value|Result):\s*(\S+)", re.M),  # mcsta
     re.compile(r"^Initial state \d+:\s*(\S+)", re.M),                # IntervalMDP.jl
 ]
 
@@ -236,6 +241,7 @@ def parse_log(path):
     if match:
         entry["preprocessing-time"] = float(match.group(1))
 
+    entry["out-of-memory"] = bool(OUT_OF_MEMORY.search(output))
     entry["timeout"] = footer is not None and footer.group("code") == "None"
     entry["log"] = str(path)
     return entry
@@ -257,7 +263,8 @@ def evaluate(entry, reference, reference_text=None):
         return ("ok" if boolean == expected else "incorrect"), None
     result = to_number(entry.get("mcresult"))
     if result is None:
-        return "no-result", None
+        # Only without a result, so that a passing run is never reclassified.
+        return ("memout" if entry.get("out-of-memory") else "no-result"), None
     difference, agrees = difference_and_agreement(reference, result)
     if difference is None:
         return "ok", None          # nothing to compare against
