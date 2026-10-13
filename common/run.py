@@ -209,7 +209,7 @@ def pinned_execute(executor, cores, memlimit):
     return execute
 
 
-def run_pinned(selected, total, counts, args):
+def run_pinned(selected, counts, args):
     """Run the invocations args.jobs at a time, each pinned to its own physical cores."""
     try:
         from benchexec import resources, util
@@ -230,7 +230,9 @@ def run_pinned(selected, total, counts, args):
         print(f"worker {number}: cores {','.join(map(str, cores))}, governor {'/'.join(governors)}")
         if governors != {"performance"}:
             print("  for stable timings run: sudo cpupower frequency-set -g performance")
-    memlimit = None if args.memlimit is None else int(args.memlimit * 10**9)
+    # In GiB, the unit of e.g. PRISM's -javamaxmem 32g.
+    memlimit = int(args.memlimit * 2**30)
+    print(f"memory limit: {args.memlimit:g} GiB per run")
 
     # Each worker takes a free executor, and with it its cores, for an invocation.
     executors = [RunExecutor(use_namespaces=False) for _ in assignment]
@@ -247,20 +249,23 @@ def run_pinned(selected, total, counts, args):
 
     # BenchExec logs every timeout and kill, which the progress output reports already.
     logging.getLogger().setLevel(logging.ERROR)
-    width = len(str(total))
+    # The runs finish out of order, so the progress counts the finished ones.
+    width = len(str(len(selected)))
+    start = time.time()
     pool = concurrent.futures.ThreadPoolExecutor(len(assignment))
-    futures = {pool.submit(work, invocation): (number, invocation)
-               for number, invocation in selected}
+    futures = {pool.submit(work, invocation): invocation for _, invocation in selected}
     try:
-        for future in concurrent.futures.as_completed(futures):
-            number, invocation = futures[future]
+        for done, future in enumerate(concurrent.futures.as_completed(futures), start=1):
+            invocation = futures[future]
             label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
             if "repetition" in invocation:
                 label += f" rep{invocation['repetition']}"
             status, wall_time, note = future.result()
             counts[status] += 1
-            print(f"[{number:>{width}}/{total}] {label} ... {status} ({wall_time:.1f}s)"
-                  + (f": {note}" if note else ""), flush=True)
+            elapsed = int(time.time() - start)
+            print(f"[done {done:>{width}}/{len(selected)}, {elapsed // 3600}h {elapsed // 60 % 60:02d}m] "
+                  f"{label} ... {status} ({wall_time:.1f}s)" + (f": {note}" if note else ""),
+                  flush=True)
     except KeyboardInterrupt:
         pool.shutdown(wait=False, cancel_futures=True)
         for executor in executors:
@@ -284,8 +289,8 @@ def main():
                         help="physical cores of each run with --jobs (default: 1)")
     parser.add_argument("--cores", metavar="LIST",
                         help="CPUs to use with --jobs, e.g. 2-11 (default: all)")
-    parser.add_argument("--memlimit", type=float, metavar="GB",
-                        help="memory limit of each run with --jobs, in GB")
+    parser.add_argument("--memlimit", type=float, default=32, metavar="GIB",
+                        help="memory limit of each run with --jobs, in GiB (default: 32)")
     args = parser.parse_args()
 
     with open(args.invocations) as f:
@@ -317,8 +322,9 @@ def main():
     counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
     width = len(str(len(invocations)))
     if args.jobs is not None:
-        run_pinned(selected, len(invocations), counts, args)
+        run_pinned(selected, counts, args)
     else:
+        print("note: without --jobs, the memory limit is not enforced")
         for number, invocation in selected:
             label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
             if "repetition" in invocation:
