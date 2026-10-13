@@ -6,7 +6,7 @@
   },
   "prism-default": {
     "bin": "bin/prism",
-    "cmd": "-importmodel %bundle.%prism-import %bundle.pctl -maxiters 1000000 -epsilon 1e-6 -absolute",
+    "cmd": "-importmodel %bundle.%prism-import %bundle.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g",
     "description": "Prism with default settings and an absolute precision of 1e-6 like IntervalMDP.jl. -intervaliter is not supported for interval models."
   },
   "intervalmdp-default": {
