@@ -14,10 +14,14 @@ The runtime is the wallclock time of the whole tool call. The csv files with the
 suffix -checking (e.g. scatter-checking.csv) use the model checking time the tool
 reports instead, i.e. without reading and building the model; results.json holds
 both, as checking-time and construction-time.
+
+An experiment with a scripts/postprocess.py of its own is processed by its
+postprocess(logdir, outdir) instead.
 """
 
 import argparse
 import csv
+import importlib.util
 import json
 import math
 import re
@@ -71,11 +75,12 @@ STATUSES = ["incorrect", "no-result", "memout", "timeout", "ok"]
 # reported as a memout rather than as a failure of the tool.
 SIGKILL_CODE = -9
 
-# The configuration whose model size is reported as the size of a benchmark. The
-# tools disagree here: storm and mcsta build the model for the property at hand
-# and drop states that cannot influence it, prism does not. Taking the number
-# from one configuration keeps the column comparable across benchmarks.
-STATES_CONFIGURATION = "storm-default"
+# The configuration whose model size is reported as the size of a benchmark, the
+# first of these that the experiment runs. The tools disagree here: storm and mcsta
+# build the model for the property at hand and drop states that cannot influence
+# it, prism does not. Taking the number from one configuration keeps the column
+# comparable across benchmarks.
+STATES_CONFIGURATIONS = ["storm-sound", "storm-default"]
 
 # Configurations whose results are exact and may thus serve as a reference.
 EXACT_CONFIGURATIONS = lambda c: "exact" in c
@@ -192,6 +197,7 @@ def parse_log(path):
     output = body[:footer.start()] if footer else body
 
     entry = {
+        "command": header.get("Command"),
         "benchmark": header["Benchmark"],
         "configuration": header["Configuration"],
         "repetition": int(header.get("Repetition", 1)),
@@ -686,11 +692,23 @@ def main():
         sys.exit(f"not a directory: {logdir}")
     outdir.mkdir(parents=True, exist_ok=True)
 
+    # An experiment whose results need their own processing, like the bounds of the
+    # POMDP experiment, provides it in scripts/postprocess.py instead.
+    experiment = ROOT / "scripts" / "postprocess.py"
+    if experiment.is_file():
+        sys.path.insert(0, str(experiment.parent))
+        spec = importlib.util.spec_from_file_location("postprocess", experiment)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules["postprocess"] = module
+        spec.loader.exec_module(module)
+        module.postprocess(logdir, outdir)
+        return
+
     with open(INDEX_FILE) as f:
         index = json.load(f)
 
     results = {}      # configuration -> benchmark -> repetition -> data
-    states = {}       # benchmark -> number of states of the input model
+    states_found = {}  # configuration -> benchmark -> number of states of the input model
     quotient = {}     # configuration -> benchmark -> states after preprocessing
     preprocessing = {}  # configuration -> benchmark -> seconds spent preprocessing
     unknown, ignored = set(), 0
@@ -726,8 +744,8 @@ def main():
             data["result-diff"] = as_float(difference)
         if "states" in entry:
             data["states"] = entry["states"]
-            if entry["configuration"] == STATES_CONFIGURATION:
-                states[benchmark_id] = entry["states"]
+            if entry["configuration"] in STATES_CONFIGURATIONS:
+                states_found.setdefault(entry["configuration"], {})[benchmark_id] = entry["states"]
         if "preprocessing-time" in entry:
             data["preprocessing-time"] = entry["preprocessing-time"]
             preprocessing.setdefault(entry["configuration"], {})[benchmark_id] = \
@@ -743,6 +761,9 @@ def main():
 
     executed = sorted(results)
     benchmarks = sorted({b for c in results.values() for b in c})
+    states_configuration = next((c for c in STATES_CONFIGURATIONS if c in states_found),
+                                STATES_CONFIGURATIONS[0])
+    states = states_found.get(states_configuration, {})  # benchmark -> number of states
 
     # Meta configurations get a column of their own, assembled from the columns of
     # their members; they have no executions and so no entry in results.json.
@@ -870,7 +891,7 @@ def main():
               f"{', '.join(disputed[:3])}{' ...' if len(disputed) > 3 else ''}")
     missing = [b for b in benchmarks if b not in states]
     if missing:
-        print(f"  no state count from {STATES_CONFIGURATION} for {len(missing)} benchmark(s): "
+        print(f"  no state count from {states_configuration} for {len(missing)} benchmark(s): "
               f"{', '.join(missing[:3])}{' ...' if len(missing) > 3 else ''}")
     for name, configuration in quotient_columns:
         print(f"  column {name}: state count after preprocessing from {configuration}")
