@@ -11,7 +11,6 @@ that all three tools solve exactly the same model.
 | `benchmarks/` | The generated models, plus `index.json` describing every one of them; only `index.json` is part of the git repository |
 | `scripts/` | The configurations compared, in `configurations.json`, and the wrapper that runs IntervalMDP.jl |
 | `julia/` | The Julia environment with IntervalMDP.jl 0.7 and the script that solves a model with it |
-| `latex/` | The figures, built with pgfplots from the post-processed data (`cd latex && latexmk -pdf main.tex`) |
 
 ## Tools
 
@@ -48,20 +47,24 @@ cd imdps
 python3 generate/generate_explicit_benchmarks.py --workers 4
 ```
 
-This builds every benchmark of `generate/selection.json` (the 60 MDP benchmarks of
+This builds every benchmark of `generate/selection.json` (55 MDP benchmarks of
 the practitioner's guide collection, all in `../benchmarks/index.json`) once for
 each interval width in `generate/uncertainty_sets.json`, and writes the bundles to
 `benchmarks/<width>/<benchmark>.*` and the list of them to `benchmarks/index.json`.
-Benchmarks with more than 10,000,000 states are skipped (`--max-states`). The
-limit is checked after the model is built, so the skipped benchmarks still cost
-their build time and memory. A model with several million states needs tens of
+The selection leaves out the benchmarks of the collection with more than
+10,000,000 states (avoid-mdp.40-0.2, beb.4-8-7 and pacman.100). Other benchmarks
+with more states are skipped as well (`--max-states`); this limit is checked after
+the model is built, so such benchmarks still cost their build time and memory. A model with several million states needs tens of
 GB of memory while it is generated; mind this when choosing `--workers`, e.g. by
 generating the largest benchmarks separately with `--workers 1`. The bundles take
 about 1 GB per million states and width.
 
-Benchmarks minimising an expected reward (`Rmin`) are left out by default
-(`--no-skip-min-rewards` includes them): Storm does not support them for interval
-models, and neither does IntervalMDP.jl, so only PRISM could be compared on them.
+Benchmarks with an expected reward property are left out by default
+(`--no-skip-rewards` includes them), so that the experiments only contain
+probability properties, which all three tools support. For interval models,
+Storm does not support minimising rewards (`Rmin`), IntervalMDP.jl cannot import
+reachability rewards at all, and PRISM computes `Rmin` wrongly when the policy can
+stay in an end component without reward.
 
 `--benchmark ID` (repeatable) generates only some benchmarks, `--dry-run` lists
 the bundles without building anything. Generation overwrites the selected
@@ -87,10 +90,8 @@ python3 ../common/postprocess.py --agreement --absolute experiments/logs experim
 ```
 
 `run.py` links the model files into the temporary directory of an invocation
-instead of copying them. IntervalMDP.jl's PRISM importer does not support
-reachability rewards. Rewards that count the steps until the target (reward 1 in
-every other state, no action rewards) are solved as IntervalMDP.jl's expected
-exit time instead; IntervalMDP.jl is not run on the other reward benchmarks.
+instead of copying them. With `--no-skip-rewards`, IntervalMDP.jl is not run on
+the reward benchmarks, as its PRISM importer does not support reachability rewards.
 
 All three configurations stop value iteration once no value changes by more than
 the absolute precision `1e-6` (`--precision 1e-6 --absolute` for Storm, `-epsilon
@@ -148,7 +149,6 @@ Each `benchmarks/<width>/<benchmark>` prefix gets:
 | `.lab` | `init`, `deadlock`, `reach`, `avoid` labels |
 | `.pctl` | PRISM / IntervalMDP.jl query with `maxmin` / `minmax` quantification |
 | `.srew`, `.trew` | State and action rewards, only for reward benchmarks |
-| `.intervalmdp.pctl` | IntervalMDP.jl query `Tmaxmin=? [ F "reach" ]` (expected steps until `reach`), only for rewards that count steps |
 | `.txt` | Source, constants, original query, interval width, counts, compatibility |
 
 Nature resolves the intervals adversarially: against a maximising policy it

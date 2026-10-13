@@ -1,0 +1,2 @@
+# For run.py --jobs, which pins every run to its own cores.
+benchexec==3.35

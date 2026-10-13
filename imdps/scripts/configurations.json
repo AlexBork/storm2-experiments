@@ -13,6 +13,6 @@
     "bin": "scripts/intervalmdp.sh",
     "cmd": "--precision 1e-6 %bundle",
     "requires": ["intervalmdp"],
-    "description": "IntervalMDP.jl with default settings and an absolute precision of 1e-6. It cannot import reachability rewards; those that count steps are solved as expected exit times."
+    "description": "IntervalMDP.jl with default settings and an absolute precision of 1e-6. It cannot import reachability rewards."
   }
 }

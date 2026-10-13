@@ -80,24 +80,6 @@
 		"intervalmdp": true,
 		"states": 1258240
 	},
-	"consensus.6-2.steps_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "consensus.6-2.steps_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/consensus.6-2.steps_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": true,
-		"states": 1258240
-	},
-	"csma.3-4.time_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "csma.3-4.time_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/csma.3-4.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1460287
-	},
 	"evade-mdp.10-0.7.prob_max.absolute-005": {
 		"type": "absolute-005",
 		"benchmark": "evade-mdp.10-0.7.prob_max",
@@ -115,42 +97,6 @@
 		"prism-import": "tra,sta,lab",
 		"intervalmdp": true,
 		"states": 398273
-	},
-	"firewire.true-3-600.time_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "firewire.true-3-600.time_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/firewire.true-3-600.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1078695
-	},
-	"firewire.true-3-600.time_sending.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "firewire.true-3-600.time_sending",
-		"delta": 0.05,
-		"bundle": "absolute-005/firewire.true-3-600.time_sending",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1078695
-	},
-	"firewire.true-36-200.time_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "firewire.true-36-200.time_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/firewire.true-36-200.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 6932041
-	},
-	"firewire.true-36-200.time_sending.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "firewire.true-36-200.time_sending",
-		"delta": 0.05,
-		"bundle": "absolute-005/firewire.true-36-200.time_sending",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 6932041
 	},
 	"manymecs.10000.prob_max.absolute-005": {
 		"type": "absolute-005",
@@ -241,33 +187,6 @@
 		"prism-import": "tra,sta,lab",
 		"intervalmdp": true,
 		"states": 8670
-	},
-	"wlan.5-0.cost_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "wlan.5-0.cost_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/wlan.5-0.cost_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1295218
-	},
-	"wlan.5-0.num_collisions.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "wlan.5-0.num_collisions",
-		"delta": 0.05,
-		"bundle": "absolute-005/wlan.5-0.num_collisions",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1295218
-	},
-	"wlan.6-0.time_max.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "wlan.6-0.time_max",
-		"delta": 0.05,
-		"bundle": "absolute-005/wlan.6-0.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 5007548
 	},
 	"zeroconf.1000-8-false.correct_max.absolute-005": {
 		"type": "absolute-005",
@@ -395,24 +314,6 @@
 		"intervalmdp": true,
 		"states": 1258240
 	},
-	"consensus.6-2.steps_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "consensus.6-2.steps_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/consensus.6-2.steps_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": true,
-		"states": 1258240
-	},
-	"csma.3-4.time_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "csma.3-4.time_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/csma.3-4.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1460287
-	},
 	"evade-mdp.10-0.7.prob_max.absolute-25": {
 		"type": "absolute-25",
 		"benchmark": "evade-mdp.10-0.7.prob_max",
@@ -430,42 +331,6 @@
 		"prism-import": "tra,sta,lab",
 		"intervalmdp": true,
 		"states": 398273
-	},
-	"firewire.true-3-600.time_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "firewire.true-3-600.time_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/firewire.true-3-600.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1078695
-	},
-	"firewire.true-3-600.time_sending.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "firewire.true-3-600.time_sending",
-		"delta": 0.25,
-		"bundle": "absolute-25/firewire.true-3-600.time_sending",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1078695
-	},
-	"firewire.true-36-200.time_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "firewire.true-36-200.time_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/firewire.true-36-200.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 6932041
-	},
-	"firewire.true-36-200.time_sending.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "firewire.true-36-200.time_sending",
-		"delta": 0.25,
-		"bundle": "absolute-25/firewire.true-36-200.time_sending",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 6932041
 	},
 	"manymecs.10000.prob_max.absolute-25": {
 		"type": "absolute-25",
@@ -556,33 +421,6 @@
 		"prism-import": "tra,sta,lab",
 		"intervalmdp": true,
 		"states": 8670
-	},
-	"wlan.5-0.cost_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "wlan.5-0.cost_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/wlan.5-0.cost_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1295218
-	},
-	"wlan.5-0.num_collisions.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "wlan.5-0.num_collisions",
-		"delta": 0.25,
-		"bundle": "absolute-25/wlan.5-0.num_collisions",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 1295218
-	},
-	"wlan.6-0.time_max.absolute-25": {
-		"type": "absolute-25",
-		"benchmark": "wlan.6-0.time_max",
-		"delta": 0.25,
-		"bundle": "absolute-25/wlan.6-0.time_max",
-		"prism-import": "tra,sta,lab,srew,trew",
-		"intervalmdp": false,
-		"states": 5007548
 	},
 	"zeroconf.1000-8-false.correct_max.absolute-25": {
 		"type": "absolute-25",

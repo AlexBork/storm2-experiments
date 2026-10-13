@@ -100,24 +100,9 @@ endmodule
         self.assertEqual(self.read('.trew'), '3 6 2\n0 0 1 2\n0 0 2 2\n')
         self.assertIn('Rmaxmin=?', self.read('.pctl'))
         self.assertIn('IntervalMDP.jl: unsupported', self.read('.txt'))
-        self.assertFalse(Path(str(self.base) + '.intervalmdp.pctl').exists())
         self.prepared['property']['kind'] = 'reachability-probability'
         self.export()
         self.assertFalse(Path(str(self.base) + '.trew').exists())
-
-    def test_step_rewards_are_exit_times(self):
-        # Reward 1 outside the target {1} and no action rewards count the steps.
-        self.prepared['property']['kind'] = 'expected-reward'
-        self.prepared['state_rewards'] = [1., 0., 1.]
-        self.prepared['states'][0][0] = ([1, 2], [.5, .5], 0.0)
-        self.export()
-        self.assertEqual(self.read('.intervalmdp.pctl'), 'Tmaxmin=? [ F "reach" ]\n')
-        self.assertEqual(self.read('.pctl'), 'Rmaxmin=? [ F "reach" ]\n')
-        self.assertIn('IntervalMDP.jl: supported: expected exit time', self.read('.txt'))
-        # A reward of 1 in an action does not count steps, so the file goes away again.
-        self.prepared['states'][0][0] = ([1, 2], [.5, .5], 1.0)
-        self.export()
-        self.assertFalse(Path(str(self.base) + '.intervalmdp.pctl').exists())
 
     def test_index(self):
         root = Path(self.tmp.name) / 'out'
@@ -139,18 +124,15 @@ endmodule
         self.assertFalse(entry['intervalmdp'])
         self.assertEqual(entry['reference-result'], '1/2')
         self.assertEqual(entry['states'], 3)
-        # The reward bundle maximises, so it is kept; a minimising one is left out.
-        self.assertEqual(g.write_index(root, uncertainties, shared, skip_min_rewards=True), 1)
-        self.prepared['property']['objective'] = 'min'
-        self.export(0)
-        self.assertEqual(g.write_index(root, uncertainties, shared, skip_min_rewards=True), 1)
+        # With skip_rewards the reward bundle is left out, so the probability one remains.
+        self.assertEqual(g.write_index(root, uncertainties, shared, skip_rewards=True), 1)
         self.assertEqual(json.loads((root / 'index.json').read_text())['example.1.goal.nominal']['bundle'], 'nominal/prob')
 
-    def test_min_reward_benchmarks(self):
+    def test_reward_benchmarks(self):
         root = g.DEFAULT_BENCHMARK_ROOT
-        self.assertTrue(g.min_reward_benchmark(root, 'csma.4-2.time_min'))
-        self.assertFalse(g.min_reward_benchmark(root, 'consensus.6-2.steps_max'))
-        self.assertFalse(g.min_reward_benchmark(root, 'consensus.4-4.disagree'))
+        self.assertTrue(g.reward_benchmark(root, 'csma.4-2.time_min'))
+        self.assertTrue(g.reward_benchmark(root, 'consensus.6-2.steps_max'))
+        self.assertFalse(g.reward_benchmark(root, 'consensus.4-4.disagree'))
 
     def test_resolve_shared_index(self):
         instance = g.resolve_benchmark(g.DEFAULT_BENCHMARK_ROOT, 'consensus.4-4.disagree')

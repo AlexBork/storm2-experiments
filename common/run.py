@@ -4,17 +4,23 @@
 Each invocation is executed in its own temporary directory, into which the model
 files referenced by the command are copied (or, for a bundle, linked) first. The combined output (stdout and
 stderr) of the command is written to the log file of the invocation.
+
+With --jobs, several invocations run at the same time, each pinned to its own cores
+by BenchExec (see requirements.txt).
 """
 
 import argparse
 import glob
+import concurrent.futures
 import json
+import logging
 import os
 import shlex
 import shutil
 import signal
 import subprocess
 import sys
+import queue
 import tempfile
 import time
 from pathlib import Path
@@ -138,7 +144,7 @@ def terminate(proc):
     return output
 
 
-def run(invocation):
+def run(invocation, execute=execute):
     """Run a single invocation and write its log file. Returns a status string."""
     config, benchmark = invocation["config"], invocation["benchmark"]
     log = Path(invocation["log"])
@@ -184,6 +190,85 @@ def run(invocation):
     return "ok", wall_time, None
 
 
+def pinned_execute(executor, cores, memlimit):
+    """An execute() that runs the command with BenchExec, pinned to the given cores."""
+    def execute(args, cwd, timelimit):
+        with tempfile.TemporaryDirectory(prefix="output-") as out:
+            output_file = Path(out) / "output"
+            result = executor.execute_run(args, str(output_file), workingDir=cwd,
+                                          walltimelimit=timelimit, cores=cores,
+                                          memlimit=memlimit, write_header=False)
+            output = output_file.read_text(errors="replace") if output_file.exists() else ""
+        exit_code = result.get("exitcode")
+        if result.get("terminationreason") == "failed":
+            return output, result.get("walltime", 0.0), "BenchExec failed"
+        if result.get("terminationreason") == "walltime" or exit_code is None:
+            return output, result["walltime"], None
+        # A negative signal as with subprocess, so that a kill by the memory limit is a memout.
+        return output, result["walltime"], -exit_code.signal if exit_code.signal else exit_code.value
+    return execute
+
+
+def run_pinned(selected, total, counts, args):
+    """Run the invocations args.jobs at a time, each pinned to its own physical cores."""
+    try:
+        from benchexec import resources, util
+        from benchexec.cgroups import Cgroups
+        from benchexec.runexecutor import RunExecutor
+    except ImportError:
+        sys.exit("--jobs needs BenchExec, see requirements.txt")
+    cgroups = Cgroups.initialize()
+    cgroups.handle_errors({s for s in (cgroups.CPUSET, cgroups.MEMORY, cgroups.FREEZE)
+                           if not cgroups.require_subsystem(s)})
+    # Without hyperthreading, the sibling of every assigned core stays idle.
+    assignment = resources.get_cpu_cores_per_run(
+        args.cores_per_run, args.jobs, False, cgroups,
+        util.parse_int_list(args.cores) if args.cores else None)
+    for number, cores in enumerate(assignment, start=1):
+        governors = {Path(f"/sys/devices/system/cpu/cpu{c}/cpufreq/scaling_governor")
+                     .read_text().strip() for c in cores}
+        print(f"worker {number}: cores {','.join(map(str, cores))}, governor {'/'.join(governors)}")
+        if governors != {"performance"}:
+            print("  for stable timings run: sudo cpupower frequency-set -g performance")
+    memlimit = None if args.memlimit is None else int(args.memlimit * 10**9)
+
+    # Each worker takes a free executor, and with it its cores, for an invocation.
+    executors = [RunExecutor(use_namespaces=False) for _ in assignment]
+    free = queue.Queue()
+    for executor, cores in zip(executors, assignment):
+        free.put(pinned_execute(executor, cores, memlimit))
+
+    def work(invocation):
+        execute = free.get()
+        try:
+            return run(invocation, execute)
+        finally:
+            free.put(execute)
+
+    # BenchExec logs every timeout and kill, which the progress output reports already.
+    logging.getLogger().setLevel(logging.ERROR)
+    width = len(str(total))
+    pool = concurrent.futures.ThreadPoolExecutor(len(assignment))
+    futures = {pool.submit(work, invocation): (number, invocation)
+               for number, invocation in selected}
+    try:
+        for future in concurrent.futures.as_completed(futures):
+            number, invocation = futures[future]
+            label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
+            if "repetition" in invocation:
+                label += f" rep{invocation['repetition']}"
+            status, wall_time, note = future.result()
+            counts[status] += 1
+            print(f"[{number:>{width}}/{total}] {label} ... {status} ({wall_time:.1f}s)"
+                  + (f": {note}" if note else ""), flush=True)
+    except KeyboardInterrupt:
+        pool.shutdown(wait=False, cancel_futures=True)
+        for executor in executors:
+            executor.stop()
+        sys.exit("aborted")
+    pool.shutdown()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -192,6 +277,15 @@ def main():
                         help="run only the I-th invocation (1-based, as numbered in the output)")
     parser.add_argument("--dry-run", action="store_true",
                         help="only show what would be run, do not execute anything")
+    parser.add_argument("--jobs", type=int, metavar="N",
+                        help="run N invocations at the same time, each pinned to its own "
+                             "physical cores by BenchExec")
+    parser.add_argument("--cores-per-run", type=int, default=1, metavar="C",
+                        help="physical cores of each run with --jobs (default: 1)")
+    parser.add_argument("--cores", metavar="LIST",
+                        help="CPUs to use with --jobs, e.g. 2-11 (default: all)")
+    parser.add_argument("--memlimit", type=float, metavar="GB",
+                        help="memory limit of each run with --jobs, in GB")
     args = parser.parse_args()
 
     with open(args.invocations) as f:
@@ -222,18 +316,21 @@ def main():
 
     counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
     width = len(str(len(invocations)))
-    for number, invocation in selected:
-        label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
-        if "repetition" in invocation:
-            label += f" rep{invocation['repetition']}"
-        print(f"[{number:>{width}}/{len(invocations)}] {label} ... ", end="", flush=True)
-        try:
-            status, wall_time, note = run(invocation)
-        except KeyboardInterrupt:
-            print("interrupted")
-            sys.exit("aborted")
-        counts[status] += 1
-        print(f"{status} ({wall_time:.1f}s)" + (f": {note}" if note else ""), flush=True)
+    if args.jobs is not None:
+        run_pinned(selected, len(invocations), counts, args)
+    else:
+        for number, invocation in selected:
+            label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
+            if "repetition" in invocation:
+                label += f" rep{invocation['repetition']}"
+            print(f"[{number:>{width}}/{len(invocations)}] {label} ... ", end="", flush=True)
+            try:
+                status, wall_time, note = run(invocation)
+            except KeyboardInterrupt:
+                print("interrupted")
+                sys.exit("aborted")
+            counts[status] += 1
+            print(f"{status} ({wall_time:.1f}s)" + (f": {note}" if note else ""), flush=True)
 
     print(f"\n{len(selected)} invocations: "
           f"{counts['ok']} ok, {counts['timeout']} timeout, {counts['error']} error, "

@@ -1,0 +1,19 @@
+# Not needed in the image, or set up by the Dockerfile itself
+.git
+.venv
+**/__pycache__
+**/bin
+.idea
+logs
+
+# The generated interval models (tens of GB); generate them in the container
+imdps/benchmarks/*
+!imdps/benchmarks/index.json
+imdps/experiments*
+imdps/julia/intervalmdp.so
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+latex/data

@@ -534,22 +534,8 @@ def write_explicit(prepared: dict[str, Any], uncertainty: dict[str, Any], base: 
     path(".pctl").write_text(prism_property + "\n", encoding="utf-8")
     path(".storm.props").write_text(storm_property + "\n", encoding="utf-8")
     source = prepared["source"]
-    # IntervalMDP.jl cannot import reachability rewards, but reward 1 in every state outside
-    # the target and no action rewards count the steps until the target: IntervalMDP.jl's
-    # expected exit time, written as T in .intervalmdp.pctl (see julia/check_intervalmdp.jl).
-    counts_steps = (reward and pathprop == 'F "reach"'
-                    and all(r == 1 or state in prepared["targets"] for state, r in enumerate(prepared["state_rewards"]))
-                    and all(r == 0 for actions in states for _, _, r in actions))
-    if counts_steps:
-        path(".intervalmdp.pctl").write_text(f"T{objective}{opposite_objective}=? [ {pathprop} ]\n", encoding="utf-8")
-    else:
-        path(".intervalmdp.pctl").unlink(missing_ok=True)
-    if not reward:
-        compatibility = "supported"
-    elif counts_steps:
-        compatibility = "supported: expected exit time"
-    else:
-        compatibility = "unsupported: IntervalMDP.jl cannot import reachability rewards"
+    compatibility = ("unsupported: IntervalMDP.jl cannot import reachability rewards"
+                     if reward else "supported")
     path(".txt").write_text(
         f"benchmark: {source['id']}\nsource: {source['program'] or source['jani']}\n"
         f"constants: {source['constants_string']}\noriginal_property: {prepared['property']['formula']}\n"
@@ -562,21 +548,21 @@ def write_explicit(prepared: dict[str, Any], uncertainty: dict[str, Any], base: 
         encoding="utf-8")
 
 
-def is_min_reward(prop: dict[str, str]) -> bool:
-    """Whether a property minimises an expected reward; Storm cannot be trusted on these."""
-    return prop["kind"] == "expected-reward" and prop["objective"] == "min"
+def is_reward(prop: dict[str, str]) -> bool:
+    """Whether a property is an expected reward, which not all tools support for interval models."""
+    return prop["kind"] == "expected-reward"
 
 
 def write_index(output_dir: Path, uncertainties: list[dict[str, Any]], benchmark_root: Path,
-                skip_min_rewards: bool = False) -> int:
+                skip_rewards: bool = False) -> int:
     """Write output_dir/index.json with one entry per complete bundle and interval configuration.
 
     The entries are what common/generate_invocations.py and common/run.py expect: the
     bundle prefix relative to output_dir and the values the commands in
     scripts/configurations.json refer to. The type is the interval configuration, so
     that the plots can tell them apart. Nominal bundles inherit the reference result
-    of their benchmark. With skip_min_rewards, bundles of minimising reward properties
-    are left out. Returns the number of entries.
+    of their benchmark. With skip_rewards, bundles of reward properties are left
+    out. Returns the number of entries.
     """
     shared = load_json(benchmark_root / "index.json")
     index = {}
@@ -585,7 +571,7 @@ def write_index(output_dir: Path, uncertainties: list[dict[str, Any]], benchmark
         # The .txt metadata is written last, so it marks a complete bundle.
         for marker in sorted(folder.glob("*.txt")):
             base = marker.name[:-len(".txt")]
-            if skip_min_rewards and (folder / f"{base}.pctl").read_text(encoding="utf-8").startswith("Rmin"):
+            if skip_rewards and (folder / f"{base}.pctl").read_text(encoding="utf-8").startswith("R"):
                 continue
             metadata = dict(line.split(": ", 1) for line in marker.read_text(encoding="utf-8").splitlines())
             benchmark_id = metadata["benchmark"]
@@ -596,7 +582,7 @@ def write_index(output_dir: Path, uncertainties: list[dict[str, Any]], benchmark
                 "delta": uncertainty["delta"],
                 "bundle": f"{uncertainty['id']}/{base}",
                 "prism-import": "tra,sta,lab,srew,trew" if rewards else "tra,sta,lab",
-                "intervalmdp": metadata["IntervalMDP.jl"].startswith("supported"),
+                "intervalmdp": metadata["IntervalMDP.jl"] == "supported",
                 "states": int(metadata["states"]),
             }
             reference = shared.get(benchmark_id, {}).get("reference-result")
@@ -642,9 +628,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dry-run", action="store_true", help="Resolve benchmarks and list outputs without importing Stormpy or building models.")
     parser.add_argument("--workers", type=int, default=1, help="Number of benchmark conversions to run in parallel.")
     parser.add_argument("--keep-going", action=argparse.BooleanOptionalAction, default=True)
-    parser.add_argument("--skip-min-rewards", action=argparse.BooleanOptionalAction, default=True,
-                        help="Leave out benchmarks minimising an expected reward (Rmin), which Storm "
-                             "does not support for interval models (default: on).")
+    parser.add_argument("--skip-rewards", action=argparse.BooleanOptionalAction, default=True,
+                        help="Leave out benchmarks with an expected reward property, which Storm, PRISM "
+                             "and IntervalMDP.jl do not support alike for interval models (default: on).")
     args = parser.parse_args()
     if args.workers < 1:
         parser.error("--workers must be at least 1")
@@ -706,10 +692,10 @@ def process_benchmark(task: dict[str, Any]) -> tuple[list[str], dict[str, list[d
     return log, manifest
 
 
-def min_reward_benchmark(benchmark_root: Path, benchmark_id: str) -> bool:
-    """Whether the benchmark minimises an expected reward; unresolvable ones are kept, to fail later."""
+def reward_benchmark(benchmark_root: Path, benchmark_id: str) -> bool:
+    """Whether the benchmark has an expected reward property; unresolvable ones are kept, to fail later."""
     try:
-        return is_min_reward(supported_property(resolve_benchmark(benchmark_root, benchmark_id)))
+        return is_reward(supported_property(resolve_benchmark(benchmark_root, benchmark_id)))
     except (LookupError, ValueError):
         return False
 
@@ -720,8 +706,8 @@ def main() -> int:
     if args.benchmark:
         wanted = set(args.benchmark)
         benchmark_ids = [b for b in benchmark_ids if b in wanted]
-    if args.skip_min_rewards:
-        benchmark_ids = [b for b in benchmark_ids if not min_reward_benchmark(args.benchmark_root, b)]
+    if args.skip_rewards:
+        benchmark_ids = [b for b in benchmark_ids if not reward_benchmark(args.benchmark_root, b)]
 
     uncertainties = load_uncertainties(args.uncertainty_config)
     manifest: dict[str, Any] = {"created": [], "skipped": []}
@@ -757,7 +743,7 @@ def main() -> int:
             record_results(executor.map(process_benchmark, tasks))
 
     if not args.dry_run:
-        entries = write_index(args.output_dir, uncertainties, args.benchmark_root, args.skip_min_rewards)
+        entries = write_index(args.output_dir, uncertainties, args.benchmark_root, args.skip_rewards)
         print(f"Wrote {entries} entries to {args.output_dir / 'index.json'}")
     verb = "Would create" if args.dry_run else "Created"
     print(f"{verb} {len(manifest['created'])} bundles; skipped {len(manifest['skipped'])}.")
