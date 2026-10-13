@@ -99,6 +99,24 @@ entrypoint `docker/init.sh` uses it only to set up the cgroups for BenchExec, an
 `--cap-drop=all` drops the other privileges. Without these options, everything
 except `run.py --jobs` works as well.
 
+### Checking the setup
+
+`run_smoke.sh` runs every configuration of every experiment on two small
+benchmarks with a time limit of 60 seconds, post-processes the logs and builds the
+figures, like `run_all.sh` below, in about 5 minutes with `--jobs 8`. Run it first
+in a container that is removed afterwards, to check that the image works on the
+machine:
+
+```bash
+docker run --rm --privileged --cap-drop=all storm2-experiments ./run_smoke.sh --jobs 8
+```
+
+It also checks the results of every run with `common/check_results.py`, and fails
+if a run has an incorrect result, or none although it finished in time, e.g.
+because a tool changed its output and the post-processing no longer reads it; for
+`pomdp`, it also checks that the lower bounds are below the upper bounds. That
+`run.py` reports a run as `ok` only means the tool exited normally.
+
 ### All experiments at once
 
 `run_all.sh` runs all experiments one after the other, post-processes them, and
@@ -113,6 +131,18 @@ docker logs -f storm2    # follow the progress
 
 Once the container has stopped, copy the figures and results out of it as
 described below; `docker cp` also works for a stopped container.
+
+To abort the experiments, stop the container:
+
+```bash
+docker stop storm2    # kills all runs after 10 seconds
+docker rm storm2      # removes the container, and with it its logs
+```
+
+Docker kills all processes in the container, including the running tools. The
+logs of the finished runs stay in the stopped container until it is removed;
+there is no resuming, a new `run_all.sh` starts all runs again. In an interactive
+container, Ctrl-C stops `run.py` and its runs.
 
 ### Each experiment separately
 
@@ -179,9 +209,10 @@ runs fit into the memory of the host. A run that exceeds its time limit counts a
 a timeout, one that exceeds its memory limit as a memout. `run.py` prints the
 cores and frequency governor of every worker, and warns if boost is enabled.
 
-To check the setup quickly, run a few benchmarks with a short time limit first,
-e.g. `--benchmarks consensus.4-4.c2,tireworld.17.goal --timelimit 60` for
-`generate_invocations.py` in `comparison_tools_bisim`.
+To check a single experiment quickly, select a few benchmarks and a short time
+limit, e.g. `--benchmarks consensus.4-4.c2,tireworld.17.goal --timelimit 60` for
+`generate_invocations.py` in `comparison_tools_bisim`; `run_smoke.sh` does this for
+all experiments.
 
 ## Building the image
 
@@ -189,9 +220,16 @@ The image can be built on any x86-64 machine with Docker, e.g. a different one
 than the one running the experiments, and saved to a file to move it there:
 
 ```bash
+docker pull movesrwth/storm-dependencies:latest
+docker build -t storm:local --build-arg no_threads=8 ../storm
 docker build -t storm2-experiments .
 docker save storm2-experiments | gzip > storm2-experiments.tar.gz
 ```
+
+The experiments run the Storm of the image `storm:local`, built here with Storm's
+own Dockerfile from a Storm checkout in `../storm` (`no_threads` sets the number of
+compile jobs). Storm's Dockerfile leaves out its git history, so the image does not
+record which Storm commit it was built from; note it with `git -C ../storm log -1`.
 
 The build generates the 52 interval MDPs of `imdps` (44 GB), which takes a few
 hours and, for the largest models, tens of GB of memory per model generated in
@@ -222,21 +260,18 @@ only repeats the last steps of the build.
   BenchExec's RunExecutor and pinned to its own physical core (`--cores-per-run`
   for more); the second hardware thread of that core stays idle. `--cores`
   restricts the CPUs used, e.g. to spread the runs over the L3 caches of the CPU,
-docker pull movesrwth/storm-dependencies:latest
-docker build -t storm:local --build-arg no_threads=8 ../storm
   which BenchExec fills one after the other. Without `--jobs`, the runs take place
   one after the other without pinning and without a memory limit. `--entry I`
   runs a single invocation, e.g. to distribute the work over a cluster.
 - `postprocess.py` writes `results.json` (status, runtime, result and difference
-The experiments run the Storm of the image `storm:local`, built here with Storm's
-own Dockerfile from a Storm checkout in `../storm` (`no_threads` sets the number of
-compile jobs). Storm's Dockerfile leaves out its git history, so the image does not
-record which Storm commit it was built from; note it with `git -C ../storm log -1`.
-
   to the reference result of every run), `scatter.csv` and `quantile.csv` for the
   figures, and `table/index.html`, a sortable table linking to the logs of every
   run. An experiment whose results need their own processing has a
   `scripts/postprocess.py`, which `postprocess.py` calls instead, like `pomdp`.
+- `check_results.py` lists the runs of a post-processed experiment that went
+  wrong: incorrect results, runs without a result, and for `pomdp` bounds of the
+  wrong kind or contradicting each other. After the full experiments, some of
+  these are expected, e.g. a tool that does not support a benchmark.
 
 All scripts describe their options with `--help`. Pinning does not separate the
 memory bandwidth and the L3 cache shared by the cores, so check how much the times
