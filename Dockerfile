@@ -9,6 +9,31 @@
 
 # Set stormpy base image
 ARG STORMPY_BASE=movesrwth/stormpy:1.14.0
+
+
+# Generate the interval MDPs of imdps
+#####################################
+# In a stage of their own, which only copies the generator, the MDP benchmarks it
+# reads and the models already generated in imdps/benchmarks/. Only the missing
+# models are generated, which takes hours for all of them; the generation stops at
+# the first benchmark that fails, so that no model is missing from the image.
+# Models in imdps/benchmarks/ that are not in its index.json are left out.
+FROM $STORMPY_BASE AS imdps-models
+# Number of interval MDPs generated in parallel; the largest ones need tens of GB
+# of memory each
+ARG generate_workers=2
+WORKDIR /opt/storm2-experiments
+COPY benchmarks benchmarks
+COPY imdps/generate imdps/generate
+COPY imdps/benchmarks imdps/benchmarks
+RUN cd imdps && python3 generate/generate_explicit_benchmarks.py \
+        --skip-existing --workers $generate_workers --no-keep-going \
+    && python3 -c 'import json, pathlib; \
+root = pathlib.Path("benchmarks"); \
+keep = {f for b in json.load(open(root / "index.json")).values() for f in root.glob(b["bundle"] + ".*")}; \
+[f.unlink() for f in root.glob("*/*") if f not in keep]'
+
+
 FROM $STORMPY_BASE
 
 
@@ -50,8 +75,10 @@ RUN curl -fsSL -o modest.zip https://www.modestchecker.net/downloads/Modest-Tool
 
 # Set-up the experiments
 ########################
+# The interval MDPs come from the stage above, together with their index.json.
 WORKDIR /opt/storm2-experiments
-COPY . .
+COPY --exclude=imdps/benchmarks . .
+COPY --from=imdps-models /opt/storm2-experiments/imdps/benchmarks imdps/benchmarks
 RUN pip install -r requirements.txt
 
 # Link the tools to where the experiments expect them. The Storm release images
@@ -62,7 +89,8 @@ RUN storm=$(command -v storm || echo /opt/storm/build/bin/storm) \
         && ln -s $storm /opt/prism/bin/prism $experiment/bin/; \
     done \
     && ln -s /opt/Modest/modest comparison_tools_bisim/bin/modest \
-    && ln -s /opt/julia/bin/julia imdps/bin/julia
+    && ln -s /opt/julia/bin/julia imdps/bin/julia \
+    && mkdir -p pomdp/bin && ln -s $(dirname $storm)/storm-pomdp pomdp/bin/
 
 # Install IntervalMDP.jl and build its sysimage. With Julia 1.13, PackageCompiler
 # compiles it for the CPU targets of Julia's own sysimage rather than for the CPU

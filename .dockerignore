@@ -6,9 +6,8 @@
 .idea
 logs
 
-# The generated interval models (tens of GB); generate them in the container
-imdps/benchmarks/*
-!imdps/benchmarks/index.json
+# The generated interval models in imdps/benchmarks/ are reused by the Dockerfile,
+# which leaves out those not in its index.json
 imdps/experiments*
 imdps/julia/intervalmdp.so
 
