@@ -75,7 +75,7 @@ SIGKILL_CODE = -9
 # tools disagree here: storm and mcsta build the model for the property at hand
 # and drop states that cannot influence it, prism does not. Taking the number
 # from one configuration keeps the column comparable across benchmarks.
-STATES_CONFIGURATION = "storm-default"
+STATES_CONFIGURATION = "storm-sound"
 
 # Configurations whose results are exact and may thus serve as a reference.
 EXACT_CONFIGURATIONS = lambda c: "exact" in c
