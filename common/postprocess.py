@@ -111,6 +111,9 @@ CHECKING_PATTERNS = [
 # whole tool call, and only the model checking part of it.
 TIMINGS = [("wallclock-time", ""), ("checking-time", "-checking")]
 
+# The time a tool spent on preprocessing, e.g. on the bisimulation minimisation.
+PREPROCESSING_TIME = re.compile(r"^Time for model preprocessing:\s*([0-9.]+)\s*s", re.M)
+
 HEADER = re.compile(r"^(?P<key>[A-Za-z ]+):\t(?P<value>.*)$", re.M)
 FOOTER = re.compile(r"^Wallclock time:\t(?P<time>[0-9.]+)\nReturn code:\t(?P<code>.*)$", re.M)
 
@@ -220,6 +223,10 @@ def parse_log(path):
                 entry["states-after"] = int(found[-1])
             break
     # A log without a footer means the run never finished properly.
+    match = PREPROCESSING_TIME.search(output)
+    if match:
+        entry["preprocessing-time"] = float(match.group(1))
+
     entry["timeout"] = footer is not None and footer.group("code") == "None"
     entry["log"] = str(path)
     return entry
@@ -527,6 +534,8 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
             rows.append(("states", f"{data['states']:,}"))
         if "states-after" in data:
             rows.append(("states after preprocessing", f"{data['states-after']:,}"))
+        if "preprocessing-time" in data:
+            rows.append(("time for preprocessing", format_seconds(data["preprocessing-time"])))
         if len(repetitions) > 1:
             parts.append(f"<h2>Repetition {escape(repetition)}</h2>")
         parts.append("<table class=\"meta\">" + "".join(
@@ -545,6 +554,16 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
 def quotient_column_sources(quotient):
     """The quotient size columns that the collected data actually provides."""
     return [(name, c) for name, c in QUOTIENT_COLUMNS.items() if c in quotient]
+
+
+def preprocessing_column(name):
+    """The heading of the column with the preprocessing time of a quotient column."""
+    return ("time" + name[len("states"):]) if name.startswith("states") else f"{name}-time"
+
+
+def format_seconds(value):
+    """A duration in seconds, kept short but without rounding small times to zero."""
+    return f"{value:.1f}s" if value >= 1 else f"{value:.2f}s"
 
 
 def meta_cells(meta, benchmarks, cells):
@@ -571,7 +590,7 @@ def meta_cells(meta, benchmarks, cells):
 
 
 def write_table(outdir, index, results, configurations, benchmarks, cells,
-                states, quotient, meta=(), chosen=None):
+                states, quotient, preprocessing=None, meta=(), chosen=None):
     """An interactive html version of the scatter table, with a page per cell."""
     tabledir = outdir / "table"
     tabledir.mkdir(parents=True, exist_ok=True)
@@ -593,7 +612,10 @@ def write_table(outdir, index, results, configurations, benchmarks, cells,
                  (states.get(benchmark_id, ""), states.get(benchmark_id, -1))]
         for _, configuration in quotient_columns:
             value = quotient[configuration].get(benchmark_id, "")
-            fixed.append((value, value if value != "" else -1))
+            seconds = (preprocessing or {}).get(configuration, {}).get(benchmark_id)
+            text = value if value == "" else (
+                f"{value} ({format_seconds(seconds)})" if seconds is not None else value)
+            fixed.append((text, value if value != "" else -1))
         row = "".join(f"<td data-sort=\"{escape(key)}\">{escape(text) if text != '' else '&ndash;'}</td>"
                       for text, key in fixed)
         for configuration in configurations:
@@ -670,6 +692,7 @@ def main():
     results = {}      # configuration -> benchmark -> repetition -> data
     states = {}       # benchmark -> number of states of the input model
     quotient = {}     # configuration -> benchmark -> states after preprocessing
+    preprocessing = {}  # configuration -> benchmark -> seconds spent preprocessing
     unknown, ignored = set(), 0
     entries = []
     for path in sorted(logdir.glob("*.log")):
@@ -705,6 +728,10 @@ def main():
             data["states"] = entry["states"]
             if entry["configuration"] == STATES_CONFIGURATION:
                 states[benchmark_id] = entry["states"]
+        if "preprocessing-time" in entry:
+            data["preprocessing-time"] = entry["preprocessing-time"]
+            preprocessing.setdefault(entry["configuration"], {})[benchmark_id] = \
+                entry["preprocessing-time"]
         if "states-after" in entry:
             data["states-after"] = entry["states-after"]
             # Only a configuration that actually reduces the model gets a column.
@@ -733,13 +760,17 @@ def main():
         f.write("\n")
 
     quotient_columns = quotient_column_sources(quotient)
-    columns = ["benchmark", "type", "states"] + [name for name, _ in quotient_columns]
+    columns = ["benchmark", "type", "states"]
+    for name, _ in quotient_columns:
+        columns += [name, preprocessing_column(name)]
 
     def states_row(benchmark_id):
         return [benchmark_id,
                 index.get(benchmark_id, {}).get("type", ""),
                 states.get(benchmark_id, "")] + \
-               [quotient[c].get(benchmark_id, "") for _, c in quotient_columns]
+               [v for _, c in quotient_columns
+                for v in (quotient[c].get(benchmark_id, ""),
+                          preprocessing.get(c, {}).get(benchmark_id, ""))]
 
     # A configuration that cannot be run on a benchmark has no execution for it,
     # for example PRISM on a benchmark that only comes as a jani file.
@@ -846,7 +877,8 @@ def main():
     for name, member_ids in meta.items():
         print(f"  meta configuration {name}: best of {', '.join(member_ids)}")
     tabledir = write_table(outdir, index, results, configurations, benchmarks,
-                           table_cells, states, quotient, meta, table_chosen)
+                           table_cells, states, quotient, preprocessing,
+                           meta, table_chosen)
     print(f"  {len(supported)} of {len(benchmarks)} benchmarks are supported by "
           f"every configuration")
     print(f"wrote results.json, scatter.csv, quantile.csv and "
