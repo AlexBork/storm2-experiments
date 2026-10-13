@@ -45,7 +45,9 @@ FROM $STORMPY_BASE
 # Versions of the other tools
 ARG prism_version=4.10.1
 ARG julia_version=1.13.0
-ARG modest_version=v3.1.314-g51abd2d6a
+# The Modest Toolset website only offers its latest version, which is used when
+# modest_version is empty; set it to e.g. v3.1.315-g0a0763b35 for a specific one
+ARG modest_version=""
 
 
 # Install dependencies
@@ -69,7 +71,11 @@ RUN curl -fsSL https://www.prismmodelchecker.org/dl/prism-$prism_version-linux64
     && cd prism && ./install.sh
 RUN curl -fsSL https://julialang-s3.julialang.net/bin/linux/x64/${julia_version%.*}/julia-$julia_version-linux-x86_64.tar.gz | tar xz \
     && mv julia-$julia_version julia
-RUN curl -fsSL -o modest.zip https://www.modestchecker.net/downloads/Modest-Toolset-$modest_version-linux-x64.zip \
+RUN downloads=https://www.modestchecker.net/downloads/ \
+    && zip=${modest_version:+Modest-Toolset-$modest_version-linux-x64.zip} \
+    && zip=${zip:-$(curl -fsSL $downloads | grep -oE 'Modest-Toolset-[^"]*-linux-x64\.zip' | head -1)} \
+    && echo "Modest Toolset: $zip" \
+    && curl -fsSL -o modest.zip $downloads$zip \
     && unzip -q modest.zip && rm modest.zip
 
 
