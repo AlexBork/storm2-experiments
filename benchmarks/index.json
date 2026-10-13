@@ -652,5 +652,161 @@
 		"prism": "avoid-mdp/avoid-mdp.prism",
 		"prism-property": "avoid-mdp/avoid-mdp.props",
 		"reference-result": "1898493463952474729556179483833463380410368/3051757812568811845134444456464935302734375"
+	},
+	"consensus.4-4.steps_min": {
+		"type": "qcomp",
+		"jani": "consensus/consensus.4.jani",
+		"property": "steps_min",
+		"constants": "K=4",
+		"prism": "consensus/consensus.4.prism",
+		"prism-property": "consensus/consensus.props",
+		"reference-result": "768"
+	},
+	"csma.3-4.all_before_max": {
+		"type": "qcomp",
+		"jani": "csma/csma.3-4.jani",
+		"property": "all_before_max",
+		"prism": "csma/csma.3-4.prism",
+		"prism-property": "csma/csma.props",
+		"reference-result": "2599282671417859453572130598089066646673439/2787593149816327892691964784081045188247552"
+	},
+	"csma.4-2.all_before_max": {
+		"type": "qcomp",
+		"jani": "csma/csma.4-2.jani",
+		"property": "all_before_max",
+		"prism": "csma/csma.4-2.prism",
+		"prism-property": "csma/csma.props",
+		"reference-result": "283699444885771093844545259966420317194574918841/365375409332725729550921208179070754913983135744"
+	},
+	"csma.4-2.time_max": {
+		"type": "qcomp",
+		"jani": "csma/csma.4-2.jani",
+		"property": "time_max",
+		"prism": "csma/csma.4-2.prism",
+		"prism-property": "csma/csma.props",
+		"reference-result": "32315623775306742465754992904772086856590387189461759497043751326444129883/227235292031546136552071621151990131110732434575780471525732909819363328"
+	},
+	"eajs.5-250-11.ExpUtil": {
+		"type": "qcomp",
+		"jani": "eajs/eajs.5.jani",
+		"property": "ExpUtil",
+		"constants": "energy_capacity=250,B=11",
+		"prism": "eajs/eajs.5.prism",
+		"prism-property": "eajs/eajs.props",
+		"reference-result": "266763997439241350774737/26588814358957503287787"
+	},
+	"eajs.6-300-13.ExpUtil": {
+		"type": "qcomp",
+		"jani": "eajs/eajs.6.jani",
+		"property": "ExpUtil",
+		"constants": "energy_capacity=300,B=13",
+		"prism": "eajs/eajs.6.prism",
+		"prism-property": "eajs/eajs.props",
+		"reference-result": "2102306774904922316278224079/174449211009120179071170507"
+	},
+	"firewire.false-36-800.deadline": {
+		"type": "qcomp",
+		"jani": "firewire/firewire.false.jani",
+		"property": "deadline",
+		"constants": "delay=36,deadline=800",
+		"prism": "firewire/firewire.false.prism",
+		"prism-property": "firewire/firewire.false.props",
+		"reference-result": "481/512"
+	},
+	"pacman.60.crash": {
+		"type": "qcomp",
+		"jani": "pacman/pacman.jani",
+		"property": "crash",
+		"constants": "MAXSTEPS=60",
+		"prism": "pacman/pacman.nm",
+		"prism-property": "pacman/pacman.props",
+		"reference-result": "86110546416859324224933809991178655824964067/156250000000000000000000000000000000000000000"
+	},
+	"pnueli-zuck.5.live": {
+		"type": "qcomp",
+		"jani": "pnueli-zuck/pnueli-zuck.5.jani",
+		"property": "live",
+		"prism": "pnueli-zuck/pnueli-zuck.5.prism",
+		"prism-property": "pnueli-zuck/pnueli-zuck.props",
+		"reference-result": "1"
+	},
+	"pnueli-zuck.10.live": {
+		"type": "qcomp",
+		"jani": "pnueli-zuck/pnueli-zuck.10.jani",
+		"property": "live",
+		"prism": "pnueli-zuck/pnueli-zuck.10.prism",
+		"prism-property": "pnueli-zuck/pnueli-zuck.props",
+		"reference-result": "1"
+	},
+	"rabin.10.live": {
+		"type": "qcomp",
+		"jani": "rabin/rabin.10.jani",
+		"property": "live",
+		"prism": "rabin/rabin.10.prism",
+		"prism-property": "rabin/rabin.10.props",
+		"reference-result": "1"
+	},
+	"resource-gathering.1300-100-100.expgold": {
+		"type": "qcomp",
+		"jani": "resource-gathering/resource-gathering.jani",
+		"property": "expgold",
+		"constants": "B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100",
+		"prism": "resource-gathering/resource-gathering.pm",
+		"prism-property": "resource-gathering/resource-gathering.prctl",
+		"reference-result": "7264375073375469449618662501504506678375777124927245092599053231644666673941583976542615859048918385259998596551162129780592651767368178605021823732691181739093434372876661819379530098728785208625449275851305168448843422855426191245955422855359777679433560585821178640509935448362824311419877551701852565468365094137568009239488438953915241479675300431961216164884100235312283881934829831139437172624278957867401478674253410714641886233847003233839053435926819958776138488683426285264386342945460271627777638712613161323/50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+	},
+	"resource-gathering.1300-100-100.prgoldgem": {
+		"type": "qcomp",
+		"jani": "resource-gathering/resource-gathering.jani",
+		"property": "prgoldgem",
+		"constants": "B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100",
+		"prism": "resource-gathering/resource-gathering.pm",
+		"prism-property": "resource-gathering/resource-gathering.prctl",
+		"reference-result": "663060852524178402183203507211353729666956663727350680069210275332115007280621137868004961937357709723179891739352387145366201684190399713388720604667954409751611188058893055489955897549953315586276348761790028621965783364895926897299241911/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+	},
+	"wlan.4-0.sent": {
+		"type": "qcomp",
+		"jani": "wlan/wlan.4.jani",
+		"property": "sent",
+		"constants": "COL=0",
+		"prism": "wlan/wlan.4.prism",
+		"prism-property": "wlan/wlan.props",
+		"reference-result": "true"
+	},
+	"wlan.4-0.cost_min": {
+		"type": "qcomp",
+		"jani": "wlan/wlan.4.jani",
+		"property": "cost_min",
+		"constants": "COL=0",
+		"prism": "wlan/wlan.4.prism",
+		"prism-property": "wlan/wlan.props",
+		"reference-result": "7625"
+	},
+	"wlan.5-0.sent": {
+		"type": "qcomp",
+		"jani": "wlan/wlan.5.jani",
+		"property": "sent",
+		"constants": "COL=0",
+		"prism": "wlan/wlan.5.prism",
+		"prism-property": "wlan/wlan.props",
+		"reference-result": "true"
+	},
+	"wlan.6-0.sent": {
+		"type": "qcomp",
+		"jani": "wlan/wlan.6.jani",
+		"property": "sent",
+		"constants": "COL=0",
+		"prism": "wlan/wlan.6.prism",
+		"prism-property": "wlan/wlan.props",
+		"reference-result": "true"
+	},
+	"wlan.6-0.cost_min": {
+		"type": "qcomp",
+		"jani": "wlan/wlan.6.jani",
+		"property": "cost_min",
+		"constants": "COL=0",
+		"prism": "wlan/wlan.6.prism",
+		"prism-property": "wlan/wlan.props",
+		"reference-result": "7625"
 	}
 }
