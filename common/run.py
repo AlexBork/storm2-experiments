@@ -209,6 +209,15 @@ def pinned_execute(executor, cores, memlimit):
     return execute
 
 
+def boost_enabled():
+    """Whether the CPU may boost above its base frequency, None if unknown."""
+    cpu = Path("/sys/devices/system/cpu")
+    for path, enabled in [(cpu / "cpufreq/boost", "1"), (cpu / "intel_pstate/no_turbo", "0")]:
+        if path.is_file():
+            return path.read_text().strip() == enabled
+    return None
+
+
 def run_pinned(selected, counts, args):
     """Run the invocations args.jobs at a time, each pinned to its own physical cores."""
     try:
@@ -230,6 +239,8 @@ def run_pinned(selected, counts, args):
         print(f"worker {number}: cores {','.join(map(str, cores))}, governor {'/'.join(governors)}")
         if governors != {"performance"}:
             print("  for stable timings run: sudo cpupower frequency-set -g performance")
+    if boost_enabled():
+        print("boost: enabled\n  for stable timings run: sudo cpupower set --turbo-boost 0")
     # In GiB, the unit of e.g. PRISM's -javamaxmem 32g.
     memlimit = int(args.memlimit * 2**30)
     print(f"memory limit: {args.memlimit:g} GiB per run")

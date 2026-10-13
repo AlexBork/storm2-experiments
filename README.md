@@ -51,15 +51,24 @@ they can take somewhat longer than when run one at a time.
 - **Disk.** The image takes about 50 GB, most of it the generated interval MDPs
   of `imdps`, plus the space of the saved file while loading it.
 - **Stable timings.** Set the frequency governor of the host to `performance`
-  before running, and do not run other workloads at the same time. This needs
-  root and `cpupower`, which comes with the package `linux-cpupower` on Debian,
-  `linux-tools-common` and `linux-tools-$(uname -r)` on Ubuntu, `kernel-tools` on
-  Fedora, and `cpupower` on Arch. The setting is lost on a reboot.
+  and disable boost (turbo) before running, and do not run other workloads at
+  the same time. With boost, the frequency of a core depends on the temperature
+  and on how many other cores are busy, so the runtimes depend on the runs next
+  to it. This needs root and `cpupower`, which comes with the package
+  `linux-cpupower` on Debian, `linux-tools-common` and `linux-tools-$(uname -r)`
+  on Ubuntu, `kernel-tools` on Fedora, and `cpupower` on Arch. The settings are
+  lost on a reboot.
 
   ```bash
   sudo cpupower frequency-set -g performance
-  cpupower frequency-info --policy    # check it
+  sudo cpupower set --turbo-boost 0
+  cpupower frequency-info --policy    # check the governor
+  cpupower frequency-info | grep -A2 boost    # check boost
   ```
+
+  Older versions of `cpupower` lack `--turbo-boost`; then disable boost with
+  `echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost`, or on Intel with
+  `echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo`.
 
 ## Loading the image
 
@@ -167,7 +176,7 @@ and a memory limit of 32 GiB (`run.py --memlimit`), which PRISM is also told
 with `-javamaxmem 32g` in its configurations. Choose `--jobs` such that the
 runs fit into the memory of the host. A run that exceeds its time limit counts as
 a timeout, one that exceeds its memory limit as a memout. `run.py` prints the
-cores and frequency governor of every worker.
+cores and frequency governor of every worker, and warns if boost is enabled.
 
 To check the setup quickly, run a few benchmarks with a short time limit first,
 e.g. `--benchmarks consensus.4-4.c2,tireworld.17.goal --timelimit 60` for
