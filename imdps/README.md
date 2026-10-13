@@ -38,8 +38,9 @@ Storm has to be 1.13 or newer, PRISM 4.10.1 or newer.
 
 ## Generating the models
 
-The models in `benchmarks/` come with the archive of this repository. To generate
-them yourself you need Python 3.10+ with stormpy. Use a stormpy built against the
+The models in `benchmarks/` come with the Docker image, which generates them when
+it is built (see the [README](../README.md)). To generate them yourself you need
+Python 3.10+ with stormpy. Use a stormpy built against the
 same Storm as `bin/storm`, so that the models are the ones Storm is measured on.
 
 ```bash
