@@ -79,7 +79,8 @@ for how to make it). Load it on the machine running the experiments:
 docker load -i storm2-experiments.tar.gz
 ```
 
-It contains Storm and stormpy 1.14.0, PRISM 4.10.1, the Modest Toolset (mcsta),
+It contains Storm (built from the Storm sources next to this repository, see
+[Building the image](#building-the-image)), PRISM 4.10.1, the Modest Toolset (mcsta),
 Julia 1.13.0 with IntervalMDP.jl and a precompiled sysimage, LaTeX, BenchExec, and
 this repository in `/opt/storm2-experiments`, including the generated interval
 MDPs of `imdps`.
@@ -199,14 +200,16 @@ parallel; `--build-arg generate_workers=N` sets how many are generated at once
 `imdps/generate/` or `benchmarks/` change. The build needs about 100 GB of disk
 space for Docker, plus the saved file.
 
-The image is based on the stormpy image `movesrwth/stormpy:1.14.0`. Build
-arguments select other versions: `STORMPY_BASE` another Storm and stormpy (e.g.
-`movesrwth/stormpy:ci`, or an image built with the Dockerfiles of a local Storm and
-stormpy), and `prism_version`, `julia_version` and `modest_version` the other
-tools. The Modest Toolset website only offers its latest version, so the image may
+Only the generation of the interval MDPs uses stormpy, in a build stage based on
+the stormpy image `movesrwth/stormpy:1.14.0`; the experiments themselves do not
+use it. Build arguments select other versions: `STORM_BASE` another Storm image
+(e.g. `movesrwth/storm:ci`), `STORMPY_BASE` the stormpy used for the generation,
+and `prism_version`, `julia_version` and `modest_version` the other tools. The Modest Toolset website only offers its latest version, so the image may
 contain a newer mcsta than the one in the recorded logs. The Julia sysimage is
 compiled for generic CPU targets, so the image runs on other CPUs than the one
-that built it.
+that built it. It is built before the repository is copied into the image, so it
+is only rebuilt when `imdps/julia/` or the tools change; a change to the scripts
+only repeats the last steps of the build.
 
 ## The scripts
 
@@ -219,10 +222,17 @@ that built it.
   BenchExec's RunExecutor and pinned to its own physical core (`--cores-per-run`
   for more); the second hardware thread of that core stays idle. `--cores`
   restricts the CPUs used, e.g. to spread the runs over the L3 caches of the CPU,
+docker pull movesrwth/storm-dependencies:latest
+docker build -t storm:local --build-arg no_threads=8 ../storm
   which BenchExec fills one after the other. Without `--jobs`, the runs take place
   one after the other without pinning and without a memory limit. `--entry I`
   runs a single invocation, e.g. to distribute the work over a cluster.
 - `postprocess.py` writes `results.json` (status, runtime, result and difference
+The experiments run the Storm of the image `storm:local`, built here with Storm's
+own Dockerfile from a Storm checkout in `../storm` (`no_threads` sets the number of
+compile jobs). Storm's Dockerfile leaves out its git history, so the image does not
+record which Storm commit it was built from; note it with `git -C ../storm log -1`.
+
   to the reference result of every run), `scatter.csv` and `quantile.csv` for the
   figures, and `table/index.html`, a sortable table linking to the logs of every
   run. An experiment whose results need their own processing has a
