@@ -1,0 +1,244 @@
+{
+  "cut10000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 10000",
+    "description": "Under-approximation with cut-offs, size threshold 10000.",
+    "family": "cutoff",
+    "size-threshold": 10000
+  },
+  "cut20000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 20000",
+    "description": "Under-approximation with cut-offs, size threshold 20000.",
+    "family": "cutoff",
+    "size-threshold": 20000
+  },
+  "cut30000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 30000",
+    "description": "Under-approximation with cut-offs, size threshold 30000.",
+    "family": "cutoff",
+    "size-threshold": 30000
+  },
+  "cut40000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 40000",
+    "description": "Under-approximation with cut-offs, size threshold 40000.",
+    "family": "cutoff",
+    "size-threshold": 40000
+  },
+  "cut50000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 50000",
+    "description": "Under-approximation with cut-offs, size threshold 50000.",
+    "family": "cutoff",
+    "size-threshold": 50000
+  },
+  "cut60000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 60000",
+    "description": "Under-approximation with cut-offs, size threshold 60000.",
+    "family": "cutoff",
+    "size-threshold": 60000
+  },
+  "cut70000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 70000",
+    "description": "Under-approximation with cut-offs, size threshold 70000.",
+    "family": "cutoff",
+    "size-threshold": 70000
+  },
+  "cut80000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 80000",
+    "description": "Under-approximation with cut-offs, size threshold 80000.",
+    "family": "cutoff",
+    "size-threshold": 80000
+  },
+  "cut90000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 90000",
+    "description": "Under-approximation with cut-offs, size threshold 90000.",
+    "family": "cutoff",
+    "size-threshold": 90000
+  },
+  "cut100000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000",
+    "description": "Under-approximation with cut-offs, size threshold 100000.",
+    "family": "cutoff",
+    "size-threshold": 100000
+  },
+  "cut200000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 200000",
+    "description": "Under-approximation with cut-offs, size threshold 200000.",
+    "family": "cutoff",
+    "size-threshold": 200000
+  },
+  "cut300000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000",
+    "description": "Under-approximation with cut-offs, size threshold 300000.",
+    "family": "cutoff",
+    "size-threshold": 300000
+  },
+  "cut400000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 400000",
+    "description": "Under-approximation with cut-offs, size threshold 400000.",
+    "family": "cutoff",
+    "size-threshold": 400000
+  },
+  "cut500000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000",
+    "description": "Under-approximation with cut-offs, size threshold 500000.",
+    "family": "cutoff",
+    "size-threshold": 500000
+  },
+  "cut600000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 600000",
+    "description": "Under-approximation with cut-offs, size threshold 600000.",
+    "family": "cutoff",
+    "size-threshold": 600000
+  },
+  "cut700000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 700000",
+    "description": "Under-approximation with cut-offs, size threshold 700000.",
+    "family": "cutoff",
+    "size-threshold": 700000
+  },
+  "cut800000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000",
+    "description": "Under-approximation with cut-offs, size threshold 800000.",
+    "family": "cutoff",
+    "size-threshold": 800000
+  },
+  "cut900000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 900000",
+    "description": "Under-approximation with cut-offs, size threshold 900000.",
+    "family": "cutoff",
+    "size-threshold": 900000
+  },
+  "cut1000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000",
+    "description": "Under-approximation with cut-offs, size threshold 1000000.",
+    "family": "cutoff",
+    "size-threshold": 1000000
+  },
+  "cut2000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 2000000",
+    "description": "Under-approximation with cut-offs, size threshold 2000000.",
+    "family": "cutoff",
+    "size-threshold": 2000000
+  },
+  "cut3000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 3000000",
+    "description": "Under-approximation with cut-offs, size threshold 3000000.",
+    "family": "cutoff",
+    "size-threshold": 3000000
+  },
+  "cut4000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 4000000",
+    "description": "Under-approximation with cut-offs, size threshold 4000000.",
+    "family": "cutoff",
+    "size-threshold": 4000000
+  },
+  "cut5000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000",
+    "description": "Under-approximation with cut-offs, size threshold 5000000.",
+    "family": "cutoff",
+    "size-threshold": 5000000
+  },
+  "cut6000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 6000000",
+    "description": "Under-approximation with cut-offs, size threshold 6000000.",
+    "family": "cutoff",
+    "size-threshold": 6000000
+  },
+  "cut7000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 7000000",
+    "description": "Under-approximation with cut-offs, size threshold 7000000.",
+    "family": "cutoff",
+    "size-threshold": 7000000
+  },
+  "cut8000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 8000000",
+    "description": "Under-approximation with cut-offs, size threshold 8000000.",
+    "family": "cutoff",
+    "size-threshold": 8000000
+  },
+  "cut9000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 9000000",
+    "description": "Under-approximation with cut-offs, size threshold 9000000.",
+    "family": "cutoff",
+    "size-threshold": 9000000
+  },
+  "cut10000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 10000000",
+    "description": "Under-approximation with cut-offs, size threshold 10000000.",
+    "family": "cutoff",
+    "size-threshold": 10000000
+  },
+  "cut20000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 20000000",
+    "description": "Under-approximation with cut-offs, size threshold 20000000.",
+    "family": "cutoff",
+    "size-threshold": 20000000
+  },
+  "cut30000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 30000000",
+    "description": "Under-approximation with cut-offs, size threshold 30000000.",
+    "family": "cutoff",
+    "size-threshold": 30000000
+  },
+  "cut40000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 40000000",
+    "description": "Under-approximation with cut-offs, size threshold 40000000.",
+    "family": "cutoff",
+    "size-threshold": 40000000
+  },
+  "cut50000000": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration unfold --size-threshold 50000000",
+    "description": "Under-approximation with cut-offs, size threshold 50000000.",
+    "family": "cutoff",
+    "size-threshold": 50000000
+  },
+  "discr004s": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static",
+    "description": "Over-approximation with discretization, resolution 4, triangulation mode static.",
+    "family": "discretisation"
+  },
+  "discr005s": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration discretize --resolution 5 --triangulationmode static",
+    "description": "Over-approximation with discretization, resolution 5, triangulation mode static.",
+    "family": "discretisation"
+  },
+  "mdp": {
+    "bin": "bin/storm-pomdp",
+    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --check-fully-observable",
+    "description": "Underlying fully observable MDP.",
+    "family": "MDP"
+  }
+}

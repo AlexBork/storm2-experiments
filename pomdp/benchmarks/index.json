@@ -1,0 +1,152 @@
+{
+  "grid_grid_rewmin_sl0.1": {
+    "benchmark-set": "grid",
+    "name": "grid",
+    "prism": "grid/4x4grid-sl.prism",
+    "prism-property": "grid/grid.props",
+    "property": "rewmin",
+    "constants": "sl=0.1"
+  },
+  "grid_grid_rewmin_sl0.3": {
+    "benchmark-set": "grid",
+    "name": "grid",
+    "prism": "grid/4x4grid-sl.prism",
+    "prism-property": "grid/grid.props",
+    "property": "rewmin",
+    "constants": "sl=0.3"
+  },
+  "grid-avoid_grid-avoid_prbmax_sl0.1": {
+    "benchmark-set": "grid-avoid",
+    "name": "grid-avoid",
+    "prism": "grid-avoid/4x4grid-avoid-sl.prism",
+    "prism-property": "grid-avoid/grid-avoid.props",
+    "property": "prbmax",
+    "constants": "sl=0.1"
+  },
+  "samplerocks_samplerocks_rewmin_N12": {
+    "benchmark-set": "samplerocks",
+    "name": "samplerocks",
+    "prism": "samplerocks/samplerocks.prism",
+    "prism-property": "samplerocks/samplerocks.props",
+    "property": "rewmin",
+    "constants": "N=12"
+  },
+  "samplerocks_samplerocks_rewmin_N16": {
+    "benchmark-set": "samplerocks",
+    "name": "samplerocks",
+    "prism": "samplerocks/samplerocks.prism",
+    "prism-property": "samplerocks/samplerocks.props",
+    "property": "rewmin",
+    "constants": "N=16"
+  },
+  "drone_drone_prbmax_N4-R1": {
+    "benchmark-set": "drone",
+    "name": "drone",
+    "prism": "drone/drone.prism",
+    "prism-property": "drone/drone.props",
+    "property": "prbmax",
+    "constants": "N=4,R=1"
+  },
+  "drone_drone_prbmax_N4-R2": {
+    "benchmark-set": "drone",
+    "name": "drone",
+    "prism": "drone/drone.prism",
+    "prism-property": "drone/drone.props",
+    "property": "prbmax",
+    "constants": "N=4,R=2"
+  },
+  "drone_drone_prbmax_N5-R3": {
+    "benchmark-set": "drone",
+    "name": "drone",
+    "prism": "drone/drone.prism",
+    "prism-property": "drone/drone.props",
+    "property": "prbmax",
+    "constants": "N=5,R=3"
+  },
+  "drone_drone_prbmax_N6-R3": {
+    "benchmark-set": "drone",
+    "name": "drone",
+    "prism": "drone/drone.prism",
+    "prism-property": "drone/drone.props",
+    "property": "prbmax",
+    "constants": "N=6,R=3"
+  },
+  "lanes-100_lanes-100_rewmin_": {
+    "benchmark-set": "lanes-100",
+    "name": "lanes-100",
+    "prism": "lanes-100/lanes-100.prism",
+    "prism-property": "lanes-100/lanes100.props",
+    "property": "rewmin"
+  },
+  "grid-large-30-5_grid-large-30-5_rewmin_": {
+    "benchmark-set": "grid-large-30-5",
+    "name": "grid-large-30-5",
+    "prism": "grid-large-30-5/grid-large-30-5.prism",
+    "prism-property": "grid-large-30-5/grid-large-30-5.props",
+    "property": "rewmin"
+  },
+  "network2_network2_rewmin_T8-K20": {
+    "benchmark-set": "network2",
+    "name": "network2",
+    "prism": "network/network2.prism",
+    "prism-property": "network/network.props",
+    "property": "rewmin",
+    "constants": "T=8,K=20"
+  },
+  "network3_network3_rewmin_T8-K20": {
+    "benchmark-set": "network3",
+    "name": "network3",
+    "prism": "network/network3.prism",
+    "prism-property": "network/network.props",
+    "property": "rewmin",
+    "constants": "T=8,K=20"
+  },
+  "network-priorities2_network-priorities2_rewmax_T8-K20": {
+    "benchmark-set": "network-priorities2",
+    "name": "network-priorities2",
+    "prism": "network-priorities/network-priorities2.prism",
+    "prism-property": "network-priorities/network-priorities.props",
+    "property": "rewmax",
+    "constants": "T=8,K=20"
+  },
+  "network-priorities3_network-priorities3_rewmax_T8-K20": {
+    "benchmark-set": "network-priorities3",
+    "name": "network-priorities3",
+    "prism": "network-priorities/network-priorities3.prism",
+    "prism-property": "network-priorities/network-priorities.props",
+    "property": "rewmax",
+    "constants": "T=8,K=20"
+  },
+  "maze2_maze2_rewmin_sl0.1": {
+    "benchmark-set": "maze2",
+    "name": "maze2",
+    "prism": "maze2/maze2-sl.prism",
+    "prism-property": "maze2/maze2.props",
+    "property": "rewmin",
+    "constants": "sl=0.1"
+  },
+  "maze2_maze2_rewmin_sl0.3": {
+    "benchmark-set": "maze2",
+    "name": "maze2",
+    "prism": "maze2/maze2-sl.prism",
+    "prism-property": "maze2/maze2.props",
+    "property": "rewmin",
+    "constants": "sl=0.3"
+  },
+  "refuel_refuel_prbmax_N06": {
+    "benchmark-set": "refuel",
+    "name": "refuel",
+    "prism": "refuel/refuel.prism",
+    "prism-property": "refuel/refuel.props",
+    "property": "prbmax",
+    "constants": "N=6"
+  },
+  "refuel_refuel_prbmax_N08": {
+    "benchmark-set": "refuel",
+    "name": "refuel",
+    "prism": "refuel/refuel.prism",
+    "prism-property": "refuel/refuel.props",
+    "property": "prbmax",
+    "constants": "N=8"
+  }
+}
