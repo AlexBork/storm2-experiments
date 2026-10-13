@@ -628,6 +628,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dry-run", action="store_true", help="Resolve benchmarks and list outputs without importing Stormpy or building models.")
     parser.add_argument("--workers", type=int, default=1, help="Number of benchmark conversions to run in parallel.")
     parser.add_argument("--keep-going", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="Only generate the bundles that are not complete yet, i.e. have no .txt file.")
     parser.add_argument("--skip-rewards", action=argparse.BooleanOptionalAction, default=True,
                         help="Leave out benchmarks with an expected reward property, which Storm, PRISM "
                              "and IntervalMDP.jl do not support alike for interval models (default: on).")
@@ -656,6 +658,12 @@ def process_benchmark(task: dict[str, Any]) -> tuple[list[str], dict[str, list[d
             (uncertainty, output_dir / slug(uncertainty["id"]) / benchmark_slug)
             for uncertainty in uncertainties
         ]
+        if task["skip_existing"]:
+            # The .txt file is written last and marks a complete bundle.
+            outputs = [(u, out) for u, out in outputs if not Path(f"{out}.txt").exists()]
+            if not outputs:
+                log.append("already generated")
+                return log, manifest
         if dry_run:
             for uncertainty, out in outputs:
                 manifest["created"].append({
@@ -720,6 +728,7 @@ def main() -> int:
             "dry_run": args.dry_run,
             "max_states": args.max_states,
             "keep_going": args.keep_going,
+            "skip_existing": args.skip_existing,
         }
         for benchmark_id in benchmark_ids
     ]
