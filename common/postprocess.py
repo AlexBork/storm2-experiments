@@ -75,6 +75,11 @@ STATUSES = ["incorrect", "no-result", "memout", "timeout", "ok"]
 # reported as a memout rather than as a failure of the tool.
 SIGKILL_CODE = -9
 
+# Tools that notice themselves that they ran out of memory. mcsta still exits
+# with code 0 in that case and PRISM with code 1, so the output has to say so.
+OUT_OF_MEMORY = re.compile(r"out of memory|java\.lang\.OutOfMemoryError|std::bad_alloc",
+                           re.I)
+
 # The configuration whose model size is reported as the size of a benchmark, the
 # first of these that the experiment runs. The tools disagree here: storm and mcsta
 # build the model for the property at hand and drop states that cannot influence
@@ -89,7 +94,7 @@ EXACT_CONFIGURATIONS = lambda c: "exact" in c
 RESULT_PATTERNS = [
     re.compile(r"^Result \(for initial states\):\s*(\S+)", re.M),   # storm
     re.compile(r"^Result:\s*([^\s(]+)", re.M),                      # prism
-    re.compile(r"^\s+(?:Probability|Value):\s*(\S+)", re.M),        # mcsta
+    re.compile(r"^\s+(?:Probability|Value|Result):\s*(\S+)", re.M),  # mcsta
     re.compile(r"^Initial state \d+:\s*(\S+)", re.M),                # IntervalMDP.jl
 ]
 
@@ -127,7 +132,9 @@ def to_number(text):
     """The given string as an exact number, or None if it is not one."""
     if text is None:
         return None
-    text = text.strip().rstrip(",;")
+    # Storm appends a sentence to the value, e.g. "0.5. Solution bounds: [0, 1]."
+    # so the captured token can carry a trailing full stop.
+    text = text.strip().rstrip(",;.")
     if text.lower().lstrip("+") in ("inf", "infinity"):
         return math.inf
     if text.lower() == "-infinity" or text.lower() == "-inf":
@@ -140,6 +147,13 @@ def to_number(text):
         return Fraction(float(text))   # scientific notation
     except (ValueError, OverflowError):
         return None
+
+
+def to_boolean(text):
+    """The given string as a boolean, or None if it does not denote one."""
+    if text is None:
+        return None
+    return {"true": True, "false": False}.get(text.strip().rstrip(",;.").lower())
 
 
 def relative_difference(reference, result):
@@ -233,20 +247,30 @@ def parse_log(path):
     if match:
         entry["preprocessing-time"] = float(match.group(1))
 
+    entry["out-of-memory"] = bool(OUT_OF_MEMORY.search(output))
     entry["timeout"] = footer is not None and footer.group("code") == "None"
     entry["log"] = str(path)
     return entry
 
 
-def evaluate(entry, reference):
+def evaluate(entry, reference, reference_text=None):
     """Status, result and relative difference of a single execution."""
     if entry["timeout"]:
         return "timeout", None
     if entry.get("return-code") == SIGKILL_CODE:
         return "memout", None
+    # A qualitative property yields a boolean, which is compared for equality
+    # rather than up to a precision.
+    boolean = to_boolean(entry.get("mcresult"))
+    if boolean is not None:
+        expected = to_boolean(reference_text)
+        if expected is None:
+            return "ok", None      # nothing to compare against
+        return ("ok" if boolean == expected else "incorrect"), None
     result = to_number(entry.get("mcresult"))
     if result is None:
-        return "no-result", None
+        # Only without a result, so that a passing run is never reclassified.
+        return ("memout" if entry.get("out-of-memory") else "no-result"), None
     difference, agrees = difference_and_agreement(reference, result)
     if difference is None:
         return "ok", None          # nothing to compare against
@@ -730,7 +754,8 @@ def main():
         reference = to_number(index.get(benchmark_id, {}).get("reference-result"))
         if reference is None:
             reference = agreed.get(benchmark_id)
-        status, difference = evaluate(entry, reference)
+        status, difference = evaluate(
+            entry, reference, index.get(benchmark_id, {}).get("reference-result"))
 
         data = {"status": status, "log": entry["log"]}
         if "wallclock-time" in entry:
