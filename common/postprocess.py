@@ -64,7 +64,13 @@ PLOT_NA = 4800.0
 # bisimulation configurations compute the same quotient, so one of them is enough.
 # Configurations left out here still reduce, for example PRISM collapsing end
 # components with its sound engine, but those sizes are not of interest.
-QUOTIENT_COLUMNS = {"states-sparse-bisim": "storm-sound-bisim"}
+# A "states-..." entry contributes the size of the quotient plus the time the
+# preprocessing took; a "time-..." entry contributes only the time, for a
+# configuration whose quotient is the same as one already listed.
+QUOTIENT_COLUMNS = {
+    "states-sparse-bisim": "storm-sound-bisim",
+    "time-exact-bisim": "storm-exact-bisim",
+}
 
 # Statuses in decreasing order of severity; the worst one of the repetitions is
 # what the csv files report for a benchmark.
@@ -581,14 +587,19 @@ def write_log_page(path, configuration, benchmark_id, benchmark, repetitions):
     path.write_text("\n".join(parts))
 
 
-def quotient_column_sources(quotient):
-    """The quotient size columns that the collected data actually provides."""
-    return [(name, c) for name, c in QUOTIENT_COLUMNS.items() if c in quotient]
+def quotient_column_sources(quotient, preprocessing):
+    """The preprocessing columns that the collected data actually provides.
 
-
-def preprocessing_column(name):
-    """The heading of the column with the preprocessing time of a quotient column."""
-    return ("time" + name[len("states"):]) if name.startswith("states") else f"{name}-time"
+    Each entry is (states column or None, time column, configuration).
+    """
+    columns = []
+    for name, configuration in QUOTIENT_COLUMNS.items():
+        if name.startswith("states-"):
+            if configuration in quotient:
+                columns.append((name, "time-" + name[len("states-"):], configuration))
+        elif configuration in preprocessing:
+            columns.append((None, name, configuration))
+    return columns
 
 
 def format_seconds(value):
@@ -624,9 +635,9 @@ def write_table(outdir, index, results, configurations, benchmarks, cells,
     """An interactive html version of the scatter table, with a page per cell."""
     tabledir = outdir / "table"
     tabledir.mkdir(parents=True, exist_ok=True)
-    quotient_columns = quotient_column_sources(quotient)
+    quotient_columns = quotient_column_sources(quotient, preprocessing or {})
 
-    header = ["benchmark", "type", "states"] + [name for name, _ in quotient_columns]
+    header = ["benchmark", "type", "states"] + [s or t for s, t, _ in quotient_columns]
     head = "".join(f"<th data-kind=\"{'text' if i < 2 else 'number'}\" "
                    f"onclick=\"sortTable({i})\">{escape(h)}</th>"
                    for i, h in enumerate(header))
@@ -640,9 +651,13 @@ def write_table(outdir, index, results, configurations, benchmarks, cells,
         benchmark = index.get(benchmark_id, {})
         fixed = [(benchmark_id, benchmark_id), (benchmark.get("type", ""), benchmark.get("type", "")),
                  (states.get(benchmark_id, ""), states.get(benchmark_id, -1))]
-        for _, configuration in quotient_columns:
-            value = quotient[configuration].get(benchmark_id, "")
+        for states_name, _, configuration in quotient_columns:
             seconds = (preprocessing or {}).get(configuration, {}).get(benchmark_id)
+            if states_name is None:
+                fixed.append(("" if seconds is None else format_seconds(seconds),
+                              -1 if seconds is None else seconds))
+                continue
+            value = quotient[configuration].get(benchmark_id, "")
             text = value if value == "" else (
                 f"{value} ({format_seconds(seconds)})" if seconds is not None else value)
             fixed.append((text, value if value != "" else -1))
@@ -805,18 +820,18 @@ def main():
         json.dump(results, f, indent="\t")
         f.write("\n")
 
-    quotient_columns = quotient_column_sources(quotient)
+    quotient_columns = quotient_column_sources(quotient, preprocessing)
     columns = ["benchmark", "type", "states"]
-    for name, _ in quotient_columns:
-        columns += [name, preprocessing_column(name)]
+    for states_name, time_name, _ in quotient_columns:
+        columns += ([states_name] if states_name else []) + [time_name]
 
     def states_row(benchmark_id):
         return [benchmark_id,
                 index.get(benchmark_id, {}).get("type", ""),
                 states.get(benchmark_id, "")] + \
-               [v for _, c in quotient_columns
-                for v in (quotient[c].get(benchmark_id, ""),
-                          preprocessing.get(c, {}).get(benchmark_id, ""))]
+               [v for states_name, _, c in quotient_columns
+                for v in (((quotient[c].get(benchmark_id, ""),) if states_name else ())
+                          + (preprocessing.get(c, {}).get(benchmark_id, ""),))]
 
     # A configuration that cannot be run on a benchmark has no execution for it,
     # for example PRISM on a benchmark that only comes as a jani file.
@@ -918,8 +933,9 @@ def main():
     if missing:
         print(f"  no state count from {states_configuration} for {len(missing)} benchmark(s): "
               f"{', '.join(missing[:3])}{' ...' if len(missing) > 3 else ''}")
-    for name, configuration in quotient_columns:
-        print(f"  column {name}: state count after preprocessing from {configuration}")
+    for states_name, time_name, configuration in quotient_columns:
+        what = "state count and time" if states_name else "time"
+        print(f"  column {states_name or time_name}: preprocessing {what} from {configuration}")
     for name, member_ids in meta.items():
         print(f"  meta configuration {name}: best of {', '.join(member_ids)}")
     tabledir = write_table(outdir, index, results, configurations, benchmarks,

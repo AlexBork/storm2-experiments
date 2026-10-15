@@ -36,7 +36,7 @@
   },
   "prism-ii": {
     "bin": "bin/prism",
-    "cmd": "%prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g -javamaxmem 32g",
+    "cmd": "-javamaxmem 32g %prism %prism-property --prop %property -const %constants -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g",
     "description": "Prism with interval iteration"
   },
   "storm-sound-best": {
