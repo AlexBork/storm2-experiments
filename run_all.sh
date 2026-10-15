@@ -1,7 +1,8 @@
 #!/bin/sh
 # Run all experiments one after the other, post-process their logs and build the
-# figures in latex/main.pdf. The options are passed on to common/run.py, e.g.
-#   ./run_all.sh --jobs 2
+# figures in latex/main.pdf. The options are passed on to common/run.py, which by
+# default runs as many invocations at once as fit into the machine, e.g.
+#   ./run_all.sh --jobs 4
 # Every experiment writes its logs and results to its experiments/ directory.
 set -eu
 cd "$(dirname "$0")"

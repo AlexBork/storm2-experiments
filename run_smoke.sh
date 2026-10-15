@@ -4,9 +4,8 @@
 # the results with common/check_results.py and build the figures in
 # latex/main.pdf, like run_all.sh does for all benchmarks. Fails if a run has an
 # incorrect result or none at all, e.g. because the output of a tool changed.
-# Takes about 5 minutes with --jobs 8. The options are passed on to
-# common/run.py, e.g.
-#   ./run_smoke.sh --jobs 8
+# Takes about 5 to 10 minutes. The options are passed on to common/run.py, e.g.
+#   ./run_smoke.sh --jobs 2
 # The logs and results go to the same place as those of run_all.sh, which
 # overwrites all of them.
 set -eu

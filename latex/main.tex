@@ -33,8 +33,9 @@
     \openin\headerfile=\resultsdir/#1
     \read\headerfile to \header
     \closein\headerfile
-    \edef\header{,\header,}%
-    \in@{,#2,}{\header}%
+    % \in@ does not expand its arguments, so expand the header line first
+    \edef\header{\noexpand\in@{,#2,}{,\header,}}%
+    \header
   \expandafter\endgroup\ifin@
     \expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{#3}{#4}}
 \makeatother

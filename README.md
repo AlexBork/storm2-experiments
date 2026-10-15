@@ -25,29 +25,35 @@ are run from the experiment directory.
 
 | Experiment | Runs | Estimated running time | Worst case at 900 s per run |
 | --- | --- | --- | --- |
-| `comparison_tools_bisim` | 761 | 30 hours or more | 190 hours |
-| `imdps` | 156 | 15 hours | 39 hours |
-| `pomdp` | 665 | 7 hours | 166 hours |
-| all | 1582 | 52 hours or more | 395 hours |
+| `comparison_tools_bisim` | 761 | 42 hours | 190 hours |
+| `imdps` | 156 | 17 hours | 39 hours |
+| `pomdp` | 665 | 6 hours | 166 hours |
+| all | 1582 | 65 hours | 395 hours |
 
-The estimated running times are those of the recorded runs, one run at a time;
-they depend on the machine. The recorded runs of `comparison_tools_bisim` do not
-include its 18 newest benchmarks, which add to its 30 hours. Runs in parallel (`--jobs`) divide these times
-accordingly. As every run may use 32 GiB, the memory of the machine usually
-bounds the number of runs in parallel rather than its cores: for example, a
-machine with 503 GiB of memory and 24 physical cores runs `--jobs 15` (15 × 32 GiB
-= 480 GiB for the runs, 23 GiB for the system), and all experiments then take
-about 4 hours or more: 2 hours or more for `comparison_tools_bisim`, 1 hour for
-`imdps` and 30 minutes for `pomdp`. Runs in parallel share the memory bandwidth and caches of the CPU, so
-they can take somewhat longer than when run one at a time.
+The estimated running times are the sum of the runtimes of all runs in a recorded
+run of all experiments; they depend on the machine. `run.py` runs as many of them
+in parallel as fit into the machine, each with 4 physical cores and 32 GiB of
+memory, and keeps at least one physical core and 10% of the memory (at least
+8 GiB) for the system. For example, a machine with 503 GiB of memory and 24
+physical cores runs 5 at a time (23 / 4 cores; the memory would allow 14), and all
+experiments then take about 13 hours: 8.5 hours for `comparison_tools_bisim`,
+3.5 hours for `imdps` and 1.5 hours for `pomdp`.
+Runs in parallel share the memory bandwidth and caches of the CPU, so they can
+take somewhat longer than when run one at a time.
+
+Every run gets 4 physical cores because some configurations use several threads:
+Storm's symbolic engines (`storm-hybrid-sound`, `storm-sound-ddbisim`) run Sylvan
+with 4 threads, and Java, which runs PRISM, chooses a single-threaded garbage
+collector when it sees only one core. With a single core per run, the symbolic
+configurations are several times slower.
 
 ## Setting up the host
 
 - **Linux on x86-64 with Docker.** The image is built for x86-64; the host needs
   cgroups v2, which every current distribution uses.
-- **Memory.** Every run is limited to 32 GiB, so the host needs 32 GiB per run in
-  parallel plus a few GiB for the system: at least 40 GiB for one run at a time,
-  about 100 GiB for `--jobs 3`.
+- **Cores and memory.** Every run gets 4 physical cores and is limited to 32 GiB,
+  so the host needs at least 5 physical cores and 48 GiB of memory; `run.py`
+  chooses how many runs fit in parallel.
 - **Disk.** The image takes about 50 GB, most of it the generated interval MDPs
   of `imdps`, plus the space of the saved file while loading it.
 - **Stable timings.** Set the frequency governor of the host to `performance`
@@ -96,19 +102,21 @@ docker run -it --privileged --cap-drop=all --name storm2 storm2-experiments
 
 `--privileged` gives the container access to the cgroups of the host; the
 entrypoint `docker/init.sh` uses it only to set up the cgroups for BenchExec, and
-`--cap-drop=all` drops the other privileges. Without these options, everything
-except `run.py --jobs` works as well.
+`--cap-drop=all` drops the other privileges. Without these options, `run.py` only
+works with `--sequential`, i.e. without pinning and memory limit.
 
 ### Checking the setup
 
 `run_smoke.sh` runs every configuration of every experiment on two small
 benchmarks with a time limit of 60 seconds, post-processes the logs and builds the
-figures, like `run_all.sh` below, in about 5 minutes with `--jobs 8`. Run it first
-in a container that is removed afterwards, to check that the image works on the
-machine:
+figures, like `run_all.sh` below, in about 5 to 10 minutes. Run it first, to check
+that the image works on the machine; to look at its figures afterwards, copy
+`latex/main.pdf` out of the container (see below) before removing it:
 
 ```bash
-docker run --rm --privileged --cap-drop=all storm2-experiments ./run_smoke.sh --jobs 8
+docker run --privileged --cap-drop=all --name smoke storm2-experiments ./run_smoke.sh
+docker cp smoke:/opt/storm2-experiments/latex/main.pdf smoke.pdf
+docker rm smoke
 ```
 
 It also checks the results of every run with `common/check_results.py`, and fails
@@ -124,8 +132,7 @@ builds the figures; its options are passed on to `run.py`. As this takes days,
 start it in a container of its own that keeps running in the background:
 
 ```bash
-docker run -d --privileged --cap-drop=all --name storm2 storm2-experiments \
-    ./run_all.sh --jobs 2
+docker run -d --privileged --cap-drop=all --name storm2 storm2-experiments ./run_all.sh
 docker logs -f storm2    # follow the progress
 ```
 
@@ -153,7 +160,7 @@ figures. For the tool comparison:
 ```bash
 cd /opt/storm2-experiments/comparison_tools_bisim
 python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json --jobs 2
+python3 ../common/run.py inv.json
 python3 ../common/postprocess.py experiments/logs experiments/results
 ```
 
@@ -164,7 +171,7 @@ as there are no exact ones:
 ```bash
 cd /opt/storm2-experiments/imdps
 python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json --jobs 2
+python3 ../common/run.py inv.json
 python3 ../common/postprocess.py --agreement --absolute experiments/logs experiments/results
 ```
 
@@ -173,7 +180,7 @@ For the POMDPs (see [pomdp/README.md](pomdp/README.md)):
 ```bash
 cd /opt/storm2-experiments/pomdp
 python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json --jobs 2
+python3 ../common/run.py inv.json
 python3 ../common/postprocess.py experiments/logs experiments/results
 ```
 
@@ -204,8 +211,8 @@ commands of `pomdp` in `pomdp/experiments/results/`, which are not part of
 
 The runs have a time limit of 900 seconds (`generate_invocations.py --timelimit`)
 and a memory limit of 32 GiB (`run.py --memlimit`), which PRISM is also told
-with `-javamaxmem 32g` in its configurations. Choose `--jobs` such that the
-runs fit into the memory of the host. A run that exceeds its time limit counts as
+with `-javamaxmem 32g` in its configurations; `run.py` only runs as many at once
+as fit into the memory of the host. A run that exceeds its time limit counts as
 a timeout, one that exceeds its memory limit as a memout. `run.py` prints the
 cores and frequency governor of every worker, and warns if boost is enabled.
 
@@ -256,13 +263,17 @@ only repeats the last steps of the build.
   invocation for a benchmark that only has a JANI model. `--configs` and
   `--benchmarks` select a part, `--repetitions` repeats every run.
 - `run.py` runs every invocation in its own temporary directory and writes its
-  log. With `--jobs N`, N runs take place at the same time, each run by
-  BenchExec's RunExecutor and pinned to its own physical core (`--cores-per-run`
-  for more); the second hardware thread of that core stays idle. `--cores`
-  restricts the CPUs used, e.g. to spread the runs over the L3 caches of the CPU,
-  which BenchExec fills one after the other. Without `--jobs`, the runs take place
-  one after the other without pinning and without a memory limit. `--entry I`
-  runs a single invocation, e.g. to distribute the work over a cluster.
+  log. Several runs take place at the same time, each run by BenchExec's
+  RunExecutor, pinned to its own 4 physical cores (`--cores-per-run`) and limited
+  to 32 GiB (`--memlimit`); the second hardware thread of every core stays idle.
+  By default, as many runs take place at once as fit into the physical cores and
+  the memory, keeping at least one physical core and 10% of the memory (at least
+  8 GiB) to spare; `--jobs N` sets the
+  number. `--cores` restricts the CPUs used, e.g. to spread the runs over the L3
+  caches of the CPU, which BenchExec fills one after the other. With
+  `--sequential`, the runs take place one after the other without BenchExec,
+  pinning and memory limit. `--entry I` runs a single invocation, e.g. to
+  distribute the work over a cluster.
 - `postprocess.py` writes `results.json` (status, runtime, result and difference
   to the reference result of every run), `scatter.csv` and `quantile.csv` for the
   figures, and `table/index.html`, a sortable table linking to the logs of every
@@ -276,7 +287,7 @@ only repeats the last steps of the build.
 All scripts describe their options with `--help`. Pinning does not separate the
 memory bandwidth and the L3 cache shared by the cores, so check how much the times
 of a sample of invocations change compared to `--jobs 1` before running many jobs
-at once.
+at once. Results measured with different `--cores-per-run` are not comparable.
 
 ## Running without Docker
 
@@ -287,8 +298,8 @@ README for IntervalMDP.jl), and `storm-pomdp` for `pomdp`. Link the launcher
 scripts of mcsta and PRISM rather than their jar files. Storm has to be 1.13 or
 newer, PRISM 4.10.1 or newer.
 
-`run.py --jobs` needs BenchExec in a virtual environment and cgroups delegated to
-the user, and is started in its own systemd scope:
+`run.py` needs BenchExec in a virtual environment and cgroups delegated to the
+user, and is started in its own systemd scope (or use `run.py --sequential`):
 
 ```bash
 python3 -m venv .venv    # or: uv venv .venv
@@ -299,7 +310,7 @@ sudo systemctl edit user@.service    # add: [Service] Delegate=yes
 
 cd comparison_tools_bisim
 systemd-run --user --scope --slice=benchexec -p Delegate=yes \
-    ../.venv/bin/python ../common/run.py inv.json --jobs 2
+    ../.venv/bin/python ../common/run.py inv.json
 ```
 
 BenchExec runs every invocation with a fresh, empty `$HOME`; for IntervalMDP.jl,

@@ -5,8 +5,10 @@ Each invocation is executed in its own temporary directory, into which the model
 files referenced by the command are copied (or, for a bundle, linked) first. The combined output (stdout and
 stderr) of the command is written to the log file of the invocation.
 
-With --jobs, several invocations run at the same time, each pinned to its own cores
-by BenchExec (see requirements.txt).
+Several invocations run at the same time, each pinned to its own physical cores and
+limited in memory by BenchExec (see requirements.txt); by default as many as fit into
+the cores and the memory of the machine. With --sequential, they run one after the
+other without BenchExec, pinning and memory limit.
 """
 
 import argparse
@@ -33,6 +35,14 @@ BENCHMARK_DIR = ROOT / "benchmarks"
 
 # Seconds to wait for a killed process to actually terminate.
 KILL_GRACE = 5
+
+# Memory left to the system when choosing the number of jobs: this fraction of the
+# total memory, but at least SPARE_MEMORY_MIN GiB.
+SPARE_MEMORY_FRACTION = 0.1
+SPARE_MEMORY_MIN = 8
+# Physical cores left to the system (run.py itself, BenchExec, Docker) when choosing
+# the number of jobs.
+SPARE_CORES = 1
 
 
 class NotApplicable(Exception):
@@ -218,6 +228,41 @@ def boost_enabled():
     return None
 
 
+def physical_cores(cpus):
+    """The number of physical cores the given CPUs (hardware threads) belong to."""
+    cores = set()
+    for cpu in cpus:
+        topology = Path(f"/sys/devices/system/cpu/cpu{cpu}/topology")
+        cores.add(((topology / "physical_package_id").read_text().strip(),
+                   (topology / "core_id").read_text().strip()))
+    return len(cores)
+
+
+def total_memory():
+    """The total memory of the machine in GiB."""
+    with open("/proc/meminfo") as f:
+        for line in f:
+            if line.startswith("MemTotal:"):
+                return int(line.split()[1]) / 2**20
+    sys.exit("cannot read the total memory from /proc/meminfo")
+
+
+def default_jobs(cpus, args):
+    """As many jobs as fit, with some cores and memory to spare, into the physical
+    cores and the memory of the machine."""
+    cores = physical_cores(cpus)
+    memory = total_memory()
+    usable = memory - max(SPARE_MEMORY_MIN, SPARE_MEMORY_FRACTION * memory)
+    jobs = min((cores - SPARE_CORES) // args.cores_per_run, int(usable // args.memlimit))
+    print(f"jobs: {jobs} ({cores} physical cores with {args.cores_per_run} per run and "
+          f"at least {SPARE_CORES} to spare, {memory:.0f} GiB of memory with "
+          f"{args.memlimit:g} GiB per run and {memory - usable:.0f} GiB to spare)")
+    if jobs < 1:
+        sys.exit("not enough cores or memory for a single run; "
+                 "lower --cores-per-run or --memlimit")
+    return jobs
+
+
 def run_pinned(selected, counts, args):
     """Run the invocations args.jobs at a time, each pinned to its own physical cores."""
     try:
@@ -225,13 +270,15 @@ def run_pinned(selected, counts, args):
         from benchexec.cgroups import Cgroups
         from benchexec.runexecutor import RunExecutor
     except ImportError:
-        sys.exit("--jobs needs BenchExec, see requirements.txt")
+        sys.exit("run.py needs BenchExec, see requirements.txt, or use --sequential")
     cgroups = Cgroups.initialize()
     cgroups.handle_errors({s for s in (cgroups.CPUSET, cgroups.MEMORY, cgroups.FREEZE)
                            if not cgroups.require_subsystem(s)})
+    cpus = util.parse_int_list(args.cores) if args.cores else sorted(os.sched_getaffinity(0))
+    jobs = args.jobs if args.jobs is not None else default_jobs(cpus, args)
     # Without hyperthreading, the sibling of every assigned core stays idle.
     assignment = resources.get_cpu_cores_per_run(
-        args.cores_per_run, args.jobs, False, cgroups,
+        args.cores_per_run, jobs, False, cgroups,
         util.parse_int_list(args.cores) if args.cores else None)
     for number, cores in enumerate(assignment, start=1):
         governors = {Path(f"/sys/devices/system/cpu/cpu{c}/cpufreq/scaling_governor")
@@ -295,14 +342,21 @@ def main():
                         help="only show what would be run, do not execute anything")
     parser.add_argument("--jobs", type=int, metavar="N",
                         help="run N invocations at the same time, each pinned to its own "
-                             "physical cores by BenchExec")
-    parser.add_argument("--cores-per-run", type=int, default=1, metavar="C",
-                        help="physical cores of each run with --jobs (default: 1)")
+                             "physical cores by BenchExec (default: as many as fit into "
+                             "the cores and the memory)")
+    parser.add_argument("--cores-per-run", type=int, default=4, metavar="C",
+                        help="physical cores of each run, e.g. for the threads of Sylvan "
+                             "and the garbage collector of Java (default: 4)")
     parser.add_argument("--cores", metavar="LIST",
-                        help="CPUs to use with --jobs, e.g. 2-11 (default: all)")
+                        help="CPUs to use, e.g. 2-11 (default: all)")
     parser.add_argument("--memlimit", type=float, default=32, metavar="GIB",
-                        help="memory limit of each run with --jobs, in GiB (default: 32)")
+                        help="memory limit of each run, in GiB (default: 32)")
+    parser.add_argument("--sequential", action="store_true",
+                        help="run the invocations one after the other without BenchExec, "
+                             "i.e. without pinning and memory limit")
     args = parser.parse_args()
+    if args.sequential and (args.jobs is not None or args.cores):
+        sys.exit("--sequential cannot be combined with --jobs or --cores")
 
     with open(args.invocations) as f:
         invocations = json.load(f)
@@ -332,10 +386,10 @@ def main():
 
     counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
     width = len(str(len(invocations)))
-    if args.jobs is not None:
+    if not args.sequential:
         run_pinned(selected, counts, args)
     else:
-        print("note: without --jobs, the memory limit is not enforced")
+        print("note: with --sequential, the memory limit is not enforced")
         for number, invocation in selected:
             label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
             if "repetition" in invocation:

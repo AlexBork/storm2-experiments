@@ -1,8 +1,8 @@
 #!/bin/sh
 # Entrypoint of the Docker image: sets up the cgroups that BenchExec needs for
-# run.py --jobs, as described in BenchExec's doc/benchexec-in-container.md. This
+# run.py, as described in BenchExec's doc/benchexec-in-container.md. This
 # requires starting the container with `docker run --privileged --cap-drop=all`;
-# without it, everything else still works.
+# without it, run.py only works with --sequential.
 set -eu
 
 if mkdir -p /sys/fs/cgroup/init /sys/fs/cgroup/benchexec 2>/dev/null; then
@@ -13,8 +13,8 @@ if mkdir -p /sys/fs/cgroup/init /sys/fs/cgroup/benchexec 2>/dev/null; then
     echo "+$controller" > /sys/fs/cgroup/benchexec/cgroup.subtree_control
   done
 else
-  echo "note: cgroups are not writable, so run.py --jobs is not available;" \
-       "start the container with --privileged --cap-drop=all for it" >&2
+  echo "note: cgroups are not writable, so run.py only works with --sequential;" \
+       "start the container with --privileged --cap-drop=all for pinned runs" >&2
 fi
 
 exec "$@"
