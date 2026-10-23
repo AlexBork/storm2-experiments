@@ -1,0 +1,560 @@
+% use colors from https://ctan.org/pkg/colorblind
+\colorlet{colstorm}{T-Q-V1}
+\colorlet{colstormhybrid}{T-Q-V2}
+\colorlet{colstormbisim}{T-Q-V3}
+\colorlet{colstormexact}{T-Q-B6}
+\colorlet{colstormexactbisim}{T-Q-V6}
+\colorlet{colstormddbisim}{T-Q-B3}
+\colorlet{colstormbest}{black}
+\colorlet{colstormold}{gray}
+\colorlet{colstormoldexact}{T-Q-V3}
+\colorlet{colqstormbisim}{T-Q-V5}
+\colorlet{colqstormexactbisim}{T-Q-M5}
+\colorlet{colmcsta}{T-Q-V5}
+\colorlet{colprism}{T-Q-B4}
+\colorlet{colintervalmdp}{T-Q-V4}
+
+%% Readable configuration names.
+%% Names of the Storm configurations, which are sound unless marked as exact.
+\newcommand{\cfgfont}[1]{\textsc{#1}}
+\newcommand{\cfgshortstorm}{\cfgfont{sparse}}
+\newcommand{\cfgshortstormhybrid}{\cfgfont{hybrid}}
+\newcommand{\cfgshortstormbisim}{\cfgfont{bisim}}
+\newcommand{\cfgshortstormddbisim}{\cfgfont{dd-bisim}}
+\newcommand{\cfgshortstormexact}{\cfgfont{exact}}
+\newcommand{\cfgshortstormexactbisim}{\cfgfont{exact/bisim}}
+\newcommand{\cfgshortstormbest}{\cfgfont{best}}
+\newcommand{\cfgstormold}{1.6.2}
+\newcommand{\cfgintervalmdp}{\intervalmdp}
+\newcommand{\cfgstormdefault}{\storm}
+\newcommand{\cfgprismdefault}{\prism}
+\newcommand{\cfgpet}{PET}
+
+%% Where the csv files written by postprocess.py live.
+\newcommand{\resultsdir}{data}
+
+%% Sentinel positions; these must match PLOT_TIMEOUT and PLOT_NA in postprocess.py.
+\newcommand{\plottimeout}{1200}
+\newcommand{\plotincorrect}{2400}
+\newcommand{\plotna}{4800}
+\newcommand{\plotmax}{6400}
+
+\newlength{\quantileplotheight}
+\setlength{\quantileplotheight}{0.22\linewidth}
+\newlength{\scatterplotsize}
+\setlength{\scatterplotsize}{0.215\linewidth}
+
+%% A quantile plot spanning the full text width.
+%% #1: optional axis overrides
+%% #2: csv file, relative to \resultsdir
+%% #3: comma separated list of column/colour/legend-entry triples
+%% #4: the number of benchmarks (=xmax)
+%% Further plots without legend entry can be added by locally redefining \quantileplotextras, e.g., within the surrounding minipage.
+\newcommand{\quantileplotextras}{}
+\newcommand{\quantileplot}[4][]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.9\linewidth,
+      height=\quantileplotheight,
+      scale only axis,
+      xmin=0, xmax=#4,
+      ymin=1, ymax=1000,
+      ymode=log,
+      ymajorgrids,
+      axis x line=bottom,
+      axis y line=left,
+      unbounded coords=discard, filter discard warning=false,
+      xlabel={solved benchmarks (out of #4)},
+      ylabel={runtime},
+      xlabel style={font=\scriptsize, yshift=4pt},
+      ylabel style={font=\scriptsize, yshift=-7pt},
+      log ticks with fixed point,
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      legend pos=south east,
+      legend columns=4,
+      legend style={font=\fontsize{6.5}{7.5}\selectfont, draw=none, fill=white, fill opacity=0.8, text opacity=1,
+                    inner sep=1pt, column sep=2pt, row sep=-1pt,
+                    at={(1.02,0.01)}, anchor=south east,
+                    /tikz/every even column/.append style={column sep=5pt}},
+      /pgfplots/legend image code/.code={%
+        \draw[mark repeat=2, mark phase=2, ##1] plot coordinates {(0cm,0cm) (0.25cm,0cm)};},
+      every axis plot/.append style={ultra thick},
+      legend cell align={left},
+      #1,
+    ]
+      \foreach \col/\colour/\name in {#3}{%
+        \edef\plotline{\noexpand\addplot[\colour]
+          table [x=i, y=\col, col sep=comma] {\resultsdir/#2};
+          \noexpand\addlegendentry{\unexpanded\expandafter{\name}}}%
+        \plotline
+      }
+      \quantileplotextras
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% A runtime scatter plot.
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label  #6: show legend (true/false)
+\newcommand{\scatterplot}[6]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\scatterplotsize,
+      height=\scatterplotsize,
+      scale only axis,
+      axis equal image,
+      xmin=1, xmax=\plotmax, ymin=1, ymax=\plotmax,
+      xmode=log, ymode=log,
+      axis x line=bottom,
+      axis y line=left,
+      xtick={1,2,4,8,16,32,64,128,256,512},
+      xticklabels={${\le}1$,2,4,8,16,,64,,256,},
+      extra x ticks={\plottimeout,\plotincorrect,\plotna},
+      extra x tick labels={TO,inc,n/a},
+      extra x tick style={grid=major, ticklabel style={font=\tiny, rotate=90, anchor=east}},
+      ytick={1,2,4,8,16,32,64,128,256,512},
+      yticklabels={${\le}1$,2,4,8,16,32,64,,256,},
+      extra y ticks={\plottimeout,\plotincorrect,\plotna},
+      extra y tick labels={TO,inc,n/a},
+      extra y tick style={grid=major, ticklabel style={font=\tiny}},
+      xlabel={#3}, ylabel={#5},
+      xlabel style={font=\scriptsize, yshift=5pt},
+      ylabel style={font=\scriptsize, yshift=-9pt},
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      legend columns=-1,
+      legend to name=scatterlegend#6,
+      legend style={font=\fontsize{6.5}{7.5}\selectfont, draw=none, inner sep=1pt, column sep=3pt},
+      set layers, mark layer=axis background,
+    ]
+      \addplot[
+        scatter, only marks,
+        scatter/classes={
+          maqvbs={mark=diamond*,colstormexact,mark size=1.5},
+          ptaqvbs={mark=pentagon*,colprism,mark size=1.5},
+          mdpqvbs={mark=triangle*,colmcsta,mark size=1.5},
+          mdpmec={mark=asterisk,colstormexactbisim,mark size=1.5},
+          mdpgrid={mark=*,colstorm,mark size=1.5},
+          mdpgridmec={mark=otimes,colstormbisim,mark size=1.5},
+          qcomp={mark=square*,T-Q-B2,mark size=1.3},
+          unknown={mark=x,tolgrey,mark size=1.5}
+        },
+        scatter src=explicit symbolic,
+      ] table [col sep=comma, x=#2, y=#4, meta=type] {\resultsdir/#1};
+      \ifthenelse{\equal{#6}{true}}{%
+        \legend{MA,PTA,MDP$_\mathit{qvbs}$,MDP$^\mathit{mec}$,MDP$_\mathit{grid}$,MDP$_\mathit{grid}^\mathit{mec}$,MDP$_\mathit{QComp}$}}{}
+      \addplot[no marks] coordinates {(0.01,0.01) (900,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.01,0.1) (90,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.1,0.01) (900,90)};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% A scatter plot comparing two state counts.
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label
+\newcommand{\statesscatterplot}[5]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\scatterplotsize,
+      height=\scatterplotsize,
+      scale only axis,
+      axis equal image,
+      xmin=1e3, xmax=1e8, ymin=1e3, ymax=1e8,
+      xmode=log, ymode=log,
+      axis x line=bottom,
+      axis y line=left,
+      xtick={1e3,1e5,1e7},
+      ytick={1e3,1e5,1e7},
+      yticklabels={${\le}10^3$,$10^5$,$10^7$},
+      grid=major,
+      unbounded coords=discard, filter discard warning=false,
+      xlabel={#3}, ylabel={#5},
+      xlabel style={font=\scriptsize, yshift=5pt},
+      ylabel style={font=\scriptsize, yshift=-1pt},
+      % invisible tick label to reserve the same space as TO/inc/n/a in \scatterplot
+      extra x ticks={1e5},
+      extra x tick labels={\phantom{n/a}},
+      extra x tick style={grid=none, major tick length=0pt,
+        ticklabel style={font=\tiny, rotate=90, anchor=east}},
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      set layers, mark layer=axis background,
+    ]
+      \addplot[
+        scatter, only marks,
+        scatter/classes={
+          maqvbs={mark=diamond*,colstormexact,mark size=1.5},
+          ptaqvbs={mark=pentagon*,colprism,mark size=1.5},
+          mdpqvbs={mark=triangle*,colmcsta,mark size=1.5},
+          mdpmec={mark=asterisk,colstormexactbisim,mark size=1.5},
+          mdpgrid={mark=*,colstorm,mark size=1.5},
+          mdpgridmec={mark=otimes,colstormbisim,mark size=1.5},
+          qcomp={mark=square*,T-Q-B2,mark size=1.3},
+          unknown={mark=x,tolgrey,mark size=1.5}
+        },
+        scatter src=explicit symbolic,
+      ] table [col sep=comma, x expr={max(\thisrow{#2},1e3)}, y expr={max(\thisrow{#4},1e3)}, meta=type] {\resultsdir/#1};
+      \addplot[no marks] coordinates {(1e3,1e3) (1e8,1e8)};
+      \addplot[no marks, densely dotted] coordinates {(1e3,1e2) (1e8,1e7)};
+      \addplot[no marks, densely dotted] coordinates {(1e3,1e1) (1e8,1e6)};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% A scatter plot of a runtime (y) against a state count (x).
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label
+\newcommand{\statestimescatterplot}[5]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\scatterplotsize,
+      height=\scatterplotsize,
+      scale only axis,
+      xmin=1e3, xmax=1e8, ymin=0.1, ymax=100,
+      xmode=log, ymode=log,
+      axis x line=bottom,
+      axis y line=left,
+      xtick={1e3,1e5,1e7},
+      ytick={0.1,1,10,100}, yticklabels={${\le}0.1$,1,10,100},
+      grid=major,
+      unbounded coords=discard, filter discard warning=false,
+      xlabel={#3}, ylabel={#5},
+      xlabel style={font=\scriptsize, yshift=5pt},
+      ylabel style={font=\scriptsize, yshift=-6pt},
+      % invisible tick label to reserve the same space as TO/inc/n/a in \scatterplot
+      extra x ticks={1e5},
+      extra x tick labels={\phantom{n/a}},
+      extra x tick style={grid=none, major tick length=0pt,
+        ticklabel style={font=\tiny, rotate=90, anchor=east}},
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      set layers, mark layer=axis background,
+    ]
+      \addplot[
+        scatter, only marks,
+        scatter/classes={
+          maqvbs={mark=diamond*,colstormexact,mark size=1.5},
+          ptaqvbs={mark=pentagon*,colprism,mark size=1.5},
+          mdpqvbs={mark=triangle*,colmcsta,mark size=1.5},
+          mdpmec={mark=asterisk,colstormexactbisim,mark size=1.5},
+          mdpgrid={mark=*,colstorm,mark size=1.5},
+          mdpgridmec={mark=otimes,colstormbisim,mark size=1.5},
+          qcomp={mark=square*,T-Q-B2,mark size=1.3},
+          unknown={mark=x,tolgrey,mark size=1.5}
+        },
+        scatter src=explicit symbolic,
+      ] table [col sep=comma, x expr={max(\thisrow{#2},1e3)}, y expr={max(\thisrow{#4},0.1)}, meta=type] {\resultsdir/#1};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% Interval-MDP runtimes, with interval widths as benchmark classes.
+%% #1: csv file, relative to \resultsdir
+%% #2: x column  #3: x label  #4: y column  #5: y label  #6: show legend (true/false)
+\newcommand{\imdpscatterplot}[6]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\scatterplotsize,
+      height=\scatterplotsize,
+      scale only axis,
+      axis equal image,
+      xmin=1, xmax=\plotmax, ymin=1, ymax=\plotmax,
+      xmode=log, ymode=log,
+      axis x line=bottom,
+      axis y line=left,
+      xtick={1,2,4,8,16,32,64,128,256,512},
+      xticklabels={${\le}1$,2,4,8,16,,64,,256,},
+      extra x ticks={\plottimeout,\plotincorrect,\plotna},
+      extra x tick labels={TO,inc,n/a},
+      extra x tick style={grid=major, ticklabel style={font=\tiny, rotate=90, anchor=east}},
+      ytick={1,2,4,8,16,32,64,128,256,512},
+      yticklabels={${\le}1$,2,4,8,16,32,64,,256,},
+      extra y ticks={\plottimeout,\plotincorrect,\plotna},
+      extra y tick labels={TO,inc,n/a},
+      extra y tick style={grid=major, ticklabel style={font=\tiny}},
+      xlabel={#3}, ylabel={#5},
+      xlabel style={font=\scriptsize, yshift=5pt},
+      ylabel style={font=\scriptsize, yshift=-9pt},
+      xticklabel style={font=\scriptsize},
+      yticklabel style={font=\scriptsize},
+      legend pos=north west,
+      legend columns=1,
+      legend style={nodes={scale=0.7, transform shape}, inner sep=1.5pt,
+                    at={(-1.0,0.5)}, anchor=west},
+      set layers, mark layer=axis background,
+    ]
+      \addplot[
+        scatter, only marks,
+        scatter/classes={
+          absolute-005={mark=*,colstorm,mark size=1.5},
+          absolute-25={mark=triangle*,colprism,mark size=1.5},
+          unknown={mark=x,gray,mark size=1.5}
+        },
+        scatter src=explicit symbolic,
+      ] table [col sep=comma, x=#2, y=#4, meta=type] {\resultsdir/#1};
+      \ifthenelse{\equal{#6}{true}}{%
+        \legend{$\eta=0.05$,$\eta=0.25$}}{}
+      \addplot[no marks] coordinates {(0.01,0.01) (900,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.01,0.1) (90,900)};
+      \addplot[no marks, densely dotted] coordinates {(0.1,0.01) (900,90)};
+    \end{axis}
+  \end{tikzpicture}%
+}
+
+%% POMDP PLOTS
+\RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
+% Tol vibrant qualitative palette from https://ctan.org/pkg/colorblind.
+% Reuse the paper's named colours when available; otherwise use their exact RGB
+% values privately, without loading a package that changes document colours.
+\makeatletter
+\newcommand{\pomdpplot@palettecolour}[3]{%
+  \@ifundefinedcolor{#2}{\definecolor{#1}{RGB}{#3}}{\colorlet{#1}{#2}}%
+}
+\pomdpplot@palettecolour{pomdpplotseries0}{T-Q-V1}{0,119,187}
+\pomdpplot@palettecolour{pomdpplotseries1}{T-Q-V2}{51,187,238}
+\pomdpplot@palettecolour{pomdpplotseries2}{T-Q-V3}{0,153,136}
+\pomdpplot@palettecolour{pomdpplotseries3}{T-Q-V4}{238,119,51}
+\pomdpplot@palettecolour{pomdpplotseries4}{T-Q-V5}{204,51,17}
+\pomdpplot@palettecolour{pomdpplotseries5}{T-Q-V6}{238,51,119}
+\makeatother
+\pgfplotsset{pomdp aggregate axis/.style={
+  /pgfplots/.cd,compat=1.18,width=\dimexpr\linewidth-3mm\relax,height=2.1cm,
+  axis lines=left,tick align=outside,
+  grid=major,major grid style={black!12},
+  label style={font=\normalfont\fontsize{6}{7}\selectfont},
+  ylabel style={text width=3cm,align=center,
+    at={(axis description cs:-.34,.5)},anchor=center},
+  tick label style={font=\normalfont\fontsize{6}{7}\selectfont},
+  title style={font=\normalfont\fontsize{6}{7}\selectfont},legend cell align=left,
+  legend style={font=\normalfont\fontsize{6}{7}\selectfont,draw=none,
+    fill=white,fill opacity=.9,text opacity=1},
+  every axis plot/.append style={line width=.9pt},
+  unbounded coords=jump,filter discard warning=false,
+}}
+\makeatletter
+\newsavebox{\pomdpplot@figurebox}
+\newsavebox{\pomdpplot@legendbox}
+\newdimen\pomdpplot@legendwidth
+\newif\ifpomdpplot@showinstancelegend
+\newcommand{\pomdpplot@get}[4]{%
+  \pgfplotstablegetelem{#2}{#3}\of#1\let#4\pgfplotsretval
+}
+\newcommand{\StormPOMDPLoadAggregateData}[1]{%
+  \pgfplotstableread[col sep=comma]{#1/plot-series.csv}\pomdpplot@series
+  \pgfplotstableread[col sep=comma]{#1/plot-curves.csv}\pomdpplot@curves
+  \pgfplotstablegetrowsof\pomdpplot@series
+  \pgfmathtruncatemacro\pomdpplot@lastseries{\pgfplotsretval-1}%
+}
+\pgfplotsset{pomdp aggregate no instance legend/.code={\pomdpplot@showinstancelegendfalse}}
+\newcommand{\pomdpplot@allpalette}{%
+  \pomdpplot@get\pomdpplot@series{\pomdpplot@row}{instance_index}\pomdpplot@seriesindex
+  % Six colours and five shapes give 30 distinct colour/marker combinations.
+  \pgfmathtruncatemacro\pomdpplot@colourindex{mod(\pomdpplot@seriesindex,6)}%
+  \edef\pomdpplot@colour{pomdpplotseries\pomdpplot@colourindex}%
+  \pgfmathtruncatemacro\pomdpplot@markindex{mod(\pomdpplot@seriesindex,5)}%
+  \ifcase\pomdpplot@markindex\def\pomdpplot@mark{o}%
+  \or\def\pomdpplot@mark{square}%
+  \or\def\pomdpplot@mark{triangle}%
+  \or\def\pomdpplot@mark{diamond}%
+  \or\def\pomdpplot@mark{pentagon}%
+  \fi
+}
+\newcommand{\pomdpplot@failuretick}[2]{%
+  \pomdpplot@get\pomdpplot@series{0}{has_#1_line}\pomdpplot@hasline
+  \ifnum\pomdpplot@hasline=1\relax
+    \pomdpplot@get\pomdpplot@series{0}{\pomdpplot@failuremetric _#1_y}\pomdpplot@level
+    \edef\pomdpplot@ticks{\pomdpplot@ticks,\pomdpplot@level}%
+    \edef\pomdpplot@extraticks{\pomdpplot@extraticks\pomdpplot@extraseparator\pomdpplot@level}%
+    \def\pomdpplot@extraseparator{,}%
+    \edef\pomdpplot@ticklabels{\unexpanded\expandafter{\pomdpplot@ticklabels},{#2}}%
+  \fi
+}
+\newcommand{\pomdpplot@failureaxis}[1]{%
+  \def\pomdpplot@failuremetric{#1}%
+  \pomdpplot@get\pomdpplot@series{0}{#1_ymin}\pomdpplot@ymin
+  \pomdpplot@get\pomdpplot@series{0}{#1_ymax}\pomdpplot@ymax
+  \def\pomdpplot@ticks{}\def\pomdpplot@ticklabels{}\def\pomdpplot@separator{}%
+  \def\pomdpplot@extraticks{}\def\pomdpplot@extraseparator{}%
+  \def\pomdpplot@runtime{runtime}\def\pomdpplot@metric{#1}%
+  \ifx\pomdpplot@metric\pomdpplot@runtime
+    \pomdpplot@get\pomdpplot@series{0}{runtime_tick_min}\pomdpplot@tickmin
+    \pomdpplot@get\pomdpplot@series{0}{runtime_tick_max}\pomdpplot@tickmax
+    \pgfplotsforeachungrouped \pomdpplot@index in {\pomdpplot@tickmin,...,\pomdpplot@tickmax}{%
+      \edef\pomdpplot@ticks{\pomdpplot@ticks\pomdpplot@separator 1e\pomdpplot@index}%
+      \ifnum\pomdpplot@index=3\relax
+        \edef\pomdpplot@ticklabels{\pomdpplot@ticklabels\pomdpplot@separator {$10^{3}$}}%
+      \else
+        \edef\pomdpplot@ticklabels{\pomdpplot@ticklabels\pomdpplot@separator
+          {\noexpand\pgfmathprintnumber[fixed,precision=8,1000 sep={}]{1e\pomdpplot@index}}}%
+      \fi
+      \def\pomdpplot@separator{,}%
+    }%
+  \else
+    \pomdpplot@get\pomdpplot@series{0}{#1_tick_step}\pomdpplot@tickstep
+    \pomdpplot@get\pomdpplot@series{0}{#1_tick_count}\pomdpplot@tickcount
+    \pgfplotsforeachungrouped \pomdpplot@index in {0,...,\pomdpplot@tickcount}{%
+      \pgfmathsetmacro\pomdpplot@tick{\pomdpplot@index*\pomdpplot@tickstep}%
+      \edef\pomdpplot@ticks{\pomdpplot@ticks\pomdpplot@separator\pomdpplot@tick}%
+      \edef\pomdpplot@ticklabels{\pomdpplot@ticklabels\pomdpplot@separator
+        {\noexpand\pgfmathprintnumber[fixed,precision=2]{\pomdpplot@tick}}}%
+      \def\pomdpplot@separator{,}%
+    }%
+  \fi
+  \pomdpplot@failuretick{memout}{MO}%
+  \pomdpplot@failuretick{timeout}{TO}%
+  \pomdpplot@failuretick{failed}{Failed}%
+  \edef\pomdpplot@command{\noexpand\pgfplotsset{pomdp aggregate failure axis/.style={%
+    /pgfplots/.cd,ymin=\pomdpplot@ymin,ymax=\pomdpplot@ymax,
+    enlarge y limits=false,scaled y ticks=false,
+    ytick={\pomdpplot@ticks},yticklabels={\unexpanded\expandafter{\pomdpplot@ticklabels}},
+    extra y ticks={\pomdpplot@extraticks},extra y tick labels={},
+    extra y tick style={grid=major,tick style={draw=none},
+      major grid style={solid,draw=black!65,line width=.4pt}}}}}%
+  \pomdpplot@command
+}
+\newcommand{\pomdpplot@allcomparisonplot}[2]{%
+  \begingroup
+  \pomdpplot@showinstancelegendtrue
+  \def\pomdpplot@ymode{log}\def\pomdpplot@plotstyle{only marks}\def\pomdpplot@axisstyle{}%
+  \def\pomdpplot@ylabel{time (s)}%
+  \ifnum#2=0\relax
+    \def\pomdpplot@xlabel{Size limit $\tau$}%
+    \def\pomdpplot@title{(a) Runtime}%
+    \pomdpplot@failureaxis{runtime}\def\pomdpplot@axisstyle{pomdp aggregate failure axis}%
+  \else
+    \ifnum#2=1\relax
+      \def\pomdpplot@metric{under_gap}\def\pomdpplot@title{(b) Under-approximation}%
+    \else
+      \def\pomdpplot@metric{over_gap}\def\pomdpplot@title{(c) Over-approximation}%
+    \fi
+    \def\pomdpplot@xlabel{Size limit $\tau$}%
+    \pomdpplot@get\pomdpplot@series{0}{\pomdpplot@metric _ylabel}\pomdpplot@ylabel
+    \def\pomdpplot@ymode{linear}%
+    \edef\pomdpplot@command{\noexpand\pomdpplot@failureaxis{\pomdpplot@metric}}\pomdpplot@command
+    \def\pomdpplot@axisstyle{pomdp aggregate failure axis}%
+  \fi
+  \begin{tikzpicture}\begin{axis}[
+    pomdp aggregate axis,xmode=log,ymode=\pomdpplot@ymode,
+    enlarge x limits=.03,enlarge y limits=.06,
+    title={\pomdpplot@title},xlabel={\pomdpplot@xlabel},ylabel={\pomdpplot@ylabel},
+    legend columns=4,legend style={at={(.5,-.25)},anchor=north,
+      cells={inner ysep=.5pt}},\pomdpplot@axisstyle,#1]
+    \pgfplotsforeachungrouped\pomdpplot@row in {0,...,\pomdpplot@lastseries}{%
+      \pomdpplot@allpalette
+      \pomdpplot@get\pomdpplot@series{\pomdpplot@row}{aggregate_label}\pomdpplot@label
+      \edef\pomdpplot@command{\noexpand\addplot[color=\pomdpplot@colour,mark=\pomdpplot@mark,
+        mark size=.7pt,line width=.6pt,mark options={solid},
+        \pomdpplot@plotstyle]}\pomdpplot@command
+        table[x=threshold,y=\pomdpplot@failuremetric _\pomdpplot@seriesindex]{\pomdpplot@curves};
+      \ifpomdpplot@showinstancelegend
+        \edef\pomdpplot@command{\noexpand\addlegendentry{\unexpanded\expandafter{\pomdpplot@label}}}%
+        \pomdpplot@command
+      \fi
+    }%
+  \end{axis}\end{tikzpicture}\endgroup
+}
+\newcommand{\StormPOMDPAllRuntimeThresholdPlot}[1][]{\pomdpplot@allcomparisonplot{#1}{0}}
+\newcommand{\StormPOMDPAllUnderBoundThresholdPlot}[1][]{\pomdpplot@allcomparisonplot{#1}{1}}
+\newcommand{\StormPOMDPAllOverBoundThresholdPlot}[1][]{\pomdpplot@allcomparisonplot{#1}{2}}
+% Aligned legend columns; prefer five columns, then four or three if needed.
+\newcommand{\pomdpplot@legendentry}[1]{%
+  \begingroup
+    \edef\pomdpplot@row{#1}\pomdpplot@allpalette
+    \pomdpplot@get\pomdpplot@series{#1}{aggregate_label}\pomdpplot@label
+    \begin{tikzpicture}[baseline=-.5ex]
+      \path[use as bounding box] (-1mm,-.7mm) rectangle (1mm,.7mm);
+      \draw[color=\pomdpplot@colour,mark=\pomdpplot@mark,
+        mark size=.7pt,line width=.6pt,mark options={solid}]
+        plot[only marks] coordinates {(0,0)};
+    \end{tikzpicture}\hspace{.5mm}\pomdpplot@label
+  \endgroup
+}
+\newcommand{\pomdpplot@legendrows}[1]{%
+  \def\pomdpplot@legendentries{}\def\pomdpplot@separator{}%
+  \pgfplotsforeachungrouped\pomdpplot@row in {0,...,\pomdpplot@lastseries}{%
+    \edef\pomdpplot@legendentries{%
+      \unexpanded\expandafter{\pomdpplot@legendentries}%
+      \unexpanded\expandafter{\pomdpplot@separator}%
+      \noexpand\pomdpplot@legendentry{\pomdpplot@row}}%
+    \pgfmathtruncatemacro\pomdpplot@column{mod(\pomdpplot@row+1,#1)}%
+    \ifnum\pomdpplot@column=0\relax
+      \def\pomdpplot@separator{\\}%
+    \else
+      \def\pomdpplot@separator{&}%
+    \fi
+  }%
+}
+\newcommand{\pomdpplot@measurelegend}[1]{%
+  \def\pomdpplot@legendcolumns{#1}\pomdpplot@legendrows{#1}%
+  \sbox{\pomdpplot@legendbox}{\begin{tabular}{@{}*{#1}{l}@{}}%
+    \pomdpplot@legendentries
+  \end{tabular}}%
+}
+\newcommand{\pomdpplot@legend}{%
+  \begingroup
+    \normalfont\fontsize{6}{7}\selectfont
+    \setlength{\fboxsep}{.6mm}\setlength{\fboxrule}{.4pt}%
+    \setlength{\tabcolsep}{.5mm}%
+    \pomdpplot@legendwidth=\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax
+    \pomdpplot@measurelegend{5}%
+    \ifdim\wd\pomdpplot@legendbox>\pomdpplot@legendwidth
+      \pomdpplot@measurelegend{4}%
+      \ifdim\wd\pomdpplot@legendbox>\pomdpplot@legendwidth
+        \pomdpplot@measurelegend{3}%
+      \fi
+    \fi
+    \typeout{POMDP legend columns: \pomdpplot@legendcolumns}%
+    \fbox{\begin{tabular}{@{}*{\pomdpplot@legendcolumns}{l}@{}}%
+      \pomdpplot@legendentries
+    \end{tabular}}%
+  \endgroup
+}
+% Native LNCS-width layout: no resizing, so lettering keeps its print size.
+\newcommand{\StormPOMDPAggregateFigure}{%
+  \begin{minipage}{\linewidth}\centering
+    \setlength{\tabcolsep}{.5mm}%
+    \sbox{\pomdpplot@figurebox}{\begin{tabular}{@{}ccc@{}}
+      \StormPOMDPAllRuntimeThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+        pomdp aggregate no instance legend] &
+      \StormPOMDPAllUnderBoundThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+        pomdp aggregate no instance legend] &
+      \StormPOMDPAllOverBoundThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+        pomdp aggregate no instance legend]
+    \end{tabular}}%
+    \typeout{POMDP panel row width: \the\wd\pomdpplot@figurebox; available: \the\linewidth}%
+    \ifdim\wd\pomdpplot@figurebox>\linewidth
+      \PackageError{pomdp-aggregate-plots}{Panel row exceeds the available width}
+        {Use the full LNCS text width for the aggregate figure.}%
+    \fi
+    \usebox{\pomdpplot@figurebox}\par%\vspace{1mm}
+    \pomdpplot@legend\par
+  \end{minipage}%
+}
+
+%% Commands for an existing paper's plots.tex; CSV paths follow \resultsdir.
+%% Copy plot-series.csv and plot-curves.csv into \resultsdir/pomdp/.
+\providecommand{\pomdpresultsdir}{\ifcsname resultsdir\endcsname\resultsdir\else data\fi/pomdp}
+\newcommand{\pomdpplot@withdata}[1]{%
+  \begingroup
+    \StormPOMDPLoadAggregateData{\pomdpresultsdir}%
+    #1%
+  \endgroup
+}
+%% The complete compact figure, with all three panels and the shared legend.
+\newcommand{\pomdpplots}{\pomdpplot@withdata{\StormPOMDPAggregateFigure}}
+%% Individual panels accept optional PGFPlots axis overrides, like \quantileplot.
+%% For a custom arrangement, show the shared legend with \pomdplegend.
+\newcommand{\pomdpruntimeplot}[1][]{\pomdpplot@withdata{%
+  \StormPOMDPAllRuntimeThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+    pomdp aggregate no instance legend,#1]}}
+\newcommand{\pomdpundergapplot}[1][]{\pomdpplot@withdata{%
+  \StormPOMDPAllUnderBoundThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+    pomdp aggregate no instance legend,#1]}}
+\newcommand{\pomdpovergapplot}[1][]{\pomdpplot@withdata{%
+  \StormPOMDPAllOverBoundThresholdPlot[scale only axis,width=2.45cm,height=2.1cm,
+    pomdp aggregate no instance legend,#1]}}
+\newcommand{\pomdplegend}{\pomdpplot@withdata{\pomdpplot@legend}}
+\makeatother
