@@ -7,6 +7,7 @@ set -eu
 out=$(realpath "${1:-storm2-experiments-artifact.zip}")
 cd "$(dirname "$0")/.."
 
+echo "== $(date): checking the repository, the image and the large files"
 if [ -n "$(git status --porcelain)" ]; then
   echo "uncommitted changes, commit them first" >&2
   exit 1
@@ -23,8 +24,10 @@ fi
 # Run from the parent so that everything is below storm2-experiments/ in the zip;
 # the already compressed files are stored as they are
 repo=$(basename "$PWD")
+echo "== $(date): writing $(git ls-files | wc -l) committed files and $(du -ch storm2-experiments.tar.gz experiments/imdps/benchmarks.tar.xz docker/modest/*.zip | tail -1 | cut -f1) of large files to $out"
 rm -f "$out"
 { git ls-files; ls storm2-experiments.tar.gz experiments/imdps/benchmarks.tar.xz docker/modest/*.zip; } \
   | sed "s|^|$repo/|" | (cd .. && zip -q -n .gz:.xz:.zip "$out" -@)
+echo "== $(date): testing $out"
 unzip -tq "$out"
-ls -l "$out"
+echo "== $(date): done, $(du -h "$out" | cut -f1) in $out"
