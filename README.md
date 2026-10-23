@@ -78,6 +78,17 @@ configurations are several times slower.
   `echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost`, or on Intel with
   `echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo`.
 
+## The artifact
+
+The artifact `storm2-experiments-artifact.zip` contains this repository together
+with the saved image `storm2-experiments.tar.gz`, so the experiments run without
+building anything: load the image as below. It also contains what rebuilding the
+image needs: the zips of the Modest Toolset in `docker/modest/` and the generated
+interval MDPs of `imdps` in `experiments/imdps/benchmarks.tar.xz`, which
+`docker/build.sh` unpacks. `scripts/create_artifact.sh` creates it from the
+committed repository and a saved image (`-i FILE`, by default
+`storm2-experiments.tar.gz` in the current directory).
+
 ## Loading the image
 
 The image is distributed as a saved file (see [Building the image](#building-the-image)
@@ -260,7 +271,9 @@ The build generates the 52 interval MDPs of `imdps` (44 GB), which takes a few
 hours and, for the largest models, tens of GB of memory per model generated in
 parallel; `--build-arg generate_workers=N` sets how many are generated at once
 (default: 2). Docker caches this step, so it is only repeated when
-`experiments/imdps/generate/` or `benchmarks/` change. The build needs about 100 GB of disk
+`experiments/imdps/generate/` or `benchmarks/` change. With the artifact, the
+models come with it in `experiments/imdps/benchmarks.tar.xz`; `docker/build.sh`
+unpacks them first, so the build only generates those still missing. The build needs about 100 GB of disk
 space for Docker, plus the saved file.
 
 Only the generation of the interval MDPs uses stormpy, in a build stage based on
