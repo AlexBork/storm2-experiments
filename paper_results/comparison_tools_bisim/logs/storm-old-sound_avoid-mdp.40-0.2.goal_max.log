@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani avoid-mdp.jani --janiproperty goal_max --constants N=40,slippery=0.2 --sound
+Benchmark:	avoid-mdp.40-0.2.goal_max
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 20:03:30 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=40,slippery=0.2' --sound
+Current working directory: /tmp/invocation-owteq5w4
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 69.655s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	13803441
+Transitions: 	77376441
+Choices: 	32974641
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * notbad -> 13264961 item(s)
+   * goal -> 3760 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal_max": Pmax=? ["notbad" U "goal"] ...
+
+----------------------------------------
+Wallclock time:	901.106
+Return code:	None
+Computation aborted after 901.106 seconds since the time limit of 900 seconds was exceeded.

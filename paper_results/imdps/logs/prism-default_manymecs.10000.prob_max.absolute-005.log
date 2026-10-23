@@ -1,0 +1,112 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel manymecs.10000.prob_max.tra,sta,lab manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	manymecs.10000.prob_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 19:07:18 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'manymecs.10000.prob_max.tra,sta,lab' manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "manymecs.10000.prob_max.tra", "manymecs.10000.prob_max.sta", "manymecs.10000.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "manymecs.10000.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.359 seconds.
+
+Type:        IMDP
+States:      30002 (1 initial)
+Transitions: 90004
+Choices:     60004
+Max/avg:     2/2.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 20001 iterations and 70.765 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 20003 iterations and 56.732 seconds.
+target=1, yes=1, no=1, maybe=30000
+Starting value iteration (maxmin)...
+Iteration 827: 5.00 sec so far
+Iteration 1671: 10.00 sec so far
+Iteration 2516: 15.01 sec so far
+Iteration 3362: 20.01 sec so far
+Iteration 4203: 25.01 sec so far
+Iteration 5046: 30.02 sec so far
+Iteration 5889: 35.02 sec so far
+Iteration 6731: 40.02 sec so far
+Iteration 7574: 45.03 sec so far
+Iteration 8418: 50.03 sec so far
+Iteration 9257: 55.03 sec so far
+Iteration 10099: 60.03 sec so far
+Iteration 10942: 65.03 sec so far
+Iteration 11786: 70.03 sec so far
+Iteration 12631: 75.04 sec so far
+Iteration 13477: 80.04 sec so far
+Iteration 14319: 85.05 sec so far
+Iteration 15161: 90.05 sec so far
+Iteration 16002: 95.06 sec so far
+Iteration 16840: 100.06 sec so far
+Iteration 17677: 105.06 sec so far
+Iteration 18517: 110.07 sec so far
+Iteration 19358: 115.07 sec so far
+Iteration 20196: 120.08 sec so far
+Iteration 21034: 125.08 sec so far
+Iteration 21873: 130.08 sec so far
+Iteration 22714: 135.08 sec so far
+Iteration 23557: 140.09 sec so far
+Iteration 24399: 145.09 sec so far
+Iteration 25236: 150.10 sec so far
+Iteration 26079: 155.10 sec so far
+Iteration 26919: 160.11 sec so far
+Iteration 27757: 165.11 sec so far
+Iteration 28597: 170.11 sec so far
+Iteration 29438: 175.12 sec so far
+Iteration 30280: 180.12 sec so far
+Iteration 31125: 185.13 sec so far
+Iteration 31968: 190.13 sec so far
+Iteration 32812: 195.14 sec so far
+Iteration 33655: 200.14 sec so far
+Iteration 34499: 205.15 sec so far
+Iteration 35341: 210.15 sec so far
+Iteration 36185: 215.15 sec so far
+Iteration 37025: 220.16 sec so far
+Iteration 37868: 225.16 sec so far
+Iteration 38712: 230.16 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 39419 iterations, 3547710000 multiplications and 234.377 seconds.
+Probabilistic reachability took 234.379 seconds.
+
+Value in the initial state: 0.44994050663549306
+
+Time for model checking: 361.917 seconds.
+
+Result: 0.44994050663549306 (+/- 9.881632544450625E-6 estimated; rel err 2.1962086984215353E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	362.766
+Return code:	0

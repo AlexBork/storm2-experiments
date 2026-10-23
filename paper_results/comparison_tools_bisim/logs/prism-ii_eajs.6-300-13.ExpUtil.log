@@ -1,0 +1,98 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g eajs.6.prism eajs.props --prop ExpUtil -const energy_capacity=300,B=13 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	eajs.6-300-13.ExpUtil
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 11:44:02 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g eajs.6.prism eajs.props --prop ExpUtil -const 'energy_capacity=300,B=13' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "eajs.6.prism"...
+
+Type:        MDP
+Modules:     Battery Process_1 Process_2 Resources Process_3 Process_4 Process_6 Process_5
+Actions:     [tick]
+Variables:   battery_load failure_1 loc_1 t_1 t_2 loc_2 boost_1 user_1 t_3 loc_3 t_4 loc_4 loc_6 t_6 t_5 loc_5
+Labels:      "localFailure" "noLocalFailure" "emptyBattery" "process_1_finishes" "process_2_finishes" "process_3_finishes" "process_4_finishes" "process_5_finishes" "process_6_finishes"
+Rewards:     "energyLocal" "utilityLocal"
+
+Parsing properties file "eajs.props"...
+
+1 property:
+(1) "ExpUtil": R{"utilityLocal"}max=? [ F emptyBattery ]
+
+---------------------------------------------------------------------
+
+Model checking: "ExpUtil": R{"utilityLocal"}max=? [ F emptyBattery ]
+Model constants: energy_capacity=300
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: energy_capacity=300
+
+Computing reachable states...
+
+Reachability (BFS): 89 iterations in 0.14 seconds (average 0.001573, setup 0.00)
+
+Time for model construction: 0.508 seconds.
+
+Type:        MDP
+States:      7901694 (1 initial)
+Transitions: 19722777
+
+Transition matrix: 38911 nodes (7 terminal), 19722777 minterms, vars: 50r/50c/5nd
+
+Prob0E: 300 iterations in 0.34 seconds (average 0.001133, setup 0.00)
+
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+goal = 28620, inf = 0, maybe = 7873074
+Time for computing an upper bound for expected reward: 5.326 seconds.
+Upper bound for max expectation (variant 2): 18779.0
+
+Computing remaining rewards...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=7901694, nc=11854302, nnz=19651307, k=12] [300.3 MB]
+Building sparse matrix (transition rewards)... [n=7901694, nc=11854302, nnz=257760, k=12] [78.3 MB]
+Creating vector for state rewards... [60.3 MB]
+Creating vector for inf... [60.3 MB]
+Creating vector for lower bounds... [60.3 MB]
+Creating vector for upper bounds... [60.3 MB]
+Allocating iteration vectors... [4 x 60.3 MB]
+TOTAL: [860.8 MB]
+
+Starting iterations (interval iteration)...
+Iteration 36: max relative diff=99925.211679, 5.10 sec so far
+Iteration 72: max relative diff=9388.500000, 10.20 sec so far
+Iteration 108: max relative diff=6002.674936, 15.30 sec so far
+Iteration 144: max relative diff=3779.491831, 20.41 sec so far
+Iteration 180: max relative diff=3085.938118, 25.52 sec so far
+Iteration 216: max relative diff=2399.159436, 30.62 sec so far
+Iteration 252: max relative diff=2072.763240, 35.73 sec so far
+Iteration 288: max relative diff=1762.468425, 40.83 sec so far
+Max relative diff between upper and lower bound on convergence: 0
+Iterative method: 299 iterations in 67.19 seconds (average 0.141806, setup 24.79)
+Maximum finite value in solution vector at end of interval iteration: 12.091302969838349
+
+Value in the initial state: 12.051110823281457
+
+Time for model checking: 73.525 seconds.
+
+Result: 12.051110823281457 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	74.517
+Return code:	0

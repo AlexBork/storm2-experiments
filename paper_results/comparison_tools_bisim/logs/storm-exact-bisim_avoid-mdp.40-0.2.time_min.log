@@ -1,0 +1,20 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=40,slippery=0.2 --exact --bisimulation
+Benchmark:	avoid-mdp.40-0.2.time_min
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:17:30 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=40,slippery=0.2' --exact --bisimulation
+Current working directory: /tmp/invocation-p49njwaj
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 189.640s.
+
+
+----------------------------------------
+Wallclock time:	199.501
+Return code:	-9

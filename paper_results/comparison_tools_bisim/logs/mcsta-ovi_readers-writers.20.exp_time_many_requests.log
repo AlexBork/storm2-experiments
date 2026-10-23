@@ -1,0 +1,48 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta readers-writers.20.jani --props exp_time_many_requests --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	readers-writers.20.exp_time_many_requests
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta readers-writers.20.jani --props exp_time_many_requests --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+readers-writers.20.jani:model: info: ReadersWriters is an MA model.
+readers-writers.20.jani: info: Need 16 bytes per state.
+readers-writers.20.jani: info: Explored 137070 states.
+readers-writers.20.jani:properties[1]: warning: Computing minimum expected reward in property "exp_time_many_requests" without checking for zero-reward end components.
+
+Peak memory usage: 151 MB
+Analysis results for readers-writers.20.jani
+
++ State space exploration
+  State size: 16 bytes
+  States:     137070
+  Choices:    137070
+  Branches:   273580
+  Rate:       345264 states/s
+  Time:       0.4 s
+
++ Property exp_time_many_requests
+  Value:  15.446137727857316
+  Bounds: [15.446122755374903, 15.44615270033973]
+  Time:   1.3 s
+
+  + Precomputations
+    Max. prob. 1 states:          137070
+    Time for max. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  1530
+    Verif. attempts:   6
+    Verif. iterations: 140
+    Final epsilon:     6.913471324792418E-09
+    Time:              1.3 s
+
+
+----------------------------------------
+Wallclock time:	1.940
+Return code:	0

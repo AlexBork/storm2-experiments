@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani rabin.10.jani --janiproperty live --exact
+Benchmark:	rabin.10.live
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:46:15 2026
+Command line arguments: --jani rabin.10.jani --janiproperty live --exact
+Current working directory: /tmp/invocation-kiur1p87
+
+Time for model input parsing: 0.005s.
+
+
+----------------------------------------
+Wallclock time:	598.119
+Return code:	-9

@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani consensus.6.jani --janiproperty disagree --constants K=2 --exact
+Benchmark:	consensus.6-2.disagree
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:05:55 2026
+Command line arguments: --jani consensus.6.jani --janiproperty disagree --constants K=2 --exact
+Current working directory: /tmp/invocation-1s0zg3jn
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 12.807s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+   * agree -> 114258 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "disagree": Pmax=? [F ("finished" & !("agree"))] ...
+
+----------------------------------------
+Wallclock time:	901.191
+Return code:	None
+Computation aborted after 901.191 seconds since the time limit of 900 seconds was exceeded.

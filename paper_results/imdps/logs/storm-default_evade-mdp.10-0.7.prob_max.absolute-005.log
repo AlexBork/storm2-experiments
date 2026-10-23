@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/imdps/bin/storm --explicit-drn evade-mdp.10-0.7.prob_max.drn --prop evade-mdp.10-0.7.prob_max.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Benchmark:	evade-mdp.10-0.7.prob_max.absolute-005
+Configuration:	storm-default
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 19:28:09 2026
+Command line arguments: --explicit-drn evade-mdp.10-0.7.prob_max.drn --prop evade-mdp.10-0.7.prob_max.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Current working directory: /tmp/invocation-ksfhzjyk
+
+Time for model construction: 99.313s.
+
+-------------------------------------------------------------- 
+Model type: 	IMDP (sparse)
+States: 	1611901
+Transitions: 	69684125
+Choices: 	8059505
+Reward Models:  none
+State Labels: 	4 labels
+   * reach -> 8100 item(s)
+   * deadlock -> 8100 item(s)
+   * avoid -> 31862 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "1": Pmax=? [(!"avoid") U "reach"] ...
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+Result (for initial states): 0.003186126406. Solution bounds: [0.003186126406, 1].
+Time for model checking: 274.398s.
+
+----------------------------------------
+Wallclock time:	373.784
+Return code:	0

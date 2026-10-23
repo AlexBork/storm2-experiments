@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 18:00:59 2026
+Command line arguments: --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Current working directory: /tmp/invocation-faqvcckc
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 28.524s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((M3on > 0) & (M3go = 0)) -> 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((M3on > 0) & (M3go = 0)) -> 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "M3Fail_E": Tmin=? [F ((M3on > 0) & (M3go = 0))] ...
+
+----------------------------------------
+Wallclock time:	901.410
+Return code:	None
+Computation aborted after 901.410 seconds since the time limit of 900 seconds was exceeded.

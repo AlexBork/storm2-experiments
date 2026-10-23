@@ -1,0 +1,35 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani zeroconf.jani --janiproperty correct_max --constants N=1000,K=8,reset=false --exact
+Benchmark:	zeroconf.1000-8-false.correct_max
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:44:08 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=1000,K=8,reset=false' --exact
+Current working directory: /tmp/invocation-d50bwhwl
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 13.388s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1868787
+Transitions: 	4224736
+Choices: 	3430379
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 14972 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+
+----------------------------------------
+Wallclock time:	901.249
+Return code:	None
+Computation aborted after 901.249 seconds since the time limit of 900 seconds was exceeded.

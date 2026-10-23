@@ -1,0 +1,45 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta zeroconf.jani --props correct_min --experiment N=1000,K=8,reset=false --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	zeroconf.1000-8-false.correct_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta zeroconf.jani --props correct_min --experiment N=1000,K=8,reset=false --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+zeroconf.jani:model: info: zeroconf is an MDP model.
+zeroconf.jani:variables[21]: info: Expanding variable "l" into 5 locations in automaton "host0".
+zeroconf.jani: info: Need 24 bytes per state.
+zeroconf.jani: info: Explored 1868787 states for N=1000, K=8, reset=False.
+
+Peak memory usage: 710 MB
+Analysis results for zeroconf.jani
+Experiment N=1000, K=8, reset=False
+
++ State space exploration
+  State size: 24 bytes
+  States:     1868787
+  Choices:    3430379
+  Branches:   4224736
+  Rate:       1035339 states/s
+  Time:       1.9 s
+
++ Property correct_min
+  Probability: 5.04010521323758E-09
+  Bounds:      [5.040105212929842E-09, 5.040105213545319E-09]
+  Time:        1.8 s
+
+  + Optimistic value iteration
+    Total iterations:  75
+    Verif. attempts:   1
+    Verif. iterations: 10
+    Final epsilon:     1E-06
+    Time:              1.8 s
+
+
+----------------------------------------
+Wallclock time:	3.954
+Return code:	0

@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	obstacle-mdp.800.steps_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:53:24 2026
+Command line arguments: --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-mjvt8ws8
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.116s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	640001 (34 nodes)
+Transitions: 	5113599 (777 nodes)
+Choices: 	2559998
+Reward Models:  none
+Variables: 	rows: 5 meta variables (23 DD variables), columns: 5 meta variables (23 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (24 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": Tmin=? [F "goal"] ...
+Result (for initial states): 1089.348967
+Time for model checking: 7.659s.
+
+----------------------------------------
+Wallclock time:	9.015
+Return code:	0

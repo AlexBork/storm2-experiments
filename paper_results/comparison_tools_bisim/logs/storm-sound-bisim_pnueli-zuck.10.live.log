@@ -1,0 +1,19 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation
+Benchmark:	pnueli-zuck.10.live
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:29:34 2026
+Command line arguments: --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation
+Current working directory: /tmp/invocation-8qumz6jq
+
+Time for model input parsing: 0.019s.
+
+
+----------------------------------------
+Wallclock time:	901.374
+Return code:	None
+Computation aborted after 901.374 seconds since the time limit of 900 seconds was exceeded.

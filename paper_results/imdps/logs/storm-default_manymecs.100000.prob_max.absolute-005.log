@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/imdps/bin/storm --explicit-drn manymecs.100000.prob_max.drn --prop manymecs.100000.prob_max.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Benchmark:	manymecs.100000.prob_max.absolute-005
+Configuration:	storm-default
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 20:41:43 2026
+Command line arguments: --explicit-drn manymecs.100000.prob_max.drn --prop manymecs.100000.prob_max.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Current working directory: /tmp/invocation-tap2vkca
+
+Time for model construction: 1.336s.
+
+-------------------------------------------------------------- 
+Model type: 	IMDP (sparse)
+States: 	300002
+Transitions: 	900004
+Choices: 	600004
+Reward Models:  none
+State Labels: 	2 labels
+   * reach -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "1": Pmax=? [F "reach"] ...
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+
+----------------------------------------
+Wallclock time:	901.038
+Return code:	None
+Computation aborted after 901.038 seconds since the time limit of 900 seconds was exceeded.

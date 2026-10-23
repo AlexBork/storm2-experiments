@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani random-grid.jani --janiproperty time_min --constants N=40,pover=0.3,pstay=0.3 --sound --bisimulation
+Benchmark:	random-grid.40-0.3-0.3.time_min
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:41:37 2026
+Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=40,pover=0.3,pstay=0.3' --sound --bisimulation
+Current working directory: /tmp/invocation-244em8p5
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 0.234s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	64000
+Transitions: 	1123189
+Choices: 	383995
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((x = 40) & (y = 40)) & (z = 40)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.320s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	11480
+Transitions: 	191837
+Choices: 	65559
+Reward Models:  none
+State Labels: 	2 labels
+   * (((x = 40) & (y = 40)) & (z = 40)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F (((x = 40) & (y = 40)) & (z = 40))] ...
+Result (for initial states): 117.9000629. Solution bounds: [117.899945, 117.9001808].
+Time for model checking: 0.030s.
+
+----------------------------------------
+Wallclock time:	0.643
+Return code:	0

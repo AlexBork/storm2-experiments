@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani bigmec.jani --janiproperty prob_max --constants N=100000 --sound
+Benchmark:	bigmec.100000.prob_max
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:33:07 2026
+Command line arguments: --jani bigmec.jani --janiproperty prob_max --constants N=100000 --sound
+Current working directory: /tmp/invocation-rba1amev
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 0.279s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	200003
+Transitions: 	400006
+Choices: 	400004
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * p1win -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "p1win"] ...
+Result (for initial states): 0.5. Exact solution.
+Time for model checking: 0.071s.
+
+----------------------------------------
+Wallclock time:	0.411
+Return code:	0

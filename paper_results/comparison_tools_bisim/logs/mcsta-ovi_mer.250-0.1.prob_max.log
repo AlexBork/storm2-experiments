@@ -1,0 +1,23 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta mer.jani --props prob_max --experiment n=250,x=0.1 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	mer.250-0.1.prob_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta mer.jani --props prob_max --experiment n=250,x=0.1 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+mer.jani:model: info: mer is an MDP model.
+mer.jani:variables[10]: info: Expanding variable "s1" into 5 locations in automaton "user1".
+mer.jani:variables[13]: info: Expanding variable "s2" into 5 locations in automaton "user2".
+mer.jani:variables[16]: info: Expanding variable "e" into 4 locations in automaton "property".
+mer.jani: info: Need 24 bytes per state.
+mer.jani: info: Explored 555642 states for n=250, x=0.1.
+
+----------------------------------------
+Wallclock time:	901.035
+Return code:	None
+Computation aborted after 901.035 seconds since the time limit of 900 seconds was exceeded.

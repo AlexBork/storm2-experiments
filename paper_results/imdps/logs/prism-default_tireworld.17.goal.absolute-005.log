@@ -1,0 +1,68 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel tireworld.17.goal.tra,sta,lab tireworld.17.goal.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	tireworld.17.goal.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 20:12:01 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'tireworld.17.goal.tra,sta,lab' tireworld.17.goal.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "tireworld.17.goal.tra", "tireworld.17.goal.sta", "tireworld.17.goal.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "tireworld.17.goal.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.404 seconds.
+
+Warning: Deadlocks detected and fixed in 1728 states
+
+Type:        IMDP
+States:      8670 (1 initial)
+Transitions: 114221
+Choices:     69360
+Max/avg:     8/8.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 7 iterations and 0.07 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 50 iterations and 0.259 seconds.
+target=510, yes=3815, no=1600, maybe=3255
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 47 iterations, 2285187 multiplications and 0.242 seconds.
+Probabilistic reachability took 0.244 seconds.
+
+Value in the initial state: 0.17386187499813555
+
+Time for model checking: 0.614 seconds.
+
+Result: 0.17386187499813555 (+/- 6.704780030064583E-6 estimated; rel err 3.856383137554731E-5)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	1.515
+Return code:	0

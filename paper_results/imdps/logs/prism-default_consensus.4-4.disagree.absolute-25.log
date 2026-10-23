@@ -1,0 +1,66 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel consensus.4-4.disagree.tra,sta,lab consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	consensus.4-4.disagree.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 20:20:37 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'consensus.4-4.disagree.tra,sta,lab' consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "consensus.4-4.disagree.tra", "consensus.4-4.disagree.sta", "consensus.4-4.disagree.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.4-4.disagree.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.433 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 149 iterations and 2.057 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 2595 iterations and 35.264 seconds.
+target=56, yes=10872, no=910, maybe=31354
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 131 iterations, 20589008 multiplications and 2.472 seconds.
+Probabilistic reachability took 2.474 seconds.
+
+Value in the initial state: 0.0
+
+Time for model checking: 39.846 seconds.
+
+Result: 0.0 (+/- 9.326279438170992E-6 estimated; rel err Infinity)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	40.791
+Return code:	0

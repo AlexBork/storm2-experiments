@@ -1,0 +1,41 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani intercept-mdp.jani --janiproperty time_min --constants N=30,slippery=0.0 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	intercept-mdp.30-0.0.time_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:52:45 2026
+Command line arguments: --jani intercept-mdp.jani --janiproperty time_min --constants 'N=30,slippery=0.0' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-1q4wr09p
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+Time for model construction: 0.534s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1619941 (57 nodes)
+Transitions: 	6461957 (34515 nodes)
+Choices: 	4043647
+Reward Models:  none
+Variables: 	rows: 9 meta variables (25 DD variables), columns: 9 meta variables (25 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (26 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+Result (for initial states): 98.30527496
+Time for model checking: 6.076s.
+
+----------------------------------------
+Wallclock time:	6.829
+Return code:	0

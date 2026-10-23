@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --sound --bisimulation
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:55:19 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --sound --bisimulation
+Current working directory: /tmp/invocation-rbhzgbf2
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 180.592s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	56784160
+Transitions: 	64044160
+Choices: 	63799584
+Reward Models:  Emax_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * first_file_done -> 99 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 55.158s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	13550716
+Transitions: 	13823196
+Choices: 	13603964
+Reward Models:  Emax_rate_reward
+State Labels: 	2 labels
+   * first_file_done -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "Emin": R{"Emax_rate_reward"}min=? [F (first_file_done)] ...
+Result (for initial states): 127.7757163. Exact solution.
+Time for model checking: 8.822s.
+
+----------------------------------------
+Wallclock time:	244.874
+Return code:	0

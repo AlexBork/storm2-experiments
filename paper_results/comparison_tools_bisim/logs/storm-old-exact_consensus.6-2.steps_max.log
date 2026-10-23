@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani consensus.6.jani --janiproperty steps_max --constants K=2 --exact
+Benchmark:	consensus.6-2.steps_max
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:42:59 2026
+Command line arguments: --jani consensus.6.jani --janiproperty steps_max --constants K=2 --exact
+Current working directory: /tmp/invocation-p_2xfp_z
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 14.835s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_max": R[exp]{"steps"}max=? [F "finished"] ...
+Result (for initial states): 867 (approx. 867)
+Time for model checking: 31.450s.
+
+----------------------------------------
+Wallclock time:	46.957
+Return code:	0

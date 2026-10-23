@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 refuel-mdp.80-40.reach_max
+Benchmark:	refuel-mdp.80-40.reach_max.absolute-25
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 0.0
+Iterations: 35
+Maximum Bellman residual: 4.838224013142484e-7
+Time for reading: 3.299266332s
+Time for solving: 5.206837777s
+
+----------------------------------------
+Wallclock time:	8.978
+Return code:	0

@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani consensus.4.jani --janiproperty steps_min --constants K=4 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	consensus.4-4.steps_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:17:42 2026
+Command line arguments: --jani consensus.4.jani --janiproperty steps_min --constants K=4 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-ehh_0d5_
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.329s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	43136 (111 nodes)
+Transitions: 	144352 (2301 nodes)
+Choices: 	115840
+Reward Models:  steps
+Variables: 	rows: 13 meta variables (22 DD variables), columns: 13 meta variables (22 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (23 nodes)
+   * finished
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": R{"steps"}min=? [F "finished"] ...
+Result (for initial states): 767.9999727
+Time for model checking: 0.831s.
+
+----------------------------------------
+Wallclock time:	1.316
+Return code:	0

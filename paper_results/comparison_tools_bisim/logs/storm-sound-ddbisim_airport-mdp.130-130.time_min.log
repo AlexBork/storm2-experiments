@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani airport-mdp.jani --janiproperty time_min --constants DMAX=130,PMAX=130 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	airport-mdp.130-130.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:36:53 2026
+Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=130,PMAX=130' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-jc7w2ju7
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.415s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	499712 (594 nodes)
+Transitions: 	3721646 (543084 nodes)
+Choices: 	737616
+Reward Models:  none
+Variables: 	rows: 10 meta variables (31 DD variables), columns: 10 meta variables (31 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (32 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 16.987s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	67596
+Transitions: 	305740
+Choices: 	102432
+Reward Models:  none
+State Labels: 	3 labels
+   * ((p = 0) & (d = 0)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F ((p = 0) & (d = 0))] ...
+Result (for initial states): 303.3920612. Solution bounds: [303.3917578, 303.3923646].
+Time for model checking: 0.041s.
+
+----------------------------------------
+Wallclock time:	18.862
+Return code:	0

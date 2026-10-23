@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta avoid-mdp.jani --props time_min --experiment N=40,slippery=0.2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	avoid-mdp.40-0.2.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta avoid-mdp.jani --props time_min --experiment N=40,slippery=0.2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+avoid-mdp.jani:model: info: avoid-mdp is an MDP model.
+avoid-mdp.jani: info: Need 16 bytes per state.
+avoid-mdp.jani: info: Explored 20473601 states for N=40, slippery=0.2.
+avoid-mdp.jani:properties[1]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 15678 MB
+Analysis results for avoid-mdp.jani
+Experiment N=40, slippery=0.2
+
++ State space exploration
+  State size: 16 bytes
+  States:     20473601
+  Choices:    50163201
+  Branches:   119770237
+  Rate:       686941 states/s
+  Time:       33.2 s
+
++ Property time_min
+  Value:  196.00011720383532
+  Bounds: [196, 196.0002344076706]
+  Time:   14.4 s
+
+  + Precomputations
+    Max. prob. 1 states:          20473601
+    Time for max. prob. 1 states: 0.4 s
+
+  + Optimistic value iteration
+    Total iterations:  57
+    Verif. attempts:   1
+    Verif. iterations: 7
+    Final epsilon:     1E-06
+    Time:              14.0 s
+
+
+----------------------------------------
+Wallclock time:	47.916
+Return code:	0

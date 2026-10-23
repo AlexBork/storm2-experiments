@@ -1,0 +1,55 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani dpm.jani --janiproperty PminQueue1Full --constants N=6,C=8,TIME_BOUND=5 --sound
+Benchmark:	dpm.6-8-5.PminQueue1Full
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:24:56 2026
+Command line arguments: --jani dpm.jani --janiproperty PminQueue1Full --constants 'N=6,C=8,TIME_BOUND=5' --sound
+Current working directory: /tmp/invocation-w_h6_8mx
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 74.309s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	42594012
+Transitions: 	82748790
+Choices: 	48736566
+Markovian St.: 	9526572
+Max. Rate.: 	6
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (items1 = 8) -> 708588 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	42594012
+Transitions: 	82748790
+Choices: 	48736566
+Markovian St.: 	9526572
+Max. Rate.: 	6
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (items1 = 8) -> 708588 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "PminQueue1Full": Pmin=? [F (items1 = 8)] ...
+Result (for initial states): 0.01311517167
+Time for model checking: 157.705s.
+
+----------------------------------------
+Wallclock time:	232.236
+Return code:	0

@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani pacman.jani --janiproperty crash --constants MAXSTEPS=60 --exact
+Benchmark:	pacman.60.crash
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:54:01 2026
+Command line arguments: --jani pacman.jani --janiproperty crash --constants MAXSTEPS=60 --exact
+Current working directory: /tmp/invocation-mfqvie76
+
+Time for model input parsing: 0.025s.
+
+Time for model construction: 73.587s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	7253118
+Transitions: 	9952883
+Choices: 	9097907
+Reward Models:  none
+State Labels: 	3 labels
+   * init -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * Crash -> 171532 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "crash": Pmin=? [F "Crash"] ...
+Result (for initial states): 86110546416859324224933809991178655824964067/156250000000000000000000000000000000000000000 (approx. 0.5511074971). Exact solution.
+Time for model checking: 9.323s.
+
+----------------------------------------
+Wallclock time:	83.535
+Return code:	0

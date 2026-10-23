@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta resource-gathering.jani --props expsteps --experiment B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	resource-gathering.1300-100-100.expsteps
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta resource-gathering.jani --props expsteps --experiment B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+resource-gathering.jani:model: info: resource-gathering is an MDP model.
+resource-gathering.jani: info: Need 16 bytes per state.
+resource-gathering.jani: info: Explored 958801 states for B=1300, GOLD_TO_COLLECT=100, GEM_TO_COLLECT=100.
+resource-gathering.jani:properties[1]: warning: Computing minimum expected reward in property "expsteps" without checking for zero-reward end components.
+
+Peak memory usage: 575 MB
+Analysis results for resource-gathering.jani
+Experiment B=1300, GOLD_TO_COLLECT=100, GEM_TO_COLLECT=100
+
++ State space exploration
+  State size: 16 bytes
+  States:     958801
+  Choices:    3080401
+  Branches:   3325201
+  Rate:       690281 states/s
+  Time:       1.5 s
+
++ Property expsteps
+  Value:  1292.5934985749386
+  Bounds: [1292.5925925923289, 1292.5944045575484]
+  Time:   6.3 s
+
+  + Precomputations
+    Max. prob. 1 states:          958801
+    Time for max. prob. 1 states: 0.4 s
+
+  + Optimistic value iteration
+    Total iterations:  667
+    Verif. attempts:   1
+    Verif. iterations: 10
+    Final epsilon:     1E-06
+    Time:              5.9 s
+
+
+----------------------------------------
+Wallclock time:	8.087
+Return code:	0

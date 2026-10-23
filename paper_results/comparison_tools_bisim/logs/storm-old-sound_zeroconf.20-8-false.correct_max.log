@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=8,reset=false --sound
+Benchmark:	zeroconf.20-8-false.correct_max
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 20:18:35 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=8,reset=false' --sound
+Current working directory: /tmp/invocation-c2vp8mr_
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 6.434s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1868787
+Transitions: 	4224736
+Choices: 	3430379
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 14972 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 9.457956149e-10
+Time for model checking: 9.215s.
+
+----------------------------------------
+Wallclock time:	15.699
+Return code:	0

@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta flexible-manufacturing.3.jani --props M2Fail_E --experiment T=1 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	flexible-manufacturing.3-1.M2Fail_E
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta flexible-manufacturing.3.jani --props M2Fail_E --experiment T=1 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+flexible-manufacturing.3.jani:model: info: flexible-manufacturing.3 is an MA model.
+flexible-manufacturing.3.jani: info: Need 24 bytes per state.
+flexible-manufacturing.3.jani: info: Explored 1636 states for T=1.0.
+flexible-manufacturing.3.jani:properties[2]: warning: Computing minimum expected reward in property "M2Fail_E" without checking for zero-reward end components.
+
+Peak memory usage: 70 MB
+Analysis results for flexible-manufacturing.3.jani
+Experiment T=1.0
+
++ State space exploration
+  State size: 24 bytes
+  States:     1636
+  Choices:    1636
+  Branches:   3269
+  Rate:       65440 states/s
+  Time:       0.0 s
+
++ Property M2Fail_E
+  Value:  4892257.530275309
+  Bounds: [4892252.638043289, 4892262.422507331]
+  Time:   434.9 s
+
+  + Precomputations
+    Max. prob. 1 states:          1636
+    Time for max. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  53378903
+    Verif. attempts:   21
+    Verif. iterations: 2958030
+    Final epsilon:     4.589207868461287E-13
+    Time:              434.9 s
+
+
+----------------------------------------
+Wallclock time:	435.129
+Return code:	0

@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta intercept-mdp.jani --props time_min --experiment N=30,slippery=0.0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	intercept-mdp.30-0.0.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta intercept-mdp.jani --props time_min --experiment N=30,slippery=0.0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+intercept-mdp.jani:model: info: intercept-mdp is an MDP model.
+intercept-mdp.jani: info: Need 16 bytes per state.
+intercept-mdp.jani: info: Explored 1619941 states for N=30, slippery=0.0.
+intercept-mdp.jani:properties[0]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 1093 MB
+Analysis results for intercept-mdp.jani
+Experiment N=30, slippery=0.0
+
++ State space exploration
+  State size: 16 bytes
+  States:     1619941
+  Choices:    4043647
+  Branches:   6465553
+  Rate:       768109 states/s
+  Time:       2.3 s
+
++ Property time_min
+  Value:  98.30524375605314
+  Bounds: [98.30524352209318, 98.30524399001311]
+  Time:   7.8 s
+
+  + Precomputations
+    Max. prob. 1 states:          434652
+    Time for max. prob. 1 states: 6.9 s
+
+  + Optimistic value iteration
+    Total iterations:  58
+    Verif. attempts:   1
+    Verif. iterations: 3
+    Final epsilon:     1E-06
+    Time:              0.9 s
+
+
+----------------------------------------
+Wallclock time:	10.303
+Return code:	0

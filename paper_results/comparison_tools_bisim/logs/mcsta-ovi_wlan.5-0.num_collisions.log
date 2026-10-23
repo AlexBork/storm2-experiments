@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta wlan.5.jani --props num_collisions --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	wlan.5-0.num_collisions
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta wlan.5.jani --props num_collisions --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+wlan.5.jani:model: info: wlan.5 is an MDP model.
+wlan.5.jani:variables[7]: info: Expanding variable "s1" into 12 locations in automaton "station1".
+wlan.5.jani:variables[12]: info: Expanding variable "s2" into 12 locations in automaton "station2".
+wlan.5.jani: info: Need 16 bytes per state.
+wlan.5.jani: info: Explored 1295218 states for COL=0.
+
+Peak memory usage: 520 MB
+Analysis results for wlan.5.jani
+Experiment COL=0
+
++ State space exploration
+  State size: 16 bytes
+  States:     1295218
+  Choices:    1646074
+  Branches:   2929960
+  Rate:       1181768 states/s
+  Time:       1.2 s
+
++ Property num_collisions
+  Value:  1.2014394043875694
+  Bounds: [1.2014394043875687, 1.2014394043875698]
+  Time:   20.1 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 1.5 s
+    Min. prob. 1 states:          1295218
+    Time for min. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  1973
+    Verif. attempts:   3
+    Verif. iterations: 622
+    Final epsilon:     1.0621425793529882E-08
+    Time:              18.5 s
+
+
+----------------------------------------
+Wallclock time:	21.621
+Return code:	0

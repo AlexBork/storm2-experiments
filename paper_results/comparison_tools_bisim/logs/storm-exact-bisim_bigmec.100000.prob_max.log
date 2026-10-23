@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani bigmec.jani --janiproperty prob_max --constants N=100000 --exact --bisimulation
+Benchmark:	bigmec.100000.prob_max
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:09:15 2026
+Command line arguments: --jani bigmec.jani --janiproperty prob_max --constants N=100000 --exact --bisimulation
+Current working directory: /tmp/invocation-rb2bmtz7
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 0.530s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	200003
+Transitions: 	400006
+Choices: 	400004
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * p1win -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.650s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	200003
+Transitions: 	400006
+Choices: 	400004
+Reward Models:  none
+State Labels: 	2 labels
+   * p1win -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "p1win"] ...
+
+----------------------------------------
+Wallclock time:	901.032
+Return code:	None
+Computation aborted after 901.032 seconds since the time limit of 900 seconds was exceeded.

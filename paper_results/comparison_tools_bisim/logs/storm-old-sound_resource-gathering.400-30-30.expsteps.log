@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani resource-gathering.jani --janiproperty expsteps --constants B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30 --sound
+Benchmark:	resource-gathering.400-30-30.expsteps
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:36:55 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expsteps --constants 'B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30' --sound
+Current working directory: /tmp/invocation-w0qnnhy5
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.514s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	90241
+Transitions: 	312961
+Choices: 	289921
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expsteps": T[exp]min=? [F "success"] ...
+Result (for initial states): 387.7777861
+Time for model checking: 0.813s.
+
+----------------------------------------
+Wallclock time:	1.382
+Return code:	0

@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --sound --bisimulation
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:56:02 2026
+Command line arguments: --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --sound --bisimulation
+Current working directory: /tmp/invocation-i63rbqaw
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 1.514s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate: 	12.79
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((M3on > 0) & (M3go = 0)) -> 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.978s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	369072
+Transitions: 	1320099
+Choices: 	369072
+Markovian St.: 	171029
+Max. Rate: 	12.79
+Reward Models:  none
+State Labels: 	2 labels
+   * ((M3on > 0) & (M3go = 0)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "M3Fail_E": Tmin=? [F ((M3on > 0) & (M3go = 0))] ...
+Result (for initial states): 26.19785919
+Time for model checking: 0.796s.
+
+----------------------------------------
+Wallclock time:	3.345
+Return code:	0

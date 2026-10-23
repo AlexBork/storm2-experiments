@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani firewire.true.jani --janiproperty time_sending --constants delay=3,deadline=600 --exact --bisimulation
+Benchmark:	firewire.true-3-600.time_sending
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:00:46 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_sending --constants 'delay=3,deadline=600' --exact --bisimulation
+Current working directory: /tmp/invocation-smfuz_hm
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 14.754s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1078299
+Transitions: 	1473698
+Choices: 	1453092
+Reward Models:  time_sending
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * done -> 656 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 3.183s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1919
+Transitions: 	2346
+Choices: 	2325
+Reward Models:  time_sending
+State Labels: 	2 labels
+   * done -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_sending": R{"time_sending"}max=? [F "done"] ...
+Result (for initial states): 18 (approx. 18). Exact solution.
+Time for model checking: 0.013s.
+
+----------------------------------------
+Wallclock time:	18.385
+Return code:	0

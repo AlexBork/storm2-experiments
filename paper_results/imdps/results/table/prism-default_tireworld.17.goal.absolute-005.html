@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - tireworld.17.goal.absolute-005</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>tireworld.17.goal.absolute-005</h1>
+<p class="sub">prism-default &middot; absolute-005 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>1.515 s</td></tr><tr><th>result</th><td>0.17386187499813555</td></tr><tr><th>difference</th><td>2.32e-11</td></tr><tr><th>states</th><td>8,670</td></tr></table>
+<p class="sub">prism-default_tireworld.17.goal.absolute-005.log</p>
+<pre>Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel tireworld.17.goal.tra,sta,lab tireworld.17.goal.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	tireworld.17.goal.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 20:12:01 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'tireworld.17.goal.tra,sta,lab' tireworld.17.goal.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;tireworld.17.goal.tra&quot;, &quot;tireworld.17.goal.sta&quot;, &quot;tireworld.17.goal.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;tireworld.17.goal.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.404 seconds.
+
+Warning: Deadlocks detected and fixed in 1728 states
+
+Type:        IMDP
+States:      8670 (1 initial)
+Transitions: 114221
+Choices:     69360
+Max/avg:     8/8.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 7 iterations and 0.07 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 50 iterations and 0.259 seconds.
+target=510, yes=3815, no=1600, maybe=3255
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 47 iterations, 2285187 multiplications and 0.242 seconds.
+Probabilistic reachability took 0.244 seconds.
+
+Value in the initial state: 0.17386187499813555
+
+Time for model checking: 0.614 seconds.
+
+Result: 0.17386187499813555 (+/- 6.704780030064583E-6 estimated; rel err 3.856383137554731E-5)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	1.515
+Return code:	0
+</pre>
+</body></html>

@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani ftwc.jani --janiproperty TimeMin --constants N=8,TIME_BOUND=5 --sound --bisimulation
+Benchmark:	ftwc.8-5.TimeMin
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 11:48:32 2026
+Command line arguments: --jani ftwc.jani --janiproperty TimeMin --constants 'N=8,TIME_BOUND=5' --sound --bisimulation
+Current working directory: /tmp/invocation-pboji1rd
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.024s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	10299
+Transitions: 	26983
+Choices: 	12635
+Markovian St.: 	4951
+Max. Rate: 	2.0307
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1])) -> 1059 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.005s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1119
+Transitions: 	3793
+Choices: 	1541
+Markovian St.: 	658
+Max. Rate: 	2.0307
+Reward Models:  none
+State Labels: 	2 labels
+   * (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1])) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "TimeMin": Tmin=? [F (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1]))] ...
+Result (for initial states): 1995337.862
+Time for model checking: 2.289s.
+
+----------------------------------------
+Wallclock time:	2.379
+Return code:	0

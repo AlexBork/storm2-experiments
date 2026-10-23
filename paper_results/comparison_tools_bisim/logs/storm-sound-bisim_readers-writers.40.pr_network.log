@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation
+Benchmark:	readers-writers.40.pr_network
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:45:06 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty pr_network --sound --bisimulation
+Current working directory: /tmp/invocation-1jn2bxso
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 3.144s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1884366
+Transitions: 	3815040
+Choices: 	1884366
+Markovian St.: 	372594
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) -> 1828328 item(s)
+   * init -> 1 item(s)
+   * ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w))) -> 33192 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 3.258s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1773060
+Transitions: 	3673171
+Choices: 	1773060
+Markovian St.: 	316462
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	3 labels
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) -> 1773058 item(s)
+   * ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w))) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "pr_network": Pmax=? [(((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) U ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w)))] ...
+Result (for initial states): 0.8971438194
+Time for model checking: 3.964s.
+
+----------------------------------------
+Wallclock time:	10.458
+Return code:	0

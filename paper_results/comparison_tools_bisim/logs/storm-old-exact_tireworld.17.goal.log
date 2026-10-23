@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani tireworld.17.jani --janiproperty goal --exact
+Benchmark:	tireworld.17.goal
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 21:54:37 2026
+Command line arguments: --jani tireworld.17.jani --janiproperty goal --exact
+Current working directory: /tmp/invocation-_1xzcyui
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.067s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	8670
+Transitions: 	33436
+Choices: 	18662
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 1600 item(s)
+   * init -> 1 item(s)
+   * (var9 = 0) -> 510 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal": Pmax=? [F (var9 = 0)] ...
+Result (for initial states): 729/3125 (approx. 0.23328)
+Time for model checking: 0.021s.
+
+----------------------------------------
+Wallclock time:	0.139
+Return code:	0

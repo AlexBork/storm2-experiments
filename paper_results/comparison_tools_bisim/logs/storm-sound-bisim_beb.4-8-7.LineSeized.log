@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --sound --bisimulation
+Benchmark:	beb.4-8-7.LineSeized
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:54:07 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --sound --bisimulation
+Current working directory: /tmp/invocation-vd4pfe_y
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 31.268s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	20186888
+Transitions: 	35508778
+Choices: 	20949082
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 240263 item(s)
+   * init -> 1 item(s)
+   * line_seized -> 966016 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 40.383s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	92113
+Transitions: 	246960
+Choices: 	97158
+Reward Models:  none
+State Labels: 	2 labels
+   * line_seized -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "LineSeized": Pmax=? [F (line_seized)] ...
+Result (for initial states): 0.9998854985. Exact solution.
+Time for model checking: 0.031s.
+
+----------------------------------------
+Wallclock time:	71.803
+Return code:	0

@@ -1,0 +1,42 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	bigmec.100000.prob_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 11:36:51 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g bigmec.prism bigmec.props --prop prob_max -const N=100000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "bigmec.prism"...
+
+Type:        MDP
+Modules:     player1
+Actions:     [] [a11] [a12] [a21] [a22]
+Variables:   state i
+Labels:      "done" "p1win" "p2win"
+
+Parsing properties file "bigmec.props"...
+
+1 property:
+(1) "prob_max": Pmax=? [ F "p1win" ]
+
+---------------------------------------------------------------------
+
+Model checking: "prob_max": Pmax=? [ F "p1win" ]
+Model constants: N=100000
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=100000
+
+----------------------------------------
+Wallclock time:	901.044
+Return code:	None
+Computation aborted after 901.044 seconds since the time limit of 900 seconds was exceeded.

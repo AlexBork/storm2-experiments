@@ -1,0 +1,48 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --exact --bisimulation
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:14:08 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --exact --bisimulation
+Current working directory: /tmp/invocation-f4vyi_e5
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 43.489s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958894
+Transitions: 	3325526
+Choices: 	3080702
+Reward Models:  rew_gold
+State Labels: 	2 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 11.429s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	48
+Transitions: 	166
+Choices: 	154
+Reward Models:  rew_gold
+State Labels: 	1 labels
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R{"rew_gold"}max=? [Csteps<=1300] ...
+Result (for initial states): 7264375073375469449618662501504506678375777124927245092599053231644666673941583976542615859048918385259998596551162129780592651767368178605021823732691181739093434372876661819379530098728785208625449275851305168448843422855426191245955422855359777679433560585821178640509935448362824311419877551701852565468365094137568009239488438953915241479675300431961216164884100235312283881934829831139437172624278957867401478674253410714641886233847003233839053435926819958776138488683426285264386342945460271627777638712613161323/50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (approx. 145.2875015). Exact solution.
+Time for model checking: 0.163s.
+
+----------------------------------------
+Wallclock time:	56.002
+Return code:	0

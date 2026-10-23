@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty pr_network --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	readers-writers.40.pr_network
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:25:54 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty pr_network --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-lfe2rhop
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.289s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	1884366 (9462 nodes)
+Transitions: 	3815040 (1355711 nodes)
+Choices: 	1884366
+Reward Models:  none
+Variables: 	rows: 14 meta variables (69 DD variables), columns: 14 meta variables (69 DD variables), nondeterminism: 1 meta variables (1 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (70 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "pr_network": Pmax=? [(((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) U ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w)))] ...
+Result (for initial states): 0.8971443981
+Time for model checking: 19.689s.
+
+----------------------------------------
+Wallclock time:	21.341
+Return code:	0

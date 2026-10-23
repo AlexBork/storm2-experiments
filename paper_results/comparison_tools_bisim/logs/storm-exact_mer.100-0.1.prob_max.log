@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani mer.jani --janiproperty prob_max --constants n=100,x=0.1 --exact
+Benchmark:	mer.100-0.1.prob_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:20:17 2026
+Command line arguments: --jani mer.jani --janiproperty prob_max --constants 'n=100,x=0.1' --exact
+Current working directory: /tmp/invocation-kxce1sgu
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 1.432s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	223542
+Transitions: 	873749
+Choices: 	853718
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * err_G -> 4900 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "err_G"] ...
+Result (for initial states): 2705658816461365959627853936426140974169674855965724840478746354256390797406688452688671662228571137807376778012329313957344827531573790663/12446030555722283414288128107560248481180504337442334266202233229579397668070766882367889646251427233913933179110244964249432086944580078125 (approx. 0.2173913043). Exact solution.
+Time for model checking: 1.601s.
+
+----------------------------------------
+Wallclock time:	3.133
+Return code:	0

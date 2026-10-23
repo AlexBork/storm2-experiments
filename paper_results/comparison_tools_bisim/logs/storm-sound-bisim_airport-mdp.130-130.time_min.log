@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani airport-mdp.jani --janiproperty time_min --constants DMAX=130,PMAX=130 --sound --bisimulation
+Benchmark:	airport-mdp.130-130.time_min
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:56:46 2026
+Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=130,PMAX=130' --sound --bisimulation
+Current working directory: /tmp/invocation-8qo3fbw1
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 2.222s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	499712
+Transitions: 	3721646
+Choices: 	737616
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((p = 0) & (d = 0)) -> 10 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.476s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	33799
+Transitions: 	84887
+Choices: 	51217
+Reward Models:  none
+State Labels: 	2 labels
+   * ((p = 0) & (d = 0)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F ((p = 0) & (d = 0))] ...
+Result (for initial states): 303.3920612. Solution bounds: [303.3917578, 303.3923646].
+Time for model checking: 0.023s.
+
+----------------------------------------
+Wallclock time:	2.795
+Return code:	0

@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 manymecs.10000.prob_max
+Benchmark:	manymecs.10000.prob_max.absolute-005
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 0.44993951847241004
+Iterations: 58837
+Maximum Bellman residual: 9.881632543340402e-7
+Time for reading: 0.276628443s
+Time for solving: 844.293909874s
+
+----------------------------------------
+Wallclock time:	845.029
+Return code:	0

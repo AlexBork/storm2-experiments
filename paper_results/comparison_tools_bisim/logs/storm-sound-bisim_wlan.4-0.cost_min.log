@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan.4.jani --janiproperty cost_min --constants COL=0 --sound --bisimulation
+Benchmark:	wlan.4-0.cost_min
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:45:03 2026
+Command line arguments: --jani wlan.4.jani --janiproperty cost_min --constants COL=0 --sound --bisimulation
+Current working directory: /tmp/invocation-ouryjb0p
+
+Time for model input parsing: 0.006s.
+
+Time for model construction: 1.086s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	345000
+Transitions: 	762252
+Choices: 	440206
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.340s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	124999
+Transitions: 	289092
+Choices: 	135066
+Reward Models:  cost
+State Labels: 	2 labels
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625. Solution bounds: [7624.992375, 7625.007625].
+Time for model checking: 0.047s.
+
+----------------------------------------
+Wallclock time:	1.544
+Return code:	0

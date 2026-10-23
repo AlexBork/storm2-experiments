@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:05:10 2026
+Command line arguments: --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-10b6loc6
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.685s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	838951 (3760 nodes)
+Transitions: 	1823858 (418111 nodes)
+Choices: 	838951
+Reward Models:  none
+Variables: 	rows: 23 meta variables (49 DD variables), columns: 23 meta variables (49 DD variables), nondeterminism: 1 meta variables (1 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (50 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "M3Fail_E": Tmin=? [F ((M3on > 0) & (M3go = 0))] ...
+Result (for initial states): 26.19786885
+Time for model checking: 7.207s.
+
+----------------------------------------
+Wallclock time:	8.155
+Return code:	0

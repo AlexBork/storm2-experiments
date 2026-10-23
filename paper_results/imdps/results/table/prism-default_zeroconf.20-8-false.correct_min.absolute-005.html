@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - zeroconf.20-8-false.correct_min.absolute-005</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>zeroconf.20-8-false.correct_min.absolute-005</h1>
+<p class="sub">prism-default &middot; absolute-005 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>400.065 s</td></tr><tr><th>result</th><td>1.7236566700127668E-6</td></tr><tr><th>difference</th><td>9.89e-10</td></tr><tr><th>states</th><td>1,870,338</td></tr></table>
+<p class="sub">prism-default_zeroconf.20-8-false.correct_min.absolute-005.log</p>
+<pre>Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel zeroconf.20-8-false.correct_min.tra,sta,lab zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	zeroconf.20-8-false.correct_min.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 18:52:25 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'zeroconf.20-8-false.correct_min.tra,sta,lab' zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;zeroconf.20-8-false.correct_min.tra&quot;, &quot;zeroconf.20-8-false.correct_min.sta&quot;, &quot;zeroconf.20-8-false.correct_min.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;zeroconf.20-8-false.correct_min.pctl&quot;...
+
+1 property:
+(1) Pminmax=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 15.681 seconds.
+
+Type:        IMDP
+States:      1870338 (1 initial)
+Transitions: 8862306
+Choices:     7481352
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 133 iterations and 101.462 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 323 iterations and 169.622 seconds.
+target=16523, yes=17943, no=611330, maybe=1241065
+Starting value iteration (minmax)...
+Iteration 5: 5.19 sec so far
+Iteration 11: 11.10 sec so far
+Iteration 17: 17.12 sec so far
+Iteration 22: 22.34 sec so far
+Iteration 28: 28.20 sec so far
+Iteration 34: 34.05 sec so far
+Iteration 39: 39.47 sec so far
+Iteration 44: 45.62 sec so far
+Iteration 49: 51.51 sec so far
+Iteration 54: 57.40 sec so far
+Iteration 59: 63.58 sec so far
+Iteration 64: 69.47 sec so far
+Iteration 69: 75.31 sec so far
+Iteration 74: 81.13 sec so far
+Iteration 78: 86.17 sec so far
+Iteration 83: 92.03 sec so far
+Iteration 88: 97.88 sec so far
+Iteration 93: 103.68 sec so far
+Value iteration (minmax, with Gauss-Seidel) took 97 iterations, 568997926 multiplications and 108.892 seconds.
+Probabilistic reachability took 108.903 seconds.
+
+Value in the initial state: 1.7236566700127668E-6
+
+Time for model checking: 383.537 seconds.
+
+Result: 1.7236566700127668E-6 (+/- 7.2536497386116206E-6 estimated; rel err 4.208291514665675)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	400.065
+Return code:	0
+</pre>
+</body></html>

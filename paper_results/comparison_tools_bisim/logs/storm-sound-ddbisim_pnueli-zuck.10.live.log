@@ -1,0 +1,33 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	pnueli-zuck.10.live
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:59:06 2026
+Command line arguments: --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-ykoqv04n
+
+Time for model input parsing: 0.019s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 2.117s.
+
+BDD Unique table full, 134217723 of 134217728 buckets filled!
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	57728647140 (379 nodes)
+Transitions: 	729794328830 (23136 nodes)
+Choices: 	676422586366
+Reward Models:  none
+Variables: 	rows: 20 meta variables (50 DD variables), columns: 20 meta variables (50 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (51 nodes)
+-------------------------------------------------------------- 
+
+----------------------------------------
+Wallclock time:	440.331
+Return code:	1

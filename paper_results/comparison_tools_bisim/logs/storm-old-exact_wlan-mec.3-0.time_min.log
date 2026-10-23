@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani wlan-mec.3.jani --janiproperty time_min --constants COL=0 --exact
+Benchmark:	wlan-mec.3-0.time_min
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:45:18 2026
+Command line arguments: --jani wlan-mec.3.jani --janiproperty time_min --constants COL=0 --exact
+Current working directory: /tmp/invocation-k7ocpmmz
+
+Time for model input parsing: 0.006s.
+
+Time for model construction: 27.132s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	963020
+Transitions: 	3875479
+Choices: 	2200310
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 10 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R[exp]{"time"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 1325 (approx. 1325)
+Time for model checking: 63.213s.
+
+----------------------------------------
+Wallclock time:	91.056
+Return code:	0

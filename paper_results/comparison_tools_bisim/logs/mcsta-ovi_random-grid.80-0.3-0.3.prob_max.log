@@ -1,0 +1,20 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta random-grid.jani --props prob_max --experiment N=80,pover=0.3,pstay=0.3 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	random-grid.80-0.3-0.3.prob_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta random-grid.jani --props prob_max --experiment N=80,pover=0.3,pstay=0.3 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+random-grid.jani:model: info: random-grid is an MDP model.
+random-grid.jani: info: Need 8 bytes per state.
+random-grid.jani: info: Explored 511920 states for N=80, pover=0.3, pstay=0.3.
+
+----------------------------------------
+Wallclock time:	901.033
+Return code:	None
+Computation aborted after 901.033 seconds since the time limit of 900 seconds was exceeded.

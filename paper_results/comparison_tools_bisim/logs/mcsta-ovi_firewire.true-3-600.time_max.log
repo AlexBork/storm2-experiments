@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta firewire.true.jani --props time_max --experiment delay=3,deadline=600 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	firewire.true-3-600.time_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta firewire.true.jani --props time_max --experiment delay=3,deadline=600 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+firewire.true.jani:model: info: firewire.true is an MDP model.
+firewire.true.jani:variables[7]: info: Expanding variable "s1" into 9 locations in automaton "node1".
+firewire.true.jani:variables[8]: info: Expanding variable "w21" into 10 locations in automaton "wire21".
+firewire.true.jani:variables[12]: info: Expanding variable "s2" into 9 locations in automaton "node2".
+firewire.true.jani: info: Need 24 bytes per state.
+firewire.true.jani: info: Explored 1078299 states for delay=3, deadline=600.
+
+Peak memory usage: 374 MB
+Analysis results for firewire.true.jani
+Experiment delay=3, deadline=600
+
++ State space exploration
+  State size: 24 bytes
+  States:     1078299
+  Choices:    1453092
+  Branches:   1473698
+  Rate:       791703 states/s
+  Time:       1.4 s
+
++ Property time_max
+  Value:  299.0000121370524
+  Bounds: [298.999998195648, 299.0000260784568]
+  Time:   13.8 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 0.4 s
+    Min. prob. 1 states:          1078299
+    Time for min. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  2034
+    Verif. attempts:   5
+    Verif. iterations: 218
+    Final epsilon:     3.1238392106414954E-09
+    Time:              13.4 s
+
+
+----------------------------------------
+Wallclock time:	15.485
+Return code:	0

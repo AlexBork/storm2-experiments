@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan.5.jani --janiproperty sent --constants COL=0 --exact --bisimulation
+Benchmark:	wlan.5-0.sent
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:20:01 2026
+Command line arguments: --jani wlan.5.jani --janiproperty sent --constants COL=0 --exact --bisimulation
+Current working directory: /tmp/invocation-iwy7_4lr
+
+Time for model input parsing: 0.007s.
+
+Time for model construction: 7.134s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1295218
+Transitions: 	2929960
+Choices: 	1646074
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 8.120s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	463123
+Transitions: 	1098853
+Choices: 	491524
+Reward Models:  none
+State Labels: 	2 labels
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "sent": Pmin>=1 [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): true
+
+Time for model checking: 0.336s.
+
+----------------------------------------
+Wallclock time:	15.833
+Return code:	0

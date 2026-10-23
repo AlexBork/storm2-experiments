@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 tireworld.17.goal
+Benchmark:	tireworld.17.goal.absolute-005
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 0.173861874974901
+Iterations: 51
+Maximum Bellman residual: 6.905969879289486e-7
+Time for reading: 0.277506066s
+Time for solving: 0.818973576s
+
+----------------------------------------
+Wallclock time:	1.554
+Return code:	0

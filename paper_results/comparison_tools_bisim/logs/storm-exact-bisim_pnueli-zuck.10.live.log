@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani pnueli-zuck.10.jani --janiproperty live --exact --bisimulation
+Benchmark:	pnueli-zuck.10.live
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:55:10 2026
+Command line arguments: --jani pnueli-zuck.10.jani --janiproperty live --exact --bisimulation
+Current working directory: /tmp/invocation-sbls29xi
+
+Time for model input parsing: 0.019s.
+
+
+----------------------------------------
+Wallclock time:	378.082
+Return code:	-9

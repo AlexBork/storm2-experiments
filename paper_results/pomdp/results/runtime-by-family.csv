@@ -1,0 +1,5 @@
+group	expected_runs	recorded_runs	successful	timeout	killed	memout	failed	missing	wallclock_seconds	successful_seconds	unsuccessful_seconds
+cutoff	608	608	566	3	39	0	0	0	20899.954	11102.53	9797.424
+discretisation	38	38	38	0	0	0	0	0	382.35200000000003	382.35200000000003	0.0
+MDP	19	19	19	0	0	0	0	0	3.337	3.337	0.0
+TOTAL	665	665	623	3	39	0	0	0	21285.643	11488.219	9797.424

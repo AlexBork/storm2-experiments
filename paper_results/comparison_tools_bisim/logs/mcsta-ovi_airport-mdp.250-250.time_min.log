@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta airport-mdp.jani --props time_min --experiment DMAX=250,PMAX=250 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	airport-mdp.250-250.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta airport-mdp.jani --props time_min --experiment DMAX=250,PMAX=250 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+airport-mdp.jani:model: info: airport-mdp is an MDP model.
+airport-mdp.jani:variables[5]: info: Expanding variable "turn" into 2 locations in automaton "master".
+airport-mdp.jani: info: Need 16 bytes per state.
+airport-mdp.jani: warning: The probabilities for a transition do not sum up to 1. Results will likely be affected by floating-point errors.
+airport-mdp.jani: info: Explored 1860992 states for DMAX=250, PMAX=250.
+airport-mdp.jani:properties[0]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 1931 MB
+Analysis results for airport-mdp.jani
+Experiment DMAX=250, PMAX=250
+
++ State space exploration
+  State size: 16 bytes
+  States:     1860992
+  Choices:    2738496
+  Branches:   13907976
+  Rate:       605595 states/s
+  Time:       3.4 s
+
++ Property time_min
+  Value:  581.9853228563338
+  Bounds: [581.9853228562805, 581.9853228563871]
+  Time:   31.6 s
+
+  + Precomputations
+    Max. prob. 1 states:          1860992
+    Time for max. prob. 1 states: 2.4 s
+
+  + Optimistic value iteration
+    Total iterations:  1586
+    Verif. attempts:   6
+    Verif. iterations: 192
+    Final epsilon:     1.0571718488887847E-08
+    Time:              29.2 s
+
+
+----------------------------------------
+Wallclock time:	35.289
+Return code:	0

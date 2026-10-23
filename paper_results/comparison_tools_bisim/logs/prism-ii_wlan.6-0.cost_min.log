@@ -1,0 +1,171 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g wlan.6.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan.6-0.cost_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:31:14 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan.6.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan.6.prism"...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan.props"...
+
+7 properties:
+(1) "collisions": Pmax=? [ F col=COL ]
+(2) "cost_max": R{"cost"}max=? [ F s1=12&s2=12 ]
+(3) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(4) "num_collisions": R{"collisions"}max=? [ F s1=12&s2=12 ]
+(5) "sent": P>=1 [ F s1=12&s2=12 ]
+(6) "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+(7) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 547112 1212082 1695700 2206462 2603991 3245143 4084688 4948226 5007548 states
+Reachable states exploration and model construction done in 24.312 secs.
+Sorting reachable states list...
+
+Time for model construction: 26.478 seconds.
+
+Type:        MDP
+States:      5007548 (1 initial)
+Transitions: 11475748
+Choices:     6350470
+Max/avg:     3/1.27
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 3101 iterations and 204.225 seconds.
+target=1, inf=0, rest=5007547
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.587 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.296 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 8.207 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 441670.8165168762
+Starting Prob1 (min)...
+Prob1 (min) took 3158 iterations and 183.009 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 30: max relative diff=980.490703371, 5.05 sec so far
+Iteration 61: max relative diff=463.916648965, 10.20 sec so far
+Iteration 92: max relative diff=293.447211011, 15.37 sec so far
+Iteration 123: max relative diff=219.835408258, 20.51 sec so far
+Iteration 154: max relative diff=175.668326607, 25.68 sec so far
+Iteration 185: max relative diff=143.810103776, 30.82 sec so far
+Iteration 216: max relative diff=123.414314512, 35.96 sec so far
+Iteration 247: max relative diff=108.054522597, 41.10 sec so far
+Iteration 278: max relative diff=95.015394895, 46.25 sec so far
+Iteration 309: max relative diff=85.6021208857, 51.39 sec so far
+Iteration 340: max relative diff=77.8697886637, 56.53 sec so far
+Iteration 371: max relative diff=70.8163929296, 61.67 sec so far
+Iteration 402: max relative diff=65.4166641379, 66.82 sec so far
+Iteration 433: max relative diff=60.7721421702, 71.96 sec so far
+Iteration 464: max relative diff=56.3598463009, 77.13 sec so far
+Iteration 495: max relative diff=52.8622946972, 82.28 sec so far
+Iteration 526: max relative diff=49.7667605192, 87.42 sec so far
+Iteration 557: max relative diff=46.7481963802, 92.57 sec so far
+Iteration 588: max relative diff=44.2995709248, 97.73 sec so far
+Iteration 619: max relative diff=42.0898357577, 102.89 sec so far
+Iteration 650: max relative diff=39.8954459738, 108.05 sec so far
+Iteration 681: max relative diff=38.0859129661, 113.20 sec so far
+Iteration 712: max relative diff=36.4297302133, 118.35 sec so far
+Iteration 743: max relative diff=34.7628191512, 123.50 sec so far
+Iteration 774: max relative diff=33.3712697679, 128.62 sec so far
+Iteration 805: max relative diff=32.0839562934, 133.75 sec so far
+Iteration 836: max relative diff=30.7748788861, 138.87 sec so far
+Iteration 867: max relative diff=29.6715844803, 143.99 sec so far
+Iteration 898: max relative diff=28.642336679, 149.12 sec so far
+Iteration 929: max relative diff=27.5871078652, 154.24 sec so far
+Iteration 960: max relative diff=26.6909602832, 159.37 sec so far
+Iteration 991: max relative diff=25.8492897579, 164.49 sec so far
+Iteration 1022: max relative diff=24.9806362657, 169.61 sec so far
+Iteration 1053: max relative diff=24.2383323724, 174.74 sec so far
+Iteration 1084: max relative diff=23.5372675843, 179.86 sec so far
+Iteration 1115: max relative diff=22.8097475211, 184.98 sec so far
+Iteration 1146: max relative diff=22.1848197647, 190.10 sec so far
+Iteration 1177: max relative diff=21.5918576223, 195.22 sec so far
+Iteration 1208: max relative diff=20.9736724635, 200.35 sec so far
+Iteration 1239: max relative diff=20.4403308989, 205.47 sec so far
+Iteration 1270: max relative diff=19.9322661856, 210.59 sec so far
+Iteration 1301: max relative diff=19.4004996082, 215.71 sec so far
+Iteration 1332: max relative diff=18.9399917163, 220.83 sec so far
+Iteration 1363: max relative diff=18.4998152988, 225.96 sec so far
+Iteration 1394: max relative diff=18.0375351947, 231.09 sec so far
+Iteration 1425: max relative diff=17.6358994311, 236.21 sec so far
+Iteration 1456: max relative diff=17.2508601866, 241.33 sec so far
+Iteration 1487: max relative diff=16.8452855158, 246.45 sec so far
+Iteration 1518: max relative diff=16.4919135254, 251.57 sec so far
+Iteration 1549: max relative diff=16.1522647191, 256.69 sec so far
+Iteration 1580: max relative diff=15.7935671679, 261.81 sec so far
+Iteration 1611: max relative diff=15.4802543476, 266.94 sec so far
+Iteration 1642: max relative diff=15.1784181874, 272.06 sec so far
+Iteration 1673: max relative diff=14.8589162125, 277.18 sec so far
+Iteration 1704: max relative diff=14.5792175138, 282.31 sec so far
+Iteration 1735: max relative diff=14.3092137441, 287.43 sec so far
+Iteration 1766: max relative diff=14.0228168883, 292.55 sec so far
+Iteration 1797: max relative diff=13.7715992146, 297.67 sec so far
+Iteration 1828: max relative diff=13.5286452802, 302.79 sec so far
+Iteration 1859: max relative diff=13.2704625692, 307.91 sec so far
+Iteration 1890: max relative diff=13.0435871706, 313.03 sec so far
+Iteration 1921: max relative diff=12.8238127235, 318.15 sec so far
+Iteration 1952: max relative diff=12.5898712774, 323.27 sec so far
+Iteration 1983: max relative diff=12.3839641369, 328.38 sec so far
+Iteration 2014: max relative diff=12.1842034781, 333.51 sec so far
+Iteration 2045: max relative diff=11.9712427758, 338.63 sec so far
+Iteration 2076: max relative diff=11.7835258037, 343.75 sec so far
+Iteration 2107: max relative diff=11.6011645226, 348.87 sec so far
+Iteration 2138: max relative diff=11.40648361, 353.99 sec so far
+Iteration 2169: max relative diff=11.234648657, 359.11 sec so far
+Iteration 2200: max relative diff=11.067508648, 364.23 sec so far
+Iteration 2231: max relative diff=10.8888510503, 369.35 sec so far
+Iteration 2262: max relative diff=10.7309645821, 374.46 sec so far
+Iteration 2293: max relative diff=10.5772166846, 379.58 sec so far
+Iteration 2324: max relative diff=10.4126825973, 384.70 sec so far
+Iteration 2355: max relative diff=10.2671126662, 389.82 sec so far
+Iteration 2386: max relative diff=10.1252094841, 394.94 sec so far
+Iteration 2417: max relative diff=9.973187988, 400.06 sec so far
+Iteration 2448: max relative diff=9.83854764459, 405.17 sec so far
+Iteration 2479: max relative diff=9.7071713095, 410.29 sec so far
+Iteration 2510: max relative diff=9.56628747648, 415.41 sec so far
+Iteration 2541: max relative diff=9.44139046139, 420.54 sec so far
+Iteration 2572: max relative diff=9.31941160086, 425.66 sec so far
+Iteration 2603: max relative diff=9.18848481008, 430.78 sec so far
+Iteration 2634: max relative diff=9.0723105249, 435.90 sec so far
+Iteration 2665: max relative diff=8.95875572755, 441.01 sec so far
+Iteration 2696: max relative diff=8.83676651485, 446.11 sec so far
+Iteration 2727: max relative diff=8.72843208187, 451.15 sec so far
+Iteration 2758: max relative diff=8.62245787618, 456.18 sec so far
+Iteration 2789: max relative diff=8.5085213459, 461.22 sec so far
+Iteration 2820: max relative diff=8.40725913774, 466.25 sec so far
+Iteration 2851: max relative diff=8.30813101195, 471.29 sec so far
+Iteration 2882: max relative diff=8.2014753441, 476.32 sec so far
+
+----------------------------------------
+Wallclock time:	901.061
+Return code:	None
+Computation aborted after 901.061 seconds since the time limit of 900 seconds was exceeded.

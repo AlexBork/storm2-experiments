@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=25,slippery=0.2 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	avoid-mdp.25-0.2.goal_max
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:01:46 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=25,slippery=0.2' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-oy1tp7bc
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.717s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	2049851 (3217 nodes)
+Transitions: 	10975773 (48758 nodes)
+Choices: 	4746751
+Reward Models:  none
+Variables: 	rows: 14 meta variables (30 DD variables), columns: 14 meta variables (30 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (31 nodes)
+   * goal
+   * notbad
+-------------------------------------------------------------- 
+
+Model checking property "goal_max": Pmax=? ["notbad" U "goal"] ...
+Result (for initial states): 0.6220983381
+Time for model checking: 6.038s.
+
+----------------------------------------
+Wallclock time:	6.987
+Return code:	0

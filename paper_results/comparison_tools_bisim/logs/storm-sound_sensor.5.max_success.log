@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani sensor.5.jani --janiproperty max_success --sound
+Benchmark:	sensor.5.max_success
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:27:11 2026
+Command line arguments: --jani sensor.5.jani --janiproperty max_success --sound
+Current working directory: /tmp/invocation-73nm75yg
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 12.452s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2781085
+Transitions: 	14851720
+Choices: 	14087370
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (x = 1) -> 113410 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "max_success": Pmax=? [F (x = 1)] ...
+Result (for initial states): 0.9996800197. Solution bounds: [0.99967902, 0.9996810194].
+Time for model checking: 4.605s.
+
+----------------------------------------
+Wallclock time:	17.120
+Return code:	0

@@ -1,0 +1,20 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --exact --bisimulation
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:50:03 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --exact --bisimulation
+Current working directory: /tmp/invocation-sd8l6wyp
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 418.678s.
+
+
+----------------------------------------
+Wallclock time:	462.812
+Return code:	-9

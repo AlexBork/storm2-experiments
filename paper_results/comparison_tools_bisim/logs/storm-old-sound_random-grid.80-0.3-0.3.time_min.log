@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani random-grid.jani --janiproperty time_min --constants N=80,pover=0.3,pstay=0.3 --sound
+Benchmark:	random-grid.80-0.3-0.3.time_min
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 20:04:28 2026
+Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=80,pover=0.3,pstay=0.3' --sound
+Current working directory: /tmp/invocation-0m_4b6ve
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 2.877s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	512000
+Transitions: 	9100789
+Choices: 	3071995
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((x = 80) & (y = 80)) & (z = 80)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": T[exp]min=? [F (((x = 80) & (y = 80)) & (z = 80))] ...
+Result (for initial states): 237.9000116
+Time for model checking: 194.154s.
+
+----------------------------------------
+Wallclock time:	197.074
+Return code:	0

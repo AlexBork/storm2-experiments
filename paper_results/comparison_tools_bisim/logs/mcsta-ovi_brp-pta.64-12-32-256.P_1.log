@@ -1,0 +1,44 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta brp-pta-mdp.jani --props P_1 --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	brp-pta.64-12-32-256.P_1
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta brp-pta-mdp.jani --props P_1 --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+brp-pta-mdp.jani:model: info: brp-pta is an MDP model.
+brp-pta-mdp.jani: info: Need 40 bytes per state.
+brp-pta-mdp.jani: info: Explored 21572157 states for N=64, MAX=12, TD=32, TIME_BOUND=256.
+
+Peak memory usage: 5687 MB
+Analysis results for brp-pta-mdp.jani
+Experiment N=64, MAX=12, TD=32, TIME_BOUND=256
+
++ State space exploration
+  State size: 40 bytes
+  States:     21572157
+  Choices:    28587581
+  Branches:   28832157
+  Rate:       967839 states/s
+  Time:       23.1 s
+
++ Property P_1
+  Probability: 9.353879108386799E-19
+  Bounds:      [9.353871662342198E-19, 9.3538865544314E-19]
+  Time:        7.2 s
+
+  + Optimistic value iteration
+    Total iterations:  48
+    Verif. attempts:   1
+    Verif. iterations: 25
+    Final epsilon:     1E-06
+    Time:              7.2 s
+
+
+----------------------------------------
+Wallclock time:	30.620
+Return code:	0

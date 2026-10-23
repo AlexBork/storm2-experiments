@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.3-4.jani --janiproperty all_before_max --sound
+Benchmark:	csma.3-4.all_before_max
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:13:18 2026
+Command line arguments: --jani csma.3-4.jani --janiproperty all_before_max --sound
+Current working directory: /tmp/invocation-3p2rf01i
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 4.734s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1460287
+Transitions: 	2396727
+Choices: 	1471059
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * collision_max_backoff -> 1427 item(s)
+   * all_delivered -> 13 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "all_before_max": Pmax=? [(!"collision_max_backoff") U "all_delivered"] ...
+Result (for initial states): 0.9324469288. Exact solution.
+Time for model checking: 0.433s.
+
+----------------------------------------
+Wallclock time:	5.217
+Return code:	0

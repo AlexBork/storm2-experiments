@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta firewire.true.jani --props time_min --experiment delay=36,deadline=200 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	firewire.true-36-200.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta firewire.true.jani --props time_min --experiment delay=36,deadline=200 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+firewire.true.jani:model: info: firewire.true is an MDP model.
+firewire.true.jani:variables[7]: info: Expanding variable "s1" into 9 locations in automaton "node1".
+firewire.true.jani:variables[8]: info: Expanding variable "w21" into 10 locations in automaton "wire21".
+firewire.true.jani:variables[12]: info: Expanding variable "s2" into 9 locations in automaton "node2".
+firewire.true.jani: info: Need 16 bytes per state.
+firewire.true.jani: info: Explored 6931981 states for delay=36, deadline=200.
+firewire.true.jani:properties[2]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 2964 MB
+Analysis results for firewire.true.jani
+Experiment delay=36, deadline=200
+
++ State space exploration
+  State size: 16 bytes
+  States:     6931981
+  Choices:    15669366
+  Branches:   15782932
+  Rate:       861544 states/s
+  Time:       8.5 s
+
++ Property time_min
+  Value:  138.25
+  Bounds: [138.25, 138.25]
+  Time:   7.3 s
+
+  + Precomputations
+    Max. prob. 1 states:          6931981
+    Time for max. prob. 1 states: 2.0 s
+
+  + Optimistic value iteration
+    Total iterations:  117
+    Verif. attempts:   1
+    Verif. iterations: 1
+    Final epsilon:     1E-06
+    Time:              5.3 s
+
+
+----------------------------------------
+Wallclock time:	16.170
+Return code:	0

@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	beb.4-8-7.LineSeized
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:41:38 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-1reqtncp
+
+Time for model input parsing: 0.003s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.226s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	20186888 (14639 nodes)
+Transitions: 	35508778 (69450 nodes)
+Choices: 	20949082
+Reward Models:  none
+Variables: 	rows: 20 meta variables (62 DD variables), columns: 20 meta variables (62 DD variables), nondeterminism: 6 meta variables (6 DD variables)
+Labels: 	2
+   * deadlock -> 240263 state(s) (1069 nodes)
+   * init -> 1 state(s) (63 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 18.212s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	92113
+Transitions: 	280099
+Choices: 	107763
+Reward Models:  none
+State Labels: 	3 labels
+   * line_seized -> 1 item(s)
+   * deadlock -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "LineSeized": Pmax=? [F (line_seized)] ...
+Result (for initial states): 0.9998854985. Exact solution.
+Time for model checking: 0.043s.
+
+----------------------------------------
+Wallclock time:	19.885
+Return code:	0

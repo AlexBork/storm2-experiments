@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --exact --bisimulation
+Benchmark:	wlan-large.2.E_1
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 11:43:39 2026
+Command line arguments: --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --exact --bisimulation
+Current working directory: /tmp/invocation-ws0ocw7_
+
+Time for model input parsing: 0.015s.
+
+Time for model construction: 24.049s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3236578
+Transitions: 	6143745
+Choices: 	6123016
+Reward Models:  E_and_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success1_seen -> 85 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 12.211s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1523702
+Transitions: 	2887291
+Choices: 	2871796
+Reward Models:  E_and_rate_reward
+State Labels: 	2 labels
+   * success1_seen -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "E_1": R{"E_and_rate_reward"}max=? [F (success1_seen)] ...
+Result (for initial states): 96061794355/2067456 (approx. 46463.76724). Exact solution.
+Time for model checking: 4.648s.
+
+----------------------------------------
+Wallclock time:	42.717
+Return code:	0

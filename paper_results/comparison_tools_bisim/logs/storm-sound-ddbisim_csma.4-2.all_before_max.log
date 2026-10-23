@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.4-2.jani --janiproperty all_before_max --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	csma.4-2.all_before_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:31:00 2026
+Command line arguments: --jani csma.4-2.jani --janiproperty all_before_max --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-hqq9d817
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.114s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	761962 (6743 nodes)
+Transitions: 	1327068 (52396 nodes)
+Choices: 	825504
+Reward Models:  none
+Variables: 	rows: 24 meta variables (59 DD variables), columns: 24 meta variables (59 DD variables), nondeterminism: 16 meta variables (16 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (60 nodes)
+   * all_delivered
+   * collision_max_backoff
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 4.060s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	9598
+Transitions: 	19552
+Choices: 	11226
+Reward Models:  none
+State Labels: 	6 labels
+   * (((((cd4 = 2) & (s4 = 1)) & (b = 2)) | (((cd2 = 2) & (s2 = 1)) & (b = 2))) | ((((cd3 = 2) & (s3 = 1)) & (b = 2)) | (((cd1 = 2) & (s1 = 1)) & (b = 2)))) -> 126 item(s)
+   * (((s4 = 4) & (s2 = 4)) & ((s3 = 4) & (s1 = 4))) -> 1 item(s)
+   * collision_max_backoff -> 126 item(s)
+   * all_delivered -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "all_before_max": Pmax=? [(!"collision_max_backoff") U "all_delivered"] ...
+Result (for initial states): 0.7764601493. Exact solution.
+Time for model checking: 0.003s.
+
+----------------------------------------
+Wallclock time:	5.575
+Return code:	0

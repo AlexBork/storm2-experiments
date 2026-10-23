@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani consensus-mec.4.jani --janiproperty disagree --constants K=2 --sound --bisimulation
+Benchmark:	consensus-mec.4-2.disagree
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:23:06 2026
+Command line arguments: --jani consensus-mec.4.jani --janiproperty disagree --constants K=2 --sound --bisimulation
+Current working directory: /tmp/invocation-0lbozwo6
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.821s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	226560
+Transitions: 	1182784
+Choices: 	832000
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 640 item(s)
+   * agree -> 48500 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.429s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	930
+Transitions: 	3157
+Choices: 	2708
+Reward Models:  none
+State Labels: 	3 labels
+   * finished -> 1 item(s)
+   * agree -> 306 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "disagree": Pmax=? [F ("finished" & (!"agree"))] ...
+Result (for initial states): 0.294431877. Solution bounds: [0.2944315825, 0.2944321714].
+Time for model checking: 0.003s.
+
+----------------------------------------
+Wallclock time:	1.314
+Return code:	0

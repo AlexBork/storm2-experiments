@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan.6.jani --janiproperty time_min --constants COL=0 --sound
+Benchmark:	wlan.6-0.time_min
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:16:56 2026
+Command line arguments: --jani wlan.6.jani --janiproperty time_min --constants COL=0 --sound
+Current working directory: /tmp/invocation-zvp3full
+
+Time for model input parsing: 0.011s.
+
+Time for model construction: 16.176s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	5007548
+Transitions: 	11475748
+Choices: 	6350470
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R{"time"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 1325. Solution bounds: [0, ?].
+Time for model checking: 3.410s.
+
+----------------------------------------
+Wallclock time:	19.658
+Return code:	0

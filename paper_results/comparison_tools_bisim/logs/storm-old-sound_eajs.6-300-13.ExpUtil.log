@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani eajs.6.jani --janiproperty ExpUtil --constants energy_capacity=300,B=13 --sound
+Benchmark:	eajs.6-300-13.ExpUtil
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:53:40 2026
+Command line arguments: --jani eajs.6.jani --janiproperty ExpUtil --constants 'energy_capacity=300,B=13' --sound
+Current working directory: /tmp/invocation-t0u9zj45
+
+Time for model input parsing: 0.004s.
+
+Time for model construction: 79.729s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	7901694
+Transitions: 	19679927
+Choices: 	11882922
+Reward Models:  utilityLocal
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (battery_load = 0) -> 28620 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "ExpUtil": R[exp]{"utilityLocal"}max=? [F (battery_load = 0)] ...
+Result (for initial states): 12.05111082
+Time for model checking: 7.947s.
+
+----------------------------------------
+Wallclock time:	87.773
+Return code:	0

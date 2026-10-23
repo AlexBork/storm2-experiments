@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani evade-mdp.jani --janiproperty prob_max --constants N=10,slippery=0.7 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	evade-mdp.10-0.7.prob_max
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:24:35 2026
+Command line arguments: --jani evade-mdp.jani --janiproperty prob_max --constants 'N=10,slippery=0.7' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-o8xtnywk
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.382s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1611899 (88 nodes)
+Transitions: 	19107467 (31520 nodes)
+Choices: 	4755775
+Reward Models:  none
+Variables: 	rows: 12 meta variables (30 DD variables), columns: 12 meta variables (30 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (31 nodes)
+   * goal
+   * notbad
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? ["notbad" U "goal"] ...
+Result (for initial states): 0.9986631971
+Time for model checking: 67.152s.
+
+----------------------------------------
+Wallclock time:	67.763
+Return code:	0

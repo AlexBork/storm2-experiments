@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:22:52 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-91uo5dpq
+
+Time for model input parsing: 0.002s.
+
+WARN  (storm-cli.cpp:27): The model checking query does not seem to be supported for the selected engine. Storm will try to solve the query, but you will most likely get an error for at least one of the provided properties.
+Using Sylvan with 4 parallel threads.
+ERROR (DdJaniModelBuilder.cpp:2415): The symbolic JANI model builder currently does not support assignment levels.
+ERROR (storm-cli.cpp:49): An exception caused Storm to terminate. The message of the exception is: WrongFormatException: The symbolic JANI model builder currently does not support assignment levels.
+
+----------------------------------------
+Wallclock time:	0.067
+Return code:	1

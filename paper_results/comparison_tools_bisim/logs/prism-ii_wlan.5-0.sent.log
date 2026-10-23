@@ -1,0 +1,78 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g wlan.5.prism wlan.props --prop sent -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan.5-0.sent
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:23:05 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan.5.prism wlan.props --prop sent -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan.5.prism"...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan.props"...
+
+7 properties:
+(1) "collisions": Pmax=? [ F col=COL ]
+(2) "cost_max": R{"cost"}max=? [ F s1=12&s2=12 ]
+(3) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(4) "num_collisions": R{"collisions"}max=? [ F s1=12&s2=12 ]
+(5) "sent": P>=1 [ F s1=12&s2=12 ]
+(6) "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+(7) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "sent": P>=1 [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: COL=0
+
+Computing reachable states...
+
+Reachability (BFS): 170 iterations in 0.21 seconds (average 0.001235, setup 0.00)
+
+Time for model construction: 0.285 seconds.
+
+Type:        MDP
+States:      1295218 (1 initial)
+Transitions: 2929960
+
+Transition matrix: 17250 nodes (7 terminal), 2929960 minterms, vars: 45r/45c/7nd
+
+Probability bound in formula is 0/1 so not computing exact probabilities...
+
+Prob0E: 1622 iterations in 14.65 seconds (average 0.009032, setup 0.00)
+
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1295218, no = 0, maybe = 0
+
+Property satisfied in 1 of 1 initial states.
+
+Time for model checking: 14.645 seconds.
+
+Result: true
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	15.448
+Return code:	0

@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	flexible-manufacturing.3-1.M2Fail_E
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:56:31 2026
+Command line arguments: --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-lkzembwg
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.355s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	1636 (303 nodes)
+Transitions: 	3269 (10813 nodes)
+Choices: 	1636
+Reward Models:  none
+Variables: 	rows: 23 meta variables (31 DD variables), columns: 23 meta variables (31 DD variables), nondeterminism: 1 meta variables (1 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (32 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "M2Fail_E": Tmin=? [F (((M2on > 0) & (M2go = 0)) & (Spares = 0))] ...
+WARN  (OptimisticValueIterationHelper.cpp:230): Optimistic Value Iteration did not terminate after 20 refinements. It might be stuck.
+Result (for initial states): 4892259.293
+Time for model checking: 490.768s.
+
+----------------------------------------
+Wallclock time:	491.250
+Return code:	0

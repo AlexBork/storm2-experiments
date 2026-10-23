@@ -1,0 +1,11 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 avoid-mdp.25-0.2.goal_max
+Benchmark:	avoid-mdp.25-0.2.goal_max.absolute-25
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+
+----------------------------------------
+Wallclock time:	901.120
+Return code:	None
+Computation aborted after 901.120 seconds since the time limit of 900 seconds was exceeded.

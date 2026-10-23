@@ -1,0 +1,95 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g zeroconf.prism zeroconf.props --prop correct_max -const N=1000,K=8,reset=false -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	zeroconf.1000-8-false.correct_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:36:08 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g zeroconf.prism zeroconf.props --prop correct_max -const 'N=1000,K=8,reset=false' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "zeroconf.prism"...
+
+Type:        MDP
+Modules:     environment host0
+Actions:     [] [reset] [time] [send] [rec]
+Variables:   b_ip7 b_ip6 b_ip5 b_ip4 b_ip3 b_ip2 b_ip1 b_ip0 n n0 n1 b z ip_mess x y coll probes mess defend ip l
+
+Parsing properties file "zeroconf.props"...
+
+2 properties:
+(1) "correct_max": Pmax=? [ F (l=4&ip=1) ]
+(2) "correct_min": Pmin=? [ F (l=4&ip=1) ]
+
+---------------------------------------------------------------------
+
+Model checking: "correct_max": Pmax=? [ F (l=4&ip=1) ]
+Model constants: reset=false,N=1000,K=8
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: reset=false,N=1000,K=8
+
+Computing reachable states...
+
+Reachability (BFS): 592 iterations in 43.29 seconds (average 0.073125, setup 0.00)
+
+Time for model construction: 43.783 seconds.
+
+Type:        MDP
+States:      1870338 (1 initial)
+Transitions: 4245554
+
+Transition matrix: 154038 nodes (6 terminal), 4245554 minterms, vars: 58r/58c/7nd
+
+Prob0A: 131 iterations in 2.31 seconds (average 0.017634, setup 0.00)
+
+Prob1E: 2127 iterations in 49.65 seconds (average 0.023343, setup 0.00)
+
+yes = 171749, no = 611330, maybe = 1087259
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 2.363 seconds, found 0 MECs.
+Time for building MEC quotient: 9.521 seconds.
+
+Quotient MDP:
+States:      1087261 (1 initial)
+Transitions: 3619193
+
+Transition matrix: 1267651 nodes (6 terminal), 3619193 minterms, vars: 58r/58c/66nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=1087261, nc=1997482, nnz=2477184, k=4] [31.3 MB]
+Creating vector for yes... [8.3 MB]
+Creating vector for maybe... [8.3 MB]
+Allocating iteration vectors... [4 x 8.3 MB]
+TOTAL: [81.1 MB]
+
+Starting iterations (interval iteration)...
+Iteration 347: max relative diff=71.524503, 5.01 sec so far
+Max relative diff between upper and lower bound on convergence: 9.85427E-07
+Iterative method (interval iteration): 664 iterations in 11.94 seconds (average 0.014458, setup 2.34)
+
+Value in the initial state: 4.801413635072433E-8
+
+Time for model checking: 78.38 seconds.
+
+Result: 4.801413635072433E-8
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	122.864
+Return code:	0

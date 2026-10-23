@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani wlan.5.jani --janiproperty cost_min --constants COL=0 --exact
+Benchmark:	wlan.5-0.cost_min
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:43:34 2026
+Command line arguments: --jani wlan.5.jani --janiproperty cost_min --constants COL=0 --exact
+Current working directory: /tmp/invocation-ren6sk51
+
+Time for model input parsing: 0.008s.
+
+Time for model construction: 28.887s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1295218
+Transitions: 	2929960
+Choices: 	1646074
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R[exp]{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625 (approx. 7625)
+Time for model checking: 4.402s.
+
+----------------------------------------
+Wallclock time:	33.863
+Return code:	0

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - sensor.5.max_success.absolute-25</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>sensor.5.max_success.absolute-25</h1>
+<p class="sub">prism-default &middot; absolute-25 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>597.384 s</td></tr><tr><th>result</th><td>0.9815471874999999</td></tr><tr><th>difference</th><td>1e-16</td></tr><tr><th>states</th><td>3,565,990</td></tr></table>
+<p class="sub">prism-default_sensor.5.max_success.absolute-25.log</p>
+<pre>Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel sensor.5.max_success.tra,sta,lab sensor.5.max_success.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	sensor.5.max_success.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 19:41:55 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'sensor.5.max_success.tra,sta,lab' sensor.5.max_success.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;sensor.5.max_success.tra&quot;, &quot;sensor.5.max_success.sta&quot;, &quot;sensor.5.max_success.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;sensor.5.max_success.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 64.098 seconds.
+
+Type:        IMDP
+States:      3565990 (1 initial)
+Transitions: 43889000
+Choices:     42791880
+Max/avg:     12/12.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 16 iterations and 45.96 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 108 iterations and 276.595 seconds.
+target=898315, yes=1011725, no=816715, maybe=1737550
+Starting value iteration (maxmin)...
+Iteration 2: 7.00 sec so far
+Iteration 4: 13.92 sec so far
+Iteration 6: 20.96 sec so far
+Iteration 8: 28.26 sec so far
+Iteration 10: 35.42 sec so far
+Iteration 12: 42.35 sec so far
+Iteration 14: 49.24 sec so far
+Iteration 16: 56.20 sec so far
+Iteration 18: 63.24 sec so far
+Iteration 20: 70.52 sec so far
+Iteration 22: 77.69 sec so far
+Iteration 24: 84.62 sec so far
+Iteration 26: 91.52 sec so far
+Iteration 28: 98.47 sec so far
+Iteration 30: 105.47 sec so far
+Iteration 32: 112.80 sec so far
+Iteration 34: 120.02 sec so far
+Iteration 36: 126.97 sec so far
+Iteration 38: 133.95 sec so far
+Iteration 40: 140.93 sec so far
+Iteration 42: 147.94 sec so far
+Iteration 44: 155.22 sec so far
+Iteration 46: 162.54 sec so far
+Iteration 48: 169.50 sec so far
+Iteration 50: 176.42 sec so far
+Iteration 52: 183.36 sec so far
+Iteration 54: 190.31 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 56 iterations, 1200360840 multiplications and 197.902 seconds.
+Probabilistic reachability took 197.904 seconds.
+
+Value in the initial state: 0.9815471874999999
+
+Time for model checking: 531.88 seconds.
+
+Result: 0.9815471874999999 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	597.384
+Return code:	0
+</pre>
+</body></html>

@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact
+Benchmark:	consensus.4-4.c2
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:25:42 2026
+Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact
+Current working directory: /tmp/invocation-1x24fuu_
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.304s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	43136
+Transitions: 	144352
+Choices: 	115840
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 64 item(s)
+   * all_coins_equal_1 -> 497 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
+Result (for initial states): 852021/2097152 (approx. 0.4062752724)
+Time for model checking: 0.387s.
+
+----------------------------------------
+Wallclock time:	0.743
+Return code:	0

@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 zeroconf.20-2-false.correct_max
+Benchmark:	zeroconf.20-2-false.correct_max.absolute-005
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 5.439419531207653e-6
+Iterations: 66
+Maximum Bellman residual: 7.705041343841756e-7
+Time for reading: 1.366226896s
+Time for solving: 5.515882511s
+
+----------------------------------------
+Wallclock time:	7.353
+Return code:	0

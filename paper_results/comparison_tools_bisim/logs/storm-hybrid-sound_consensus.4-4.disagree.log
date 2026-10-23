@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani consensus.4.jani --janiproperty disagree --constants K=4 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	consensus.4-4.disagree
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:22:29 2026
+Command line arguments: --jani consensus.4.jani --janiproperty disagree --constants K=4 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-1nfvrw_h
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.271s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	43136 (111 nodes)
+Transitions: 	144352 (2372 nodes)
+Choices: 	115840
+Reward Models:  none
+Variables: 	rows: 13 meta variables (22 DD variables), columns: 13 meta variables (22 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (23 nodes)
+   * agree
+   * finished
+-------------------------------------------------------------- 
+
+Model checking property "disagree": Pmax=? [F ("finished" & (!"agree"))] ...
+Result (for initial states): 0.1560730694
+Time for model checking: 0.983s.
+
+----------------------------------------
+Wallclock time:	1.478
+Return code:	0

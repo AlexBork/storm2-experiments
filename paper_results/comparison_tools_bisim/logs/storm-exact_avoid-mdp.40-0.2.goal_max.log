@@ -1,0 +1,35 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=40,slippery=0.2 --exact
+Benchmark:	avoid-mdp.40-0.2.goal_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:44:05 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=40,slippery=0.2' --exact
+Current working directory: /tmp/invocation-pq8qcqy7
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 134.891s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	13803441
+Transitions: 	77376441
+Choices: 	32974641
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * notbad -> 13264961 item(s)
+   * goal -> 3760 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal_max": Pmax=? ["notbad" U "goal"] ...
+
+----------------------------------------
+Wallclock time:	183.514
+Return code:	-9

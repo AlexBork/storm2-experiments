@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-old-sound - firewire.true-36-200.time_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-36-200.time_max</h1>
+<p class="sub">storm-old-sound &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>365</code></p>
+<p class="sub">reference result: <code>365</code></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>901.065 s</td></tr><tr><th>states</th><td>6,931,981</td></tr></table>
+<p class="sub">storm-old-sound_firewire.true-36-200.time_max.log</p>
+<pre>Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani firewire.true.jani --janiproperty time_max --constants delay=36,deadline=200 --sound
+Benchmark:	firewire.true-36-200.time_max
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:55:16 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_max --constants 'delay=36,deadline=200' --sound
+Current working directory: /tmp/invocation-ncidt1ns
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 43.206s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	6931981
+Transitions: 	15782932
+Choices: 	15669366
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * done -&gt; 192 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property &quot;time_max&quot;: R[exp]{&quot;time&quot;}max=? [F &quot;done&quot;] ...
+
+----------------------------------------
+Wallclock time:	901.065
+Return code:	None
+Computation aborted after 901.065 seconds since the time limit of 900 seconds was exceeded.
+</pre>
+</body></html>

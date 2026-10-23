@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani random-grid.jani --janiproperty prob_max --constants N=80,pover=0.3,pstay=0.3 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	random-grid.80-0.3-0.3.prob_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 14:32:17 2026
+Command line arguments: --jani random-grid.jani --janiproperty prob_max --constants 'N=80,pover=0.3,pstay=0.3' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-p5d0utrl
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.429s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	511920 (24 nodes)
+Transitions: 	8892703 (911 nodes)
+Choices: 	3008315
+Reward Models:  none
+Variables: 	rows: 6 meta variables (24 DD variables), columns: 6 meta variables (24 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (25 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 24.202s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	499281
+Transitions: 	8880064
+Choices: 	2995676
+Reward Models:  none
+State Labels: 	4 labels
+   * ((x != (80 - 1)) & (y != (80 - 2))) -> 499280 item(s)
+   * (((x = 80) & (y = 80)) & (z = 80)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [((x != (80 - 1)) & (y != (80 - 2))) U (((x = 80) & (y = 80)) & (z = 80))] ...
+Result (for initial states): 0.1836735694. Solution bounds: [0.1836733858, 0.1836737531].
+Time for model checking: 0.725s.
+
+----------------------------------------
+Wallclock time:	25.746
+Return code:	0

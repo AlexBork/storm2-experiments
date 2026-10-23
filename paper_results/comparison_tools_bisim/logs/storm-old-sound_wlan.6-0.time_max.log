@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani wlan.6.jani --janiproperty time_max --constants COL=0 --sound
+Benchmark:	wlan.6-0.time_max
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:41:14 2026
+Command line arguments: --jani wlan.6.jani --janiproperty time_max --constants COL=0 --sound
+Current working directory: /tmp/invocation-acm9n05g
+
+Time for model input parsing: 0.011s.
+
+Time for model construction: 18.819s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	5007548
+Transitions: 	11475748
+Choices: 	6350470
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R[exp]{"time"}max=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 3883.499646
+Time for model checking: 154.562s.
+
+----------------------------------------
+Wallclock time:	173.449
+Return code:	0

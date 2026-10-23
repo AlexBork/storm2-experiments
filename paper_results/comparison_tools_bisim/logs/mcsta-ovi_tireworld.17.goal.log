@@ -1,0 +1,43 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta tireworld.17.jani --props goal --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	tireworld.17.goal
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta tireworld.17.jani --props goal --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+tireworld.17.jani:model: info: jani_from_ppddl is an MDP model.
+tireworld.17.jani: info: Need 16 bytes per state.
+tireworld.17.jani: info: Explored 8670 states.
+
+Peak memory usage: 76 MB
+Analysis results for tireworld.17.jani
+
++ State space exploration
+  State size: 16 bytes
+  States:     8670
+  Choices:    18662
+  Branches:   33436
+  Rate:       152105 states/s
+  Time:       0.1 s
+
++ Property goal
+  Probability: 0.23328000323607725
+  Bounds:      [0.23327999999502114, 0.23328000647713337]
+  Time:        0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  38
+    Verif. attempts:   1
+    Verif. iterations: 5
+    Final epsilon:     1E-06
+    Time:              0.0 s
+
+
+----------------------------------------
+Wallclock time:	0.275
+Return code:	0

@@ -1,0 +1,105 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan.5-0.cost_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:02:05 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan.5.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan.5.prism"...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan.props"...
+
+7 properties:
+(1) "collisions": Pmax=? [ F col=COL ]
+(2) "cost_max": R{"cost"}max=? [ F s1=12&s2=12 ]
+(3) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(4) "num_collisions": R{"collisions"}max=? [ F s1=12&s2=12 ]
+(5) "sent": P>=1 [ F s1=12&s2=12 ]
+(6) "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+(7) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 628915 1295218 states
+Reachable states exploration and model construction done in 5.41 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.057 seconds.
+
+Type:        MDP
+States:      1295218 (1 initial)
+Transitions: 2929960
+Choices:     1646074
+Max/avg:     3/1.27
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 1565 iterations and 25.3 seconds.
+target=1, inf=0, rest=1295217
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.228 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.088 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 1.648 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 424604.2917251587
+Starting Prob1 (min)...
+Prob1 (min) took 1622 iterations and 24.081 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 115: max relative diff=228.515833365, 5.01 sec so far
+Iteration 231: max relative diff=110.737971507, 10.01 sec so far
+Iteration 347: max relative diff=72.8442246479, 15.02 sec so far
+Iteration 463: max relative diff=54.5038289837, 20.03 sec so far
+Iteration 579: max relative diff=43.2296137214, 25.03 sec so far
+Iteration 695: max relative diff=35.7622763398, 30.04 sec so far
+Iteration 811: max relative diff=30.5690923216, 35.05 sec so far
+Iteration 927: max relative diff=26.5717072549, 40.05 sec so far
+Iteration 1044: max relative diff=23.4728698401, 45.10 sec so far
+Iteration 1160: max relative diff=21.0002223692, 50.11 sec so far
+Iteration 1276: max relative diff=19.0285043267, 55.13 sec so far
+Iteration 1392: max relative diff=17.3414380875, 60.15 sec so far
+Iteration 1508: max relative diff=15.9165056464, 65.17 sec so far
+Max relative diff between upper and lower bound on convergence: 1.27176250361e-07
+Interval iteration (min, with Power method) took 1587 iterations, 9299689866 multiplications and 68.647 seconds.
+Maximum finite value in solution vector at end of interval iteration: 424442.02728271484
+Expected reachability took 119.947 seconds.
+
+Value in the initial state: 7625.0
+
+Time for model checking: 120.41 seconds.
+
+Result: 7625.0 (+/- 9.697189090029495E-4; rel err 1.2717625036104256E-7)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	126.961
+Return code:	0

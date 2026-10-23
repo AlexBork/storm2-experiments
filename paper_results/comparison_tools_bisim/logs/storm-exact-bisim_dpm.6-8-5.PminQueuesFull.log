@@ -1,0 +1,20 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani dpm.jani --janiproperty PminQueuesFull --constants N=6,C=8,TIME_BOUND=5 --exact --bisimulation
+Benchmark:	dpm.6-8-5.PminQueuesFull
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 11:51:41 2026
+Command line arguments: --jani dpm.jani --janiproperty PminQueuesFull --constants 'N=6,C=8,TIME_BOUND=5' --exact --bisimulation
+Current working directory: /tmp/invocation-by4yfa86
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 199.971s.
+
+
+----------------------------------------
+Wallclock time:	228.553
+Return code:	-9

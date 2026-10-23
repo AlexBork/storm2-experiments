@@ -1,0 +1,300 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{pgfplots}\pgfplotsset{compat=1.18}
+\input{pomdp-instance-plots.tex}
+\StormPOMDPLoadData{cutoff-threshold-plot-data.csv}
+\begin{document}
+665 runs; cumulative wall-clock runtime: 21285.64 seconds (5.913 hours).
+
+Sources: \texttt{\detokenize{experiments/logs}}.
+
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{grid_grid_rewmin_sl0.1}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-grid_grid_rewmin_sl0.1.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-grid_grid_rewmin_sl0.1.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{grid_grid_rewmin_sl0.3}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-grid_grid_rewmin_sl0.3.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-grid_grid_rewmin_sl0.3.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{grid-avoid_grid-avoid_prbmax_sl0.1}}}
+Objective: prb max. Discretisation reference: \texttt{discr004s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-grid-avoid_grid-avoid_prbmax_sl0.1.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-grid-avoid_grid-avoid_prbmax_sl0.1.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+The discretisation and MDP value reference lines coincide.
+
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{samplerocks_samplerocks_rewmin_N12}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-samplerocks_samplerocks_rewmin_N12.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-samplerocks_samplerocks_rewmin_N12.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{samplerocks_samplerocks_rewmin_N16}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-samplerocks_samplerocks_rewmin_N16.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-samplerocks_samplerocks_rewmin_N16.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{drone_drone_prbmax_N4-R1}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-drone_drone_prbmax_N4-R1.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-drone_drone_prbmax_N4-R1.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{drone_drone_prbmax_N4-R2}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-drone_drone_prbmax_N4-R2.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-drone_drone_prbmax_N4-R2.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{drone_drone_prbmax_N5-R3}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-drone_drone_prbmax_N5-R3.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-drone_drone_prbmax_N5-R3.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{drone_drone_prbmax_N6-R3}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-drone_drone_prbmax_N6-R3.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-drone_drone_prbmax_N6-R3.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{lanes-100_lanes-100_rewmin_}}}
+Objective: rew min. Discretisation reference: \texttt{discr004s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-lanes-100_lanes-100_rewmin_.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-lanes-100_lanes-100_rewmin_.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 20,000,000 (killed), 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{grid-large-30-5_grid-large-30-5_rewmin_}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-grid-large-30-5_grid-large-30-5_rewmin_.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-grid-large-30-5_grid-large-30-5_rewmin_.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{network2_network2_rewmin_T8-K20}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-network2_network2_rewmin_T8-K20.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-network2_network2_rewmin_T8-K20.tex}
+\end{minipage}
+\par\medskip
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{network3_network3_rewmin_T8-K20}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-network3_network3_rewmin_T8-K20.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-network3_network3_rewmin_T8-K20.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{network-priorities2_network-priorities2_rewmax_T8-K20}}}
+Objective: rew max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-network-priorities2_network-priorities2_rewmax_T8-K20.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-network-priorities2_network-priorities2_rewmax_T8-K20.tex}
+\end{minipage}
+\par\medskip
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{network-priorities3_network-priorities3_rewmax_T8-K20}}}
+Objective: rew max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-network-priorities3_network-priorities3_rewmax_T8-K20.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-network-priorities3_network-priorities3_rewmax_T8-K20.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (timeout), 40,000,000 (timeout), 50,000,000 (timeout). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{maze2_maze2_rewmin_sl0.1}}}
+Objective: rew min. Discretisation reference: \texttt{discr004s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-maze2_maze2_rewmin_sl0.1.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-maze2_maze2_rewmin_sl0.1.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{maze2_maze2_rewmin_sl0.3}}}
+Objective: rew min. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-maze2_maze2_rewmin_sl0.3.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-maze2_maze2_rewmin_sl0.3.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 30,000,000 (killed), 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{refuel_refuel_prbmax_N06}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-refuel_refuel_prbmax_N06.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-refuel_refuel_prbmax_N06.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\clearpage
+\noindent\begin{minipage}{\linewidth}
+\section*{\small\texttt{\detokenize{refuel_refuel_prbmax_N08}}}
+Objective: prb max. Discretisation reference: \texttt{discr005s}.
+
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/value-refuel_refuel_prbmax_N08.tex}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\centering
+\input{general-plots/cutoff-threshold/runtime-refuel_refuel_prbmax_N08.tex}
+\end{minipage}
+\par\medskip
+Unavailable bounds: 40,000,000 (killed), 50,000,000 (killed). Failed runs appear on the separate Failure line.
+
+\end{minipage}\par\bigskip
+\end{document}

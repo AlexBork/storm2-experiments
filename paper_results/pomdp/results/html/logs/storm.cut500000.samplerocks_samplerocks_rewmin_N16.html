@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut500000.samplerocks_samplerocks_rewmin_N16</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut500000.samplerocks_samplerocks_rewmin_N16</h1>
+<dl>
+<dt>Benchmark</dt><dd>samplerocks_samplerocks_rewmin_N16</dd>
+<dt>Configuration</dt><dd>storm.cut500000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≤ 44</dd>
+<dt>Wall-clock time (s)</dt><dd>2.2</dd>
+<dt>Time limit (s)</dt><dd>900</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/logs/cut500000_samplerocks_samplerocks_rewmin_N16.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 500000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000
+Benchmark:	samplerocks_samplerocks_rewmin_N16
+Configuration:	cut500000
+Repetition:	1
+Time limit:	900
+Output:
+Storm-POMDP 1.14.0 (dev)
+
+Date: Wed Oct 14 23:00:56 2026
+Command line arguments: --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000
+Current working directory: /tmp/invocation-ibf7kv5s
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.090s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	11017
+Transitions: 	68388
+Choices: 	54561
+Observations: 	2761
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -&gt; 68 item(s)
+   * init -&gt; 1 item(s)
+   * goal -&gt; 612 item(s)
+Choice Labels: 	10 labels
+   * placement -&gt; 1 item(s)
+   * r1sense -&gt; 7338 item(s)
+   * r2sense -&gt; 7338 item(s)
+   * west -&gt; 9792 item(s)
+   * r2sample -&gt; 18 item(s)
+   * north -&gt; 9792 item(s)
+   * finish -&gt; 612 item(s)
+   * south -&gt; 9792 item(s)
+   * east -&gt; 9792 item(s)
+   * r1sample -&gt; 18 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Rmin=? [F &quot;goal&quot;]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 500002 beliefs discovered, 134075 beliefs explored.
+Constructed belief MDP: 500003 states, 1902227 choices, 2170375 transitions.
+Time for exploring beliefs: 962ms.
+Time for building the belief MDP: 417ms.
+Time for analyzing the belief MDP: 312ms.
+
+Result: ≤ 44
+Time for POMDP analysis: 2.015s.
+
+Performance statistics:
+  * peak memory usage: 613MB
+  * CPU time: 2.022s
+  * wallclock time: 2.129s
+
+----------------------------------------
+Wallclock time:	2.200
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut500000.samplerocks_samplerocks_rewmin_N16&quot;,
+  &quot;benchmark-id&quot;: &quot;samplerocks_samplerocks_rewmin_N16&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut500000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 500000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000&quot;
+  ],
+  &quot;time-limit&quot;: 900,
+  &quot;log-dir&quot;: &quot;experiments/logs&quot;,
+  &quot;log&quot;: &quot;experiments/logs/cut500000_samplerocks_samplerocks_rewmin_N16.log&quot;,
+  &quot;wallclock-time&quot;: 2.2,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 500000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;samplerocks_samplerocks_rewmin_N16&quot;,
+    &quot;benchmark-set&quot;: &quot;samplerocks&quot;,
+    &quot;name&quot;: &quot;samplerocks&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;N&quot;: 16
+      },
+      &quot;file&quot;: &quot;samplerocks/samplerocks.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;samplerocks/samplerocks.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 500000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut500000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 500000
+  },
+  &quot;size-threshold&quot;: 500000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.09,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 11017,
+    &quot;transitions&quot;: 68388,
+    &quot;choices&quot;: 54561,
+    &quot;observations&quot;: 2761
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 500003,
+    &quot;choices&quot;: 1902227,
+    &quot;transitions&quot;: 2170375,
+    &quot;expl-time&quot;: 0.962,
+    &quot;build-time&quot;: 0.417,
+    &quot;chk-time&quot;: 0.312
+  },
+  &quot;result&quot;: &quot;≤ 44&quot;,
+  &quot;total-chk-time&quot;: 2.015
+}
+</pre></details>
+</body>
+</html>

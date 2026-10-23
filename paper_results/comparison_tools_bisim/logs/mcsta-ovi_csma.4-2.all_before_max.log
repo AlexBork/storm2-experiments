@@ -1,0 +1,43 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta csma.4-2.jani --props all_before_max --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	csma.4-2.all_before_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta csma.4-2.jani --props all_before_max --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+csma.4-2.jani:model: info: csma.4-2 is an MDP model.
+csma.4-2.jani: info: Need 24 bytes per state.
+csma.4-2.jani: info: Explored 561286 states.
+
+Peak memory usage: 252 MB
+Analysis results for csma.4-2.jani
+
++ State space exploration
+  State size: 24 bytes
+  States:     561286
+  Choices:    609147
+  Branches:   982107
+  Rate:       578645 states/s
+  Time:       1.0 s
+
++ Property all_before_max
+  Probability: 0.776460505157191
+  Bounds:      [0.7764601493129573, 0.7764608610014248]
+  Time:        0.2 s
+
+  + Optimistic value iteration
+    Total iterations:  46
+    Verif. attempts:   1
+    Verif. iterations: 8
+    Final epsilon:     1E-06
+    Time:              0.2 s
+
+
+----------------------------------------
+Wallclock time:	1.444
+Return code:	0

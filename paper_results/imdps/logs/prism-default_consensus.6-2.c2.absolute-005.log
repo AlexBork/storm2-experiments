@@ -1,0 +1,126 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel consensus.6-2.c2.tra,sta,lab consensus.6-2.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	consensus.6-2.c2.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 18:52:16 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'consensus.6-2.c2.tra,sta,lab' consensus.6-2.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "consensus.6-2.c2.tra", "consensus.6-2.c2.sta", "consensus.6-2.c2.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.6-2.c2.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 16.882 seconds.
+
+Type:        IMDP
+States:      1258240 (1 initial)
+Transitions: 9401280
+Choices:     7549440
+Max/avg:     6/6.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 97 iterations and 43.224 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 1531 iterations and 460.236 seconds.
+target=6, yes=13635, no=880138, maybe=364467
+Starting value iteration (minmax)...
+Iteration 11: 5.11 sec so far
+Iteration 22: 10.14 sec so far
+Iteration 33: 15.30 sec so far
+Iteration 44: 20.37 sec so far
+Iteration 55: 25.43 sec so far
+Iteration 66: 30.50 sec so far
+Iteration 77: 35.75 sec so far
+Iteration 88: 40.79 sec so far
+Iteration 99: 45.84 sec so far
+Iteration 111: 51.29 sec so far
+Iteration 122: 56.48 sec so far
+Iteration 133: 61.52 sec so far
+Iteration 144: 66.59 sec so far
+Iteration 155: 71.63 sec so far
+Iteration 166: 76.81 sec so far
+Iteration 177: 81.92 sec so far
+Iteration 188: 86.98 sec so far
+Iteration 200: 92.41 sec so far
+Iteration 211: 97.53 sec so far
+Iteration 222: 102.54 sec so far
+Iteration 234: 107.95 sec so far
+Iteration 246: 113.34 sec so far
+Iteration 257: 118.40 sec so far
+Iteration 269: 123.79 sec so far
+Iteration 281: 129.13 sec so far
+Iteration 293: 134.50 sec so far
+Iteration 304: 139.57 sec so far
+Iteration 316: 144.94 sec so far
+Iteration 328: 150.28 sec so far
+Iteration 340: 155.63 sec so far
+Iteration 351: 160.71 sec so far
+Iteration 363: 166.08 sec so far
+Iteration 375: 171.43 sec so far
+Iteration 387: 176.82 sec so far
+Iteration 398: 181.92 sec so far
+Iteration 410: 187.28 sec so far
+Iteration 422: 192.61 sec so far
+Iteration 434: 197.95 sec so far
+Iteration 445: 203.07 sec so far
+Iteration 457: 208.43 sec so far
+Iteration 469: 213.82 sec so far
+Iteration 481: 219.17 sec so far
+Iteration 492: 224.27 sec so far
+Iteration 504: 229.64 sec so far
+Iteration 516: 235.02 sec so far
+Iteration 528: 240.41 sec so far
+Iteration 539: 245.55 sec so far
+Iteration 551: 250.92 sec so far
+Iteration 563: 256.29 sec so far
+Iteration 575: 261.60 sec so far
+Iteration 586: 266.66 sec so far
+Iteration 598: 272.02 sec so far
+Iteration 610: 277.42 sec so far
+Iteration 622: 282.81 sec so far
+Iteration 633: 287.88 sec so far
+Iteration 645: 293.20 sec so far
+Iteration 657: 298.52 sec so far
+Iteration 669: 303.89 sec so far
+Iteration 680: 309.01 sec so far
+Iteration 692: 314.41 sec so far
+Iteration 704: 319.82 sec so far
+Iteration 716: 325.20 sec so far
+Iteration 727: 330.25 sec so far
+Iteration 739: 335.63 sec so far
+Iteration 751: 341.02 sec so far
+Iteration 763: 346.49 sec so far
+Iteration 774: 351.50 sec so far
+Iteration 786: 356.85 sec so far
+Iteration 798: 362.18 sec so far
+Iteration 810: 367.63 sec so far
+Iteration 821: 372.67 sec so far
+Iteration 833: 378.05 sec so far
+
+----------------------------------------
+Wallclock time:	901.064
+Return code:	None
+Computation aborted after 901.064 seconds since the time limit of 900 seconds was exceeded.

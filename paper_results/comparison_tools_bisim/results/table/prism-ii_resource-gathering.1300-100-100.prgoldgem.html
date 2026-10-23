@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - resource-gathering.1300-100-100.prgoldgem</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>resource-gathering.1300-100-100.prgoldgem</h1>
+<p class="sub">prism-ii &middot; qcomp &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>663060852524178402183203507211353729666956663727350680069210275332115007280621137868004961937357709723179891739352387145366201684190399713388720604667954409751611188058893055489955897549953315586276348761790028621965783364895926897299241911/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</code></p>
+<p class="sub">reference result: <code>0.6630608525</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>9.471 s</td></tr><tr><th>result</th><td>0.6630608525241822</td></tr><tr><th>relative difference</th><td>5.73e-15</td></tr><tr><th>states</th><td>958,894</td></tr></table>
+<p class="sub">prism-ii_resource-gathering.1300-100-100.prgoldgem.log</p>
+<pre>Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g resource-gathering.pm resource-gathering.prctl --prop prgoldgem -const B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	resource-gathering.1300-100-100.prgoldgem
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:27:00 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g resource-gathering.pm resource-gathering.prctl --prop prgoldgem -const 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;resource-gathering.pm&quot;...
+
+Type:        MDP
+Modules:     robot goldcounter gemcounter
+Actions:     [right] [left] [top] [down]
+Variables:   gold gem attacked x y required_gold required_gem
+Labels:      &quot;success&quot;
+Rewards:     &quot;attacks&quot; &quot;rew_gold&quot; &quot;rew_gem&quot; &quot;time&quot;
+
+Parsing properties file &quot;resource-gathering.prctl&quot;...
+
+3 properties:
+(1) &quot;expgold&quot;: R{&quot;rew_gold&quot;}max=? [ C&lt;=B ]
+(2) &quot;expsteps&quot;: R{&quot;time&quot;}min=? [ F &quot;success&quot; ]
+(3) &quot;prgoldgem&quot;: Pmax=? [ F&lt;=B &quot;success&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prgoldgem&quot;: Pmax=? [ F&lt;=B &quot;success&quot; ]
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Computing reachable states...
+
+Reachability (BFS): 1215 iterations in 0.36 seconds (average 0.000296, setup 0.00)
+
+Time for model construction: 0.384 seconds.
+
+Type:        MDP
+States:      958894 (1 initial)
+Transitions: 3325526
+
+Transition matrix: 898 nodes (4 terminal), 3325526 minterms, vars: 23r/23c/4nd
+
+Prob0A: 1203 iterations in 0.52 seconds (average 0.000432, setup 0.00)
+
+yes = 94, no = 0, maybe = 958800
+
+Computing probabilities...
+Engine: Sparse
+
+Building sparse matrix... [n=958894, nc=3080400, nnz=3325200, k=4] [41.9 MB]
+Creating vector for yes... [7.3 MB]
+Allocating iteration vectors... [2 x 7.3 MB]
+TOTAL: [63.9 MB]
+
+Starting iterations...
+Iteration 842 (of 1300): 5.01 sec so far
+
+Iterative method: 1300 iterations in 8.10 seconds (average 0.005946, setup 0.37)
+
+Value in the initial state: 0.6630608525241822
+
+Time for model checking: 8.616 seconds.
+
+Result: 0.6630608525241822 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	9.471
+Return code:	0
+</pre>
+</body></html>

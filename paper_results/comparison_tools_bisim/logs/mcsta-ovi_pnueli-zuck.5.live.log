@@ -1,0 +1,48 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta pnueli-zuck.5.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	pnueli-zuck.5.live
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta pnueli-zuck.5.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+pnueli-zuck.5.jani:model: info: pnueli-zuck.5 is an MDP model.
+pnueli-zuck.5.jani:variables[0]: info: Expanding variable "p0" into 16 locations in automaton "process0".
+pnueli-zuck.5.jani:variables[1]: info: Expanding variable "p1" into 16 locations in automaton "process1".
+pnueli-zuck.5.jani:variables[2]: info: Expanding variable "p2" into 16 locations in automaton "process2".
+pnueli-zuck.5.jani:variables[3]: info: Expanding variable "p3" into 16 locations in automaton "process3".
+pnueli-zuck.5.jani:variables[4]: info: Expanding variable "p4" into 16 locations in automaton "process4".
+pnueli-zuck.5.jani: info: Need 16 bytes per state.
+pnueli-zuck.5.jani: info: Explored 307523 states.
+
+Peak memory usage: 300 MB
+Analysis results for pnueli-zuck.5.jani
+
++ State space exploration
+  State size: 16 bytes
+  States:     307523
+  Choices:    1753715
+  Branches:   1886851
+  Rate:       365663 states/s
+  Time:       0.9 s
+
++ Property live
+  Probability: 1
+  Bounds:      [1, 1]
+  Time:        0.2 s
+
+  + Optimistic value iteration
+    Total iterations:  37
+    Verif. attempts:   1
+    Verif. iterations: 1
+    Final epsilon:     1E-06
+    Time:              0.2 s
+
+
+----------------------------------------
+Wallclock time:	1.389
+Return code:	0

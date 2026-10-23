@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani consensus-mec.4.jani --janiproperty disagree --constants K=2 --exact
+Benchmark:	consensus-mec.4-2.disagree
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:25:57 2026
+Command line arguments: --jani consensus-mec.4.jani --janiproperty disagree --constants K=2 --exact
+Current working directory: /tmp/invocation-f6fl9i2p
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 2.189s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	226560
+Transitions: 	1182784
+Choices: 	832000
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 640 item(s)
+   * agree -> 48500 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "disagree": Pmax=? [F ("finished" & !("agree"))] ...
+Result (for initial states): 170112531/577765376 (approx. 0.2944318543)
+Time for model checking: 12.413s.
+
+----------------------------------------
+Wallclock time:	14.714
+Return code:	0

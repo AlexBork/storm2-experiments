@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.3-4.jani --janiproperty time_min --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	csma.3-4.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:21:16 2026
+Command line arguments: --jani csma.3-4.jani --janiproperty time_min --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-3ux_pfec
+
+Time for model input parsing: 0.003s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.391s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1460287 (15098 nodes)
+Transitions: 	2396727 (75226 nodes)
+Choices: 	1471059
+Reward Models:  time
+Variables: 	rows: 19 meta variables (55 DD variables), columns: 19 meta variables (55 DD variables), nondeterminism: 13 meta variables (13 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (56 nodes)
+   * all_delivered
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 6.364s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	30078
+Transitions: 	64491
+Choices: 	30709
+Reward Models:  time
+State Labels: 	4 labels
+   * (((s1 = 4) & (s2 = 4)) & (s3 = 4)) -> 1 item(s)
+   * all_delivered -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R{"time"}min=? [F "all_delivered"] ...
+Result (for initial states): 107.3114785. Solution bounds: [107.3113712, 107.3115858].
+Time for model checking: 0.014s.
+
+----------------------------------------
+Wallclock time:	8.259
+Return code:	0

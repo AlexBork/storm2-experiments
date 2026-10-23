@@ -1,0 +1,94 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	manymecs.10000.prob_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 11:36:33 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g manymecs.prism manymecs.props --prop prob_max -const N=10000 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "manymecs.prism"...
+
+Type:        MDP
+Modules:     player1
+Actions:     [] [a11] [a12] [a21] [a22]
+Variables:   state i
+Labels:      "done" "p1win" "p2win"
+
+Parsing properties file "manymecs.props"...
+
+1 property:
+(1) "prob_max": Pmax=? [ F "p1win" ]
+
+---------------------------------------------------------------------
+
+Model checking: "prob_max": Pmax=? [ F "p1win" ]
+Model constants: N=10000
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=10000
+
+Computing reachable states...
+
+Reachability (BFS): 20001 iterations in 0.26 seconds (average 0.000013, setup 0.00)
+
+Time for model construction: 3.959 seconds.
+
+Type:        MDP
+States:      30002 (1 initial)
+Transitions: 90002
+
+Transition matrix: 388 nodes (5 terminal), 90002 minterms, vars: 17r/17c/4nd
+
+Prob0A: 20001 iterations in 0.50 seconds (average 0.000025, setup 0.00)
+
+Prob1E: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 1, maybe = 30000
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 2.608 seconds, found 10000 MECs.
+Time for building MEC quotient: 6.082 seconds.
+
+Quotient MDP:
+States:      10002 (1 initial)
+Transitions: 40002
+
+Transition matrix: 192978 nodes (5 terminal), 40002 minterms, vars: 17r/17c/22nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=10002, nc=20000, nnz=40000, k=2] [498.0 KB]
+Creating vector for yes... [78.1 KB]
+Creating vector for maybe... [78.1 KB]
+Allocating iteration vectors... [4 x 78.1 KB]
+TOTAL: [966.9 KB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 9.88264E-07
+Iterative method (interval iteration): 25961 iterations in 3.80 seconds (average 0.000138, setup 0.23)
+
+Value in the initial state: 0.5000000000000694
+
+Time for model checking: 13.042 seconds.
+
+Result: 0.5000000000000694
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	17.472
+Return code:	0

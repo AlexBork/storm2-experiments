@@ -1,0 +1,116 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g consensus.6.prism consensus.props --prop disagree -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	consensus.6-2.disagree
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 11:59:31 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g consensus.6.prism consensus.props --prop disagree -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "consensus.6.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4 process5 process6
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4 pc5 coin5 pc6 coin6
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "disagree": Pmax=? [ F "finished"&!"agree" ]
+Model constants: K=2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: K=2
+
+Computing reachable states...
+
+Reachability (BFS): 149 iterations in 0.05 seconds (average 0.000336, setup 0.00)
+
+Time for model construction: 0.081 seconds.
+
+Type:        MDP
+States:      1258240 (1 initial)
+Transitions: 6236736
+
+Transition matrix: 7075 nodes (3 terminal), 6236736 minterms, vars: 24r/24c/6nd
+
+Prob0A: 115 iterations in 0.39 seconds (average 0.003391, setup 0.00)
+
+Prob1E: 1925 iterations in 12.04 seconds (average 0.006255, setup 0.00)
+
+yes = 583956, no = 27270, maybe = 647014
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.99 seconds, found 0 MECs.
+Time for building MEC quotient: 1.786 seconds.
+
+Quotient MDP:
+States:      647016 (1 initial)
+Transitions: 3890724
+
+Transition matrix: 431336 nodes (3 terminal), 3890724 minterms, vars: 24r/24c/31nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=647016, nc=2997228, nnz=3756780, k=6] [46.5 MB]
+Creating vector for yes... [4.9 MB]
+Creating vector for maybe... [4.9 MB]
+Allocating iteration vectors... [4 x 4.9 MB]
+TOTAL: [76.1 MB]
+
+Starting iterations (interval iteration)...
+Iteration 316: max relative diff=14.480411, 5.01 sec so far
+Iteration 630: max relative diff=1.592475, 10.02 sec so far
+Iteration 944: max relative diff=0.450248, 15.03 sec so far
+Iteration 1258: max relative diff=0.163114, 20.05 sec so far
+Iteration 1572: max relative diff=0.063175, 25.06 sec so far
+Iteration 1886: max relative diff=0.025164, 30.07 sec so far
+Iteration 2200: max relative diff=0.010219, 35.08 sec so far
+Iteration 2514: max relative diff=0.004133, 40.10 sec so far
+Iteration 2828: max relative diff=0.001675, 45.11 sec so far
+Iteration 3142: max relative diff=0.000685, 50.12 sec so far
+Iteration 3456: max relative diff=0.000278, 55.13 sec so far
+Iteration 3770: max relative diff=0.000113, 60.15 sec so far
+Iteration 4085: max relative diff=0.000046, 65.17 sec so far
+Iteration 4399: max relative diff=0.000019, 70.18 sec so far
+Iteration 4714: max relative diff=0.000008, 75.20 sec so far
+Iteration 5028: max relative diff=0.000003, 80.21 sec so far
+Iteration 5342: max relative diff=0.000001, 85.22 sec so far
+Max relative diff between upper and lower bound on convergence: 9.99478E-07
+Iterative method (interval iteration): 5420 iterations in 87.24 seconds (average 0.015952, setup 0.78)
+
+Value in the initial state: 0.36364475108589966
+
+Time for model checking: 102.558 seconds.
+
+Result: 0.36364475108589966
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	103.140
+Return code:	0

@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan-mec.3.jani --janiproperty cost_min --constants COL=0 --exact
+Benchmark:	wlan-mec.3-0.cost_min
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:44:18 2026
+Command line arguments: --jani wlan-mec.3.jani --janiproperty cost_min --constants COL=0 --exact
+Current working directory: /tmp/invocation-xztb4y1a
+
+Time for model input parsing: 0.005s.
+
+Time for model construction: 28.896s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	963020
+Transitions: 	3875479
+Choices: 	2200310
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 10 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625 (approx. 7625). Exact solution.
+Time for model checking: 14.198s.
+
+----------------------------------------
+Wallclock time:	43.803
+Return code:	0

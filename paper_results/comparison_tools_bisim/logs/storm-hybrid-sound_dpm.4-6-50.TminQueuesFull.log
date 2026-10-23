@@ -1,0 +1,60 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani dpm.jani --janiproperty TminQueuesFull --constants N=4,C=6,TIME_BOUND=50 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	dpm.4-6-50.TminQueuesFull
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:33:04 2026
+Command line arguments: --jani dpm.jani --janiproperty TminQueuesFull --constants 'N=4,C=6,TIME_BOUND=50' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-wilxnxlo
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 4 parallel threads.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 5)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 6)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 7)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 8)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 9)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(4 >= 10)' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 5) & (items5 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 6) & (items6 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 7) & (items7 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 8) & (items8 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 9) & (items9 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 10) & (items10 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 5) & (items5 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 6) & (items6 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 7) & (items7 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 8) & (items8 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 9) & (items9 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 10) & (items10 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 5) & (items5 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 6) & (items6 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 7) & (items7 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 8) & (items8 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 9) & (items9 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+WARN  (DdJaniModelBuilder.cpp:1505): The guard '(((4 >= 10) & (items10 > 0)) & (ServiceProvider_pmode = 1))' is unsatisfiable.
+Time for model construction: 0.500s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	131314 (363 nodes)
+Transitions: 	251730 (8041 nodes)
+Choices: 	155730
+Reward Models:  none
+Variables: 	rows: 15 meta variables (43 DD variables), columns: 15 meta variables (43 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (44 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "TminQueuesFull": Tmin=? [F (((((((((((4 < 1) | (items1 = 6)) & ((4 < 2) | (items2 = 6))) & ((4 < 3) | (items3 = 6))) & ((4 < 4) | (items4 = 6))) & ((4 < 5) | (items5 = 6))) & ((4 < 6) | (items6 = 6))) & ((4 < 7) | (items7 = 6))) & ((4 < 8) | (items8 = 6))) & ((4 < 9) | (items9 = 6))) & ((4 < 10) | (items10 = 6)))] ...
+Result (for initial states): 36.61576726
+Time for model checking: 0.988s.
+
+----------------------------------------
+Wallclock time:	1.662
+Return code:	0

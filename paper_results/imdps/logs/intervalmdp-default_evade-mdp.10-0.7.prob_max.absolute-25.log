@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 evade-mdp.10-0.7.prob_max
+Benchmark:	evade-mdp.10-0.7.prob_max.absolute-25
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 3.990366840845355e-27
+Iterations: 58
+Maximum Bellman residual: 9.568031164112063e-7
+Time for reading: 234.064524391s
+Time for solving: 142.540963443s
+
+----------------------------------------
+Wallclock time:	377.267
+Return code:	0

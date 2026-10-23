@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.mdp.maze2_maze2_rewmin_sl0.3</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.mdp.maze2_maze2_rewmin_sl0.3</h1>
+<dl>
+<dt>Benchmark</dt><dd>maze2_maze2_rewmin_sl0.3</dd>
+<dt>Configuration</dt><dd>storm.mdp</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>7.252748172</dd>
+<dt>Wall-clock time (s)</dt><dd>0.068</dd>
+<dt>Time limit (s)</dt><dd>900</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/logs/mdp_maze2_maze2_rewmin_sl0.3.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.3 --timemem --statistics --sound --check-fully-observable</pre>
+<p>Storm-pomdp. Underlying fully observable MDP</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.3 --timemem --statistics --sound --check-fully-observable
+Benchmark:	maze2_maze2_rewmin_sl0.3
+Configuration:	mdp
+Repetition:	1
+Time limit:	900
+Output:
+Storm-POMDP 1.14.0 (dev)
+
+Date: Wed Oct 14 22:36:55 2026
+Command line arguments: --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.3 --timemem --statistics --sound --check-fully-observable
+Current working directory: /tmp/invocation-6ps2ju4b
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.008s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	15
+Transitions: 	91
+Choices: 	54
+Observations: 	8
+Reward Models:  (default)
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * goal -&gt; 1 item(s)
+Choice Labels: 	5 labels
+   * east -&gt; 13 item(s)
+   * west -&gt; 13 item(s)
+   * done -&gt; 1 item(s)
+   * north -&gt; 13 item(s)
+   * south -&gt; 13 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Rmin=? [F &quot;goal&quot;]&#x27;
+Analyzing the formula on the fully observable MDP ... 
+Result: 7.252748172
+Time for POMDP analysis: 0.000s.
+
+Performance statistics:
+  * peak memory usage: 68MB
+  * CPU time: 0.009s
+  * wallclock time: 0.012s
+
+----------------------------------------
+Wallclock time:	0.068
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.mdp.maze2_maze2_rewmin_sl0.3&quot;,
+  &quot;benchmark-id&quot;: &quot;maze2_maze2_rewmin_sl0.3&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;mdp&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Underlying fully observable MDP&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.3 --timemem --statistics --sound --check-fully-observable&quot;
+  ],
+  &quot;time-limit&quot;: 900,
+  &quot;log-dir&quot;: &quot;experiments/logs&quot;,
+  &quot;log&quot;: &quot;experiments/logs/mdp_maze2_maze2_rewmin_sl0.3.log&quot;,
+  &quot;wallclock-time&quot;: 0.068,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Underlying fully observable MDP&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;maze2_maze2_rewmin_sl0.3&quot;,
+    &quot;benchmark-set&quot;: &quot;maze2&quot;,
+    &quot;name&quot;: &quot;maze2&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;sl&quot;: 0.3
+      },
+      &quot;file&quot;: &quot;maze2/maze2-sl.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;maze2/maze2.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Underlying fully observable MDP&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;mdp&quot;,
+    &quot;family&quot;: &quot;MDP&quot;
+  },
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.008,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 15,
+    &quot;transitions&quot;: 91,
+    &quot;choices&quot;: 54,
+    &quot;observations&quot;: 8
+  },
+  &quot;result&quot;: &quot;7.252748172&quot;,
+  &quot;total-chk-time&quot;: 0.0
+}
+</pre></details>
+</body>
+</html>

@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=100000 --exact
+Benchmark:	manymecs.100000.prob_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:01:19 2026
+Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=100000 --exact
+Current working directory: /tmp/invocation-ih1xce83
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 1.090s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	300002
+Transitions: 	900002
+Choices: 	600002
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * p1win -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "p1win"] ...
+Result (for initial states): 1/2 (approx. 0.5). Exact solution.
+Time for model checking: 11.292s.
+
+----------------------------------------
+Wallclock time:	12.478
+Return code:	0

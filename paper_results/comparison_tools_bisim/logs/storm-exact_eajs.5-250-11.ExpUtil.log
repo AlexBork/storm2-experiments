@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani eajs.5.jani --janiproperty ExpUtil --constants energy_capacity=250,B=11 --exact
+Benchmark:	eajs.5-250-11.ExpUtil
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:46:33 2026
+Command line arguments: --jani eajs.5.jani --janiproperty ExpUtil --constants 'energy_capacity=250,B=11' --exact
+Current working directory: /tmp/invocation-xe7dd6mx
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 175.909s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3049471
+Transitions: 	6960278
+Choices: 	4250853
+Reward Models:  utilityLocal
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (battery_load = 0) -> 13476 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "ExpUtil": R{"utilityLocal"}max=? [F (battery_load = 0)] ...
+Result (for initial states): 266763997439241350774737/26588814358957503287787 (approx. 10.03294069). Exact solution.
+Time for model checking: 9.293s.
+
+----------------------------------------
+Wallclock time:	186.558
+Return code:	0

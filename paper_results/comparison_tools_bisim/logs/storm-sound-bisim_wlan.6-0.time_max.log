@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan.6.jani --janiproperty time_max --constants COL=0 --sound --bisimulation
+Benchmark:	wlan.6-0.time_max
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:55:05 2026
+Command line arguments: --jani wlan.6.jani --janiproperty time_max --constants COL=0 --sound --bisimulation
+Current working directory: /tmp/invocation-26afien_
+
+Time for model input parsing: 0.011s.
+
+Time for model construction: 16.685s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	5007548
+Transitions: 	11475748
+Choices: 	6350470
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 9.872s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1779423
+Transitions: 	4279318
+Choices: 	1869814
+Reward Models:  time
+State Labels: 	2 labels
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 3883.499646. Solution bounds: [3883.495763, 3883.50353].
+Time for model checking: 1.132s.
+
+----------------------------------------
+Wallclock time:	27.823
+Return code:	0

@@ -1,0 +1,59 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani sensor.4.jani --janiproperty max_success --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	sensor.4.max_success
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 12:43:38 2026
+Command line arguments: --jani sensor.4.jani --janiproperty max_success --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-luozxga9
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 4 parallel threads.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+Time for model construction: 0.944s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	462056 (2074 nodes)
+Transitions: 	2156716 (34923 nodes)
+Choices: 	2030712
+Reward Models:  none
+Variables: 	rows: 22 meta variables (44 DD variables), columns: 22 meta variables (44 DD variables), nondeterminism: 34 meta variables (34 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (45 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.837s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	9255
+Transitions: 	44400
+Choices: 	41992
+Reward Models:  none
+State Labels: 	3 labels
+   * (x = 1) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "max_success": Pmax=? [F (x = 1)] ...
+Result (for initial states): 0.9984. Exact solution.
+Time for model checking: 0.010s.
+
+----------------------------------------
+Wallclock time:	2.116
+Return code:	0

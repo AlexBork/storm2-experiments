@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani sensor.4.jani --janiproperty max_success --exact
+Benchmark:	sensor.4.max_success
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 22:12:45 2026
+Command line arguments: --jani sensor.4.jani --janiproperty max_success --exact
+Current working directory: /tmp/invocation-vntn3s7k
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 5.194s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	462056
+Transitions: 	2156716
+Choices: 	2030712
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (x = 1) -> 18436 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "max_success": Pmax=? [F (x = 1)] ...
+Result (for initial states): 624/625 (approx. 0.9984)
+Time for model checking: 5.178s.
+
+----------------------------------------
+Wallclock time:	10.520
+Return code:	0

@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani obstacle-mdp.jani --janiproperty steps_min --constants N=400 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	obstacle-mdp.400.steps_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:30:41 2026
+Command line arguments: --jani obstacle-mdp.jani --janiproperty steps_min --constants N=400 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-tsy27_go
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.886s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	160001 (32 nodes)
+Transitions: 	1276799 (704 nodes)
+Choices: 	639998
+Reward Models:  none
+Variables: 	rows: 5 meta variables (21 DD variables), columns: 5 meta variables (21 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (22 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 22.968s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	80201
+Transitions: 	639995
+Choices: 	320798
+Reward Models:  none
+State Labels: 	4 labels
+   * ((start & (ax = 399)) & (ay = 399)) -> 1 item(s)
+   * goal -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": Tmin=? [F "goal"] ...
+Result (for initial states): 543.8944215. Exact solution.
+Time for model checking: 0.412s.
+
+----------------------------------------
+Wallclock time:	24.686
+Return code:	0

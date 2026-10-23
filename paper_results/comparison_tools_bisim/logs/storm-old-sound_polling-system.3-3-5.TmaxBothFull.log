@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani polling-system.3.jani --janiproperty TmaxBothFull --constants C=3,TIME_BOUND=5 --sound
+Benchmark:	polling-system.3-3-5.TmaxBothFull
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:33:53 2026
+Command line arguments: --jani polling-system.3.jani --janiproperty TmaxBothFull --constants 'C=3,TIME_BOUND=5' --sound
+Current working directory: /tmp/invocation-foetj434
+
+ERROR (VariableSet.cpp:197): Unable to retrieve unknown variable 'C'.
+ERROR (storm.cpp:23): An exception caused Storm to terminate. The message of the exception is: InvalidArgumentException: Unable to retrieve unknown variable 'C'.
+
+----------------------------------------
+Wallclock time:	0.037
+Return code:	1

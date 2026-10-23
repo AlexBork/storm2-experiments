@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani csma.4-2.jani --janiproperty time_min --exact
+Benchmark:	csma.4-2.time_min
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 11:51:29 2026
+Command line arguments: --jani csma.4-2.jani --janiproperty time_min --exact
+Current working directory: /tmp/invocation-ys4qcds5
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 6.130s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	761962
+Transitions: 	1327068
+Choices: 	825504
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * all_delivered -> 9 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R{"time"}min=? [F "all_delivered"] ...
+Result (for initial states): 4395955219329273673062617265149460096433442950632067103167/35319233168393532282477529141354781966213128206575206400 (approx. 124.4634955). Exact solution.
+Time for model checking: 3.352s.
+
+----------------------------------------
+Wallclock time:	9.787
+Return code:	0

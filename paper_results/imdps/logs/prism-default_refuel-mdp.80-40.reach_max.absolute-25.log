@@ -1,0 +1,66 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel refuel-mdp.80-40.reach_max.tra,sta,lab refuel-mdp.80-40.reach_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	refuel-mdp.80-40.reach_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 19:15:10 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'refuel-mdp.80-40.reach_max.tra,sta,lab' refuel-mdp.80-40.reach_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "refuel-mdp.80-40.reach_max.tra", "refuel-mdp.80-40.reach_max.sta", "refuel-mdp.80-40.reach_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "refuel-mdp.80-40.reach_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 3.644 seconds.
+
+Type:        IMDP
+States:      161070 (1 initial)
+Transitions: 1256794
+Choices:     644280
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 97 iterations and 10.095 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 1946 iterations and 156.765 seconds.
+target=13, yes=1458, no=76597, maybe=83015
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 34 iterations, 22491170 multiplications and 3.17 seconds.
+Probabilistic reachability took 3.172 seconds.
+
+Value in the initial state: 0.0
+
+Time for model checking: 170.207 seconds.
+
+Result: 0.0 (+/- 3.7709971883786995E-6 estimated; rel err Infinity)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	174.391
+Return code:	0

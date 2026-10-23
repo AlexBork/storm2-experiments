@@ -1,0 +1,18 @@
+Command:	/opt/storm2-experiments/imdps/scripts/intervalmdp.sh --precision 1e-6 sensor.4.max_success
+Benchmark:	sensor.4.max_success.absolute-25
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 0.9589937500000001
+Iterations: 55
+Maximum Bellman residual: 0.0
+Time for reading: 25.005502248s
+Time for solving: 71.248364154s
+
+----------------------------------------
+Wallclock time:	96.892
+Return code:	0

@@ -1,0 +1,21 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta manymecs.jani --props prob_max --experiment N=10000 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	manymecs.10000.prob_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta manymecs.jani --props prob_max --experiment N=10000 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+manymecs.jani:model: info: manymecs is an MDP model.
+manymecs.jani:variables[0]: info: Expanding variable "state" into 5 locations in automaton "player1".
+manymecs.jani: info: Need 4 bytes per state.
+manymecs.jani: info: Explored 30002 states for N=10000.
+
+----------------------------------------
+Wallclock time:	901.042
+Return code:	None
+Computation aborted after 901.042 seconds since the time limit of 900 seconds was exceeded.

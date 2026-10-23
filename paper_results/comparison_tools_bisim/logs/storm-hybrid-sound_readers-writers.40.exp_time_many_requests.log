@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.40.jani --janiproperty exp_time_many_requests --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 4096
+Benchmark:	readers-writers.40.exp_time_many_requests
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 17:31:03 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty exp_time_many_requests --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-7b51h1o2
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.405s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	1884366 (9462 nodes)
+Transitions: 	3815040 (1355711 nodes)
+Choices: 	1884366
+Reward Models:  none
+Variables: 	rows: 14 meta variables (69 DD variables), columns: 14 meta variables (69 DD variables), nondeterminism: 1 meta variables (1 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (70 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "exp_time_many_requests": Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) > (320 / 10))] ...
+Result (for initial states): 3.72926774
+Time for model checking: 16.320s.
+
+----------------------------------------
+Wallclock time:	18.073
+Return code:	0

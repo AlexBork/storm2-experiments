@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/modest mcsta wlan-large-mdp.jani --props E_and --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	wlan-large.2.E_and
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta wlan-large-mdp.jani --props E_and --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+wlan-large-mdp.jani:model: info: wlan-large is an MDP model.
+wlan-large-mdp.jani: info: Need 16 bytes per state.
+wlan-large-mdp.jani: info: Explored 3283371 states for K=2.
+
+Peak memory usage: 1333 MB
+Analysis results for wlan-large-mdp.jani
+Experiment K=2
+
++ State space exploration
+  State size: 16 bytes
+  States:     3283371
+  Choices:    6200795
+  Branches:   6221633
+  Rate:       613027 states/s
+  Time:       5.6 s
+
++ Property E_and
+  Value:  50119.49900802785
+  Bounds: [50119.49900793639, 50119.49900811932]
+  Time:   16.8 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 1.1 s
+    Min. prob. 1 states:          3283371
+    Time for min. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  641
+    Verif. attempts:   3
+    Verif. iterations: 238
+    Final epsilon:     1.1221757074233708E-07
+    Time:              15.7 s
+
+
+----------------------------------------
+Wallclock time:	22.889
+Return code:	0

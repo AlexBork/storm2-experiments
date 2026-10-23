@@ -1,0 +1,94 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g wlan.4.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan.4-0.cost_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:26:52 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan.4.prism wlan.props --prop cost_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan.4.prism"...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan.props"...
+
+7 properties:
+(1) "collisions": Pmax=? [ F col=COL ]
+(2) "cost_max": R{"cost"}max=? [ F s1=12&s2=12 ]
+(3) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(4) "num_collisions": R{"collisions"}max=? [ F s1=12&s2=12 ]
+(5) "sent": P>=1 [ F s1=12&s2=12 ]
+(6) "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+(7) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 345000 states
+Reachable states exploration and model construction done in 1.392 secs.
+Sorting reachable states list...
+
+Time for model construction: 1.583 seconds.
+
+Type:        MDP
+States:      345000 (1 initial)
+Transitions: 762252
+Choices:     440206
+Max/avg:     3/1.28
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 797 iterations and 3.503 seconds.
+target=1, inf=0, rest=344999
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.075 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.034 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 0.505 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 416071.75369262695
+Starting Prob1 (min)...
+Prob1 (min) took 854 iterations and 3.361 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 377: max relative diff=65.5714805908, 5.02 sec so far
+Iteration 756: max relative diff=32.1531277843, 10.03 sec so far
+Max relative diff between upper and lower bound on convergence: 5.20551995585e-07
+Interval iteration (min, with Power method) took 819 iterations, 1248567138 multiplications and 10.89 seconds.
+Maximum finite value in solution vector at end of interval iteration: 415909.0270996094
+Expected reachability took 18.363 seconds.
+
+Value in the initial state: 7625.0
+
+Time for model checking: 18.598 seconds.
+
+Result: 7625.0 (+/- 0.003969208966334885; rel err 5.205519955849029E-7)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	20.659
+Return code:	0

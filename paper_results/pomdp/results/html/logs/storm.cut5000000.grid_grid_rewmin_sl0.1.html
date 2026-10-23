@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut5000000.grid_grid_rewmin_sl0.1</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut5000000.grid_grid_rewmin_sl0.1</h1>
+<dl>
+<dt>Benchmark</dt><dd>grid_grid_rewmin_sl0.1</dd>
+<dt>Configuration</dt><dd>storm.cut5000000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≤ 4.702092755</dd>
+<dt>Wall-clock time (s)</dt><dd>23.306</dd>
+<dt>Time limit (s)</dt><dd>900</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/logs/cut5000000_grid_grid_rewmin_sl0.1.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-sl.prism --prop grid.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 5000000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-sl.prism --prop grid.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000
+Benchmark:	grid_grid_rewmin_sl0.1
+Configuration:	cut5000000
+Repetition:	1
+Time limit:	900
+Output:
+Storm-POMDP 1.14.0 (dev)
+
+Date: Wed Oct 14 22:22:05 2026
+Command line arguments: --prism 4x4grid-sl.prism --prop grid.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000
+Current working directory: /tmp/invocation-w9h2n_2i
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.008s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	17
+Transitions: 	122
+Choices: 	62
+Observations: 	3
+Reward Models:  (default)
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * goal -&gt; 1 item(s)
+Choice Labels: 	5 labels
+   * east -&gt; 15 item(s)
+   * west -&gt; 15 item(s)
+   * done -&gt; 1 item(s)
+   * north -&gt; 15 item(s)
+   * south -&gt; 15 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Rmin=? [F &quot;goal&quot;]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 5000003 beliefs discovered, 1464485 beliefs explored.
+Constructed belief MDP: 5000003 states, 12928972 choices, 15857940 transitions.
+Time for exploring beliefs: 15862ms.
+Time for building the belief MDP: 3351ms.
+Time for analyzing the belief MDP: 1837ms.
+
+Result: ≤ 4.702092755
+Time for POMDP analysis: 23.006s.
+
+Performance statistics:
+  * peak memory usage: 5125MB
+  * CPU time: 21.480s
+  * wallclock time: 23.017s
+
+----------------------------------------
+Wallclock time:	23.306
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut5000000.grid_grid_rewmin_sl0.1&quot;,
+  &quot;benchmark-id&quot;: &quot;grid_grid_rewmin_sl0.1&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut5000000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 5000000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-sl.prism --prop grid.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000&quot;
+  ],
+  &quot;time-limit&quot;: 900,
+  &quot;log-dir&quot;: &quot;experiments/logs&quot;,
+  &quot;log&quot;: &quot;experiments/logs/cut5000000_grid_grid_rewmin_sl0.1.log&quot;,
+  &quot;wallclock-time&quot;: 23.306,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 5000000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;grid_grid_rewmin_sl0.1&quot;,
+    &quot;benchmark-set&quot;: &quot;grid&quot;,
+    &quot;name&quot;: &quot;grid&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;sl&quot;: 0.1
+      },
+      &quot;file&quot;: &quot;grid/4x4grid-sl.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;grid/grid.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 5000000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut5000000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 5000000
+  },
+  &quot;size-threshold&quot;: 5000000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.008,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 17,
+    &quot;transitions&quot;: 122,
+    &quot;choices&quot;: 62,
+    &quot;observations&quot;: 3
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 5000003,
+    &quot;choices&quot;: 12928972,
+    &quot;transitions&quot;: 15857940,
+    &quot;expl-time&quot;: 15.862,
+    &quot;build-time&quot;: 3.351,
+    &quot;chk-time&quot;: 1.837
+  },
+  &quot;result&quot;: &quot;≤ 4.702092755&quot;,
+  &quot;total-chk-time&quot;: 23.006
+}
+</pre></details>
+</body>
+</html>

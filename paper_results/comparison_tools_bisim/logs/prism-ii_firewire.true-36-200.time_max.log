@@ -1,0 +1,65 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_max -const delay=36,deadline=200 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.true-36-200.time_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:00:26 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_max -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "firewire.true.prism"...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2 timer
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2 t
+Labels:      "done"
+Rewards:     "time" "time_sending"
+
+Parsing properties file "firewire.true.props"...
+
+5 properties:
+(1) "elected": P>=1 [ F "done" ]
+(2) "time_max": R{"time"}max=? [ F "done" ]
+(3) "time_min": R{"time"}min=? [ F "done" ]
+(4) "time_sending": R{"time_sending"}max=? [ F "done" ]
+(5) "deadline": Pmin=? [ F (((s1=8)&(s2=7))|((s1=7)&(s2=8)))&(t<=deadline) ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_max": R{"time"}max=? [ F "done" ]
+Model constants: deadline=200,delay=36
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: deadline=200,delay=36
+
+Computing reachable states...
+
+Reachability (BFS): 287 iterations in 39.91 seconds (average 0.139059, setup 0.00)
+
+Time for model construction: 50.228 seconds.
+
+Type:        MDP
+States:      6932041 (1 initial)
+Transitions: 15783496
+
+Transition matrix: 817685 nodes (3 terminal), 15783496 minterms, vars: 64r/64c/14nd
+
+Prob0E: 421 iterations in 74.29 seconds (average 0.176461, setup 0.00)
+
+Prob1A: 1 iterations in 0.21 seconds (average 0.210000, setup 0.00)
+
+goal = 252, inf = 0, maybe = 6931789
+
+----------------------------------------
+Wallclock time:	901.442
+Return code:	None
+Computation aborted after 901.442 seconds since the time limit of 900 seconds was exceeded.

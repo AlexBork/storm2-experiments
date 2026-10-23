@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --sound
+Benchmark:	flexible-manufacturing.3-1.M2Fail_E
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:17:39 2026
+Command line arguments: --jani flexible-manufacturing.3.jani --janiproperty M2Fail_E --constants T=1 --sound
+Current working directory: /tmp/invocation-mk9_cksd
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.011s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1636
+Transitions: 	3269
+Choices: 	1636
+Markovian St.: 	675
+Max. Rate: 	5.59
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((M2on > 0) & (M2go = 0)) & (Spares = 0)) -> 65 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1636
+Transitions: 	3269
+Choices: 	1636
+Markovian St.: 	675
+Max. Rate: 	5.59
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((M2on > 0) & (M2go = 0)) & (Spares = 0)) -> 65 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "M2Fail_E": Tmin=? [F (((M2on > 0) & (M2go = 0)) & (Spares = 0))] ...
+WARN  (OptimisticValueIterationHelper.cpp:230): Optimistic Value Iteration did not terminate after 20 refinements. It might be stuck.
+Result (for initial states): 4892257.172
+Time for model checking: 183.115s.
+
+----------------------------------------
+Wallclock time:	183.180
+Return code:	0

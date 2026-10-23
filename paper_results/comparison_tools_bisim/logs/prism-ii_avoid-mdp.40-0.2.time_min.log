@@ -1,0 +1,46 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop time_min -const N=40,slippery=0.2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	avoid-mdp.40-0.2.time_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 12:27:17 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop time_min -const 'N=40,slippery=0.2' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "avoid-mdp.prism"...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [done]
+Variables:   start turn dx dy ax ay dir ax2 ay2 dir2
+Labels:      "goal" "traps" "notbad"
+Rewards:     "time"
+
+Parsing properties file "avoid-mdp.props"...
+
+2 properties:
+(1) "goal_max": Pmax=? [ "notbad" U "goal" ]
+(2) "time_min": R{"time"}min=? [ F "goal" ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_min": R{"time"}min=? [ F "goal" ]
+Model constants: N=40,slippery=0.2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: N=40,slippery=0.2
+
+Computing reachable states... 479224 961611 1432912 1916648 2392372 2859955 3269230 3752895 4212734 4647586 5096631 5565394 5966611 6335188 6753319 7245565 7701577 8193845 8652190 9060832 9503949 9997935 10479433 10869433 11352743 11832048 12277953 12686690 13172810 13600210 14030339 14506768 14953047 15400723 15774407 16150037 16552668 17007089 17444064 17867021 18299643 18772624 19194786
+----------------------------------------
+Wallclock time:	130.911
+Return code:	-9

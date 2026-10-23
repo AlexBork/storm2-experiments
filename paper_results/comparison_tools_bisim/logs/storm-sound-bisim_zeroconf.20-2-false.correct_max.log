@@ -1,0 +1,50 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=2,reset=false --sound --bisimulation
+Benchmark:	zeroconf.20-2-false.correct_max
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:41:17 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=2,reset=false' --sound --bisimulation
+Current working directory: /tmp/invocation-y2fboqtw
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.245s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	88858
+Transitions: 	203550
+Choices: 	161320
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 2263 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.106s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	35732
+Transitions: 	91402
+Choices: 	67797
+Reward Models:  none
+State Labels: 	2 labels
+   * ((l = 4) & (ip = 1)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 2.011957689e-05. Solution bounds: [2.011955677e-05, 2.011959701e-05].
+Time for model checking: 0.015s.
+
+----------------------------------------
+Wallclock time:	0.411
+Return code:	0

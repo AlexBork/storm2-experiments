@@ -1,0 +1,55 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani readers-writers.20.jani --janiproperty exp_time_many_requests --sound
+Benchmark:	readers-writers.20.exp_time_many_requests
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 13:45:05 2026
+Command line arguments: --jani readers-writers.20.jani --janiproperty exp_time_many_requests --sound
+Current working directory: /tmp/invocation-bacbnnpy
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.190s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	137070
+Transitions: 	273580
+Choices: 	137070
+Markovian St.: 	31358
+Max. Rate: 	200
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) > (160 / 10)) -> 7478 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	137070
+Transitions: 	273580
+Choices: 	137070
+Markovian St.: 	31358
+Max. Rate: 	200
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) > (160 / 10)) -> 7478 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "exp_time_many_requests": Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) > (160 / 10))] ...
+Result (for initial states): 15.44613189
+Time for model checking: 0.608s.
+
+----------------------------------------
+Wallclock time:	0.862
+Return code:	0

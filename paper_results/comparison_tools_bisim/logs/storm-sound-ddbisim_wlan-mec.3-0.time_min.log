@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani wlan-mec.3.jani --janiproperty time_min --constants COL=0 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	wlan-mec.3-0.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 15:39:51 2026
+Command line arguments: --jani wlan-mec.3.jani --janiproperty time_min --constants COL=0 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-_85xak17
+
+Time for model input parsing: 0.006s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.006s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	963020 (2650 nodes)
+Transitions: 	3875479 (28913 nodes)
+Choices: 	2200310
+Reward Models:  time
+Variables: 	rows: 18 meta variables (47 DD variables), columns: 18 meta variables (47 DD variables), nondeterminism: 8 meta variables (8 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (48 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 20.353s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	35795
+Transitions: 	123674
+Choices: 	84136
+Reward Models:  time
+State Labels: 	3 labels
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R{"time"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 1325
+Time for model checking: 0.037s.
+
+----------------------------------------
+Wallclock time:	21.851
+Return code:	0

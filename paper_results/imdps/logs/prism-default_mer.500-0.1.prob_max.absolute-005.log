@@ -1,0 +1,71 @@
+Command:	/opt/storm2-experiments/imdps/bin/prism -importmodel mer.500-0.1.prob_max.tra,sta,lab mer.500-0.1.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	mer.500-0.1.prob_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Wed Oct 14 21:39:16 UTC 2026
+Hostname: 74b530fbb221
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'mer.500-0.1.prob_max.tra,sta,lab' mer.500-0.1.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "mer.500-0.1.prob_max.tra", "mer.500-0.1.prob_max.sta", "mer.500-0.1.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "mer.500-0.1.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 29.817 seconds.
+
+Type:        IMDP
+States:      2955064 (1 initial)
+Transitions: 21358081
+Choices:     20685448
+Max/avg:     7/7.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 14 iterations and 14.857 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 48 iterations and 36.576 seconds.
+target=1870422, yes=1894922, no=549096, maybe=511046
+Starting value iteration (maxmin)...
+Iteration 7: 5.39 sec so far
+Iteration 14: 10.67 sec so far
+Iteration 21: 15.81 sec so far
+Iteration 28: 20.93 sec so far
+Iteration 35: 26.04 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 42 iterations, 158731398 multiplications and 31.274 seconds.
+Probabilistic reachability took 31.276 seconds.
+
+Value in the initial state: 0.15665745234375003
+
+Time for model checking: 90.866 seconds.
+
+Result: 0.15665745234375003 (+/- 4.893808593919857E-6 estimated; rel err 3.123891344269713E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	121.804
+Return code:	0

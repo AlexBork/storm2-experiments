@@ -1,0 +1,36 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani obstacle-mdp.jani --janiproperty steps_min --constants N=400 --sound
+Benchmark:	obstacle-mdp.400.steps_min
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 19:44:35 2026
+Command line arguments: --jani obstacle-mdp.jani --janiproperty steps_min --constants N=400 --sound
+Current working directory: /tmp/invocation-nsbd7ja_
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.807s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	160001
+Transitions: 	1276799
+Choices: 	639998
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * goal -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": T[exp]min=? [F "goal"] ...
+Result (for initial states): 543.894489
+Time for model checking: 249.084s.
+
+----------------------------------------
+Wallclock time:	249.939
+Return code:	0

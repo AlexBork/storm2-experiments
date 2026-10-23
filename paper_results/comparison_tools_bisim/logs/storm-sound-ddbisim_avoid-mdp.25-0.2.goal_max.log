@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=25,slippery=0.2 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	avoid-mdp.25-0.2.goal_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.14.0 (dev)
+
+Date: Wed Oct 14 16:37:42 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=25,slippery=0.2' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-h_a5pt57
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.203s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	2049851 (3217 nodes)
+Transitions: 	10975773 (48758 nodes)
+Choices: 	4746751
+Reward Models:  none
+Variables: 	rows: 14 meta variables (30 DD variables), columns: 14 meta variables (30 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (31 nodes)
+   * goal
+   * notbad
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 69.106s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1708189
+Transitions: 	9687914
+Choices: 	4163571
+Reward Models:  none
+State Labels: 	6 labels
+   * ((!(((dx = ax) & (dy = ay))) & !(((((dy - ay) < ((max(2, floor((25 / 4)))) + 1)) & ((dx - ax) < ((max(2, floor((25 / 4)))) + 1))) & (((ay - dy) < ((max(2, floor((25 / 4)))) + 1)) & ((ax - dx) < ((max(2, floor((25 / 4)))) + 1)))))) & !(((((dy - ay2) < ((max(2, floor((25 / 4)))) + 1)) & ((dx - ax2) < ((max(2, floor((25 / 4)))) + 1))) & (((ay2 - dy) < ((max(2, floor((25 / 4)))) + 1)) & ((ax2 - dx) < ((max(2, floor((25 / 4)))) + 1)))))) -> 1708188 item(s)
+   * goal -> 1 item(s)
+   * ((start & (dx = 24)) & (dy = 24)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * notbad -> 1708188 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal_max": Pmax=? ["notbad" U "goal"] ...
+Result (for initial states): 0.6220983381. Solution bounds: [0.622097716, 0.6220989602].
+Time for model checking: 2.165s.
+
+----------------------------------------
+Wallclock time:	72.909
+Return code:	0

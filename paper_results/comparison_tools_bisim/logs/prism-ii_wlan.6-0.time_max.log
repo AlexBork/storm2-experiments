@@ -1,0 +1,89 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/prism -javamaxmem 32g wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan.6-0.time_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Thu Oct 15 11:36:51 UTC 2026
+Hostname: 0b4820714fd0
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan.6.prism wlan.props --prop time_max -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan.6.prism"...
+
+Type:        MDP
+Modules:     medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan.props"...
+
+7 properties:
+(1) "collisions": Pmax=? [ F col=COL ]
+(2) "cost_max": R{"cost"}max=? [ F s1=12&s2=12 ]
+(3) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(4) "num_collisions": R{"collisions"}max=? [ F s1=12&s2=12 ]
+(5) "sent": P>=1 [ F s1=12&s2=12 ]
+(6) "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+(7) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_max": R{"time"}max=? [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: COL=0
+
+Computing reachable states...
+
+Reachability (BFS): 195 iterations in 0.26 seconds (average 0.001333, setup 0.00)
+
+Time for model construction: 0.335 seconds.
+
+Type:        MDP
+States:      5007548 (1 initial)
+Transitions: 11475748
+
+Transition matrix: 20377 nodes (8 terminal), 11475748 minterms, vars: 47r/47c/7nd
+
+Prob0E: 3158 iterations in 62.48 seconds (average 0.019785, setup 0.00)
+
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+goal = 1, inf = 0, maybe = 5007547
+
+CUDD internal error detected, from the following stack trace:
+  jdd.JDD.ptrToNode(JDD.java:1840)
+  jdd.JDD.And(JDD.java:528)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBoundVariant2(ProbModelChecker.java:2208)
+  symbolic.comp.ProbModelChecker.computeReachRewardsUpperBound(ProbModelChecker.java:1931)
+  symbolic.comp.NondetModelChecker.computeReachRewards(NondetModelChecker.java:2575)
+  symbolic.comp.NondetModelChecker.checkRewardReach(NondetModelChecker.java:1487)
+  symbolic.comp.NondetModelChecker.checkRewardPathFormula(NondetModelChecker.java:1445)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:368)
+  symbolic.comp.NondetModelChecker.checkExpressionReward(NondetModelChecker.java:326)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:189)
+  symbolic.comp.StateModelChecker.checkExpressionFilter(StateModelChecker.java:1192)
+  symbolic.comp.StateModelChecker.checkExpression(StateModelChecker.java:312)
+  symbolic.comp.NonProbModelChecker.checkExpression(NonProbModelChecker.java:88)
+  symbolic.comp.NondetModelChecker.checkExpression(NondetModelChecker.java:204)
+  symbolic.comp.StateModelChecker.check(StateModelChecker.java:238)
+  prism.Prism.modelCheck(Prism.java:3466)
+  prism.PrismCL.run(PrismCL.java:426)
+  prism.PrismCL.go(PrismCL.java:227)
+  prism.PrismCL.main(PrismCL.java:3008)
+
+Error: Out of memory (or other internal error) in the CUDD library.
+Tip: Try using the -cuddmaxmem switch to increase the memory available to CUDD.
+
+----------------------------------------
+Wallclock time:	408.912
+Return code:	1

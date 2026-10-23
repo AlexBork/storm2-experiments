@@ -1,0 +1,34 @@
+Command:	/opt/storm2-experiments/comparison_tools_bisim/bin/storm-old --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --exact
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Output:
+Storm 1.6.2
+
+Date: Thu Oct 15 23:08:08 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --exact
+Current working directory: /tmp/invocation-b0iqyj2j
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 40.630s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958894
+Transitions: 	3325526
+Choices: 	3080702
+Reward Models:  rew_gold
+State Labels: 	2 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R[exp]{"rew_gold"}max=? [Csteps<=1300] ...
+
+----------------------------------------
+Wallclock time:	901.120
+Return code:	None
+Computation aborted after 901.120 seconds since the time limit of 900 seconds was exceeded.
