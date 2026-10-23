@@ -25,7 +25,7 @@ EXPERIMENT_DIR = THIS_DIR.parent
 DEFAULT_BENCHMARK_SET = THIS_DIR / "selection.json"
 DEFAULT_UNCERTAINTY_CONFIG = THIS_DIR / "uncertainty_sets.json"
 DEFAULT_OUTPUT_DIR = EXPERIMENT_DIR / "benchmarks"
-DEFAULT_BENCHMARK_ROOT = EXPERIMENT_DIR.parent / "benchmarks"
+DEFAULT_BENCHMARK_ROOT = EXPERIMENT_DIR.parents[1] / "benchmarks"
 DEFAULT_MAX_STATES = 10_000_000
 
 @lru_cache(maxsize=None)

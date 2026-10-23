@@ -3,9 +3,14 @@
 
 Shared by generate_invocations.py, which uses it to skip configuration/benchmark
 combinations that cannot be run, and by run.py, which builds the actual command.
+Also says where the benchmarks of an experiment are, for these and postprocess.py.
 """
 
 import re
+from pathlib import Path
+
+# The benchmarks shared by the experiments, at the root of the repository.
+SHARED_BENCHMARK_DIR = Path(__file__).resolve().parents[2] / "benchmarks"
 
 # Benchmark keys whose value is the path of a model file. Such files are copied
 # into the temporary directory of an invocation.
@@ -27,6 +32,13 @@ META_KEY = "meta"
 CMD_KEYS = ["cmd"]
 
 PLACEHOLDER = re.compile(r"%([A-Za-z][A-Za-z0-9-]*)")
+
+
+def benchmark_dir(experiment):
+    """The benchmarks of an experiment: its own benchmarks/ directory if it has one,
+    for models of its own, and the shared one at the root of the repository otherwise."""
+    own = experiment / "benchmarks"
+    return own if own.is_dir() else SHARED_BENCHMARK_DIR
 
 
 def is_meta(config):

@@ -7,7 +7,7 @@ from tools import *
 
 # The logs are written by common/run.py and read with the log parser of
 # common/postprocess.py, which calls this script for the POMDP experiment.
-COMMON_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "common")
+COMMON_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "scripts", "common")
 sys.path.append(COMMON_DIR)
 _spec = importlib.util.spec_from_file_location("common_postprocess", os.path.join(COMMON_DIR, "postprocess.py"))
 common = importlib.util.module_from_spec(_spec)

@@ -4,7 +4,7 @@
 run.py only reports whether a tool exited normally; this checks what the
 post-processing made of it. Run from an experiment directory with the results
 directory written by postprocess.py, e.g.
-  python3 ../common/check_results.py experiments/results
+  python3 ../../scripts/common/check_results.py experiments/results
 It reports and fails on
   - runs that are incorrect, or have no result although they did not run out of
     time or memory (e.g. because the output format of a tool changed),
@@ -20,7 +20,7 @@ import math
 import sys
 from pathlib import Path
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. experiments/comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
 
 # Relative and absolute slack when comparing the bounds of pomdp, which are rounded

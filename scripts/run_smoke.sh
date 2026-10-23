@@ -2,14 +2,14 @@
 # Check that everything works: run all configurations of every experiment on two
 # small benchmarks with a time limit of 60 seconds, post-process the logs, check
 # the results with common/check_results.py and build the figures in
-# latex/main.pdf, like run_all.sh does for all benchmarks. Fails if a run has an
+# plots/latex/main.pdf, like run_all.sh does for all benchmarks. Fails if a run has an
 # incorrect result or none at all, e.g. because the output of a tool changed.
 # Takes about 5 to 10 minutes. The options are passed on to common/run.py, e.g.
-#   ./run_smoke.sh --jobs 2
+#   scripts/run_smoke.sh --jobs 2
 # The logs and results go to the same place as those of run_all.sh, which
 # overwrites all of them.
 set -eu
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 run_options="$*"
 failed=""
 
@@ -18,14 +18,14 @@ experiment() {  # experiment DIRECTORY BENCHMARKS [POSTPROCESS OPTIONS]
   benchmarks=$2
   shift 2
   echo "== $(date): $directory"
-  cd "$directory"
-  python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs \
+  cd "experiments/$directory"
+  python3 ../../scripts/common/generate_invocations.py --out inv.json --logdir experiments/logs \
     --benchmarks "$benchmarks" --timelimit 60
   # shellcheck disable=SC2086
-  python3 ../common/run.py inv.json $run_options
-  python3 ../common/postprocess.py "$@" experiments/logs experiments/results
-  python3 ../common/check_results.py experiments/results || failed="$failed $directory"
-  cd ..
+  python3 ../../scripts/common/run.py inv.json $run_options
+  python3 ../../scripts/common/postprocess.py "$@" experiments/logs experiments/results
+  python3 ../../scripts/common/check_results.py experiments/results || failed="$failed $directory"
+  cd ../..
 }
 
 experiment comparison_tools_bisim consensus.4-4.c2,tireworld.17.goal
@@ -34,7 +34,7 @@ experiment imdps consensus.4-4.c2.absolute-005,zeroconf.20-2-false.correct_max.a
 experiment pomdp grid_grid_rewmin_sl0.1,refuel_refuel_prbmax_N06
 
 echo "== $(date): figures"
-./build_figures.sh
+scripts/build_figures.sh
 
 if [ -n "$failed" ]; then
   echo "== results with problems in:$failed" >&2

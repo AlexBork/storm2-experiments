@@ -30,15 +30,15 @@ import sys
 from fractions import Fraction
 from pathlib import Path
 
-from commands import is_meta, members
+from commands import benchmark_dir, is_meta, members
 
 # Exact results are rationals whose numerator and denominator can have tens of
 # thousands of digits, well beyond the limit python applies by default.
 sys.set_int_max_str_digits(0)
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. experiments/comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
-INDEX_FILE = ROOT / "benchmarks" / "index.json"
+INDEX_FILE = benchmark_dir(ROOT) / "index.json"
 CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
 
 # Relative precision a result has to meet to count as correct.
@@ -53,7 +53,7 @@ ABSOLUTE_PRECISION = False
 ZERO_THRESHOLD = Fraction(1, 10**8)
 
 # Where the non-numeric outcomes are drawn in the scatter plots, and the range
-# runtimes are clamped to. Keep these in sync with the axes in latex/plots.tex.
+# runtimes are clamped to. Keep these in sync with the axes in plots/latex/plots.tex.
 PLOT_MIN = 1.0
 PLOT_TIMEOUT = 1200.0
 PLOT_INCORRECT = 2400.0

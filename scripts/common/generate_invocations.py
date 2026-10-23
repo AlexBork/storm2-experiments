@@ -11,12 +11,12 @@ import random
 import sys
 from pathlib import Path
 
-from commands import is_meta, pick_command
+from commands import benchmark_dir, is_meta, pick_command
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. experiments/comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
 CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
-INDEX_FILE = ROOT / "benchmarks" / "index.json"
+INDEX_FILE = benchmark_dir(ROOT) / "index.json"
 
 # Keys of an index.json entry that are not relevant for running it.
 BENCHMARK_SKIP_KEYS = {"reference-result"}

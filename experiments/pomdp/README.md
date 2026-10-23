@@ -14,19 +14,19 @@ observable MDP reference.
 
 ## Running the experiments
 
-The steps are those of the other experiments, see the [README](../README.md) in
+The steps are those of the other experiments, see the [README](../../README.md) in
 the root of this repository. The tool is expected as `bin/storm-pomdp`:
 
 ```bash
-cd pomdp
+cd experiments/pomdp
 mkdir -p bin
 ln -s /path/to/storm/build/bin/storm-pomdp bin/storm-pomdp
 
 python3 scripts/benchmarks.py    # checks the model and property files
-python3 ../common/generate_invocations.py --out inv.json --timelimit 900 \
+python3 ../../scripts/common/generate_invocations.py --out inv.json --timelimit 900 \
     --logdir experiments/logs
-python3 ../common/run.py inv.json
-python3 ../common/postprocess.py experiments/logs experiments/results
+python3 ../../scripts/common/run.py inv.json
+python3 ../../scripts/common/postprocess.py experiments/logs experiments/results
 ```
 
 As in the other experiments, the time limit is **900 seconds**; the worst-case

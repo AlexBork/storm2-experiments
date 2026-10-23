@@ -1,7 +1,7 @@
 # Interval MDPs
 
 Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs (IMDPs). The IMDPs
-are derived from the MDP benchmarks in [`../benchmarks/`](../benchmarks) by
+are derived from the MDP benchmarks in [`../../benchmarks/`](../../benchmarks) by
 widening every transition probability to an interval, and exported explicitly so
 that all three tools solve exactly the same model.
 
@@ -17,7 +17,7 @@ that all three tools solve exactly the same model.
 As in the other experiments, the tools are expected in `bin/`:
 
 ```bash
-cd imdps
+cd experiments/imdps
 mkdir -p bin
 ln -s /path/to/storm/build/bin/storm bin/storm
 ln -s /path/to/prism/bin/prism bin/prism
@@ -39,17 +39,17 @@ Storm has to be 1.13 or newer, PRISM 4.10.1 or newer.
 ## Generating the models
 
 The models in `benchmarks/` come with the Docker image, which generates them when
-it is built (see the [README](../README.md)). To generate them yourself you need
+it is built (see the [README](../../README.md)). To generate them yourself you need
 Python 3.10+ with stormpy. Use a stormpy built against the
 same Storm as `bin/storm`, so that the models are the ones Storm is measured on.
 
 ```bash
-cd imdps
+cd experiments/imdps
 python3 generate/generate_explicit_benchmarks.py --workers 4
 ```
 
 This builds every benchmark of `generate/selection.json` (55 MDP benchmarks of
-the practitioner's guide collection, all in `../benchmarks/index.json`) once for
+the practitioner's guide collection, all in `../../benchmarks/index.json`) once for
 each interval width in `generate/uncertainty_sets.json`, and writes the bundles to
 `benchmarks/<width>/<benchmark>.*` and the list of them to `benchmarks/index.json`.
 The selection leaves out the benchmarks of the collection with more than
@@ -74,20 +74,20 @@ bundles and rewrites `benchmarks/index.json` from all complete bundles present.
 The unit tests are run with
 
 ```bash
-cd imdps/generate && python3 -m unittest discover -s tests -v
+cd experiments/imdps/generate && python3 -m unittest discover -s tests -v
 ```
 
 ## Running the experiments
 
-The steps are those of the other experiments, see the [README](../README.md) in
+The steps are those of the other experiments, see the [README](../../README.md) in
 the root of this repository:
 
 ```bash
-cd imdps
-python3 ../common/generate_invocations.py --out inv.json --timelimit 900 \
+cd experiments/imdps
+python3 ../../scripts/common/generate_invocations.py --out inv.json --timelimit 900 \
     --logdir experiments/logs
-python3 ../common/run.py inv.json
-python3 ../common/postprocess.py --agreement --absolute experiments/logs experiments/results
+python3 ../../scripts/common/run.py inv.json
+python3 ../../scripts/common/postprocess.py --agreement --absolute experiments/logs experiments/results
 ```
 
 `run.py` links the model files into the temporary directory of an invocation
