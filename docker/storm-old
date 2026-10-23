@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs the old Storm that the Dockerfile copies to /opt/storm-old, with the
+# libraries copied along with it. It only exists for amd64.
+if [ "$(uname -m)" != x86_64 ]; then
+  echo "Error: Storm 1.6.2 is only available for amd64, not for $(uname -m)" >&2
+  exit 1
+fi
+LD_LIBRARY_PATH=/opt/storm-old/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} exec /opt/storm-old/storm "$@"

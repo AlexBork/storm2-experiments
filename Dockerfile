@@ -1,36 +1,40 @@
+# check=skip=FromPlatformFlagConstDisallowed
 # Dockerfile for the Storm 2 experiments
 #########################################
-# The experiments run the Storm of a Storm image, e.g. one built from a local Storm
-# with its own Dockerfile. Only the generation of the interval MDPs of imdps needs
-# stormpy, and is done in a stage based on the stormpy image. The Docker image can
-# be built by executing:
-# docker build -t storm:local ../storm
-# docker build -t storm2-experiments .
-# Different base images can be set from the commandline with:
-# --build-arg STORM_BASE=<storm_image> --build-arg STORMPY_BASE=<stormpy_image>
-# See the README for how to run the experiments in the container.
+# Build with: docker build -t storm2-experiments .
+# See the README for the build arguments and how to run the experiments.
 
 # Set the base images
-ARG STORM_BASE=storm:local
+ARG STORM_BASE=movesrwth/storm:2.0.0
 ARG STORMPY_BASE=movesrwth/stormpy:1.14.0
+ARG STORM_OLD_BASE=movesrwth/storm:1.6.2
+
+
+# Collect an old Storm to compare with
+######################################
+# The binary and its libraries, run by docker/storm-old; Storm 1.6.2 only exists
+# for amd64, so arm64 images cannot run it
+FROM --platform=linux/amd64 $STORM_OLD_BASE AS storm-old
+RUN mkdir -p /opt/storm-old/lib \
+    && cp /opt/storm/build/bin/storm /opt/storm-old/ \
+    && ldd /opt/storm-old/storm | awk '$2 == "=>" && $3 ~ /^\// {print $3}' \
+        | grep -vE '/(libc|libm|libdl|libpthread|librt|libstdc\+\+|libgcc_s)\.so' \
+        | xargs -I{} cp -L {} /opt/storm-old/lib/ \
+    && /opt/storm-old/storm --version | head -1
 
 
 # Generate the interval MDPs of imdps
 #####################################
-# In a stage of their own, which only copies the generator, the MDP benchmarks it
-# reads and the models already generated in imdps/benchmarks/. Only the missing
-# models are generated, which takes hours for all of them; the generation stops at
-# the first benchmark that fails, so that no model is missing from the image.
-# Models in imdps/benchmarks/ that are not in its index.json are left out.
-FROM $STORMPY_BASE AS imdps-models
-# Number of interval MDPs generated in parallel; the largest ones need tens of GB
-# of memory each
+# Only the missing ones, which takes hours for all of them, once on the building
+# machine for all architectures; models not in its index.json are dropped
+FROM --platform=$BUILDPLATFORM $STORMPY_BASE AS imdps-models
+# Models generated in parallel; the largest need tens of GB of memory each
 ARG generate_workers=2
 WORKDIR /opt/storm2-experiments
 COPY benchmarks benchmarks
-COPY imdps/generate imdps/generate
-COPY imdps/benchmarks imdps/benchmarks
-RUN cd imdps && python3 generate/generate_explicit_benchmarks.py \
+COPY experiments/imdps/generate experiments/imdps/generate
+COPY experiments/imdps/benchmarks experiments/imdps/benchmarks
+RUN cd experiments/imdps && python3 generate/generate_explicit_benchmarks.py \
         --skip-existing --workers $generate_workers --no-keep-going \
     && python3 -c 'import json, pathlib; \
 root = pathlib.Path("benchmarks"); \
@@ -43,15 +47,10 @@ FROM $STORM_BASE
 
 # Configuration arguments
 #########################
-# The arguments can be set from the commandline with:
-# --build-arg <arg_name>=<value>
-
-# Versions of the other tools
 ARG prism_version=4.10.1
 ARG julia_version=1.13.0
-# The Modest Toolset website only offers its latest version, which is used when
-# modest_version is empty; set it to e.g. v3.1.315-g0a0763b35 for a specific one
-ARG modest_version=""
+# Set by BuildKit, e.g. amd64 or arm64
+ARG TARGETARCH
 
 
 # Install dependencies
@@ -71,55 +70,51 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
 
 # Install the other tools
 #########################
+# The Modest Toolset comes from docker/modest/, see its README
 WORKDIR /opt
-RUN curl -fsSL https://www.prismmodelchecker.org/dl/prism-$prism_version-linux64-x86.tar.gz | tar xz \
-    && mv prism-$prism_version-linux64-x86 prism \
+RUN arch=$([ "$TARGETARCH" = arm64 ] && echo arm || echo x86) \
+    && curl -fsSL https://www.prismmodelchecker.org/dl/prism-$prism_version-linux64-$arch.tar.gz | tar xz \
+    && mv prism-$prism_version-linux64-$arch prism \
     && cd prism && ./install.sh
-RUN curl -fsSL https://julialang-s3.julialang.net/bin/linux/x64/${julia_version%.*}/julia-$julia_version-linux-x86_64.tar.gz | tar xz \
+RUN set -- $([ "$TARGETARCH" = arm64 ] && echo aarch64 aarch64 || echo x64 x86_64) \
+    && curl -fsSL https://julialang-s3.julialang.net/bin/linux/$1/${julia_version%.*}/julia-$julia_version-linux-$2.tar.gz | tar xz \
     && mv julia-$julia_version julia
-RUN downloads=https://www.modestchecker.net/downloads/ \
-    && zip=${modest_version:+Modest-Toolset-$modest_version-linux-x64.zip} \
-    && zip=${zip:-$(curl -fsSL $downloads | grep -oE 'Modest-Toolset-[^"]*-linux-x64\.zip' | head -1)} \
-    && echo "Modest Toolset: $zip" \
-    && curl -fsSL -o modest.zip $downloads$zip \
-    && unzip -q modest.zip && rm modest.zip
+COPY docker/modest/$TARGETARCH/Modest /opt/Modest
+COPY --from=storm-old /opt/storm-old /opt/storm-old
 
-# Install IntervalMDP.jl and build its sysimage. With Julia 1.13, PackageCompiler
-# compiles it for the CPU targets of Julia's own sysimage rather than for the CPU
-# of the machine building the image, so that the image runs on other machines too.
-# The packages go to a depot outside of $HOME, as BenchExec runs every invocation
-# with a fresh $HOME; the trailing colon keeps Julia's bundled depots. Only the
-# Julia environment is copied here, so that changes elsewhere in the repository do
-# not rebuild the sysimage.
+# IntervalMDP.jl and its sysimage, before the rest of the repository so that it is
+# rarely rebuilt; the depot is outside $HOME, which BenchExec replaces
 ENV JULIA_DEPOT_PATH=/opt/julia-depot:
-WORKDIR /opt/storm2-experiments/imdps
-COPY imdps/julia julia
+WORKDIR /opt/storm2-experiments/experiments/imdps
+COPY experiments/imdps/julia julia
 RUN /opt/julia/bin/julia --project=julia -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()' \
     && /opt/julia/bin/julia julia/build_sysimage.jl
 
 
 # Set-up the experiments
 ########################
+# The scripts need BenchExec; the interval MDPs are copied before the repository,
+# so that a change in it does not export their gigabytes again
 WORKDIR /opt/storm2-experiments
-# The scripts only need BenchExec besides Python itself
 ENV PATH=/opt/venv/bin:$PATH
 COPY requirements.txt .
 RUN python3 -m venv /opt/venv && pip install -r requirements.txt
-# The interval MDPs come from the stage above, together with their index.json.
-COPY --exclude=imdps/benchmarks . .
-COPY --from=imdps-models /opt/storm2-experiments/imdps/benchmarks imdps/benchmarks
+COPY --from=imdps-models /opt/storm2-experiments/experiments/imdps/benchmarks experiments/imdps/benchmarks
+COPY --exclude=experiments/imdps/benchmarks --exclude=docker/modest . .
 
-# Link the tools to where the experiments expect them. The Storm release images
-# install Storm in /usr/local, an image built from Storm's Dockerfile in /opt/storm.
+# Link the tools into the bin/ directories of the experiments; release images have
+# Storm in /usr/local, images built from Storm's Dockerfile in /opt/storm
 RUN storm=$(command -v storm || echo /opt/storm/build/bin/storm) \
+    && cd experiments \
     && for experiment in comparison_tools_bisim imdps; do \
         mkdir -p $experiment/bin \
         && ln -s $storm /opt/prism/bin/prism $experiment/bin/; \
     done \
     && ln -s /opt/Modest/modest comparison_tools_bisim/bin/modest \
+    && ln -s /opt/storm2-experiments/docker/storm-old comparison_tools_bisim/bin/storm-old \
     && ln -s /opt/julia/bin/julia imdps/bin/julia \
     && mkdir -p pomdp/bin && ln -s $(dirname $storm)/storm-pomdp pomdp/bin/
 
-# Set up cgroups for BenchExec (run.py --jobs), see docker/init.sh
+# Sets up the cgroups for BenchExec, see docker/init.sh
 ENTRYPOINT ["/opt/storm2-experiments/docker/init.sh"]
 CMD ["bash"]
