@@ -1,16 +1,16 @@
 # POMDPs
 
-Benchmarks of `storm-pomdp` for the tool paper. The experiment suite contains
-**19 instances and 35 configurations (665 runs)**: 32 explicit cut-offs from
-10,000 to 50,000,000, static discretisation at resolutions 4 and 5, and the fully
-observable MDP reference.
+Benchmarks of `storm-pomdp` for the tool paper: **19 POMDP instances and 34
+configurations (646 runs)**: 32 belief-exploration size limits (cut-offs) from
+10,000 to 50,000,000 and static belief discretisation at resolutions 4 and 5.
 
 | Path | Description |
 | --- | --- |
 | `benchmarks/` | The PRISM models and properties, plus `index.json` describing every instance |
 | `scripts/configurations.json` | The configurations: the method `family` of each, and the `size-threshold` of the cut-offs |
 | `scripts/postprocess.py` | The POMDP-specific post-processing, called by `common/postprocess.py` |
-| `scripts/` (other files) | Modules and plot utilities used by the post-processing, see below |
+| `scripts/plots.py`, `scripts/html_results.py` | The figure data and the html table, written by the post-processing |
+| `scripts/benchmarks.py`, `storm.py`, `tools.py` | The instances, configurations and the parsing of the output of Storm |
 
 ## Running the experiments
 
@@ -30,89 +30,63 @@ python3 ../../scripts/common/postprocess.py experiments/logs experiments/results
 ```
 
 As in the other experiments, the time limit is **900 seconds**; the worst-case
-runtime of the suite is then 166 hours 15 minutes plus overhead, run one at a
-time. A previous full run with a time limit of 600 seconds took about 6.6 hours.
-`--configs` and `--benchmarks` of `generate_invocations.py`
-select a part, e.g. `--configs discr004s,discr005s,mdp`. Record the Storm
-revision, CPU, RAM, and external resource limits with the results.
+runtime of the suite is then 161 hours 30 minutes plus overhead, run one at a
+time. `--configs` and `--benchmarks` of `generate_invocations.py` select a part,
+e.g. `--configs discr004s,discr005s`. Partial experiments are supported;
+unavailable runs and bound references appear as missing data. Record the Storm
+revision and machine specifications with new results.
 
-## Benchmark configuration
+## Instances
 
 The instances are listed in `benchmarks/index.json`, the configurations in
 `scripts/configurations.json`. Every instance is checked with the same 32
-cut-offs:
+cut-offs: 10,000 to 90,000, 100,000 to 900,000 and 1,000,000 to 9,000,000 in
+steps of the first value, and 10,000,000 to 50,000,000 in steps of 10,000,000.
 
-| Range | Tested thresholds |
-| --- | --- |
-| Ten thousands | 10,000, 20,000, …, 90,000 |
-| Hundred thousands | 100,000, 200,000, …, 900,000 |
-| Millions | 1,000,000, 2,000,000, …, 9,000,000 |
-| Ten millions | 10,000,000, 20,000,000, 30,000,000, 40,000,000, 50,000,000 |
-
-The instance families are grid, grid-avoid, samplerocks, drone, lanes,
-grid-large, network, network-priorities, maze2, and refuel. The suite includes
-14 of the 15 instances in Tables 1 and 2 of the
-[TACAS 2022 paper](https://doi.org/10.1007/978-3-030-99527-0_2), plus five
-additional instances. Grid-avoid/sl0 is excluded; the additional instances
-are Drone N5-R3, Drone N6-R3, lanes-100, grid-large-30-5, and maze2/sl0.3.
+| Plot label | Benchmark ID | Objective |
+| --- | --- | --- |
+| Grid-4-0.1 | `grid_grid_rewmin_sl0.1` | Minimise expected reward |
+| Grid-4-0.3 | `grid_grid_rewmin_sl0.3` | Minimise expected reward |
+| Grid-av-4-0.1 | `grid-avoid_grid-avoid_prbmax_sl0.1` | Maximise reachability probability |
+| Rocks-12 | `samplerocks_samplerocks_rewmin_N12` | Minimise expected reward |
+| Rocks-16 | `samplerocks_samplerocks_rewmin_N16` | Minimise expected reward |
+| Drone-4-1 | `drone_drone_prbmax_N4-R1` | Maximise reachability probability |
+| Drone-4-2 | `drone_drone_prbmax_N4-R2` | Maximise reachability probability |
+| Drone-5-3 | `drone_drone_prbmax_N5-R3` | Maximise reachability probability |
+| Drone-6-3 | `drone_drone_prbmax_N6-R3` | Maximise reachability probability |
+| Lanes+ | `lanes-100_lanes-100_rewmin_` | Minimise expected reward |
+| Grid-large-30-5 | `grid-large-30-5_grid-large-30-5_rewmin_` | Minimise expected reward |
+| Netw-2-8-20 | `network2_network2_rewmin_T8-K20` | Minimise expected reward |
+| Netw-3-8-20 | `network3_network3_rewmin_T8-K20` | Minimise expected reward |
+| Netw-p-2-8-20 | `network-priorities2_network-priorities2_rewmax_T8-K20` | Maximise expected reward |
+| Netw-p-3-8-20 | `network-priorities3_network-priorities3_rewmax_T8-K20` | Maximise expected reward |
+| Maze2-0.1 | `maze2_maze2_rewmin_sl0.1` | Minimise expected reward |
+| Maze2-0.3 | `maze2_maze2_rewmin_sl0.3` | Minimise expected reward |
+| Refuel-06 | `refuel_refuel_prbmax_N06` | Maximise reachability probability |
+| Refuel-08 | `refuel_refuel_prbmax_N08` | Maximise reachability probability |
 
 ## Postprocessing
 
 `common/postprocess.py` hands the logs to `scripts/postprocess.py`, which reads
 them without modifying them and writes to the results directory:
 
-- `execution-data.json` and `benchmark-data.json`: parsed results and
-  model statistics.
-- `runtime-report.md` and `runtime-*.csv`: cumulative runtimes, outcomes,
-  and per-run audits.
-- `html/index.html`: an offline sortable/filterable table, with links
-  to per-run commands, metadata, and logs. Share the entire `html/`
-  directory to include its styles, script, and log pages.
-- Shared CSV data, reusable TeX commands, and a per-instance plot preview.
+- `html/index.html`: an offline results table with links to a page per run,
+  with its invocation, metadata and log. Share the entire `html/` directory.
+- `plots/`: the audit CSV `plot-data.csv`, the figure data `plot-series.csv`
+  and `plot-curves.csv`, and the TeX commands of the figure in
+  `aggregate-plots.tex` and `paper-figure.tex`. `scripts/build_figures.sh` in the
+  root of the repository puts the figure data into the figures of the paper.
+- `execution-data.json` and `benchmark-data.json`: the parsed runs and
+  instances, which `common/check_results.py` checks.
 
-Failures remain in the exports. A non-timeout SIGKILL is reported as
-`killed`, which does not establish its cause. Runtime totals include failed
-runs; derived best configurations are excluded from totals and the HTML
-table. Bounds are compared separately for cut-offs and over-approximation
-references, respecting minimisation/maximisation and breaking ties by runtime.
-The audit CSV files are tab-separated; plotting CSVs use commas.
+The figure has three panels, which cover all included instances together, with
+the size limit on the x-axis and a point per run: the runtime, and the gaps to
+the best successful under- and over-approximation of every instance,
+100 · |bound − best| / max(|bound|, |best|). The over-approximation reference
+uses only the discretisations at resolutions 4 and 5. Runs that ran out of time
+or memory are drawn on separate TO and MO lines; killed runs count as MO.
 
 `python3 scripts/postprocess.py LOGDIR... --output-dir DIR` processes several log
-directories at once, and `--legacy-outputs` also writes the historical
-dissertation outputs. The HTML table can be regenerated from existing exports
-with `python3 scripts/html_results.py`, and `python3 scripts/compare_logs.py`
-compares two log directories.
-
-## Plot utilities
-
-The per-instance plots use `cutoff-threshold-plot-data.csv` and
-`pomdp-instance-plots.tex` of the results directory:
-
-```tex
-% Document preamble:
-\input{experiments/results/pomdp-instance-plots.tex}
-\StormPOMDPLoadData{experiments/results/cutoff-threshold-plot-data.csv}
-% Document body:
-\StormPOMDPValuePlot{drone_drone_prbmax_N6-R3}
-\StormPOMDPRuntimePlot[width=7cm,height=5cm]{drone_drone_prbmax_N6-R3}
-```
-
-Compile the generated instance preview from the results directory:
-
-```sh
-cd experiments/results
-lualatex --interaction=nonstopmode --halt-on-error cutoff-threshold-preview.tex
-```
-
-The exploratory summary plots are separate from the post-processing:
-
-```sh
-python3 scripts/toolpaper_plots.py --compile
-```
-
-They use the audited exports and successful source logs, producing CSV-backed
-commands and a combined preview under
-`experiments/results/general-plots/pomdp-tool-paper/`. That directory's
-generated README documents the commands and metrics. Their plot design is still
-being reconsidered. LuaLaTeX and `pdftoppm` are optional requirements for
-PDF/PNG generation.
+directories at once; `--compile` also builds `plots/runtime-comparison.pdf` and
+`.png` of the figure, which needs LuaLaTeX with the `standalone` and `llncs`
+classes and `pdftoppm` (Poppler).

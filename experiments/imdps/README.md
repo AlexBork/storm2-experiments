@@ -1,14 +1,15 @@
 # Interval MDPs
 
 Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs (IMDPs). The IMDPs
-are derived from the MDP benchmarks in [`../../benchmarks/`](../../benchmarks) by
+are derived from the MDP benchmarks in [`../../mdp_benchmarks/`](../../mdp_benchmarks)
+(described by `../comparison_tools_bisim/benchmarks/index.json`) by
 widening every transition probability to an interval, and exported explicitly so
 that all three tools solve exactly the same model.
 
 | Path | Description |
 | --- | --- |
 | `generate/` | The generator of the explicit models, its benchmark selection and interval widths, and its tests |
-| `benchmarks/` | The generated models, plus `index.json` describing every one of them; only `index.json` is part of the git repository |
+| `benchmarks/` | The generated models, plus `index.json` describing every one of them, and `index-quick.json` and `index-smoke.json` with subsets; only the index files are part of the git repository |
 | `scripts/` | The configurations compared, in `configurations.json`, and the wrapper that runs IntervalMDP.jl |
 | `julia/` | The Julia environment with IntervalMDP.jl 0.7 and the script that solves a model with it |
 
@@ -49,7 +50,7 @@ python3 generate/generate_explicit_benchmarks.py --workers 4
 ```
 
 This builds every benchmark of `generate/selection.json` (55 MDP benchmarks of
-the practitioner's guide collection, all in `../../benchmarks/index.json`) once for
+the practitioner's guide collection, all in `../comparison_tools_bisim/benchmarks/index.json`) once for
 each interval width in `generate/uncertainty_sets.json`, and writes the bundles to
 `benchmarks/<width>/<benchmark>.*` and the list of them to `benchmarks/index.json`.
 The selection leaves out the benchmarks of the collection with more than

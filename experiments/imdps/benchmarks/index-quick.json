@@ -1,0 +1,146 @@
+{
+	"avoid-mdp.25-0.2.goal_max.absolute-005": {
+		"type": "absolute-005",
+		"benchmark": "avoid-mdp.25-0.2.goal_max",
+		"delta": 0.05,
+		"bundle": "absolute-005/avoid-mdp.25-0.2.goal_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 3122501
+	},
+	"mer.100-0.1.prob_max.absolute-005": {
+		"type": "absolute-005",
+		"benchmark": "mer.100-0.1.prob_max",
+		"delta": 0.05,
+		"bundle": "absolute-005/mer.100-0.1.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 592264
+	},
+	"random-grid.80-0.3-0.3.prob_max.absolute-005": {
+		"type": "absolute-005",
+		"benchmark": "random-grid.80-0.3-0.3.prob_max",
+		"delta": 0.05,
+		"bundle": "absolute-005/random-grid.80-0.3-0.3.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 512000
+	},
+	"tireworld.17.goal.absolute-005": {
+		"type": "absolute-005",
+		"benchmark": "tireworld.17.goal",
+		"delta": 0.05,
+		"bundle": "absolute-005/tireworld.17.goal",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 8670
+	},
+	"zeroconf.20-2-false.correct_max.absolute-005": {
+		"type": "absolute-005",
+		"benchmark": "zeroconf.20-2-false.correct_max",
+		"delta": 0.05,
+		"bundle": "absolute-005/zeroconf.20-2-false.correct_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 89586
+	},
+	"bigmec.100000.prob_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "bigmec.100000.prob_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/bigmec.100000.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 200003
+	},
+	"consensus-mec.4-6.disagree.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "consensus-mec.4-6.disagree",
+		"delta": 0.25,
+		"bundle": "absolute-25/consensus-mec.4-6.disagree",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 636160
+	},
+	"consensus.4-4.c2.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "consensus.4-4.c2",
+		"delta": 0.25,
+		"bundle": "absolute-25/consensus.4-4.c2",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 43136
+	},
+	"consensus.4-4.disagree.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "consensus.4-4.disagree",
+		"delta": 0.25,
+		"bundle": "absolute-25/consensus.4-4.disagree",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 43136
+	},
+	"evade-mdp.8-0.7.prob_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "evade-mdp.8-0.7.prob_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/evade-mdp.8-0.7.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 398273
+	},
+	"manymecs.10000.prob_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "manymecs.10000.prob_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/manymecs.10000.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 30002
+	},
+	"mer.100-0.1.prob_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "mer.100-0.1.prob_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/mer.100-0.1.prob_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 592264
+	},
+	"refuel-mdp.80-40.reach_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "refuel-mdp.80-40.reach_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/refuel-mdp.80-40.reach_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 161070
+	},
+	"sensor.4.max_success.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "sensor.4.max_success",
+		"delta": 0.25,
+		"bundle": "absolute-25/sensor.4.max_success",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 572452
+	},
+	"tireworld.17.goal.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "tireworld.17.goal",
+		"delta": 0.25,
+		"bundle": "absolute-25/tireworld.17.goal",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 8670
+	},
+	"zeroconf.20-2-false.correct_max.absolute-25": {
+		"type": "absolute-25",
+		"benchmark": "zeroconf.20-2-false.correct_max",
+		"delta": 0.25,
+		"bundle": "absolute-25/zeroconf.20-2-false.correct_max",
+		"prism-import": "tra,sta,lab",
+		"intervalmdp": true,
+		"states": 89586
+	}
+}

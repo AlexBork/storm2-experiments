@@ -234,11 +234,5 @@
     "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --belief-exploration discretize --resolution 5 --triangulationmode static",
     "description": "Over-approximation with discretization, resolution 5, triangulation mode static.",
     "family": "discretisation"
-  },
-  "mdp": {
-    "bin": "bin/storm-pomdp",
-    "cmd": "--prism %prism --prop %prism-property %property -const %constants --timemem --statistics --sound --check-fully-observable",
-    "description": "Underlying fully observable MDP.",
-    "family": "MDP"
   }
 }

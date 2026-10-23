@@ -88,14 +88,11 @@ def check_pomdp(executions):
                     continue
                 counts["ok"] = counts.get("ok", 0) + 1
                 base = configuration.rstrip("0123456789s")
-                direction = run["benchmark"]["property"]["dir"]
                 expected = module.expected_bound_relation(base, run["benchmark"])
-                if expected is not None and relation != expected:
+                # An exact value, e.g. of a fully explored belief MDP, is both bounds.
+                if expected is not None and relation not in (expected, "="):
                     problems.append(f"wrong kind of bound: {run['id']}: {relation} {value}, "
                                     f"expected {expected}")
-                # The fully observable MDP bounds the value of the POMDP from the other side.
-                if base == "mdp":
-                    relation = "≤" if direction == "max" else "≥"
                 lower, upper = bounds.setdefault(benchmark, ([], []))
                 if relation in ("≥", "="):
                     lower.append((value, run["id"]))

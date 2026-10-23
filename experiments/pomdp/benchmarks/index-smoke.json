@@ -1,0 +1,18 @@
+{
+  "grid_grid_rewmin_sl0.1": {
+    "benchmark-set": "grid",
+    "name": "grid",
+    "prism": "grid/4x4grid-sl.prism",
+    "prism-property": "grid/grid.props",
+    "property": "rewmin",
+    "constants": "sl=0.1"
+  },
+  "refuel_refuel_prbmax_N06": {
+    "benchmark-set": "refuel",
+    "name": "refuel",
+    "prism": "refuel/refuel.prism",
+    "prism-property": "refuel/refuel.props",
+    "property": "prbmax",
+    "constants": "N=6"
+  }
+}

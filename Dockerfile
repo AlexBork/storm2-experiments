@@ -31,7 +31,8 @@ FROM --platform=$BUILDPLATFORM $STORMPY_BASE AS imdps-models
 # Models generated in parallel; the largest need tens of GB of memory each
 ARG generate_workers=2
 WORKDIR /opt/storm2-experiments
-COPY benchmarks benchmarks
+COPY mdp_benchmarks mdp_benchmarks
+COPY experiments/comparison_tools_bisim/benchmarks experiments/comparison_tools_bisim/benchmarks
 COPY experiments/imdps/generate experiments/imdps/generate
 COPY experiments/imdps/benchmarks experiments/imdps/benchmarks
 RUN cd experiments/imdps && python3 generate/generate_explicit_benchmarks.py \

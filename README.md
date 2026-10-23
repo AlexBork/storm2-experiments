@@ -9,28 +9,31 @@ this repository, which contains all tools in the versions used.
 | Path | Description |
 | --- | --- |
 | `experiments/comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation |
-| `experiments/imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from `benchmarks/`; see [experiments/imdps/README.md](experiments/imdps/README.md) |
+| `experiments/imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from `mdp_benchmarks/`; see [experiments/imdps/README.md](experiments/imdps/README.md) |
 | `experiments/pomdp/` | Benchmarks of storm-pomdp's belief exploration (cut-offs and discretisation) on POMDPs; see [experiments/pomdp/README.md](experiments/pomdp/README.md) |
-| `benchmarks/` | The model and property files of the MDP benchmarks, plus `index.json` describing every benchmark |
+| `mdp_benchmarks/` | The model and property files of the MDP benchmarks, described by `experiments/comparison_tools_bisim/benchmarks/index.json` |
 | `scripts/common/` | Scripts to generate, run and post-process the experiments, shared by all of them |
-| `scripts/` | `run_all.sh` runs and post-processes all experiments and builds the figures, `run_smoke.sh` checks that everything works, `build_figures.sh` builds the figures |
+| `scripts/` | `run_all.sh` runs and post-processes all experiments and builds the figures, `run_quick.sh` does so for a smaller set in about 3 hours, `run_smoke.sh` checks that everything works (all three through `common/run_set.sh`), `build_figures.sh` builds the figures |
 | `plots/latex/` | The figures of all experiments, built from their post-processed results by `scripts/build_figures.sh` |
 | `Dockerfile`, `docker/` | The Docker image with all tools; `docker/build.sh` builds and saves it |
 | `paper_results/` | The logs, results and figure data of the runs in the paper; `scripts/build_figures.sh paper_results/data` builds its figures, see [paper_results/README.md](paper_results/README.md) |
 | `docs/` | The results of the recorded runs as browsable html tables |
 
 Every experiment directory has the same layout: `scripts/configurations.json` lists
-the configurations, `bin/` holds the tools, and `experiments/` receives the logs and
-results. The benchmarks are those of `benchmarks/index.json`, unless the experiment
-has a `benchmarks/` directory with an `index.json` of its own, as `imdps` and
-`pomdp` do. The scripts in `scripts/common/` are run from the experiment directory.
+the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the
+benchmarks, and `experiments/` receives the logs and results. The model paths in an
+index are relative to its directory: those of `comparison_tools_bisim` point to
+`mdp_benchmarks/`, those of `imdps` to its generated models, those of `pomdp` to its
+own models. Next to `index.json`, `index-quick.json` and `index-smoke.json` hold the
+benchmarks of `scripts/run_quick.sh` and `scripts/run_smoke.sh`. The scripts in
+`scripts/common/` are run from the experiment directory.
 
 | Experiment | Runs | Estimated running time | Worst case at 900 s per run |
 | --- | --- | --- | --- |
-| `comparison_tools_bisim` | 761 | 42 hours | 190 hours |
-| `imdps` | 156 | 17 hours | 39 hours |
-| `pomdp` | 665 | 6 hours | 166 hours |
-| all | 1582 | 65 hours | 395 hours |
+| `comparison_tools_bisim` | 957 | 48 hours | 239 hours |
+| `imdps` | 156 | 16 hours | 39 hours |
+| `pomdp` | 646 | 6 hours | 162 hours |
+| all | 1759 | 70 hours | 440 hours |
 
 The estimated running times are the sum of the runtimes of all runs in a recorded
 run of all experiments; they depend on the machine. `run.py` runs as many of them
@@ -38,7 +41,7 @@ in parallel as fit into the machine, each with 4 physical cores and 32 GiB of
 memory, and keeps at least one physical core and 10% of the memory (at least
 8 GiB) for the system. For example, a machine with 503 GiB of memory and 24
 physical cores runs 5 at a time (23 / 4 cores; the memory would allow 14), and all
-experiments then take about 13 hours: 8.5 hours for `comparison_tools_bisim`,
+experiments then take about 14 hours: 10 hours for `comparison_tools_bisim`,
 3.5 hours for `imdps` and 1.5 hours for `pomdp`.
 Runs in parallel share the memory bandwidth and caches of the CPU, so they can
 take somewhat longer than when run one at a time.
@@ -121,9 +124,10 @@ works with `--sequential`, i.e. without pinning and memory limit.
 
 ### Checking the setup
 
-`scripts/run_smoke.sh` runs every configuration of every experiment on two small
-benchmarks with a time limit of 60 seconds, post-processes the logs and builds the
-figures, like `scripts/run_all.sh` below, in about 5 to 10 minutes. Run it first, to
+`scripts/run_smoke.sh` runs every configuration of every experiment on the two small
+benchmarks of its `index-smoke.json` with a time limit of 60 seconds and a memory
+limit of 16 GiB, post-processes the logs and builds the figures, like
+`scripts/run_all.sh` below, in about 5 to 10 minutes. Run it first, to
 check that the image works on the machine; to look at its figures afterwards, copy
 `plots/latex/main.pdf` out of the container (see below) before removing it:
 
@@ -139,10 +143,42 @@ because a tool changed its output and the post-processing no longer reads it; fo
 `pomdp`, it also checks that the lower bounds are below the upper bounds. That
 `run.py` reports a run as `ok` only means the tool exited normally.
 
+### A quick set of the experiments
+
+`scripts/run_quick.sh` runs, post-processes and checks like `scripts/run_smoke.sh`, on
+the benchmarks of the `index-quick.json` of every experiment, with a time limit of
+90 seconds and a memory limit of 16 GiB: 837 runs, about 3 hours with 2 runs at a
+time and 6.5 hours with one. The benchmarks are 53 of `comparison_tools_bisim`, 16
+of `imdps` and 8 of `pomdp`, covering all models of the first two and 8 of the 12
+of `pomdp`. They are chosen such that, judged by the runtimes in the paper, about
+the same share of the runs of every configuration times out at 90 seconds as in
+the paper at 900 seconds: 19% instead of 17% for `comparison_tools_bisim`, 29%
+instead of 26% for `imdps`, 8% instead of 6% for `pomdp`. Runs that need more than
+16 GiB run out of memory instead; the paper runs had 32 GiB.
+
+`TIMELIMIT` and `MEMLIMIT` change the limits, e.g. `-e TIMELIMIT=60` in the
+`docker run` below, which takes about 2.5 hours with 2 runs at a time. To run other
+benchmarks, edit the `index-quick.json` files, whose entries are those of
+`index.json`, or add an `index-NAME.json` to every experiment and run
+`SET=NAME TIMELIMIT=... MEMLIMIT=... scripts/common/run_set.sh`. Every experiment
+writes its logs and results to `experiments/quick/` (`experiments/NAME/`) of its
+directory, replacing those of an earlier run of the set, and the figures go to
+`plots/latex/main.pdf`:
+
+```bash
+docker run -d --privileged --cap-drop=all --name quick storm2-experiments scripts/run_quick.sh
+docker logs -f quick    # follow the progress
+docker cp quick:/opt/storm2-experiments/plots/latex/main.pdf quick.pdf
+```
+
 ### All experiments at once
 
-`scripts/run_all.sh` runs all experiments one after the other, post-processes them,
-and builds the figures; its options are passed on to `run.py`. As this takes days,
+`scripts/run_all.sh` runs all experiments one after the other on all benchmarks of
+their `index.json`, with a time limit of 900 seconds and a memory limit of 32 GiB,
+post-processes and checks them like `scripts/run_smoke.sh`, and builds the figures;
+its options are passed on to `run.py`. Every experiment writes its logs and results
+to `experiments/logs/` and `experiments/results/` of its directory, replacing those
+of an earlier run. As this takes days,
 start it in a container of its own that keeps running in the background:
 
 ```bash
@@ -221,20 +257,24 @@ those of `imdps` in `data/imdp/`, and `plot-series.csv` and `plot-curves.csv` of
 directory with this one; `plots/latex/plots.tex`, `plots/latex/macros.tex` and the
 figures in `plots/latex/main.tex` are those of the paper, Figures 6 to 9. The
 `experiments/` directory of every experiment holds its logs and all its results,
-including the other csv files and plot commands of `pomdp` in
+including the html table and plot commands of `pomdp` in
 `experiments/pomdp/experiments/results/`.
 
 The runs have a time limit of 900 seconds (`generate_invocations.py --timelimit`)
-and a memory limit of 32 GiB (`run.py --memlimit`), which PRISM is also told
-with `-javamaxmem 32g` in its configurations; `run.py` only runs as many at once
+and a memory limit of 32 GiB (`run.py --memlimit`). `run.py` gives the memory
+limit to the tools that need it through the placeholder `%memlimit` of
+`configurations.json`, e.g. `-javamaxmem %memlimit` becomes `-javamaxmem 32g` for
+PRISM, and writes it to the header of every log. `run.py` only runs as many at once
 as fit into the memory of the host. A run that exceeds its time limit counts as
 a timeout, one that exceeds its memory limit as a memout. `run.py` prints the
 cores and frequency governor of every worker, and warns if boost is enabled.
 
 To check a single experiment quickly, select a few benchmarks and a short time
 limit, e.g. `--benchmarks consensus.4-4.c2,tireworld.17.goal --timelimit 60` for
-`generate_invocations.py` in `comparison_tools_bisim`; `scripts/run_smoke.sh` does
-this for all experiments.
+`generate_invocations.py` in `comparison_tools_bisim`, or another index with
+`--index index-smoke.json`; `scripts/run_smoke.sh` and `scripts/run_quick.sh` do
+this for all experiments. `scripts/build_figures.sh -r experiments/quick/results`
+builds the figures from the results of such a set.
 
 ## Building the image
 
@@ -271,7 +311,8 @@ The build generates the 52 interval MDPs of `imdps` (44 GB), which takes a few
 hours and, for the largest models, tens of GB of memory per model generated in
 parallel; `--build-arg generate_workers=N` sets how many are generated at once
 (default: 2). Docker caches this step, so it is only repeated when
-`experiments/imdps/generate/` or `benchmarks/` change. With the artifact, the
+`experiments/imdps/generate/`, `mdp_benchmarks/` or
+`experiments/comparison_tools_bisim/benchmarks/` change. With the artifact, the
 models come with it in `experiments/imdps/benchmarks.tar.xz`; `docker/build.sh`
 unpacks them first, so the build only generates those still missing. The build needs about 100 GB of disk
 space for Docker, plus the saved file.

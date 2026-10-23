@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate the list of tool invocations (configuration x benchmark x repetition).
 
-Reads benchmarks/index.json and scripts/configurations.json and writes a JSON array with one
-entry per invocation.
+Reads benchmarks/index.json (or another index in that directory, e.g. index-quick.json
+with a subset of its benchmarks) and scripts/configurations.json and writes a JSON
+array with one entry per invocation.
 """
 
 import argparse
@@ -16,7 +17,7 @@ from commands import benchmark_dir, is_meta, pick_command
 # The experiment directory, e.g. experiments/comparison_tools_bisim; the scripts are run from there.
 ROOT = Path.cwd()
 CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
-INDEX_FILE = benchmark_dir(ROOT) / "index.json"
+BENCHMARK_DIR = benchmark_dir(ROOT)
 
 # Keys of an index.json entry that are not relevant for running it.
 BENCHMARK_SKIP_KEYS = {"reference-result"}
@@ -58,7 +59,9 @@ def main():
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--out", required=True, help="output file")
     parser.add_argument("--configs", help="comma separated list of configurations (default: all)")
-    parser.add_argument("--benchmarks", help="comma separated list of benchmarks (default: all)")
+    parser.add_argument("--index", default="index.json",
+                        help="index of the benchmarks in the benchmark directory (default: index.json)")
+    parser.add_argument("--benchmarks", help="comma separated list of benchmarks (default: all of the index)")
     parser.add_argument("--timelimit", type=int, default=900, help="time limit in seconds (default: 900)")
     parser.add_argument("--logdir", default="logs", help="directory for the logs (default: logs)")
     parser.add_argument("--repetitions", type=int, default=1,
@@ -91,7 +94,10 @@ def main():
         del all_configs[i]
 
     configs = select(all_configs, args.configs, "configuration")
-    benchmarks = select(load_dict(INDEX_FILE), args.benchmarks, "benchmark")
+    index_file = BENCHMARK_DIR / args.index
+    if not index_file.is_file():
+        sys.exit(f"{index_file} not found")
+    benchmarks = select(load_dict(index_file), args.benchmarks, "benchmark")
     logdir = args.logdir.rstrip("/")
     created = not Path(logdir).is_dir()
     try:
@@ -134,6 +140,7 @@ def main():
     print(f"wrote {len(invocations)} invocations "
           f"({len(configs)} configurations x {len(benchmarks)} benchmarks "
           f"x {args.repetitions} repetition(s)) to {args.out}")
+    print(f"  index:       {index_file}")
     if meta:
         print(f"  ignored:     {len(meta)} meta configuration(s): {', '.join(meta)}")
     if skipped:

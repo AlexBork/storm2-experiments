@@ -67,6 +67,21 @@ def substitute(cmd, values):
     return args
 
 
+def java_size(gib):
+    """A memory size in GiB in the format of Java, e.g. 16g, for the placeholder
+    %memlimit, which gives a tool the memory limit of its run (PRISM's -javamaxmem)."""
+    return f"{gib:g}g" if gib == int(gib) else f"{int(gib * 1024)}m"
+
+
+def command_values(invocation, files):
+    """The values of the placeholders of an invocation: those of its benchmark, the
+    names of its model files and its memory limit."""
+    values = {k: v for k, v in invocation["benchmark"].items() if k not in ("id", "type")}
+    values.update({name: source.name for name, source in files.items()})
+    values["memlimit"] = java_size(invocation["memlimit"])
+    return values
+
+
 def resolve_binary(bin):
     """The absolute path of the tool binary."""
     path = Path(os.path.expanduser(bin))
@@ -170,15 +185,13 @@ def run(invocation, execute=execute):
 
     log.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="invocation-") as tmp:
-        values = {k: v for k, v in benchmark.items() if k not in ("id", "type")}
         for name, source in files.items():
             if name in BUNDLE_KEYS:
                 for file in bundle_files(source):
                     (Path(tmp) / file.name).symlink_to(file.resolve())
             else:
                 shutil.copy2(source, Path(tmp) / source.name)
-            values[name] = source.name
-        args = [str(binary)] + substitute(cmd, values)
+        args = [str(binary)] + substitute(cmd, command_values(invocation, files))
         output, wall_time, return_code = execute(args, tmp, timelimit)
 
     header = (f"Command:\t{shlex.join(args)}\n"
@@ -186,6 +199,7 @@ def run(invocation, execute=execute):
               f"Configuration:\t{config['id']}\n"
               f"Repetition:\t{invocation.get('repetition', 1)}\n"
               f"Time limit:\t{timelimit}\n"
+              f"Memory limit:\t{invocation['memlimit']:g} GiB\n"
               f"Output:\n")
     footer = f"\n{'-' * 40}\nWallclock time:\t{wall_time:.3f}\nReturn code:\t{return_code}\n"
     if return_code is None:
@@ -288,7 +302,7 @@ def run_pinned(selected, counts, args):
             print("  for stable timings run: sudo cpupower frequency-set -g performance")
     if boost_enabled():
         print("boost: enabled\n  for stable timings run: sudo cpupower set --turbo-boost 0")
-    # In GiB, the unit of e.g. PRISM's -javamaxmem 32g.
+    # In bytes; the tools get it in GiB through %memlimit, e.g. PRISM's -javamaxmem.
     memlimit = int(args.memlimit * 2**30)
     print(f"memory limit: {args.memlimit:g} GiB per run")
 
@@ -368,6 +382,8 @@ def main():
         if not 1 <= args.entry <= len(invocations):
             sys.exit(f"--entry must be between 1 and {len(invocations)}, got {args.entry}")
         selected = [selected[args.entry - 1]]
+    for _, invocation in selected:
+        invocation["memlimit"] = args.memlimit
 
     if args.dry_run:
         for _, invocation in selected:
@@ -379,9 +395,8 @@ def main():
             except ValueError as e:
                 print(f"! {e}")
                 continue
-            values = {k: v for k, v in invocation["benchmark"].items() if k not in ("id", "type")}
-            values.update({n: s.name for n, s in files.items()})
-            print(f"{invocation['log']}: {shlex.join([str(binary)] + substitute(cmd, values))}")
+            command = [str(binary)] + substitute(cmd, command_values(invocation, files))
+            print(f"{invocation['log']}: {shlex.join(command)}")
         return
 
     counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
