@@ -21,8 +21,8 @@ for arch in amd64:x64 arm64:arm64; do
   unzip -q docker/modest/Modest-Toolset-*-linux-${arch##*:}.zip -d "$dir"
 done
 
-# The interval MDPs of imdps come with the artifact, see scripts/create_artifact.sh;
-# the build only generates those still missing
+# The interval MDPs of imdps come with the artifact; the build only generates
+# those still missing
 if [ -f experiments/imdps/benchmarks.tar.xz ]; then
   echo "== $(date): unpacking the interval MDPs of imdps"
   XZ_OPT=-T0 tar -xJf experiments/imdps/benchmarks.tar.xz --skip-old-files

@@ -86,8 +86,8 @@ building anything: load the image as below. It also contains what rebuilding the
 image needs: the zips of the Modest Toolset in `docker/modest/` and the generated
 interval MDPs of `imdps` in `experiments/imdps/benchmarks.tar.xz`, which
 `docker/build.sh` unpacks. `scripts/create_artifact.sh` creates it from the
-committed repository and a saved image (`-i FILE`, by default
-`storm2-experiments.tar.gz` in the current directory).
+committed files of the repository plus these files, with the saved image in the
+root of the repository.
 
 ## Loading the image
 
