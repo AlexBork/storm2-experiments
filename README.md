@@ -1,27 +1,29 @@
-# Storm 2 paper experiments
+# Storm 2.0 paper experiments
 
 Benchmarks, scripts and results for the experimental evaluation accompanying the
-Storm 2 paper. The experiments are meant to be run in the Docker image built from
+Storm 2.0 paper. The experiments are meant to be run in the Docker image built from
 this repository, which contains all tools in the versions used.
 
 ## Contents
 
 | Path | Description |
 | --- | --- |
-| `comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation |
-| `imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from `benchmarks/`; see [imdps/README.md](imdps/README.md) |
-| `pomdp/` | Benchmarks of storm-pomdp's belief exploration (cut-offs and discretisation) on POMDPs; see [pomdp/README.md](pomdp/README.md) |
+| `experiments/comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation |
+| `experiments/imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from `benchmarks/`; see [experiments/imdps/README.md](experiments/imdps/README.md) |
+| `experiments/pomdp/` | Benchmarks of storm-pomdp's belief exploration (cut-offs and discretisation) on POMDPs; see [experiments/pomdp/README.md](experiments/pomdp/README.md) |
 | `benchmarks/` | The model and property files of the MDP benchmarks, plus `index.json` describing every benchmark |
-| `common/` | Scripts to generate, run and post-process the experiments, shared by all of them |
-| `latex/` | The figures of all experiments, built from their post-processed results by `build_figures.sh` |
-| `run_all.sh` | Runs and post-processes all experiments, and builds the figures |
-| `Dockerfile`, `docker/` | The Docker image with all tools |
+| `scripts/common/` | Scripts to generate, run and post-process the experiments, shared by all of them |
+| `scripts/` | `run_all.sh` runs and post-processes all experiments and builds the figures, `run_smoke.sh` checks that everything works, `build_figures.sh` builds the figures |
+| `plots/latex/` | The figures of all experiments, built from their post-processed results by `scripts/build_figures.sh` |
+| `Dockerfile`, `docker/` | The Docker image with all tools; `docker/build.sh` builds and saves it |
+| `paper_results/` | The logs, results and figure data of the runs in the paper; `scripts/build_figures.sh paper_results/data` builds its figures, see [paper_results/README.md](paper_results/README.md) |
 | `docs/` | The results of the recorded runs as browsable html tables |
 
-Every experiment directory has the same layout: `benchmarks/index.json` lists its
-benchmarks, `scripts/configurations.json` the configurations, `bin/` holds the
-tools, and `experiments/` receives the logs and results. The scripts in `common/`
-are run from the experiment directory.
+Every experiment directory has the same layout: `scripts/configurations.json` lists
+the configurations, `bin/` holds the tools, and `experiments/` receives the logs and
+results. The benchmarks are those of `benchmarks/index.json`, unless the experiment
+has a `benchmarks/` directory with an `index.json` of its own, as `imdps` and
+`pomdp` do. The scripts in `scripts/common/` are run from the experiment directory.
 
 | Experiment | Runs | Estimated running time | Worst case at 900 s per run |
 | --- | --- | --- | --- |
@@ -85,8 +87,9 @@ for how to make it). Load it on the machine running the experiments:
 docker load -i storm2-experiments.tar.gz
 ```
 
-It contains Storm (built from the Storm sources next to this repository, see
-[Building the image](#building-the-image)), PRISM 4.10.1, the Modest Toolset (mcsta),
+It contains Storm 2.0.0 (the official image `movesrwth/storm:2.0.0`, see
+[Building the image](#building-the-image)), Storm 1.6.2 to compare with, PRISM
+4.10.1, the Modest Toolset v3.1.315 (mcsta),
 Julia 1.13.0 with IntervalMDP.jl and a precompiled sysimage, LaTeX, BenchExec, and
 this repository in `/opt/storm2-experiments`, including the generated interval
 MDPs of `imdps`.
@@ -107,19 +110,19 @@ works with `--sequential`, i.e. without pinning and memory limit.
 
 ### Checking the setup
 
-`run_smoke.sh` runs every configuration of every experiment on two small
+`scripts/run_smoke.sh` runs every configuration of every experiment on two small
 benchmarks with a time limit of 60 seconds, post-processes the logs and builds the
-figures, like `run_all.sh` below, in about 5 to 10 minutes. Run it first, to check
-that the image works on the machine; to look at its figures afterwards, copy
-`latex/main.pdf` out of the container (see below) before removing it:
+figures, like `scripts/run_all.sh` below, in about 5 to 10 minutes. Run it first, to
+check that the image works on the machine; to look at its figures afterwards, copy
+`plots/latex/main.pdf` out of the container (see below) before removing it:
 
 ```bash
-docker run --privileged --cap-drop=all --name smoke storm2-experiments ./run_smoke.sh
-docker cp smoke:/opt/storm2-experiments/latex/main.pdf smoke.pdf
+docker run --privileged --cap-drop=all --name smoke storm2-experiments scripts/run_smoke.sh
+docker cp smoke:/opt/storm2-experiments/plots/latex/main.pdf smoke.pdf
 docker rm smoke
 ```
 
-It also checks the results of every run with `common/check_results.py`, and fails
+It also checks the results of every run with `scripts/common/check_results.py`, and fails
 if a run has an incorrect result, or none although it finished in time, e.g.
 because a tool changed its output and the post-processing no longer reads it; for
 `pomdp`, it also checks that the lower bounds are below the upper bounds. That
@@ -127,12 +130,12 @@ because a tool changed its output and the post-processing no longer reads it; fo
 
 ### All experiments at once
 
-`run_all.sh` runs all experiments one after the other, post-processes them, and
-builds the figures; its options are passed on to `run.py`. As this takes days,
+`scripts/run_all.sh` runs all experiments one after the other, post-processes them,
+and builds the figures; its options are passed on to `run.py`. As this takes days,
 start it in a container of its own that keeps running in the background:
 
 ```bash
-docker run -d --privileged --cap-drop=all --name storm2 storm2-experiments ./run_all.sh
+docker run -d --privileged --cap-drop=all --name storm2 storm2-experiments scripts/run_all.sh
 docker logs -f storm2    # follow the progress
 ```
 
@@ -148,7 +151,7 @@ docker rm storm2      # removes the container, and with it its logs
 
 Docker kills all processes in the container, including the running tools. The
 logs of the finished runs stay in the stopped container until it is removed;
-there is no resuming, a new `run_all.sh` starts all runs again. In an interactive
+there is no resuming, a new `scripts/run_all.sh` starts all runs again. In an interactive
 container, Ctrl-C stops `run.py` and its runs.
 
 ### Each experiment separately
@@ -158,56 +161,57 @@ steps: list the invocations, run them, post-process the logs, and build the
 figures. For the tool comparison:
 
 ```bash
-cd /opt/storm2-experiments/comparison_tools_bisim
-python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json
-python3 ../common/postprocess.py experiments/logs experiments/results
+cd /opt/storm2-experiments/experiments/comparison_tools_bisim
+python3 ../../scripts/common/generate_invocations.py --out inv.json --logdir experiments/logs
+python3 ../../scripts/common/run.py inv.json
+python3 ../../scripts/common/postprocess.py experiments/logs experiments/results
 ```
 
 For the interval MDPs, whose models are generated when building the image (see
-[imdps/README.md](imdps/README.md)), let the configurations agree on the results,
-as there are no exact ones:
+[experiments/imdps/README.md](experiments/imdps/README.md)), let the configurations
+agree on the results, as there are no exact ones:
 
 ```bash
-cd /opt/storm2-experiments/imdps
-python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json
-python3 ../common/postprocess.py --agreement --absolute experiments/logs experiments/results
+cd /opt/storm2-experiments/experiments/imdps
+python3 ../../scripts/common/generate_invocations.py --out inv.json --logdir experiments/logs
+python3 ../../scripts/common/run.py inv.json
+python3 ../../scripts/common/postprocess.py --agreement --absolute experiments/logs experiments/results
 ```
 
-For the POMDPs (see [pomdp/README.md](pomdp/README.md)):
+For the POMDPs (see [experiments/pomdp/README.md](experiments/pomdp/README.md)):
 
 ```bash
-cd /opt/storm2-experiments/pomdp
-python3 ../common/generate_invocations.py --out inv.json --logdir experiments/logs
-python3 ../common/run.py inv.json
-python3 ../common/postprocess.py experiments/logs experiments/results
+cd /opt/storm2-experiments/experiments/pomdp
+python3 ../../scripts/common/generate_invocations.py --out inv.json --logdir experiments/logs
+python3 ../../scripts/common/run.py inv.json
+python3 ../../scripts/common/postprocess.py experiments/logs experiments/results
 ```
 
-Finally, build the figures of all experiments with results in `latex/main.pdf`,
-and copy them and the results out of the container:
+Finally, build the figures of all experiments with results in
+`plots/latex/main.pdf`, and copy them and the results out of the container:
 
 ```bash
-/opt/storm2-experiments/build_figures.sh
+/opt/storm2-experiments/scripts/build_figures.sh
 ```
 
 ```bash
 # on the host
-docker cp storm2:/opt/storm2-experiments/latex/main.pdf .
-docker cp storm2:/opt/storm2-experiments/latex/data .
-docker cp storm2:/opt/storm2-experiments/comparison_tools_bisim/experiments bisim
-docker cp storm2:/opt/storm2-experiments/imdps/experiments imdps
-docker cp storm2:/opt/storm2-experiments/pomdp/experiments pomdp
+docker cp storm2:/opt/storm2-experiments/plots/latex/main.pdf .
+docker cp storm2:/opt/storm2-experiments/plots/latex/data .
+docker cp storm2:/opt/storm2-experiments/experiments/comparison_tools_bisim/experiments bisim
+docker cp storm2:/opt/storm2-experiments/experiments/imdps/experiments imdps
+docker cp storm2:/opt/storm2-experiments/experiments/pomdp/experiments pomdp
 ```
 
-`latex/data/` holds the csv files the figures are made from, in the layout the
-figures of the paper expect: those of `comparison_tools_bisim` directly in it,
-those of `imdps` in `data/imdp/`. To update the figures of the paper, replace its
-`data/` directory with this one; `latex/plots.tex` and `latex/main.tex` are the
-same macros and figures as in the paper. The `experiments/` directories hold the
-logs and all results of every experiment, including the csv files and plot
-commands of `pomdp` in `pomdp/experiments/results/`, which are not part of
-`latex/main.pdf` yet.
+`plots/latex/data/` holds the csv files the figures are made from, in the layout
+the figures of the paper expect: those of `comparison_tools_bisim` directly in it,
+those of `imdps` in `data/imdp/`, and `plot-series.csv` and `plot-curves.csv` of
+`pomdp` in `data/pomdp/`. To update the figures of the paper, replace its `data/`
+directory with this one; `plots/latex/plots.tex`, `plots/latex/macros.tex` and the
+figures in `plots/latex/main.tex` are those of the paper, Figures 6 to 9. The
+`experiments/` directory of every experiment holds its logs and all its results,
+including the other csv files and plot commands of `pomdp` in
+`experiments/pomdp/experiments/results/`.
 
 The runs have a time limit of 900 seconds (`generate_invocations.py --timelimit`)
 and a memory limit of 32 GiB (`run.py --memlimit`), which PRISM is also told
@@ -218,45 +222,61 @@ cores and frequency governor of every worker, and warns if boost is enabled.
 
 To check a single experiment quickly, select a few benchmarks and a short time
 limit, e.g. `--benchmarks consensus.4-4.c2,tireworld.17.goal --timelimit 60` for
-`generate_invocations.py` in `comparison_tools_bisim`; `run_smoke.sh` does this for
-all experiments.
+`generate_invocations.py` in `comparison_tools_bisim`; `scripts/run_smoke.sh` does
+this for all experiments.
 
 ## Building the image
 
-The image can be built on any x86-64 machine with Docker, e.g. a different one
-than the one running the experiments, and saved to a file to move it there:
+The image can be built on any machine with Docker, e.g. a different one than the
+one running the experiments, and saved to a file to move it there:
 
 ```bash
-docker pull movesrwth/storm-dependencies:latest
-docker build -t storm:local --build-arg no_threads=8 ../storm
-docker build -t storm2-experiments .
-docker save storm2-experiments | gzip > storm2-experiments.tar.gz
+docker/build.sh
 ```
 
-The experiments run the Storm of the image `storm:local`, built here with Storm's
-own Dockerfile from a Storm checkout in `../storm` (`no_threads` sets the number of
-compile jobs). Storm's Dockerfile leaves out its git history, so the image does not
-record which Storm commit it was built from; note it with `git -C ../storm log -1`.
+`docker/build.sh` unpacks the Modest Toolset, builds the image `storm2-experiments`
+for `linux/amd64` and `linux/arm64` and saves it to `storm2-experiments.tar.gz` in
+the current directory (`-o FILE` for another one); `PLATFORMS=linux/amd64` builds
+for one architecture only, and its other options are passed on to
+`docker buildx build`. Building for an architecture other than that of the machine
+needs QEMU (`docker run --privileged --rm tonistiigi/binfmt --install arm64`) and
+takes much longer, mostly for the Julia sysimage. Storm 1.6.2 only exists for
+amd64, so the `storm-old-*` configurations fail on arm64. The Modest
+Toolset website only offers its latest version, so the zips of the version used
+are kept in `docker/modest/` (see [docker/modest/README.md](docker/modest/README.md));
+the script checks them against `docker/modest/SHA256SUMS` and unpacks them for the
+build.
+
+The experiments run the Storm of the official image `movesrwth/storm:2.0.0`. To
+run a Storm of your own instead, build it with Storm's Dockerfile, e.g. from a
+checkout in `../storm`, and pass it as `STORM_BASE`:
+
+```bash
+docker build -t storm:local --build-arg no_threads=8 ../storm
+docker/build.sh --build-arg STORM_BASE=storm:local
+```
 
 The build generates the 52 interval MDPs of `imdps` (44 GB), which takes a few
 hours and, for the largest models, tens of GB of memory per model generated in
 parallel; `--build-arg generate_workers=N` sets how many are generated at once
 (default: 2). Docker caches this step, so it is only repeated when
-`imdps/generate/` or `benchmarks/` change. The build needs about 100 GB of disk
+`experiments/imdps/generate/` or `benchmarks/` change. The build needs about 100 GB of disk
 space for Docker, plus the saved file.
 
 Only the generation of the interval MDPs uses stormpy, in a build stage based on
 the stormpy image `movesrwth/stormpy:1.14.0`; the experiments themselves do not
 use it. Build arguments select other versions: `STORM_BASE` another Storm image
-(e.g. `movesrwth/storm:ci`), `STORMPY_BASE` the stormpy used for the generation,
-and `prism_version`, `julia_version` and `modest_version` the other tools. The Modest Toolset website only offers its latest version, so the image may
-contain a newer mcsta than the one in the recorded logs. The Julia sysimage is
+(e.g. `movesrwth/storm:ci`), `STORM_OLD_BASE` the old Storm to compare with,
+`STORMPY_BASE` the stormpy used for the generation, and `prism_version` and
+`julia_version` the other tools. The Julia sysimage is
 compiled for generic CPU targets, so the image runs on other CPUs than the one
 that built it. It is built before the repository is copied into the image, so it
-is only rebuilt when `imdps/julia/` or the tools change; a change to the scripts
+is only rebuilt when `experiments/imdps/julia/` or the tools change; a change to the scripts
 only repeats the last steps of the build.
 
 ## The scripts
+
+The scripts in `scripts/common/`:
 
 - `generate_invocations.py` writes one invocation per configuration, benchmark
   and repetition, and skips combinations that cannot be run, for example a PRISM
@@ -308,9 +328,9 @@ python3 -m venv .venv    # or: uv venv .venv
 # once per machine, as root: delegate all cgroups to the users
 sudo systemctl edit user@.service    # add: [Service] Delegate=yes
 
-cd comparison_tools_bisim
+cd experiments/comparison_tools_bisim
 systemd-run --user --scope --slice=benchexec -p Delegate=yes \
-    ../.venv/bin/python ../common/run.py inv.json
+    ../../.venv/bin/python ../../scripts/common/run.py inv.json
 ```
 
 BenchExec runs every invocation with a fresh, empty `$HOME`; for IntervalMDP.jl,
