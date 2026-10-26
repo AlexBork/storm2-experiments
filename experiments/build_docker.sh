@@ -23,14 +23,18 @@ for arch in amd64:x64 arm64:arm64; do
 done
 
 # The interval MDPs of imdps come with the artifact; the build only generates
-# those still missing
-if [ -f experiments/imdps/benchmarks.tar.xz ]; then
+# those still missing. The archive stores them below experiments/imdps/benchmarks/,
+# from when the experiments were one level deeper, so the first level is stripped.
+if [ -f imdps/benchmarks.tar.xz ]; then
   echo "== $(date): unpacking the interval MDPs of imdps"
-  XZ_OPT=-T0 tar -xJf experiments/imdps/benchmarks.tar.xz --skip-old-files
+  XZ_OPT=-T0 tar -xJf imdps/benchmarks.tar.xz --skip-old-files --strip-components=1
 fi
 
 echo "== $(date): building the image"
-docker buildx build --platform "${PLATFORMS:-linux/amd64,linux/arm64}" -t storm2-experiments --load "$@" .
+# The MDP and POMDP benchmarks are in ../examples/, outside of the build context
+docker buildx build --platform "${PLATFORMS:-linux/amd64,linux/arm64}" -t storm2-experiments --load \
+  --build-context mdp_benchmarks=../examples/mdp_benchmarks \
+  --build-context pomdp_benchmarks=../examples/pomdp_benchmarks "$@" .
 
 echo "== $(date): saving the image to $out"
 docker save storm2-experiments | gzip > "$out"

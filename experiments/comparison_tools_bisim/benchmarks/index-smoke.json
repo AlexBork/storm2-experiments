@@ -1,0 +1,11 @@
+{
+	"consensus.4-4.c2": {
+		"type": "mdpqvbs",
+		"jani": "models/consensus/consensus.4.jani",
+		"property": "c2",
+		"constants": "K=4",
+		"prism": "models/consensus/consensus.4.prism",
+		"prism-property": "models/consensus/consensus.props",
+		"reference-result": "852021/2097152"
+	}
+}

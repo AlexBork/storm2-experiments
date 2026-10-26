@@ -9,7 +9,7 @@ set -eu
 out=$(realpath "${1:-storm2-experiments-artifact.zip}")
 cd "$(dirname "$0")/.."
 image=experiments/storm2-experiments.tar.gz
-large="$image experiments/experiments/imdps/benchmarks.tar.xz experiments/docker/modest/*.zip"
+large="$image experiments/imdps/benchmarks.tar.xz experiments/docker/modest/*.zip"
 
 echo "== $(date): checking the repository, the submodules, the image and the large files"
 if [ -n "$(git status --porcelain)" ]; then
@@ -27,21 +27,24 @@ fi
 for file in $large; do
   [ -f "$file" ] || { echo "missing $file" >&2; exit 1; }
 done
-# The image contains the whole of experiments/, so it must be saved after the last commit
-if [ "$(stat -c %Y $image)" -lt "$(git log -1 --format=%ct)" ]; then
-  echo "$image is older than the last commit, rebuild it with experiments/build_docker.sh" >&2
+# The image contains the whole of experiments/ and the models in examples/, so it must
+# be saved after the last commit that changed them; results/ is not in the image, so
+# the sample runs made with the image can be committed after it
+if [ "$(stat -c %Y $image)" -lt "$(git log -1 --format=%ct -- experiments examples)" ]; then
+  echo "$image is older than the last commit of experiments/ or examples/, rebuild it with experiments/build_docker.sh" >&2
   exit 1
 fi
 
 # Run from the parent so that everything is below storm2-experiments/ in the zip;
-# the already compressed files are stored as they are
+# the already compressed files are stored as they are, and links as links (-y),
+# e.g. benchmarks/models of comparison_tools_bisim to examples/mdp_benchmarks
 repo=$(basename "$PWD")
 # shellcheck disable=SC2086
 echo "== $(date): writing $(git ls-files --recurse-submodules | wc -l) committed files and $(du -ch $large | tail -1 | cut -f1) of large files to $out"
 rm -f "$out"
 # shellcheck disable=SC2086
 { git ls-files --recurse-submodules; ls $large; } \
-  | sed "s|^|$repo/|" | (cd .. && zip -q -n .gz:.xz:.zip "$out" -@)
+  | sed "s|^|$repo/|" | (cd .. && zip -q -y -n .gz:.xz:.zip "$out" -@)
 echo "== $(date): testing $out"
 unzip -tq "$out"
 echo "== $(date): done, $(du -h "$out" | cut -f1) in $out"

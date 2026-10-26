@@ -1,0 +1,10 @@
+{
+  "refuel_refuel_prbmax_N06": {
+    "benchmark-set": "refuel",
+    "name": "refuel",
+    "prism": "models/refuel/refuel.prism",
+    "prism-property": "models/refuel/refuel.props",
+    "property": "prbmax",
+    "constants": "N=6"
+  }
+}

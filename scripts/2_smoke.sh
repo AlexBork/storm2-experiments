@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run experiments/scripts/run_smoke.sh in a container and copy its figures to
+# Run experiments/docker/run_smoke.sh in a container and copy its figures to
 # smoke.pdf and its logs and results to smoke/ in the current directory, see
 # experiments/docker/run_in_container.sh. The options are passed on to run.py, e.g.
 #   scripts/2_smoke.sh --jobs 1

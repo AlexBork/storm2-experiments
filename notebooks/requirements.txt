@@ -1,0 +1,10 @@
+# Storm libraries
+stormpy==2.0.0
+stormvogel==0.13
+# PAYNT (disabled until support for stormpy 2.0 is available)
+#paynt==0.4.3
+# LP solver
+pyscipopt==6.3.0
+# Jupyter extensions
+jupyterlab-spellchecker==0.8.4
+jupyterlab-rise==0.43.1

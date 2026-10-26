@@ -1,7 +1,12 @@
 # check=skip=FromPlatformFlagConstDisallowed
 # Dockerfile for the Storm 2 experiments
 #########################################
-# Build with: docker build -t storm2-experiments .
+# Build with build_docker.sh, or with
+#   docker buildx build --build-context mdp_benchmarks=../examples/mdp_benchmarks \
+#       --build-context pomdp_benchmarks=../examples/pomdp_benchmarks -t storm2-experiments .
+# The models of comparison_tools_bisim and pomdp, benchmarks/models/ of each, are
+# links to ../examples/, which is outside of the build context, so they are passed
+# as named build contexts.
 # See the README for the build arguments and how to run the experiments.
 
 # Set the base images
@@ -31,11 +36,11 @@ FROM --platform=$BUILDPLATFORM $STORMPY_BASE AS imdps-models
 # Models generated in parallel; the largest need tens of GB of memory each
 ARG generate_workers=2
 WORKDIR /opt/storm2-experiments
-COPY mdp_benchmarks mdp_benchmarks
-COPY experiments/comparison_tools_bisim/benchmarks experiments/comparison_tools_bisim/benchmarks
-COPY experiments/imdps/generate experiments/imdps/generate
-COPY experiments/imdps/benchmarks experiments/imdps/benchmarks
-RUN cd experiments/imdps && python3 generate/generate_explicit_benchmarks.py \
+COPY --exclude=models comparison_tools_bisim/benchmarks comparison_tools_bisim/benchmarks
+COPY --from=mdp_benchmarks . comparison_tools_bisim/benchmarks/models
+COPY imdps/generate imdps/generate
+COPY imdps/benchmarks imdps/benchmarks
+RUN cd imdps && python3 generate/generate_explicit_benchmarks.py \
         --skip-existing --workers $generate_workers --no-keep-going \
     && python3 -c 'import json, pathlib; \
 root = pathlib.Path("benchmarks"); \
@@ -86,8 +91,8 @@ COPY --from=storm-old /opt/storm-old /opt/storm-old
 # IntervalMDP.jl and its sysimage, before the rest of the repository so that it is
 # rarely rebuilt; the depot is outside $HOME, which BenchExec replaces
 ENV JULIA_DEPOT_PATH=/opt/julia-depot:
-WORKDIR /opt/storm2-experiments/experiments/imdps
-COPY experiments/imdps/julia julia
+WORKDIR /opt/storm2-experiments/imdps
+COPY imdps/julia julia
 RUN /opt/julia/bin/julia --project=julia -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()' \
     && /opt/julia/bin/julia julia/build_sysimage.jl
 
@@ -100,13 +105,16 @@ WORKDIR /opt/storm2-experiments
 ENV PATH=/opt/venv/bin:$PATH
 COPY requirements.txt .
 RUN python3 -m venv /opt/venv && pip install -r requirements.txt
-COPY --from=imdps-models /opt/storm2-experiments/experiments/imdps/benchmarks experiments/imdps/benchmarks
-COPY --exclude=experiments/imdps/benchmarks --exclude=docker/modest . .
+COPY --from=imdps-models /opt/storm2-experiments/imdps/benchmarks imdps/benchmarks
+COPY --from=mdp_benchmarks . comparison_tools_bisim/benchmarks/models
+COPY --from=pomdp_benchmarks . pomdp/benchmarks/models
+COPY --exclude=imdps/benchmarks --exclude=docker/modest \
+     --exclude=comparison_tools_bisim/benchmarks/models \
+     --exclude=pomdp/benchmarks/models . .
 
 # Link the tools into the bin/ directories of the experiments; release images have
 # Storm in /usr/local, images built from Storm's Dockerfile in /opt/storm
 RUN storm=$(command -v storm || echo /opt/storm/build/bin/storm) \
-    && cd experiments \
     && for experiment in comparison_tools_bisim imdps; do \
         mkdir -p $experiment/bin \
         && ln -s $storm /opt/prism/bin/prism $experiment/bin/; \

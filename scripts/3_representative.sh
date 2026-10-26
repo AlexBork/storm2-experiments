@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run experiments/scripts/run_representative.sh in a container and copy its figures
+# Run experiments/docker/run_representative.sh in a container and copy its figures
 # to representative.pdf and its logs and results to representative/ in the current
 # directory, see experiments/docker/run_in_container.sh. Takes hours; the runs go on
 # when the terminal is closed. The options are passed on to run.py, e.g.
