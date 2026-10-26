@@ -1,12 +1,13 @@
 #!/bin/sh
 # Build the Docker image of the experiments for amd64 and arm64 and save it to a
-# file, by default storm2-experiments.tar.gz in the current directory. PLATFORMS
-# selects the architectures; other options are passed on to docker buildx build, e.g.
-#   PLATFORMS=linux/amd64 ./5_build.sh -o /tmp/image.tar.gz --build-arg generate_workers=4
+# file, by default storm2-experiments.tar.gz next to this script, where
+# scripts/1_load.sh and scripts/5_create_artifact.sh expect it. PLATFORMS selects the
+# architectures; other options are passed on to docker buildx build, e.g.
+#   PLATFORMS=linux/amd64 experiments/build_docker.sh -o /tmp/image.tar.gz --build-arg generate_workers=4
 # Building for another architecture than that of the machine needs QEMU, e.g.
 #   docker run --privileged --rm tonistiigi/binfmt --install arm64
 set -eu
-out=$PWD/storm2-experiments.tar.gz
+out=$(cd "$(dirname "$0")" && pwd)/storm2-experiments.tar.gz
 if [ "${1:-}" = "-o" ]; then
   out=$(realpath "$2")
   shift 2

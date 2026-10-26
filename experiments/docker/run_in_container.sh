@@ -1,9 +1,10 @@
 #!/bin/sh
 # Run scripts/run_SET.sh in a container storm2-SET of the image storm2-experiments
-# (see 1_load.sh), copy what it produces to the current directory and remove the
-# container. Used by 2_smoke.sh, 3_representative.sh and 4_full.sh; the set full is
+# (see scripts/1_load.sh of the artifact), copy what it produces to the current
+# directory and remove the container. Used by scripts/2_smoke.sh,
+# 3_representative.sh, 3_minimal.sh and 4_full.sh of the artifact; the set full is
 # that of scripts/run_all.sh.
-#   docker/run_in_container.sh SET [RUN.PY OPTIONS]
+#   experiments/docker/run_in_container.sh SET [RUN.PY OPTIONS]
 # Writes to the current directory:
 #   SET.pdf                    the figures, also in SET/
 #   SET/output.log             the output of the container

@@ -17,7 +17,7 @@ experiments/imdps/julia/intervalmdp.so
 **/*.log
 plots/latex/data
 
-# The saved image, see 5_build.sh, and the artifact, see 6_create_artifact.sh
+# The saved image, see build_docker.sh, and the artifact, see ../scripts/5_create_artifact.sh
 storm2-experiments.tar.gz
 storm2-experiments-artifact.zip
 experiments/imdps/benchmarks.tar.xz*

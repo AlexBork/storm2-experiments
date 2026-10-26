@@ -1,0 +1,6 @@
+[submodule "storm"]
+	path = storm
+	url = https://github.com/stormchecker/storm.git
+[submodule "stormpy"]
+	path = stormpy
+	url = https://github.com/stormchecker/stormpy.git

@@ -1,11 +1,11 @@
 #!/bin/sh
-# Load the saved image of the artifact, by default storm2-experiments.tar.gz next to
-# this script (see 5_build.sh), into Docker as storm2-experiments. The image is for
-# amd64 and arm64, which needs Docker's containerd image store ("Use containerd for
-# pulling and storing images" in the Docker settings).
-#   ./1_load.sh [FILE]
+# Load the saved image of the artifact, by default experiments/storm2-experiments.tar.gz
+# (see experiments/build_docker.sh), into Docker as storm2-experiments. The image is
+# for amd64 and arm64, which needs Docker's containerd image store ("Use containerd
+# for pulling and storing images" in the Docker settings).
+#   scripts/1_load.sh [FILE]
 set -eu
-image=$(realpath "${1:-$(dirname "$0")/storm2-experiments.tar.gz}")
+image=$(realpath "${1:-$(dirname "$0")/../experiments/storm2-experiments.tar.gz}")
 
 command -v docker >/dev/null || { echo "docker not found, install Docker first" >&2; exit 1; }
 [ -f "$image" ] || { echo "missing $image" >&2; exit 1; }
