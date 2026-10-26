@@ -11,6 +11,8 @@ At least **5 physical CPU** cores are needed and at least **17GiB of memory** fo
 
 When running with the minimum requirements all experiments will be done sequentially. For every additional 4 physical cores and 16GiB (32GiB for the full experiments) of memory an additional parallel runner will be used.
 
+If your machine does not meet these requirements, you can run the representative experiments on a minimal machine with `3_minimal.sh` instead (see [Running the representative experiments](#running-the-representative-experiments)). This gives every run **2 physical cores** and **8 GiB of memory** instead of 4 cores and 16 GiB, and needs at least **3 physical CPU cores** and **9 GiB of memory**. For every additional 2 physical cores and 8 GiB of memory an additional parallel runner will be used. As Storm's symbolic engines and PRISM then have fewer cores and less memory, more runs time out or run out of memory, so the results deviate more from the paper.
+
 To achieve fully stable experimental results additional configurations on the host machine need to be done as detailed in [Additional Setup](#additional-setup).
 
 ## License
@@ -46,6 +48,8 @@ The smoketest will run every configuration of every experiment on one small benc
 
 We provide a pdf and the results of a sample run in the folder `$ARTIFACT_DIR/artifact-results/representative/`.
 
+On a minimal machine (see [Host requirements](#host-requirements)), execute `$ARTIFACT_DIR/3_minimal.sh` instead. It runs the same benchmarks with 2 physical cores and 8 GiB of memory per run, and gives the figures in `minimal.pdf` and the data and logs in `minimal/` in your current directory. Storm's symbolic engines then use 2 instead of 4 threads, PRISM gets 8 GiB for Java, and the decision diagram libraries of both (Sylvan and CUDD) get 4 instead of 8 GiB.
+
 The representative experiments contain a subset of the benchmarks and have lower resource requirements. The benchmarks were chosen such that the results produced are representative for the full benchmark set with the full hardware requirements.
 
 ## Running the full experiments
@@ -58,6 +62,9 @@ We provide the logs, results and figure data of the runs shown in the paper in t
 The full experiments run every configuration of every experiment on all benchmarks with a time limit of 900 seconds and a memory limit of 32 GiB per run, as in the paper. These are 1759 runs: 957 of `comparison_tools_bisim`, 156 of `imdps` and 646 of `pomdp`. The estimated running times are the sum of the runtimes of the runs in the paper; if every run timed out, it would take 440 hours on the minimum requirements.
 
 The container runs in the background, so the experiments go on when the terminal is closed. Executing `4_full.sh` again in the same directory waits for them to finish and then copies the results. To abort the experiments, execute `docker rm -f storm2-full`, which also removes the logs of the finished runs; there is no resuming. The same holds for the smoke test and the representative experiments, with the containers `storm2-smoke` and `storm2-representative`.
+
+## Difference storm 2.0 and storm used for included paper.
+*Fill in*
 
 ## Additional setup
 ### Stable timings (Only for linux)
@@ -96,7 +103,7 @@ For `imdps`, post-process with `postprocess.py --agreement --absolute`, as there
 
 The scripts in `scripts/common/` describe all their options with `--help`. The most important ones:
 - `generate_invocations.py`: `--configs` and `--benchmarks` select configurations and benchmarks by their names in `scripts/configurations.json` and `benchmarks/index.json` of the experiment, `--index index-smoke.json` another set of benchmarks, `--timelimit` the time limit in seconds (default: 900), and `--repetitions` repeats every run.
-- `run.py`: `--memlimit` sets the memory limit in GiB (default: 32), `--jobs N` the number of runs in parallel instead of as many as fit, and `--cores-per-run` the physical cores of every run (default: 4). With `--sequential`, the runs are done one after the other without BenchExec, so without pinning and memory limit and without `--privileged`. Results measured with different `--cores-per-run` are not comparable.
+- `run.py`: `--memlimit` sets the memory limit in GiB (default: 32), `--jobs N` the number of runs in parallel instead of as many as fit, `--cores-per-run` the physical cores of every run (default: 4), and `--ddmem` the memory of the decision diagram libraries in GiB (default: 8). The tools get these through the placeholders `%memlimit`, `%cores`, `%ddmem` and `%ddmem-mb` of `configurations.json`: PRISM's `-javamaxmem` is the memory limit and its `-cuddmaxmem` the decision diagram memory, and Storm's symbolic engines get the cores as `--sylvan:threads` and the decision diagram memory as `--sylvan:maxmem`. With `--sequential`, the runs are done one after the other without BenchExec, so without pinning and memory limit and without `--privileged`. Results measured with different `--cores-per-run` are not comparable.
 - `check_results.py experiments/results` lists the runs with an incorrect result or none at all, and for `pomdp` bounds that contradict each other.
 
 `run.py` writes one log per run to `experiments/logs/`, and `postprocess.py` writes `results.json` with the status, runtime and result of every run, and `table/index.html`, a table of all runs linking to their logs, to `experiments/results/`; `pomdp` has its own post-processing, see [experiments/pomdp/README.md](experiments/pomdp/README.md).
@@ -109,7 +116,7 @@ Every run gets 4 physical cores because some configurations use several threads:
 | Path | Description |
 | --- | --- |
 | `storm2-experiments.tar.gz` | The saved Docker image, for amd64 and arm64, loaded by `1_load.sh` |
-| `1_load.sh` ... `6_create_artifact.sh` | The scripts to run outside the container, in the order of this README: `1_load.sh` loads the image, `2_smoke.sh`, `3_representative.sh` and `4_full.sh` run the experiment sets in a container (all three through `docker/run_in_container.sh`), `5_build.sh` builds the image and `6_create_artifact.sh` creates the artifact |
+| `1_load.sh` ... `6_create_artifact.sh` | The scripts to run outside the container, in the order of this README: `1_load.sh` loads the image, `2_smoke.sh`, `3_representative.sh`, `3_minimal.sh` and `4_full.sh` run the experiment sets in a container (all four through `docker/run_in_container.sh`), `5_build.sh` builds the image and `6_create_artifact.sh` creates the artifact |
 | `docker/` | `run_in_container.sh` runs an experiment set in a container and copies its results out, `init.sh` is the entrypoint of the image, `storm-old` runs Storm 1.6.2, and `modest/` and `storm/` hold the licenses and, for `modest/`, the zips of the Modest Toolset |
 | `Dockerfile` | The Docker image with all tools: Storm 2.0.0, Storm 1.6.2, PRISM 4.10.1, the Modest Toolset v3.1.315, Julia 1.13.0 with IntervalMDP.jl, LaTeX, BenchExec, and this repository in `/opt/storm2-experiments` |
 | `experiments/comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation (Figures 6 and 7) |
@@ -117,12 +124,12 @@ Every run gets 4 physical cores because some configurations use several threads:
 | `experiments/pomdp/` | Belief exploration of storm-pomdp with cut-offs on POMDPs (Figure 9); see [experiments/pomdp/README.md](experiments/pomdp/README.md) |
 | `experiments/imdps/benchmarks.tar.xz` | The generated interval MDPs of `imdps`, which `5_build.sh` unpacks |
 | `mdp_benchmarks/` | The model and property files of the MDP benchmarks |
-| `scripts/` | `run_smoke.sh`, `run_representative.sh` and `run_all.sh` run the experiment sets inside the container (all three through `common/run_set.sh`) and `build_figures.sh` builds the figures |
+| `scripts/` | `run_smoke.sh`, `run_representative.sh`, `run_minimal.sh` and `run_all.sh` run the experiment sets inside the container (all four through `common/run_set.sh`) and `build_figures.sh` builds the figures |
 | `scripts/common/` | The scripts to generate, run, post-process and check the runs, shared by all experiments |
 | `plots/latex/` | The source for the figure in paper, built by `scripts/build_figures.sh` |
 | `artifact-results/` | The pdf, logs and results of sample runs of `2_smoke.sh` and `3_representative.sh` |
 | `paper_results/` | The logs, results and figure data of the runs in the paper; see [paper_results/README.md](paper_results/README.md) |
-Every experiment directory has the same layout: `scripts/configurations.json` lists the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the benchmarks, and `experiments/` receives the logs and results. Next to `index.json`, `index-representative.json` and `index-smoke.json` hold the benchmarks of the representative experiments and the smoke test.
+Every experiment directory has the same layout: `scripts/configurations.json` lists the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the benchmarks, and `experiments/` receives the logs and results. Next to `index.json`, `index-representative.json` and `index-smoke.json` hold the benchmarks of the representative experiments (also used by `3_minimal.sh`) and the smoke test.
 
 ### Building the docker
 - Execute `$ARTIFACT_DIR/5_build.sh`. This builds the image `storm2-experiments` for amd64 and arm64 and saves it to `storm2-experiments.tar.gz` in the current directory (`-o FILE` for another file).

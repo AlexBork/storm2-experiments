@@ -1,19 +1,26 @@
 #!/bin/sh
 # Run a set of benchmarks of all experiments one after the other, post-process and
 # check their logs with check_results.py, and build the figures in
-# plots/latex/main.pdf. Used by scripts/run_all.sh, run_representative.sh and
-# run_smoke.sh, which set:
+# plots/latex/main.pdf. Used by scripts/run_all.sh, run_representative.sh,
+# run_minimal.sh and run_smoke.sh, which set:
 #   SET        the benchmarks of index-SET.json of every experiment, with the logs
 #              and results in experiments/SET/ of its directory; if empty, those of
 #              index.json, with the logs and results in experiments/
+#   INDEX      the benchmarks of index-INDEX.json instead, e.g. those of another set
 #   TIMELIMIT  the time limit of every run, in seconds
 #   MEMLIMIT   the memory limit of every run, in GiB
+#   CORES      the physical cores of every run (default: 4)
+#   DDMEM      the memory of the decision diagram libraries of every run, in GiB
+#              (default: 8)
 # A new run replaces the logs and results of the set. The options are passed on to
 # run.py. Fails if a run has an incorrect result or none at all.
 set -eu
 : "${TIMELIMIT:?}" "${MEMLIMIT:?}"
 SET=${SET:-}
-index=index${SET:+-$SET}.json
+INDEX=${INDEX:-$SET}
+CORES=${CORES:-4}
+DDMEM=${DDMEM:-8}
+index=index${INDEX:+-$INDEX}.json
 out=experiments${SET:+/$SET}
 invocations=inv${SET:+-$SET}.json
 cd "$(dirname "$0")/../.."
@@ -39,7 +46,8 @@ experiment() {  # experiment DIRECTORY [POSTPROCESS OPTIONS]
   python3 ../../scripts/common/generate_invocations.py --out "$invocations" \
     --index "$index" --logdir "$out/logs" --timelimit "$TIMELIMIT"
   # shellcheck disable=SC2086
-  python3 ../../scripts/common/run.py "$invocations" --memlimit "$MEMLIMIT" $run_options
+  python3 ../../scripts/common/run.py "$invocations" --memlimit "$MEMLIMIT" \
+    --cores-per-run "$CORES" --ddmem "$DDMEM" $run_options
   python3 ../../scripts/common/postprocess.py "$@" "$out/logs" "$out/results"
   python3 ../../scripts/common/check_results.py "$out/results" || failed="$failed $directory"
   cd ../..

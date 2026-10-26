@@ -74,10 +74,15 @@ def java_size(gib):
 
 def command_values(invocation, files):
     """The values of the placeholders of an invocation: those of its benchmark, the
-    names of its model files and its memory limit."""
+    names of its model files, its memory limit, as %cores its number of physical cores
+    (Storm's --sylvan:threads), and as %ddmem and %ddmem-mb the memory of the decision
+    diagram libraries (PRISM's -cuddmaxmem and Storm's --sylvan:maxmem, in MB)."""
     values = {k: v for k, v in invocation["benchmark"].items() if k not in ("id", "type")}
     values.update({name: source.name for name, source in files.items()})
     values["memlimit"] = java_size(invocation["memlimit"])
+    values["cores"] = str(invocation["cores"])
+    values["ddmem"] = java_size(invocation["ddmem"])
+    values["ddmem-mb"] = str(int(invocation["ddmem"] * 1024))
     return values
 
 
@@ -199,6 +204,8 @@ def run(invocation, execute=execute):
               f"Repetition:\t{invocation.get('repetition', 1)}\n"
               f"Time limit:\t{timelimit}\n"
               f"Memory limit:\t{invocation['memlimit']:g} GiB\n"
+              f"Cores:\t{invocation['cores']}\n"
+              f"Decision diagram memory:\t{invocation['ddmem']:g} GiB\n"
               f"Output:\n")
     footer = f"\n{'-' * 40}\nWallclock time:\t{wall_time:.3f}\nReturn code:\t{return_code}\n"
     if return_code is None:
@@ -359,11 +366,18 @@ def main():
                              "the cores and the memory)")
     parser.add_argument("--cores-per-run", type=int, default=4, metavar="C",
                         help="physical cores of each run, e.g. for the threads of Sylvan "
-                             "and the garbage collector of Java (default: 4)")
+                             "and the garbage collector of Java; the tools get it through "
+                             "the placeholder %%cores (default: 4)")
     parser.add_argument("--cores", metavar="LIST",
                         help="CPUs to use, e.g. 2-11 (default: all)")
     parser.add_argument("--memlimit", type=float, default=32, metavar="GIB",
-                        help="memory limit of each run, in GiB (default: 32)")
+                        help="memory limit of each run, in GiB (default: 32); the tools "
+                             "get it through the placeholder %%memlimit")
+    parser.add_argument("--ddmem", type=float, default=8, metavar="GIB",
+                        help="memory of the decision diagram libraries of each run, in "
+                             "GiB, which the tools get through the placeholders %%ddmem "
+                             "and %%ddmem-mb, e.g. PRISM's -cuddmaxmem and Storm's "
+                             "--sylvan:maxmem (default: 8)")
     parser.add_argument("--sequential", action="store_true",
                         help="run the invocations one after the other without BenchExec, "
                              "i.e. without pinning and memory limit")
@@ -383,6 +397,8 @@ def main():
         selected = [selected[args.entry - 1]]
     for _, invocation in selected:
         invocation["memlimit"] = args.memlimit
+        invocation["cores"] = args.cores_per_run
+        invocation["ddmem"] = args.ddmem
 
     if args.dry_run:
         for _, invocation in selected:
