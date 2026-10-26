@@ -22,12 +22,14 @@ for arch in amd64:x64 arm64:arm64; do
   unzip -q docker/modest/Modest-Toolset-*-linux-${arch##*:}.zip -d "$dir"
 done
 
-# The interval MDPs of imdps come with the artifact; the build only generates
+# The interval MDPs of imdp come with the artifact; the build only generates
 # those still missing. The archive stores them below experiments/imdps/benchmarks/,
-# from when the experiments were one level deeper, so the first level is stripped.
-if [ -f imdps/benchmarks.tar.xz ]; then
-  echo "== $(date): unpacking the interval MDPs of imdps"
-  XZ_OPT=-T0 tar -xJf imdps/benchmarks.tar.xz --skip-old-files --strip-components=1
+# the path of the experiment when the archive was made, so they are moved to
+# imdp/benchmarks/ while unpacking (GNU tar).
+if [ -f imdp/benchmarks.tar.xz ]; then
+  echo "== $(date): unpacking the interval MDPs of imdp"
+  XZ_OPT=-T0 tar -xJf imdp/benchmarks.tar.xz --skip-old-files \
+    --transform 's|^experiments/imdps/|imdp/|'
 fi
 
 echo "== $(date): building the image"

@@ -9,7 +9,7 @@ set -eu
 out=$(realpath "${1:-storm2-experiments-artifact.zip}")
 cd "$(dirname "$0")/.."
 image=experiments/storm2-experiments.tar.gz
-large="$image experiments/imdps/benchmarks.tar.xz experiments/docker/modest/*.zip"
+large="$image experiments/imdp/benchmarks.tar.xz experiments/docker/modest/*.zip"
 
 echo "== $(date): checking the repository, the submodules, the image and the large files"
 if [ -n "$(git status --porcelain)" ]; then
@@ -37,7 +37,7 @@ fi
 
 # Run from the parent so that everything is below storm2-experiments/ in the zip;
 # the already compressed files are stored as they are, and links as links (-y),
-# e.g. benchmarks/models of comparison_tools_bisim to examples/mdp_benchmarks
+# e.g. benchmarks/models of mdp to examples/mdp_benchmarks
 repo=$(basename "$PWD")
 # shellcheck disable=SC2086
 echo "== $(date): writing $(git ls-files --recurse-submodules | wc -l) committed files and $(du -ch $large | tail -1 | cut -f1) of large files to $out"

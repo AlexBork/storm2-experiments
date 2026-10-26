@@ -2,9 +2,11 @@
 # Run docker/run_SET.sh in a container storm2-SET of the image storm2-experiments
 # (see scripts/1_load.sh of the artifact), copy what it produces to the current
 # directory and remove the container. Used by scripts/2_smoke.sh,
-# 3_representative.sh, 3_minimal.sh and 4_full.sh of the artifact; the set full is
+# 3_representative.sh, 3_minimal.sh and 3_full.sh of the artifact; the set full is
 # that of docker/run_all.sh.
-#   experiments/docker/run_in_container.sh SET [RUN.PY OPTIONS]
+#   experiments/docker/run_in_container.sh SET [-p] [RUN.PY OPTIONS]
+# The runs take place one at a time; with -p, as many at the same time as fit into
+# the cores and the memory of the machine (run.py --parallel).
 # Writes to the current directory:
 #   SET.pdf                    the figures, also in SET/
 #   SET/output.log             the output of the container
@@ -17,6 +19,10 @@
 set -eu
 set=$1
 shift
+if [ "${1:-}" = -p ]; then
+  shift
+  set -- --parallel "$@"
+fi
 name=storm2-$set
 image=/opt/storm2-experiments
 # The logs and results of every experiment are in experiments/SET/ of its directory,
@@ -44,7 +50,7 @@ status=$(docker wait "$name")
 
 mkdir "$set"
 docker logs "$name" > "$set/output.log" 2>&1
-for experiment in comparison_tools_bisim imdps pomdp; do
+for experiment in mdp imdp pomdp; do
   docker cp -q "$name:$image/$experiment/$results" "$set/$experiment" \
     || echo "no logs and results of $experiment" >&2
 done

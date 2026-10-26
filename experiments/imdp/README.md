@@ -1,9 +1,9 @@
 # Interval MDPs
 
 Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs (IMDPs). The IMDPs
-are derived from the MDP benchmarks in [`../comparison_tools_bisim/benchmarks/models/`](../comparison_tools_bisim/benchmarks/models),
+are derived from the MDP benchmarks in [`../mdp/benchmarks/models/`](../mdp/benchmarks/models),
 a link to `examples/mdp_benchmarks/` of the artifact (described by
-`../comparison_tools_bisim/benchmarks/index.json`), by
+`../mdp/benchmarks/index.json`), by
 widening every transition probability to an interval, and exported explicitly so
 that all three tools solve exactly the same model.
 
@@ -19,7 +19,7 @@ that all three tools solve exactly the same model.
 As in the other experiments, the tools are expected in `bin/`:
 
 ```bash
-cd imdps
+cd imdp
 mkdir -p bin
 ln -s /path/to/storm/build/bin/storm bin/storm
 ln -s /path/to/prism/bin/prism bin/prism
@@ -46,12 +46,12 @@ Python 3.10+ with stormpy. Use a stormpy built against the
 same Storm as `bin/storm`, so that the models are the ones Storm is measured on.
 
 ```bash
-cd imdps
+cd imdp
 python3 generate/generate_explicit_benchmarks.py --workers 4
 ```
 
 This builds every benchmark of `generate/selection.json` (55 MDP benchmarks of
-the practitioner's guide collection, all in `../comparison_tools_bisim/benchmarks/index.json`) once for
+the practitioner's guide collection, all in `../mdp/benchmarks/index.json`) once for
 each interval width in `generate/uncertainty_sets.json`, and writes the bundles to
 `benchmarks/<width>/<benchmark>.*` and the list of them to `benchmarks/index.json`.
 The selection leaves out the benchmarks of the collection with more than
@@ -76,7 +76,7 @@ bundles and rewrites `benchmarks/index.json` from all complete bundles present.
 The unit tests are run with
 
 ```bash
-cd imdps/generate && python3 -m unittest discover -s tests -v
+cd imdp/generate && python3 -m unittest discover -s tests -v
 ```
 
 ## Running the experiments
@@ -85,7 +85,7 @@ The steps are those of the other experiments, see the [README](../README.md) of
 the experiments:
 
 ```bash
-cd imdps
+cd imdp
 python3 ../docker/common/generate_invocations.py --out inv.json --timelimit 900 \
     --logdir experiments/logs
 python3 ../docker/common/run.py inv.json

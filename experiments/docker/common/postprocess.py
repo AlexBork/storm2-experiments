@@ -36,7 +36,7 @@ from commands import benchmark_dir, is_meta, members
 # thousands of digits, well beyond the limit python applies by default.
 sys.set_int_max_str_digits(0)
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. mdp; the scripts are run from there.
 ROOT = Path.cwd()
 INDEX_FILE = benchmark_dir(ROOT) / "index.json"
 CONFIGS_FILE = ROOT / "scripts" / "configurations.json"

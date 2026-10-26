@@ -6,10 +6,10 @@
 .idea
 logs
 
-# The generated interval models in imdps/benchmarks/ are reused by the
+# The generated interval models in imdp/benchmarks/ are reused by the
 # Dockerfile, which leaves out those not in its index.json
-imdps/experiments*
-imdps/julia/intervalmdp.so
+imdp/experiments*
+imdp/julia/intervalmdp.so
 
 **/*.aux
 **/*.fdb_latexmk
@@ -20,4 +20,4 @@ docker/plots/latex/data
 # The saved image, see build_docker.sh, and the artifact, see ../scripts/5_create_artifact.sh
 storm2-experiments.tar.gz
 storm2-experiments-artifact.zip
-imdps/benchmarks.tar.xz*
+imdp/benchmarks.tar.xz*

@@ -26,16 +26,16 @@ Older versions of `cpupower` lack `--turbo-boost`; then disable boost with
 
 ## Running individual experiments
 - Start an interactive container with `docker run -it --privileged --cap-drop=all --name storm2 storm2-experiments`.
-- Go to the directory of the experiment, e.g. `cd comparison_tools_bisim`, and run the four steps below.
+- Go to the directory of the experiment, e.g. `cd mdp`, and run the four steps below.
 ```bash
 python3 ../docker/common/generate_invocations.py --out inv.json --logdir experiments/logs
 python3 ../docker/common/run.py inv.json
 python3 ../docker/common/postprocess.py experiments/logs experiments/results
 ../docker/build_figures.sh
 ```
-- Copy the results out of the container from another terminal, e.g. `docker cp storm2:/opt/storm2-experiments/comparison_tools_bisim/experiments bisim` and `docker cp storm2:/opt/storm2-experiments/docker/plots/latex/main.pdf .`.
+- Copy the results out of the container from another terminal, e.g. `docker cp storm2:/opt/storm2-experiments/mdp/experiments mdp` and `docker cp storm2:/opt/storm2-experiments/docker/plots/latex/main.pdf .`.
 
-The image contains this folder in `/opt/storm2-experiments`. For `imdps`, post-process with `postprocess.py --agreement --absolute`, as there are no exact results for interval MDPs and the configurations have to agree on them instead. `build_figures.sh` builds the figures of all experiments with results in `docker/plots/latex/main.pdf`, and writes the csv files they are made from to `docker/plots/latex/data/`.
+The image contains this folder in `/opt/storm2-experiments`. For `imdp`, post-process with `postprocess.py --agreement --absolute`, as there are no exact results for interval MDPs and the configurations have to agree on them instead. `build_figures.sh` builds the figures of all experiments with results in `docker/plots/latex/main.pdf`, and writes the csv files they are made from to `docker/plots/latex/data/`.
 
 The scripts in `docker/common/` describe all their options with `--help`. The most important ones:
 - `generate_invocations.py`: `--configs` and `--benchmarks` select configurations and benchmarks by their names in `scripts/configurations.json` and `benchmarks/index.json` of the experiment, `--index index-smoke.json` another set of benchmarks, `--timelimit` the time limit in seconds (default: 900), and `--repetitions` repeats every run.
@@ -54,22 +54,22 @@ Every run gets 4 physical cores because some configurations use several threads:
 | `build_docker.sh` | Builds the image and saves it to `storm2-experiments.tar.gz` |
 | `docker/` | `run_in_container.sh` runs an experiment set in a container and copies its results out; inside the container, `run_smoke.sh`, `run_representative.sh`, `run_minimal.sh` and `run_all.sh` run the experiment sets (all four through `common/run_set.sh`) and `build_figures.sh` builds the figures; `init.sh` is the entrypoint of the image, `storm-old` runs Storm 1.6.2, and `modest/` and `storm/` hold the licenses and, for `modest/`, the zips of the Modest Toolset |
 | `Dockerfile` | The Docker image with all tools: Storm 2.0.0, Storm 1.6.2, PRISM 4.10.1, the Modest Toolset v3.1.315, Julia 1.13.0 with IntervalMDP.jl, LaTeX, BenchExec, and this folder in `/opt/storm2-experiments` |
-| `comparison_tools_bisim/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation (Figures 6 and 7) |
-| `imdps/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from the MDP benchmarks of `comparison_tools_bisim` (Figure 8); see [imdps/README.md](imdps/README.md) |
+| `mdp/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation (Figures 6 and 7) |
+| `imdp/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from the MDP benchmarks of `mdp` (Figure 8); see [imdp/README.md](imdp/README.md) |
 | `pomdp/` | Belief exploration of storm-pomdp with cut-offs on POMDPs (Figure 9); see [pomdp/README.md](pomdp/README.md) |
-| `imdps/benchmarks.tar.xz` | The generated interval MDPs of `imdps`, which `build_docker.sh` unpacks |
-| `comparison_tools_bisim/benchmarks/models/`, `pomdp/benchmarks/models/` | Links to the model and property files of the MDP and POMDP benchmarks in `examples/mdp_benchmarks/` and `examples/pomdp_benchmarks/` of the artifact; `build_docker.sh` passes these to the build as the named build contexts `mdp_benchmarks` and `pomdp_benchmarks` |
+| `imdp/benchmarks.tar.xz` | The generated interval MDPs of `imdp`, which `build_docker.sh` unpacks |
+| `mdp/benchmarks/models/`, `pomdp/benchmarks/models/` | Links to the model and property files of the MDP and POMDP benchmarks in `examples/mdp_benchmarks/` and `examples/pomdp_benchmarks/` of the artifact; `build_docker.sh` passes these to the build as the named build contexts `mdp_benchmarks` and `pomdp_benchmarks` |
 | `docker/common/` | The scripts to generate, run, post-process and check the runs, shared by all experiments |
 | `docker/plots/latex/` | The source for the figure in paper, built by `docker/build_figures.sh` |
 
-Every experiment directory has the same layout: `scripts/configurations.json` lists the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the benchmarks, and `experiments/` receives the logs and results. The model paths in an index are relative to its directory: those of `comparison_tools_bisim` and `pomdp` point to `benchmarks/models/`, a link to the MDP or POMDP benchmarks in `examples/` of the artifact, and those of `imdps` to its generated models. Next to `index.json`, `index-representative.json` and `index-smoke.json` hold the benchmarks of the representative experiments (also used by `scripts/3_minimal.sh`) and the smoke test.
+Every experiment directory has the same layout: `scripts/configurations.json` lists the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the benchmarks, and `experiments/` receives the logs and results. The model paths in an index are relative to its directory: those of `mdp` and `pomdp` point to `benchmarks/models/`, a link to the MDP or POMDP benchmarks in `examples/` of the artifact, and those of `imdp` to its generated models. Next to `index.json`, `index-representative.json` and `index-smoke.json` hold the benchmarks of the representative experiments (also used by `scripts/3_minimal.sh`) and the smoke test.
 
 ## Building the docker
 - Execute `build_docker.sh` in this folder. This builds the image `storm2-experiments` for amd64 and arm64 and saves it to `storm2-experiments.tar.gz` next to it (`-o FILE` for another file).
 - With `PLATFORMS=linux/amd64 ./build_docker.sh`, the image is built for one architecture only. Other options are passed on to `docker buildx build`.
 - Building for an architecture other than that of the machine needs QEMU (`docker run --privileged --rm tonistiigi/binfmt --install arm64`) and takes much longer, mostly for the Julia sysimage.
 
-The build needs about 100 GB of free disk space for Docker, plus the space of the saved file. The interval MDPs of `imdps` come with the artifact in `imdps/benchmarks.tar.xz`, which `build_docker.sh` unpacks; the build only generates those that are missing, which takes a few hours and tens of GB of memory for the largest models (`--build-arg generate_workers=N` sets how many are generated at once, default: 2). The Modest Toolset website only offers its latest version, so the zips of the version used are kept in `docker/modest/` and checked against `docker/modest/SHA256SUMS`.
+The build needs about 100 GB of free disk space for Docker, plus the space of the saved file. The interval MDPs of `imdp` come with the artifact in `imdp/benchmarks.tar.xz`, which `build_docker.sh` unpacks; the build only generates those that are missing, which takes a few hours and tens of GB of memory for the largest models (`--build-arg generate_workers=N` sets how many are generated at once, default: 2). The Modest Toolset website only offers its latest version, so the zips of the version used are kept in `docker/modest/` and checked against `docker/modest/SHA256SUMS`.
 
 Build arguments select other versions of the tools: `STORM_BASE` another Storm image (default: `movesrwth/storm:2.0.0`), `STORM_OLD_BASE` the old Storm to compare with (default: `movesrwth/storm:1.6.2`), `STORMPY_BASE` the stormpy that generates the interval MDPs, and `prism_version` and `julia_version`. To run a Storm of your own, e.g. that of `storm/` of the artifact, build it with Storm's Dockerfile and pass it as `STORM_BASE`:
 

@@ -55,8 +55,8 @@ experiment() {  # experiment DIRECTORY [POSTPROCESS OPTIONS]
     "$(duration "$experiment_start"), $(duration "$start") in total"
 }
 
-experiment comparison_tools_bisim
-experiment imdps --agreement --absolute
+experiment mdp
+experiment imdp --agreement --absolute
 experiment pomdp
 
 echo "== $(date): building the figures"

@@ -4,7 +4,7 @@
 # Build with build_docker.sh, or with
 #   docker buildx build --build-context mdp_benchmarks=../examples/mdp_benchmarks \
 #       --build-context pomdp_benchmarks=../examples/pomdp_benchmarks -t storm2-experiments .
-# The models of comparison_tools_bisim and pomdp, benchmarks/models/ of each, are
+# The models of mdp and pomdp, benchmarks/models/ of each, are
 # links to ../examples/, which is outside of the build context, so they are passed
 # as named build contexts.
 # See the README for the build arguments and how to run the experiments.
@@ -28,19 +28,19 @@ RUN mkdir -p /opt/storm-old/lib \
     && /opt/storm-old/storm --version | head -1
 
 
-# Generate the interval MDPs of imdps
+# Generate the interval MDPs of imdp
 #####################################
 # Only the missing ones, which takes hours for all of them, once on the building
 # machine for all architectures; models not in its index.json are dropped
-FROM --platform=$BUILDPLATFORM $STORMPY_BASE AS imdps-models
+FROM --platform=$BUILDPLATFORM $STORMPY_BASE AS imdp-models
 # Models generated in parallel; the largest need tens of GB of memory each
 ARG generate_workers=2
 WORKDIR /opt/storm2-experiments
-COPY --exclude=models comparison_tools_bisim/benchmarks comparison_tools_bisim/benchmarks
-COPY --from=mdp_benchmarks . comparison_tools_bisim/benchmarks/models
-COPY imdps/generate imdps/generate
-COPY imdps/benchmarks imdps/benchmarks
-RUN cd imdps && python3 generate/generate_explicit_benchmarks.py \
+COPY --exclude=models mdp/benchmarks mdp/benchmarks
+COPY --from=mdp_benchmarks . mdp/benchmarks/models
+COPY imdp/generate imdp/generate
+COPY imdp/benchmarks imdp/benchmarks
+RUN cd imdp && python3 generate/generate_explicit_benchmarks.py \
         --skip-existing --workers $generate_workers --no-keep-going \
     && python3 -c 'import json, pathlib; \
 root = pathlib.Path("benchmarks"); \
@@ -91,8 +91,8 @@ COPY --from=storm-old /opt/storm-old /opt/storm-old
 # IntervalMDP.jl and its sysimage, before the rest of the repository so that it is
 # rarely rebuilt; the depot is outside $HOME, which BenchExec replaces
 ENV JULIA_DEPOT_PATH=/opt/julia-depot:
-WORKDIR /opt/storm2-experiments/imdps
-COPY imdps/julia julia
+WORKDIR /opt/storm2-experiments/imdp
+COPY imdp/julia julia
 RUN /opt/julia/bin/julia --project=julia -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()' \
     && /opt/julia/bin/julia julia/build_sysimage.jl
 
@@ -105,23 +105,23 @@ WORKDIR /opt/storm2-experiments
 ENV PATH=/opt/venv/bin:$PATH
 COPY requirements.txt .
 RUN python3 -m venv /opt/venv && pip install -r requirements.txt
-COPY --from=imdps-models /opt/storm2-experiments/imdps/benchmarks imdps/benchmarks
-COPY --from=mdp_benchmarks . comparison_tools_bisim/benchmarks/models
+COPY --from=imdp-models /opt/storm2-experiments/imdp/benchmarks imdp/benchmarks
+COPY --from=mdp_benchmarks . mdp/benchmarks/models
 COPY --from=pomdp_benchmarks . pomdp/benchmarks/models
-COPY --exclude=imdps/benchmarks --exclude=docker/modest \
-     --exclude=comparison_tools_bisim/benchmarks/models \
+COPY --exclude=imdp/benchmarks --exclude=docker/modest \
+     --exclude=mdp/benchmarks/models \
      --exclude=pomdp/benchmarks/models . .
 
 # Link the tools into the bin/ directories of the experiments; release images have
 # Storm in /usr/local, images built from Storm's Dockerfile in /opt/storm
 RUN storm=$(command -v storm || echo /opt/storm/build/bin/storm) \
-    && for experiment in comparison_tools_bisim imdps; do \
+    && for experiment in mdp imdp; do \
         mkdir -p $experiment/bin \
         && ln -s $storm /opt/prism/bin/prism $experiment/bin/; \
     done \
-    && ln -s /opt/Modest/modest comparison_tools_bisim/bin/modest \
-    && ln -s /opt/storm2-experiments/docker/storm-old comparison_tools_bisim/bin/storm-old \
-    && ln -s /opt/julia/bin/julia imdps/bin/julia \
+    && ln -s /opt/Modest/modest mdp/bin/modest \
+    && ln -s /opt/storm2-experiments/docker/storm-old mdp/bin/storm-old \
+    && ln -s /opt/julia/bin/julia imdp/bin/julia \
     && mkdir -p pomdp/bin && ln -s $(dirname $storm)/storm-pomdp pomdp/bin/
 
 # Sets up the cgroups for BenchExec, see docker/init.sh

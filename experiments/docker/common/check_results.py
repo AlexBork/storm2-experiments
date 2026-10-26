@@ -20,7 +20,7 @@ import math
 import sys
 from pathlib import Path
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. mdp; the scripts are run from there.
 ROOT = Path.cwd()
 
 # Relative and absolute slack when comparing the bounds of pomdp, which are rounded

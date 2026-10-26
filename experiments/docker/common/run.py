@@ -29,7 +29,7 @@ from pathlib import Path
 
 from commands import BUNDLE_KEYS, CMD_KEYS, FILE_KEYS, PLACEHOLDER, benchmark_dir, pick_command, placeholders
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. mdp; the scripts are run from there.
 ROOT = Path.cwd()
 BENCHMARK_DIR = benchmark_dir(ROOT)
 

@@ -2,7 +2,7 @@
 # Build the figures of the paper in docker/plots/latex/main.pdf. Without an argument,
 # from the post-processed results of the experiments (see README.md), in
 # experiments/results of every experiment directory or in RESULTS with -r RESULTS:
-# those of comparison_tools_bisim go to docker/plots/latex/data/, those of imdps to
+# those of mdp go to docker/plots/latex/data/, those of imdp to
 # docker/plots/latex/data/imdp/ and the plot data of pomdp to
 # docker/plots/latex/data/pomdp/. With a directory in that layout, from its data
 # instead, e.g. for the figures of the paper:
@@ -29,8 +29,8 @@ else
       echo "no results in $1/$results, leaving out its figures"
     fi
   }
-  copy comparison_tools_bisim $latex/data
-  copy imdps $latex/data/imdp
+  copy mdp $latex/data
+  copy imdp $latex/data/imdp
 
   # The data of the POMDP figure, wherever below the results of pomdp it was written
   series=$(find "pomdp/$results" -name plot-series.csv 2>/dev/null | head -1)

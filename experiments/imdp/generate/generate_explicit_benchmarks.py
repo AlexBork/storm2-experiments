@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Export PRISM/JANI benchmarks as explicit interval MDPs for three solvers.
 
-The benchmarks are looked up in the index.json of comparison_tools_bisim, which
+The benchmarks are looked up in the index.json of mdp, which
 describes the MDP benchmarks in its benchmarks/models/. Next to the bundles, the index.json
 of this experiment is written, which lists every complete bundle for the scripts in
 common/.
@@ -26,7 +26,7 @@ EXPERIMENT_DIR = THIS_DIR.parent
 DEFAULT_BENCHMARK_SET = THIS_DIR / "selection.json"
 DEFAULT_UNCERTAINTY_CONFIG = THIS_DIR / "uncertainty_sets.json"
 DEFAULT_OUTPUT_DIR = EXPERIMENT_DIR / "benchmarks"
-DEFAULT_BENCHMARK_ROOT = EXPERIMENT_DIR.parent / "comparison_tools_bisim" / "benchmarks"
+DEFAULT_BENCHMARK_ROOT = EXPERIMENT_DIR.parent / "mdp" / "benchmarks"
 DEFAULT_MAX_STATES = 10_000_000
 
 @lru_cache(maxsize=None)

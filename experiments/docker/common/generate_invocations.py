@@ -14,7 +14,7 @@ from pathlib import Path
 
 from commands import benchmark_dir, is_meta, pick_command
 
-# The experiment directory, e.g. comparison_tools_bisim; the scripts are run from there.
+# The experiment directory, e.g. mdp; the scripts are run from there.
 ROOT = Path.cwd()
 CONFIGS_FILE = ROOT / "scripts" / "configurations.json"
 BENCHMARK_DIR = benchmark_dir(ROOT)
