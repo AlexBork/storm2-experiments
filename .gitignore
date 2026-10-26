@@ -19,17 +19,20 @@ experiments/*/experiments/
 experiments/imdps/julia/intervalmdp.so
 plots/latex/data/
 
-# The Modest Toolset (see docker/modest/README.md), unpacked by docker/build.sh
+# The Modest Toolset (see docker/modest/README.md), unpacked by 5_build.sh
 docker/modest/*.zip
 docker/modest/amd64/
 docker/modest/arm64/
 
-# The saved image, see docker/build.sh, and the artifact, see scripts/create_artifact.sh
+# The saved image, see 5_build.sh, and the artifact, see 6_create_artifact.sh
 storm2-experiments.tar.gz
 storm2-experiments-artifact.zip
 experiments/imdps/benchmarks.tar.xz
 experiments/imdps/benchmarks.tar.xz.*
 
-# All results of the paper are part of the repository, including their logs
+# All results of the paper are part of the repository, including their logs, and
+# so are those of the sample runs of 2_smoke.sh and 3_representative.sh
 !paper_results/**/logs/
 !paper_results/**/*.log
+!artifact-results/**/logs/
+!artifact-results/**/*.log

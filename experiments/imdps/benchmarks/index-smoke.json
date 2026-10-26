@@ -1,13 +1,4 @@
 {
-	"consensus.4-4.c2.absolute-005": {
-		"type": "absolute-005",
-		"benchmark": "consensus.4-4.c2",
-		"delta": 0.05,
-		"bundle": "absolute-005/consensus.4-4.c2",
-		"prism-import": "tra,sta,lab",
-		"intervalmdp": true,
-		"states": 43136
-	},
 	"zeroconf.20-2-false.correct_max.absolute-25": {
 		"type": "absolute-25",
 		"benchmark": "zeroconf.20-2-false.correct_max",

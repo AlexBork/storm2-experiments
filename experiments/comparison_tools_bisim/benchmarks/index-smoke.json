@@ -7,11 +7,5 @@
 		"prism": "../../../mdp_benchmarks/consensus/consensus.4.prism",
 		"prism-property": "../../../mdp_benchmarks/consensus/consensus.props",
 		"reference-result": "852021/2097152"
-	},
-	"tireworld.17.goal": {
-		"type": "mdpqvbs",
-		"jani": "../../../mdp_benchmarks/tireworld/tireworld.17.jani",
-		"property": "goal",
-		"reference-result": "729/3125"
 	}
 }

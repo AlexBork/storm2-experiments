@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate the list of tool invocations (configuration x benchmark x repetition).
 
-Reads benchmarks/index.json (or another index in that directory, e.g. index-quick.json
-with a subset of its benchmarks) and scripts/configurations.json and writes a JSON
+Reads benchmarks/index.json (or another index in that directory, e.g.
+index-representative.json with a subset of its benchmarks) and scripts/configurations.json and writes a JSON
 array with one entry per invocation.
 """
 

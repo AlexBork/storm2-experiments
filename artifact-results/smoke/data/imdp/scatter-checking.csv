@@ -1,0 +1,2 @@
+benchmark,type,states,intervalmdp-default,prism-default,storm-default
+zeroconf.20-2-false.correct_max.absolute-25,absolute-25,89586,3.547,25.990,1.000

@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/experiments/comparison_tools_bisim/bin/storm --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation
+Benchmark:	consensus.4-4.c2
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	60
+Memory limit:	16 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 14:40:53 2026
+Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation
+Current working directory: /tmp/invocation-_7wc3wj2
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.095s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	43136
+Transitions: 	144352
+Choices: 	115840
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 64 item(s)
+   * all_coins_equal_1 -> 497 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.019s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2189
+Transitions: 	5619
+Choices: 	4486
+Reward Models:  none
+State Labels: 	3 labels
+   * finished -> 1 item(s)
+   * all_coins_equal_1 -> 123 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
+Result (for initial states): 0.4062752785. Solution bounds: [0.4062748722, 0.4062756848].
+Time for model checking: 0.007s.
+
+----------------------------------------
+Wallclock time:	0.178
+Return code:	0

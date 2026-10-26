@@ -9,7 +9,7 @@ that all three tools solve exactly the same model.
 | Path | Description |
 | --- | --- |
 | `generate/` | The generator of the explicit models, its benchmark selection and interval widths, and its tests |
-| `benchmarks/` | The generated models, plus `index.json` describing every one of them, and `index-quick.json` and `index-smoke.json` with subsets; only the index files are part of the git repository |
+| `benchmarks/` | The generated models, plus `index.json` describing every one of them, and `index-representative.json` and `index-smoke.json` with subsets; only the index files are part of the git repository |
 | `scripts/` | The configurations compared, in `configurations.json`, and the wrapper that runs IntervalMDP.jl |
 | `julia/` | The Julia environment with IntervalMDP.jl 0.7 and the script that solves a model with it |
 

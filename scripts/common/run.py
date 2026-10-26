@@ -36,10 +36,9 @@ BENCHMARK_DIR = benchmark_dir(ROOT)
 # Seconds to wait for a killed process to actually terminate.
 KILL_GRACE = 5
 
-# Memory left to the system when choosing the number of jobs: this fraction of the
-# total memory, but at least SPARE_MEMORY_MIN GiB.
-SPARE_MEMORY_FRACTION = 0.1
-SPARE_MEMORY_MIN = 8
+# Memory left to the system (run.py itself, BenchExec, Docker) when choosing the
+# number of jobs, in GiB.
+SPARE_MEMORY = 1
 # Physical cores left to the system (run.py itself, BenchExec, Docker) when choosing
 # the number of jobs.
 SPARE_CORES = 1
@@ -266,7 +265,7 @@ def default_jobs(cpus, args):
     cores and the memory of the machine."""
     cores = physical_cores(cpus)
     memory = total_memory()
-    usable = memory - max(SPARE_MEMORY_MIN, SPARE_MEMORY_FRACTION * memory)
+    usable = memory - SPARE_MEMORY
     jobs = min((cores - SPARE_CORES) // args.cores_per_run, int(usable // args.memlimit))
     print(f"jobs: {jobs} ({cores} physical cores with {args.cores_per_run} per run and "
           f"at least {SPARE_CORES} to spare, {memory:.0f} GiB of memory with "

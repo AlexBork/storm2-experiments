@@ -1,8 +1,8 @@
 #!/bin/sh
 # Run a set of benchmarks of all experiments one after the other, post-process and
 # check their logs with check_results.py, and build the figures in
-# plots/latex/main.pdf. Used by scripts/run_all.sh, run_quick.sh and run_smoke.sh,
-# which set:
+# plots/latex/main.pdf. Used by scripts/run_all.sh, run_representative.sh and
+# run_smoke.sh, which set:
 #   SET        the benchmarks of index-SET.json of every experiment, with the logs
 #              and results in experiments/SET/ of its directory; if empty, those of
 #              index.json, with the logs and results in experiments/
@@ -19,11 +19,21 @@ invocations=inv${SET:+-$SET}.json
 cd "$(dirname "$0")/../.."
 run_options="$*"
 failed=""
+experiments=3
+number=0
+start=$(date +%s)
+
+duration() {  # duration SINCE: the time since SINCE (seconds since the epoch), e.g. 1h 02m 03s
+  seconds=$(($(date +%s) - $1))
+  printf '%dh %02dm %02ds' $((seconds / 3600)) $((seconds % 3600 / 60)) $((seconds % 60))
+}
 
 experiment() {  # experiment DIRECTORY [POSTPROCESS OPTIONS]
   directory=$1
   shift
-  echo "== $(date): $directory"
+  number=$((number + 1))
+  experiment_start=$(date +%s)
+  echo "== $(date): running experiment $number/$experiments: $directory"
   cd "experiments/$directory"
   rm -rf "$out/logs" "$out/results"
   python3 ../../scripts/common/generate_invocations.py --out "$invocations" \
@@ -33,14 +43,17 @@ experiment() {  # experiment DIRECTORY [POSTPROCESS OPTIONS]
   python3 ../../scripts/common/postprocess.py "$@" "$out/logs" "$out/results"
   python3 ../../scripts/common/check_results.py "$out/results" || failed="$failed $directory"
   cd ../..
+  echo "== $(date): finished experiment $number/$experiments: $directory in" \
+    "$(duration "$experiment_start"), $(duration "$start") in total"
 }
 
 experiment comparison_tools_bisim
 experiment imdps --agreement --absolute
 experiment pomdp
 
-echo "== $(date): figures"
+echo "== $(date): building the figures"
 scripts/build_figures.sh -r "$out/results"
+echo "== $(date): finished in $(duration "$start") in total"
 
 if [ -n "$failed" ]; then
   echo "== results with problems in:$failed" >&2

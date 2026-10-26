@@ -1,0 +1,55 @@
+#!/bin/sh
+# Run scripts/run_SET.sh in a container storm2-SET of the image storm2-experiments
+# (see 1_load.sh), copy what it produces to the current directory and remove the
+# container. Used by 2_smoke.sh, 3_representative.sh and 4_full.sh; the set full is
+# that of scripts/run_all.sh.
+#   docker/run_in_container.sh SET [RUN.PY OPTIONS]
+# Writes to the current directory:
+#   SET.pdf                    the figures, also in SET/
+#   SET/output.log             the output of the container
+#   SET/EXPERIMENT/logs/       the logs of every run of every experiment
+#   SET/EXPERIMENT/results/    its post-processed results
+#   SET/data/                  the csv files the figures are made from
+# The container runs in the background, so that the runs go on when this script or
+# the terminal is closed; then run the same command again once it has stopped
+# (docker wait storm2-SET), which only copies the results.
+set -eu
+set=$1
+shift
+name=storm2-$set
+image=/opt/storm2-experiments
+# The logs and results of every experiment are in experiments/SET/ of its directory,
+# those of run_all.sh directly in experiments/
+script=run_$set.sh
+results=experiments/$set
+if [ "$set" = full ]; then
+  script=run_all.sh
+  results=experiments
+fi
+
+if [ -e "$set" ] || [ -e "$set.pdf" ]; then
+  echo "$PWD/$set or $set.pdf exists already, from an earlier run; move it away first" >&2
+  exit 1
+fi
+
+if docker container inspect "$name" >/dev/null 2>&1; then
+  echo "== continuing with the container $name of an earlier run"
+else
+  docker run -d --privileged --cap-drop=all --name "$name" storm2-experiments \
+    "scripts/$script" "$@" >/dev/null
+fi
+docker logs -f "$name" || true
+status=$(docker wait "$name")
+
+mkdir "$set"
+docker logs "$name" > "$set/output.log" 2>&1
+for experiment in comparison_tools_bisim imdps pomdp; do
+  docker cp -q "$name:$image/experiments/$experiment/$results" "$set/$experiment" \
+    || echo "no logs and results of $experiment" >&2
+done
+docker cp -q "$name:$image/plots/latex/data" "$set/data" || echo "no figure data" >&2
+docker cp -q "$name:$image/plots/latex/main.pdf" "$set.pdf" && cp "$set.pdf" "$set/" \
+  || echo "no figures" >&2
+docker rm "$name" >/dev/null
+echo "== results in $PWD/$set/, figures in $PWD/$set.pdf"
+exit "$status"

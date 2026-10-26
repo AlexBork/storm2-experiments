@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm-POMDP results</title>
+<link rel="stylesheet" href="results.css">
+</head>
+<body>
+<h1>Storm-POMDP benchmark results</h1>
+<p class="sub">Each measured run links to its invocation and log. Click a column header to sort; use the buttons to show or hide configurations.</p>
+<p class="sub">1 instances · 34 configurations · 34 recorded runs · cumulative runtime: 0h 07m 10s. 30 successful, 4 timeout.</p>
+<p class="sub">Sources: experiments/smoke/logs.</p>
+<p class="sub">Green marks the tightest successful bound among visible configurations, comparing cut-offs separately from discretisation. Bounds are compared at six decimal places; runtime breaks ties. For maximisation, larger cut-off bounds and smaller discretisation bounds are better; minimisation reverses these directions. Marking is the same in every display view. Killed means SIGKILL without a recorded timeout.</p>
+<div class="controls"><label>Filter benchmarks <input id="filter" type="search" placeholder="Name, parameters, or objective"></label> <label>Cell display <select id="metric"><option value="both">Bound &amp; runtime</option><option value="runtime">Runtime (s)</option><option value="bound">Bound</option></select></label> <span id="row-count" role="status"></span></div>
+<div id="columns" class="controls" aria-label="Visible configurations"><button type="button" data-all="true">Show all</button> <button type="button" data-all="false">Hide all</button>
+<span class="family">cutoff:</span>
+<button type="button" class="toggle on" data-col="storm.cut10000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000">cut10000</button>
+<button type="button" class="toggle on" data-col="storm.cut20000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000">cut20000</button>
+<button type="button" class="toggle on" data-col="storm.cut30000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000">cut30000</button>
+<button type="button" class="toggle on" data-col="storm.cut40000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000">cut40000</button>
+<button type="button" class="toggle on" data-col="storm.cut50000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000">cut50000</button>
+<button type="button" class="toggle on" data-col="storm.cut60000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 60000">cut60000</button>
+<button type="button" class="toggle on" data-col="storm.cut70000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 70000">cut70000</button>
+<button type="button" class="toggle on" data-col="storm.cut80000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 80000">cut80000</button>
+<button type="button" class="toggle on" data-col="storm.cut90000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 90000">cut90000</button>
+<button type="button" class="toggle on" data-col="storm.cut100000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 100000">cut100000</button>
+<button type="button" class="toggle on" data-col="storm.cut200000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 200000">cut200000</button>
+<button type="button" class="toggle on" data-col="storm.cut300000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 300000">cut300000</button>
+<button type="button" class="toggle on" data-col="storm.cut400000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 400000">cut400000</button>
+<button type="button" class="toggle on" data-col="storm.cut500000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 500000">cut500000</button>
+<button type="button" class="toggle on" data-col="storm.cut600000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 600000">cut600000</button>
+<button type="button" class="toggle on" data-col="storm.cut700000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 700000">cut700000</button>
+<button type="button" class="toggle on" data-col="storm.cut800000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 800000">cut800000</button>
+<button type="button" class="toggle on" data-col="storm.cut900000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 900000">cut900000</button>
+<button type="button" class="toggle on" data-col="storm.cut1000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 1000000">cut1000000</button>
+<button type="button" class="toggle on" data-col="storm.cut2000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 2000000">cut2000000</button>
+<button type="button" class="toggle on" data-col="storm.cut3000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 3000000">cut3000000</button>
+<button type="button" class="toggle on" data-col="storm.cut4000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 4000000">cut4000000</button>
+<button type="button" class="toggle on" data-col="storm.cut5000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 5000000">cut5000000</button>
+<button type="button" class="toggle on" data-col="storm.cut6000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 6000000">cut6000000</button>
+<button type="button" class="toggle on" data-col="storm.cut7000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 7000000">cut7000000</button>
+<button type="button" class="toggle on" data-col="storm.cut8000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 8000000">cut8000000</button>
+<button type="button" class="toggle on" data-col="storm.cut9000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 9000000">cut9000000</button>
+<button type="button" class="toggle on" data-col="storm.cut10000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000000">cut10000000</button>
+<button type="button" class="toggle on" data-col="storm.cut20000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000000">cut20000000</button>
+<button type="button" class="toggle on" data-col="storm.cut30000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000000">cut30000000</button>
+<button type="button" class="toggle on" data-col="storm.cut40000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000000">cut40000000</button>
+<button type="button" class="toggle on" data-col="storm.cut50000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000000">cut50000000</button>
+<span class="family">discretisation:</span>
+<button type="button" class="toggle on" data-col="storm.discr004s" aria-pressed="true" title="Storm-pomdp; Over-approximation with discretization, resolution 4, triangulation mode static">discr004s</button>
+<button type="button" class="toggle on" data-col="storm.discr005s" aria-pressed="true" title="Storm-pomdp; Over-approximation with discretization, resolution 5, triangulation mode static">discr005s</button>
+</div>
+<div class="table-scroll"><table id="results">
+<caption>Bounds and recorded wall-clock runtimes in seconds. Configuration columns sort by runtime, or by value in Bound view; unsuccessful and missing results stay last.</caption>
+<thead><tr>
+<th scope="col" data-kind="text"><button type="button" class="sort">benchmark</button></th>
+<th scope="col" data-kind="text"><button type="button" class="sort">objective</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">states</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">choices</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">observations</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut10000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000"><button type="button" class="sort">cut10000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut20000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000"><button type="button" class="sort">cut20000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut30000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000"><button type="button" class="sort">cut30000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut40000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000"><button type="button" class="sort">cut40000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut50000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000"><button type="button" class="sort">cut50000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut60000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 60000"><button type="button" class="sort">cut60000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut70000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 70000"><button type="button" class="sort">cut70000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut80000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 80000"><button type="button" class="sort">cut80000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut90000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 90000"><button type="button" class="sort">cut90000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut100000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 100000"><button type="button" class="sort">cut100000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut200000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 200000"><button type="button" class="sort">cut200000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut300000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 300000"><button type="button" class="sort">cut300000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut400000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 400000"><button type="button" class="sort">cut400000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut500000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 500000"><button type="button" class="sort">cut500000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut600000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 600000"><button type="button" class="sort">cut600000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut700000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 700000"><button type="button" class="sort">cut700000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut800000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 800000"><button type="button" class="sort">cut800000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut900000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 900000"><button type="button" class="sort">cut900000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut1000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 1000000"><button type="button" class="sort">cut1000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut2000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 2000000"><button type="button" class="sort">cut2000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut3000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 3000000"><button type="button" class="sort">cut3000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut4000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 4000000"><button type="button" class="sort">cut4000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut5000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 5000000"><button type="button" class="sort">cut5000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut6000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 6000000"><button type="button" class="sort">cut6000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut7000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 7000000"><button type="button" class="sort">cut7000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut8000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 8000000"><button type="button" class="sort">cut8000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut9000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 9000000"><button type="button" class="sort">cut9000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut10000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000000"><button type="button" class="sort">cut10000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut20000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000000"><button type="button" class="sort">cut20000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut30000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000000"><button type="button" class="sort">cut30000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut40000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000000"><button type="button" class="sort">cut40000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut50000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000000"><button type="button" class="sort">cut50000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.discr004s" title="Storm-pomdp; Over-approximation with discretization, resolution 4, triangulation mode static"><button type="button" class="sort">discr004s</button></th>
+<th scope="col" data-kind="run" data-col="storm.discr005s" title="Storm-pomdp; Over-approximation with discretization, resolution 5, triangulation mode static"><button type="button" class="sort">discr005s</button></th>
+</tr></thead>
+<tbody>
+<tr data-direction="max" data-search="refuel_refuel_prbmax_n06 refuel/n06 prb max">
+<td data-sort="refuel/N06" title="refuel_refuel_prbmax_N06">refuel/N06</td>
+<td data-sort="prb max" title="refuel_refuel_prbmax_N06">prb max</td>
+<td data-sort="208" title="refuel_refuel_prbmax_N06">208</td>
+<td data-sort="574" title="refuel_refuel_prbmax_N06">574</td>
+<td data-sort="50" title="refuel_refuel_prbmax_N06">50</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.081" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut10000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.081s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.077" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut20000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.077s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.1" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut30000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.1s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.10s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.13" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut40000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.13s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.13s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.15" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut50000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.15s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.173" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut60000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.173s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.17s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.179" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut70000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.179s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.199" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut80000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.199s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.258" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut90000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.258s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.258" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut100000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.258s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.566" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut200000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.566s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.57s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="0.739" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut300000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.739s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="0.985" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut400000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.985s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.98s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.262" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut500000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.262s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="1.591" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut600000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.591s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.59s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="1.914" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut700000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.914s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.91s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.102" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut800000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.102s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.10s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="2.565" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut900000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.565s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.56s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="2.904" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut1000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.904s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.90s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="5.599" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut2000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 5.599s"><span class="bound">≥ 0.67219</span> <span class="runtime">(5.60s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="9.163" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut3000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 9.163s"><span class="bound">≥ 0.67219</span> <span class="runtime">(9.16s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="12.122" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut4000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 12.122s"><span class="bound">≥ 0.67219</span> <span class="runtime">(12.12s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="15.15" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut5000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 15.15s"><span class="bound">≥ 0.67219</span> <span class="runtime">(15.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="18.743" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut6000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 18.743s"><span class="bound">≥ 0.67219</span> <span class="runtime">(18.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="21.111" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut7000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 21.111s"><span class="bound">≥ 0.67219</span> <span class="runtime">(21.11s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="25.206" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut8000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 25.206s"><span class="bound">≥ 0.67219</span> <span class="runtime">(25.21s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="28.302" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut9000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 28.302s"><span class="bound">≥ 0.67219</span> <span class="runtime">(28.30s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="31.719" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut10000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 31.719s"><span class="bound">≥ 0.67219</span> <span class="runtime">(31.72s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut20000000" data-family="cutoff" data-status="timeout" data-runtime="61.544" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.refuel_refuel_prbmax_N06.html" title="timeout; result: unavailable; wall-clock: 61.544s"><span class="bound">timeout</span> <span class="runtime">(61.54s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut30000000" data-family="cutoff" data-status="timeout" data-runtime="61.674" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.refuel_refuel_prbmax_N06.html" title="timeout; result: unavailable; wall-clock: 61.674s"><span class="bound">timeout</span> <span class="runtime">(61.67s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut40000000" data-family="cutoff" data-status="timeout" data-runtime="61.688" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.refuel_refuel_prbmax_N06.html" title="timeout; result: unavailable; wall-clock: 61.688s"><span class="bound">timeout</span> <span class="runtime">(61.69s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut50000000" data-family="cutoff" data-status="timeout" data-runtime="61.692" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.refuel_refuel_prbmax_N06.html" title="timeout; result: unavailable; wall-clock: 61.692s"><span class="bound">timeout</span> <span class="runtime">(61.69s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.072" data-bound="0.7129687089" data-relation="≤" data-quality="0.712969">
+<a href="logs/storm.discr004s.refuel_refuel_prbmax_N06.html" title="successful; result: ≤ 0.7129687089; wall-clock: 0.072s"><span class="bound">≤ 0.7129687089</span> <span class="runtime">(0.07s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.082" data-bound="0.696954659" data-relation="≤" data-quality="0.696955">
+<a href="logs/storm.discr005s.refuel_refuel_prbmax_N06.html" title="successful; result: ≤ 0.696954659; wall-clock: 0.082s"><span class="bound">≤ 0.696954659</span> <span class="runtime">(0.08s)</span></a>
+</td>
+</tr>
+</tbody></table></div>
+<script src="results.js"></script>
+</body>
+</html>
