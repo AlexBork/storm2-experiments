@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	beb.4-8-7.LineSeized
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:35:18 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-qfkv_icy
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.293s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	20186888 (14639 nodes)
+Transitions: 	35508778 (69450 nodes)
+Choices: 	20949082
+Reward Models:  none
+Variables: 	rows: 20 meta variables (62 DD variables), columns: 20 meta variables (62 DD variables), nondeterminism: 6 meta variables (6 DD variables)
+Labels: 	2
+   * deadlock -> 240263 state(s) (1069 nodes)
+   * init -> 1 state(s) (63 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "LineSeized": Pmax=? [F (line_seized)] ...
+Result (for initial states): 0.9998854985
+Time for model checking: 11.736s.
+
+----------------------------------------
+Wallclock time:	12.217
+Return code:	0

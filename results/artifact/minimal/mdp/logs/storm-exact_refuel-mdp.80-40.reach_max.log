@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani refuel-mdp.jani --janiproperty reach_max --constants N=80,ENERGY=40 --exact
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:47:28 2026
+Command line arguments: --jani refuel-mdp.jani --janiproperty reach_max --constants 'N=80,ENERGY=40' --exact
+Current working directory: /tmp/invocation-i1jjmmd3
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 2.151s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	161070
+Transitions: 	1226246
+Choices: 	619178
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * goal -> 13 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "reach_max": Pmax=? [F "goal"] ...
+Result (for initial states): 3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000 (approx. 0.9922791865). Exact solution.
+Time for model checking: 10.695s.
+
+----------------------------------------
+Wallclock time:	12.934
+Return code:	0

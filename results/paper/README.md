@@ -13,8 +13,8 @@ Build the figures of the paper from `data/` in the container of the experiments
 (see the [README](../../README.md#loading-the-container)), from `$ARTIFACT_DIR`, with
 
 ```bash
-docker run --rm -v "$PWD/results/paper:/paper:ro" -v "$PWD:/out" storm2-experiments \
-    sh -c 'docker/build_figures.sh /paper/data && cp docker/plots/latex/main.pdf /out/paper.pdf'
+docker run --rm -e HOST_UID=$(id -u) -v "$PWD/results/paper:/paper:ro" -v "$PWD:/out" storm2-experiments \
+    sh -c 'docker/build_figures.sh /paper/data && cp docker/plots/latex/main.pdf /out/paper.pdf && chown $HOST_UID /out/paper.pdf'
 ```
 
 which writes them to `paper.pdf` in `$ARTIFACT_DIR`.

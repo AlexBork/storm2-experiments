@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=25,slippery=0.2 --exact
+Benchmark:	avoid-mdp.25-0.2.time_min
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:45:56 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=25,slippery=0.2' --exact
+Current working directory: /tmp/invocation-gm__wjyj
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 21.009s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3122501
+Transitions: 	17743285
+Choices: 	7557501
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * goal -> 2500 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+
+----------------------------------------
+Wallclock time:	30.082
+Return code:	-9

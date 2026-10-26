@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=10000 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	manymecs.10000.prob_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:26:54 2026
+Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=10000 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-rt9l_prh
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 6.086s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	30002 (31 nodes)
+Transitions: 	90002 (398 nodes)
+Choices: 	60002
+Reward Models:  none
+Variables: 	rows: 3 meta variables (18 DD variables), columns: 3 meta variables (18 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (19 nodes)
+   * p1win
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.588s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	20003
+Transitions: 	50006
+Choices: 	40004
+Reward Models:  none
+State Labels: 	4 labels
+   * (((state = 3) | (state = 4)) & (state = 3)) -> 1 item(s)
+   * p1win -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "p1win"] ...
+Result (for initial states): 0.5. Exact solution.
+Time for model checking: 0.010s.
+
+----------------------------------------
+Wallclock time:	6.732
+Return code:	0

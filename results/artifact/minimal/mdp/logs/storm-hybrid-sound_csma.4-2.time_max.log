@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani csma.4-2.jani --janiproperty time_max --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	csma.4-2.time_max
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:18:19 2026
+Command line arguments: --jani csma.4-2.jani --janiproperty time_max --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-jjkq91iq
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.356s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	761962 (6743 nodes)
+Transitions: 	1327068 (52588 nodes)
+Choices: 	825504
+Reward Models:  time
+Variables: 	rows: 24 meta variables (59 DD variables), columns: 24 meta variables (59 DD variables), nondeterminism: 16 meta variables (16 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (60 nodes)
+   * all_delivered
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "all_delivered"] ...
+Result (for initial states): 142.2121692
+Time for model checking: 1.756s.
+
+----------------------------------------
+Wallclock time:	2.328
+Return code:	0

@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan-mec.3.jani --janiproperty cost_min --constants COL=0 --exact --bisimulation
+Benchmark:	wlan-mec.3-0.cost_min
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:28:57 2026
+Command line arguments: --jani wlan-mec.3.jani --janiproperty cost_min --constants COL=0 --exact --bisimulation
+Current working directory: /tmp/invocation-n92_121o
+
+Time for model input parsing: 0.004s.
+
+Time for model construction: 18.473s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	963020
+Transitions: 	3875479
+Choices: 	2200310
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 10 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 6.301s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	35795
+Transitions: 	114973
+Choices: 	75622
+Reward Models:  cost
+State Labels: 	2 labels
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625 (approx. 7625). Exact solution.
+Time for model checking: 0.149s.
+
+----------------------------------------
+Wallclock time:	25.504
+Return code:	0

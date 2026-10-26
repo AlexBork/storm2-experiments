@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani brp-pta-mdp.jani --janiproperty P_1 --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --exact
+Benchmark:	brp-pta.64-12-32-256.P_1
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:30:45 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty P_1 --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --exact
+Current working directory: /tmp/invocation-fpnfq5q5
+
+Time for model input parsing: 0.001s.
+
+
+----------------------------------------
+Wallclock time:	91.118
+Return code:	None
+Computation aborted after 91.118 seconds since the time limit of 90 seconds was exceeded.

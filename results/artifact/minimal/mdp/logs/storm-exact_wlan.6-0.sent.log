@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan.6.jani --janiproperty sent --constants COL=0 --exact
+Benchmark:	wlan.6-0.sent
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:43:37 2026
+Command line arguments: --jani wlan.6.jani --janiproperty sent --constants COL=0 --exact
+Current working directory: /tmp/invocation-q8hrfjae
+
+Time for model input parsing: 0.014s.
+
+Time for model construction: 21.566s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	5007548
+Transitions: 	11475748
+Choices: 	6350470
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "sent": Pmin>=1 [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): true
+
+Time for model checking: 3.858s.
+
+----------------------------------------
+Wallclock time:	25.913
+Return code:	0

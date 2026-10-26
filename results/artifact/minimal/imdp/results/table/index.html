@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Results</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+table { border-collapse: collapse; font-size: 0.82rem; }
+th, td { padding: 0.22rem 0.5rem; border-bottom: 1px solid #eee; text-align: right;
+          white-space: nowrap; }
+th { position: sticky; top: 0; z-index: 2; background: #fff; cursor: pointer;
+      border-bottom: 2px solid #ccc; user-select: none; }
+th:hover { background: #f0f0f0; }
+th.sorted::after { content: " \2191"; color: #888; }
+th.sorted.desc::after { content: " \2193"; }
+/* Keep the benchmark column in view while scrolling sideways. The page itself is
+   the scroll container, so this stacks with the sticky header above. */
+td:first-child, th:first-child { position: sticky; left: 0; background: #fff;
+                                 border-right: 1px solid #ddd; }
+td:first-child { z-index: 1; }
+th:first-child { z-index: 3; }
+td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align: left; }
+tbody tr:hover, tbody tr:hover td:first-child { background: #fafafa; }
+td.best { background: #cdf3cd; font-weight: 600; }
+/* Meta configurations are assembled from other columns rather than measured, so
+   they are tinted and take no part in the fastest-in-row highlight. */
+td.meta { background: #eceefb; }
+th.meta { background: #e3e6f7; font-style: italic; }
+tbody tr:hover td.meta { background: #e3e6f7; }
+button.toggle.meta.on { background: #5a4fcf; border-color: #5a4fcf; }
+td.timeout a, td.memout a { color: #b35c00; }
+td.incorrect a { color: #c01c28; }
+td.no-result a { color: #777; }
+td.na { color: #bbb; }
+.hidden { display: none; }
+#buttons { margin: 0.6rem 0 1rem; }
+button.toggle { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
+                 padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 999px;
+                 background: #fff; color: #888; cursor: pointer; }
+button.toggle.on { background: #1a5fb4; border-color: #1a5fb4; color: #fff; }
+button.bulk { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
+              padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 4px;
+              background: #f3f3f3; color: #333; cursor: pointer; }
+button.bulk:hover { background: #e7e7e7; }
+button.bulk:last-of-type { margin-right: 1.1rem; }
+
+</style>
+</head>
+<body>
+<h1>Results</h1>
+<p class="sub">Each cell links to the logs of all repetitions. Click a column header to
+sort; the fastest runtime of each row is highlighted among the shown configurations.</p>
+<div id="buttons"><button class="bulk" onclick="setAllColumns(true)">show all</button><button class="bulk" onclick="setAllColumns(false)">hide all</button><button class="toggle on" data-col="intervalmdp-default" onclick="toggleColumn(this)">intervalmdp-default</button><button class="toggle on" data-col="prism-default" onclick="toggleColumn(this)">prism-default</button><button class="toggle on" data-col="storm-default" onclick="toggleColumn(this)">storm-default</button></div>
+<table id="results" data-fixed="3">
+<thead><tr><th data-kind="text" onclick="sortTable(0)">benchmark</th><th data-kind="text" onclick="sortTable(1)">type</th><th data-kind="number" onclick="sortTable(2)">states</th><th class="cfg" data-col="intervalmdp-default" data-kind="number" onclick="sortTable(3)">intervalmdp-default</th><th class="cfg" data-col="prism-default" data-kind="number" onclick="sortTable(4)">prism-default</th><th class="cfg" data-col="storm-default" data-kind="number" onclick="sortTable(5)">storm-default</th></tr></thead>
+<tbody>
+<tr><td data-sort="avoid-mdp.15-0.2.goal_max.absolute-005">avoid-mdp.15-0.2.goal_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="404101">404101</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_avoid-mdp.15-0.2.goal_max.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_avoid-mdp.15-0.2.goal_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="7.467"><a href="storm-default_avoid-mdp.15-0.2.goal_max.absolute-005.html">7.47</a></td></tr>
+<tr><td data-sort="avoid-mdp.25-0.2.goal_max.absolute-005">avoid-mdp.25-0.2.goal_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="3122501">3122501</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_avoid-mdp.25-0.2.goal_max.absolute-005.html">timeout</a></td><td class="cfg memout" data-col="prism-default" data-kind="memout" data-sort="1201.0"><a href="prism-default_avoid-mdp.25-0.2.goal_max.absolute-005.html">memout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="57.495"><a href="storm-default_avoid-mdp.25-0.2.goal_max.absolute-005.html">57.49</a></td></tr>
+<tr><td data-sort="bigmec.100000.prob_max.absolute-25">bigmec.100000.prob_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="200003">200003</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_bigmec.100000.prob_max.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_bigmec.100000.prob_max.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="storm-default" data-kind="timeout" data-sort="1200.0"><a href="storm-default_bigmec.100000.prob_max.absolute-25.html">timeout</a></td></tr>
+<tr><td data-sort="consensus-mec.4-2.disagree.absolute-005">consensus-mec.4-2.disagree.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="226560">226560</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus-mec.4-2.disagree.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_consensus-mec.4-2.disagree.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="4.006"><a href="storm-default_consensus-mec.4-2.disagree.absolute-005.html">4.01</a></td></tr>
+<tr><td data-sort="consensus-mec.4-2.disagree.absolute-25">consensus-mec.4-2.disagree.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="226560">226560</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus-mec.4-2.disagree.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_consensus-mec.4-2.disagree.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="2.562"><a href="storm-default_consensus-mec.4-2.disagree.absolute-25.html">2.56</a></td></tr>
+<tr><td data-sort="consensus-mec.4-6.disagree.absolute-25">consensus-mec.4-6.disagree.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="636160">636160</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus-mec.4-6.disagree.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_consensus-mec.4-6.disagree.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="9.726"><a href="storm-default_consensus-mec.4-6.disagree.absolute-25.html">9.73</a></td></tr>
+<tr><td data-sort="consensus.4-4.c2.absolute-005">consensus.4-4.c2.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="43136">43136</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus.4-4.c2.absolute-005.html">timeout</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="46.713"><a href="prism-default_consensus.4-4.c2.absolute-005.html">46.71</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.888"><a href="storm-default_consensus.4-4.c2.absolute-005.html">0.89</a></td></tr>
+<tr><td data-sort="consensus.4-4.c2.absolute-25">consensus.4-4.c2.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="43136">43136</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="21.051"><a href="intervalmdp-default_consensus.4-4.c2.absolute-25.html">21.05</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="20.763"><a href="prism-default_consensus.4-4.c2.absolute-25.html">20.76</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.415"><a href="storm-default_consensus.4-4.c2.absolute-25.html">0.41</a></td></tr>
+<tr><td data-sort="consensus.4-4.disagree.absolute-005">consensus.4-4.disagree.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="43136">43136</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus.4-4.disagree.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_consensus.4-4.disagree.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="1.053"><a href="storm-default_consensus.4-4.disagree.absolute-005.html">1.05</a></td></tr>
+<tr><td data-sort="consensus.4-4.disagree.absolute-25">consensus.4-4.disagree.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="43136">43136</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="4.837"><a href="intervalmdp-default_consensus.4-4.disagree.absolute-25.html">4.84</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="31.533"><a href="prism-default_consensus.4-4.disagree.absolute-25.html">31.53</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.325"><a href="storm-default_consensus.4-4.disagree.absolute-25.html">0.33</a></td></tr>
+<tr><td data-sort="consensus.6-2.disagree.absolute-25">consensus.6-2.disagree.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="1258240">1258240</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_consensus.6-2.disagree.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_consensus.6-2.disagree.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="11.282"><a href="storm-default_consensus.6-2.disagree.absolute-25.html">11.28</a></td></tr>
+<tr><td data-sort="evade-mdp.8-0.7.prob_max.absolute-25">evade-mdp.8-0.7.prob_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="398273">398273</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="60.501"><a href="intervalmdp-default_evade-mdp.8-0.7.prob_max.absolute-25.html">60.50</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_evade-mdp.8-0.7.prob_max.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="20.596"><a href="storm-default_evade-mdp.8-0.7.prob_max.absolute-25.html">20.60</a></td></tr>
+<tr><td data-sort="manymecs.10000.prob_max.absolute-005">manymecs.10000.prob_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="30002">30002</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_manymecs.10000.prob_max.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_manymecs.10000.prob_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="9.469"><a href="storm-default_manymecs.10000.prob_max.absolute-005.html">9.47</a></td></tr>
+<tr><td data-sort="manymecs.10000.prob_max.absolute-25">manymecs.10000.prob_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="30002">30002</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_manymecs.10000.prob_max.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_manymecs.10000.prob_max.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="25.265"><a href="storm-default_manymecs.10000.prob_max.absolute-25.html">25.27</a></td></tr>
+<tr><td data-sort="mer.100-0.1.prob_max.absolute-005">mer.100-0.1.prob_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="592264">592264</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="50.466"><a href="intervalmdp-default_mer.100-0.1.prob_max.absolute-005.html">50.47</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="24.215"><a href="prism-default_mer.100-0.1.prob_max.absolute-005.html">24.21</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="6.467"><a href="storm-default_mer.100-0.1.prob_max.absolute-005.html">6.47</a></td></tr>
+<tr><td data-sort="mer.100-0.1.prob_max.absolute-25">mer.100-0.1.prob_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="592264">592264</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="36.719"><a href="intervalmdp-default_mer.100-0.1.prob_max.absolute-25.html">36.72</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="22.349"><a href="prism-default_mer.100-0.1.prob_max.absolute-25.html">22.35</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="6.103"><a href="storm-default_mer.100-0.1.prob_max.absolute-25.html">6.10</a></td></tr>
+<tr><td data-sort="mer.250-0.1.prob_max.absolute-005">mer.250-0.1.prob_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="1478314">1478314</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_mer.250-0.1.prob_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="58.207"><a href="prism-default_mer.250-0.1.prob_max.absolute-005.html">58.21</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="15.527"><a href="storm-default_mer.250-0.1.prob_max.absolute-005.html">15.53</a></td></tr>
+<tr><td data-sort="mer.250-0.1.prob_max.absolute-25">mer.250-0.1.prob_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="1478314">1478314</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="89.553"><a href="intervalmdp-default_mer.250-0.1.prob_max.absolute-25.html">89.55</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="49.894"><a href="prism-default_mer.250-0.1.prob_max.absolute-25.html">49.89</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="15.509"><a href="storm-default_mer.250-0.1.prob_max.absolute-25.html">15.51</a></td></tr>
+<tr><td data-sort="random-grid.80-0.3-0.3.prob_max.absolute-005">random-grid.80-0.3-0.3.prob_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="512000">512000</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_random-grid.80-0.3-0.3.prob_max.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_random-grid.80-0.3-0.3.prob_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="17.377"><a href="storm-default_random-grid.80-0.3-0.3.prob_max.absolute-005.html">17.38</a></td></tr>
+<tr><td data-sort="refuel-mdp.80-40.reach_max.absolute-25">refuel-mdp.80-40.reach_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="161070">161070</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="6.821"><a href="intervalmdp-default_refuel-mdp.80-40.reach_max.absolute-25.html">6.82</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_refuel-mdp.80-40.reach_max.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="1.57"><a href="storm-default_refuel-mdp.80-40.reach_max.absolute-25.html">1.57</a></td></tr>
+<tr><td data-sort="sensor.4.max_success.absolute-005">sensor.4.max_success.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="572452">572452</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="69.967"><a href="intervalmdp-default_sensor.4.max_success.absolute-005.html">69.97</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="70.895"><a href="prism-default_sensor.4.max_success.absolute-005.html">70.89</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="7.349"><a href="storm-default_sensor.4.max_success.absolute-005.html">7.35</a></td></tr>
+<tr><td data-sort="sensor.4.max_success.absolute-25">sensor.4.max_success.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="572452">572452</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="71.672"><a href="intervalmdp-default_sensor.4.max_success.absolute-25.html">71.67</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="69.867"><a href="prism-default_sensor.4.max_success.absolute-25.html">69.87</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="7.338"><a href="storm-default_sensor.4.max_success.absolute-25.html">7.34</a></td></tr>
+<tr><td data-sort="tireworld.17.goal.absolute-005">tireworld.17.goal.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="8670">8670</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="1.096"><a href="intervalmdp-default_tireworld.17.goal.absolute-005.html">1.10</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="1.238"><a href="prism-default_tireworld.17.goal.absolute-005.html">1.24</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.215"><a href="storm-default_tireworld.17.goal.absolute-005.html">0.21</a></td></tr>
+<tr><td data-sort="tireworld.17.goal.absolute-25">tireworld.17.goal.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="8670">8670</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="1.4"><a href="intervalmdp-default_tireworld.17.goal.absolute-25.html">1.40</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="1.289"><a href="prism-default_tireworld.17.goal.absolute-25.html">1.29</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.236"><a href="storm-default_tireworld.17.goal.absolute-25.html">0.24</a></td></tr>
+<tr><td data-sort="zeroconf.1000-8-false.correct_max.absolute-005">zeroconf.1000-8-false.correct_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.1000-8-false.correct_max.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.1000-8-false.correct_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="11.382"><a href="storm-default_zeroconf.1000-8-false.correct_max.absolute-005.html">11.38</a></td></tr>
+<tr><td data-sort="zeroconf.1000-8-false.correct_max.absolute-25">zeroconf.1000-8-false.correct_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.1000-8-false.correct_max.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.1000-8-false.correct_max.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="12.597"><a href="storm-default_zeroconf.1000-8-false.correct_max.absolute-25.html">12.60</a></td></tr>
+<tr><td data-sort="zeroconf.1000-8-false.correct_min.absolute-005">zeroconf.1000-8-false.correct_min.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.1000-8-false.correct_min.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.1000-8-false.correct_min.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="13.081"><a href="storm-default_zeroconf.1000-8-false.correct_min.absolute-005.html">13.08</a></td></tr>
+<tr><td data-sort="zeroconf.20-2-false.correct_max.absolute-005">zeroconf.20-2-false.correct_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="89586">89586</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="5.071"><a href="intervalmdp-default_zeroconf.20-2-false.correct_max.absolute-005.html">5.07</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="36.011"><a href="prism-default_zeroconf.20-2-false.correct_max.absolute-005.html">36.01</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.612"><a href="storm-default_zeroconf.20-2-false.correct_max.absolute-005.html">0.61</a></td></tr>
+<tr><td data-sort="zeroconf.20-2-false.correct_max.absolute-25">zeroconf.20-2-false.correct_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="89586">89586</td><td class="cfg time" data-col="intervalmdp-default" data-kind="time" data-sort="5.3"><a href="intervalmdp-default_zeroconf.20-2-false.correct_max.absolute-25.html">5.30</a></td><td class="cfg time" data-col="prism-default" data-kind="time" data-sort="32.942"><a href="prism-default_zeroconf.20-2-false.correct_max.absolute-25.html">32.94</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="0.594"><a href="storm-default_zeroconf.20-2-false.correct_max.absolute-25.html">0.59</a></td></tr>
+<tr><td data-sort="zeroconf.20-8-false.correct_max.absolute-005">zeroconf.20-8-false.correct_max.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.20-8-false.correct_max.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.20-8-false.correct_max.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="11.684"><a href="storm-default_zeroconf.20-8-false.correct_max.absolute-005.html">11.68</a></td></tr>
+<tr><td data-sort="zeroconf.20-8-false.correct_max.absolute-25">zeroconf.20-8-false.correct_max.absolute-25</td><td data-sort="absolute-25">absolute-25</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.20-8-false.correct_max.absolute-25.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.20-8-false.correct_max.absolute-25.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="11.987"><a href="storm-default_zeroconf.20-8-false.correct_max.absolute-25.html">11.99</a></td></tr>
+<tr><td data-sort="zeroconf.20-8-false.correct_min.absolute-005">zeroconf.20-8-false.correct_min.absolute-005</td><td data-sort="absolute-005">absolute-005</td><td data-sort="1870338">1870338</td><td class="cfg timeout" data-col="intervalmdp-default" data-kind="timeout" data-sort="1200.0"><a href="intervalmdp-default_zeroconf.20-8-false.correct_min.absolute-005.html">timeout</a></td><td class="cfg timeout" data-col="prism-default" data-kind="timeout" data-sort="1200.0"><a href="prism-default_zeroconf.20-8-false.correct_min.absolute-005.html">timeout</a></td><td class="cfg time" data-col="storm-default" data-kind="time" data-sort="13.071"><a href="storm-default_zeroconf.20-8-false.correct_min.absolute-005.html">13.07</a></td></tr>
+</tbody>
+</table>
+<script>
+const table = document.getElementById("results");
+const rows = () => Array.from(table.tBodies[0].rows);
+
+function highlight() {
+  for (const row of rows()) {
+    let best = null;
+    for (const cell of row.cells) {
+      cell.classList.remove("best");
+      if (cell.dataset.kind !== "time" || cell.classList.contains("hidden")
+          || cell.classList.contains("meta")) continue;
+      const value = parseFloat(cell.dataset.sort);
+      if (best === null || value < parseFloat(best.dataset.sort)) best = cell;
+    }
+    if (best) best.classList.add("best");
+  }
+}
+
+function applyColumn(button, on) {
+  button.classList.toggle("on", on);
+  for (const cell of table.querySelectorAll('[data-col="' + CSS.escape(button.dataset.col) + '"]'))
+    cell.classList.toggle("hidden", !on);
+}
+
+function toggleColumn(button) {
+  applyColumn(button, !button.classList.contains("on"));
+  highlight();
+}
+
+function setAllColumns(on) {
+  for (const button of document.querySelectorAll("button.toggle")) applyColumn(button, on);
+  highlight();
+}
+
+let sorted = {index: null, descending: false};
+function sortTable(index) {
+  const header = table.tHead.rows[0].cells[index];
+  const descending = sorted.index === index ? !sorted.descending : false;
+  const numeric = header.dataset.kind === "number";
+  const body = table.tBodies[0];
+  rows().sort((a, b) => {
+    const x = a.cells[index].dataset.sort, y = b.cells[index].dataset.sort;
+    const cmp = numeric ? parseFloat(x) - parseFloat(y) : x.localeCompare(y);
+    return descending ? -cmp : cmp;
+  }).forEach(row => body.appendChild(row));
+  for (const cell of table.tHead.rows[0].cells) cell.classList.remove("sorted", "desc");
+  header.classList.add("sorted");
+  if (descending) header.classList.add("desc");
+  sorted = {index: index, descending: descending};
+}
+
+highlight();
+</script>
+</body></html>

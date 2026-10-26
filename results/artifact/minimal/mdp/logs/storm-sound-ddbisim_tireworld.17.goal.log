@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani tireworld.17.jani --janiproperty goal --sound --bisimulation --engine dd-to-sparse --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	tireworld.17.goal
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:56:03 2026
+Command line arguments: --jani tireworld.17.jani --janiproperty goal --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-w5fh_hvc
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.197s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	8670 (31 nodes)
+Transitions: 	33436 (16430 nodes)
+Choices: 	18662
+Reward Models:  none
+Variables: 	rows: 11 meta variables (24 DD variables), columns: 11 meta variables (24 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	2
+   * deadlock -> 1600 state(s) (1059 nodes)
+   * init -> 1 state(s) (25 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.192s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	6562
+Transitions: 	30818
+Choices: 	16554
+Reward Models:  none
+State Labels: 	3 labels
+   * (var9 = 0) -> 1 item(s)
+   * deadlock -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal": Pmax=? [F (var9 = 0)] ...
+Result (for initial states): 0.233280013. Solution bounds: [0.2332797797, 0.2332802462].
+Time for model checking: 0.002s.
+
+----------------------------------------
+Wallclock time:	0.492
+Return code:	0

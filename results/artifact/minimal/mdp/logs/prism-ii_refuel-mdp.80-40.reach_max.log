@@ -1,0 +1,100 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 8g refuel-mdp.prism refuel-mdp.props --prop reach_max -const N=80,ENERGY=40 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 18:43:42 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=4g, java(heap)=8g
+Command line: prism -javamaxmem 8g refuel-mdp.prism refuel-mdp.props --prop reach_max -const 'N=80,ENERGY=40' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+
+Parsing PRISM model file "refuel-mdp.prism"...
+
+Type:        MDP
+Modules:     master tank rover
+Actions:     [placement] [north] [south] [east] [west] [done] [refuel] [empty]
+Variables:   start fuel ax ay
+Labels:      "goal" "traps" "stationvisit" "notbad"
+Rewards:     "steps" "refuels" "costs"
+
+Parsing properties file "refuel-mdp.props"...
+
+1 property:
+(1) "reach_max": Pmax=? [ F "goal" ]
+
+---------------------------------------------------------------------
+
+Model checking: "reach_max": Pmax=? [ F "goal" ]
+Model constants: N=80,ENERGY=40
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=80,ENERGY=40
+
+Computing reachable states...
+
+Reachability (BFS): 96 iterations in 0.02 seconds (average 0.000208, setup 0.00)
+
+Time for model construction: 0.071 seconds.
+
+Type:        MDP
+States:      161070 (1 initial)
+Transitions: 1226247
+
+Transition matrix: 24786 nodes (4 terminal), 1226247 minterms, vars: 21r/21c/8nd
+
+Prob0A: 97 iterations in 0.25 seconds (average 0.002577, setup 0.00)
+
+Prob1E: 1875 iterations in 6.69 seconds (average 0.003568, setup 0.00)
+
+yes = 1458, no = 76597, maybe = 83015
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.753 seconds, found 1 MECs.
+Time for building MEC quotient: 8.536 seconds.
+
+Quotient MDP:
+States:      77531 (1 initial)
+Transitions: 893980
+
+Transition matrix: 168991 nodes (4 terminal), 893980 minterms, vars: 21r/21c/30nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=77531, nc=310991, nnz=606577, k=2182] [8.4 MB]
+Creating vector for yes... [605.7 KB]
+Creating vector for maybe... [605.7 KB]
+Allocating iteration vectors... [4 x 605.7 KB]
+TOTAL: [12.0 MB]
+
+Starting iterations (interval iteration)...
+Iteration 4083: max relative diff=0.395474, 5.01 sec so far
+Iteration 8084: max relative diff=0.277166, 10.02 sec so far
+Iteration 12092: max relative diff=0.222922, 15.03 sec so far
+Iteration 16088: max relative diff=0.193706, 20.04 sec so far
+Iteration 20087: max relative diff=0.173612, 25.05 sec so far
+Iteration 24107: max relative diff=0.158971, 30.06 sec so far
+Iteration 28127: max relative diff=0.147911, 35.07 sec so far
+Iteration 32161: max relative diff=0.139422, 40.08 sec so far
+Iteration 36192: max relative diff=0.132702, 45.09 sec so far
+Iteration 40230: max relative diff=0.127426, 50.10 sec so far
+Iteration 44254: max relative diff=0.123043, 55.11 sec so far
+Iteration 48288: max relative diff=0.119242, 60.12 sec so far
+Iteration 52314: max relative diff=0.115810, 65.13 sec so far
+Iteration 56349: max relative diff=0.112597, 70.14 sec so far
+
+----------------------------------------
+Wallclock time:	91.067
+Return code:	None
+Computation aborted after 91.067 seconds since the time limit of 90 seconds was exceeded.

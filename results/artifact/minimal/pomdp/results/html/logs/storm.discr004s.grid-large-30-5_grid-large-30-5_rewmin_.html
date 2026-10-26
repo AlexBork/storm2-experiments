@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.discr004s.grid-large-30-5_grid-large-30-5_rewmin_</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.discr004s.grid-large-30-5_grid-large-30-5_rewmin_</h1>
+<dl>
+<dt>Benchmark</dt><dd>grid-large-30-5_grid-large-30-5_rewmin_</dd>
+<dt>Configuration</dt><dd>storm.discr004s</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≥ 116.1476546</dd>
+<dt>Wall-clock time (s)</dt><dd>8.438</dd>
+<dt>Time limit (s)</dt><dd>90.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/minimal/logs/discr004s_grid-large-30-5_grid-large-30-5_rewmin_.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism grid-large-30-5.prism --prop grid-large-30-5.props rewmin --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static</pre>
+<p>Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism grid-large-30-5.prism --prop grid-large-30-5.props rewmin --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Benchmark:	grid-large-30-5_grid-large-30-5_rewmin_
+Configuration:	discr004s
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Mon Oct 26 19:20:13 2026
+Command line arguments: --prism grid-large-30-5.prism --prop grid-large-30-5.props rewmin --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Current working directory: /tmp/invocation-qhftv9t2
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 0.007s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	900
+Transitions: 	7078
+Choices: 	3600
+Observations: 	37
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * done -&gt; 1 item(s)
+Choice Labels: 	4 labels
+   * east -&gt; 900 item(s)
+   * west -&gt; 900 item(s)
+   * north -&gt; 900 item(s)
+   * south -&gt; 900 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;R{&quot;steps&quot;}min=? [F &quot;done&quot;]&#x27;
+Computing an over-approximation via belief MDP discretization...
+Belief exploration completed: 636235 beliefs discovered, 636234 beliefs explored.
+Constructed belief MDP: 636235 states, 2544937 choices, 14964637 transitions.
+Time for exploring beliefs: 4462ms.
+Time for building the belief MDP: 452ms.
+Time for analyzing the belief MDP: 3108ms.
+
+Result: ≥ 116.1476546
+Time for POMDP analysis: 8.365s.
+
+Performance statistics:
+  * peak memory usage: 1870MB
+  * CPU time: 8.179s
+  * wallclock time: 8.373s
+
+----------------------------------------
+Wallclock time:	8.438
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.discr004s.grid-large-30-5_grid-large-30-5_rewmin_&quot;,
+  &quot;benchmark-id&quot;: &quot;grid-large-30-5_grid-large-30-5_rewmin_&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;discr004s&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism grid-large-30-5.prism --prop grid-large-30-5.props rewmin --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static&quot;
+  ],
+  &quot;time-limit&quot;: 90.0,
+  &quot;log-dir&quot;: &quot;experiments/minimal/logs&quot;,
+  &quot;log&quot;: &quot;experiments/minimal/logs/discr004s_grid-large-30-5_grid-large-30-5_rewmin_.log&quot;,
+  &quot;wallclock-time&quot;: 8.438,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;grid-large-30-5_grid-large-30-5_rewmin_&quot;,
+    &quot;benchmark-set&quot;: &quot;grid-large-30-5&quot;,
+    &quot;name&quot;: &quot;grid-large-30-5&quot;,
+    &quot;model&quot;: {
+      &quot;file&quot;: &quot;models/grid-large-30-5/grid-large-30-5.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;models/grid-large-30-5/grid-large-30-5.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Over-approximation with discretization, resolution 4, triangulation mode static&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;discr004s&quot;,
+    &quot;family&quot;: &quot;discretisation&quot;
+  },
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.007,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 900,
+    &quot;transitions&quot;: 7078,
+    &quot;choices&quot;: 3600,
+    &quot;observations&quot;: 37
+  },
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 636235,
+    &quot;choices&quot;: 2544937,
+    &quot;transitions&quot;: 14964637,
+    &quot;expl-time&quot;: 4.462,
+    &quot;build-time&quot;: 0.452,
+    &quot;chk-time&quot;: 3.108
+  },
+  &quot;result&quot;: &quot;≥ 116.1476546&quot;,
+  &quot;total-chk-time&quot;: 8.365
+}
+</pre></details>
+</body>
+</html>

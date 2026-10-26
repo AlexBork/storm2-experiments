@@ -1,0 +1,21 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani polling-system.3.jani --janiproperty TmaxBothFull --constants C=3,TIME_BOUND=5 --sound
+Benchmark:	polling-system.3-3-5.TmaxBothFull
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:46:38 2026
+Command line arguments: --jani polling-system.3.jani --janiproperty TmaxBothFull --constants 'C=3,TIME_BOUND=5' --sound
+Current working directory: /tmp/invocation-d4cvo2mw
+
+ERROR (VariableSet.cpp:197): Unable to retrieve unknown variable 'C'.
+ERROR (storm.cpp:23): An exception caused Storm to terminate. The message of the exception is: InvalidArgumentException: Unable to retrieve unknown variable 'C'.
+
+----------------------------------------
+Wallclock time:	0.076
+Return code:	1

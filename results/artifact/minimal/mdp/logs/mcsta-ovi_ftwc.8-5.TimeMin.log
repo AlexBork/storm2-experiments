@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta ftwc.jani --props TimeMin --experiment N=8,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	ftwc.8-5.TimeMin
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta ftwc.jani --props TimeMin --experiment N=8,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+ftwc.jani:model: info: ftwc is an MA model.
+ftwc.jani: info: Need at least 40 bytes per state.
+ftwc.jani: info: Explored 10299 states for N=8, TIME_BOUND=5.
+ftwc.jani:properties[3]: warning: Computing minimum expected reward in property "TimeMin" without checking for zero-reward end components.
+
+Peak memory usage: 75 MB
+Analysis results for ftwc.jani
+Experiment N=8, TIME_BOUND=5
+
++ State space exploration
+  Min. state size: 40 bytes
+  States:          10299
+  Choices:         12635
+  Branches:        26983
+  Rate:            147129 states/s
+  Time:            0.1 s
+
++ Property TimeMin
+  Value:  1995337.8455534235
+  Bounds: [1995335.8854562673, 1995339.8056505797]
+  Time:   36.5 s
+
+  + Precomputations
+    Max. prob. 1 states:          10299
+    Time for max. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  857221
+    Verif. attempts:   15
+    Verif. iterations: 46722
+    Final epsilon:     3.033069489836149E-11
+    Time:              36.5 s
+
+
+----------------------------------------
+Wallclock time:	36.747
+Return code:	0

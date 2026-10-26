@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.6-2.disagree.tra,sta,lab consensus.6-2.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+Benchmark:	consensus.6-2.disagree.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:09:51 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=1g, java(heap)=8g
+Command line: prism -importmodel 'consensus.6-2.disagree.tra,sta,lab' consensus.6-2.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+
+Importing model from "consensus.6-2.disagree.tra", "consensus.6-2.disagree.sta", "consensus.6-2.disagree.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.6-2.disagree.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 11.21 seconds.
+
+Type:        IMDP
+States:      1258240 (1 initial)
+Transitions: 9401280
+Choices:     7549440
+Max/avg:     6/6.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 115 iterations and 67.42 seconds.
+Starting Prob1 (max)...
+
+----------------------------------------
+Wallclock time:	91.184
+Return code:	None
+Computation aborted after 91.184 seconds since the time limit of 90 seconds was exceeded.

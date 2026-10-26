@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani rabin.10.jani --janiproperty live --exact
+Benchmark:	rabin.10.live
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:45:42 2026
+Command line arguments: --jani rabin.10.jani --janiproperty live --exact
+Current working directory: /tmp/invocation-8hs243xy
+
+Time for model input parsing: 0.003s.
+
+
+----------------------------------------
+Wallclock time:	91.290
+Return code:	None
+Computation aborted after 91.290 seconds since the time limit of 90 seconds was exceeded.

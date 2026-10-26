@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani csma.4-2.jani --janiproperty time_max --sound
+Benchmark:	csma.4-2.time_max
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:55:43 2026
+Command line arguments: --jani csma.4-2.jani --janiproperty time_max --sound
+Current working directory: /tmp/invocation-4mp6u2n6
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 2.058s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	761962
+Transitions: 	1327068
+Choices: 	825504
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * all_delivered -> 9 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "all_delivered"] ...
+Result (for initial states): 142.2121691. Solution bounds: [142.2120269, 142.2123113].
+Time for model checking: 0.233s.
+
+----------------------------------------
+Wallclock time:	2.353
+Return code:	0

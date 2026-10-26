@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.false.jani --janiproperty deadline --constants delay=36,deadline=800 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	firewire.false-36-800.deadline
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:18:24 2026
+Command line arguments: --jani firewire.false.jani --janiproperty deadline --constants 'delay=36,deadline=800' --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-sp6g6ugc
+
+Time for model input parsing: 0.002s.
+
+WARN  (storm-cli.cpp:27): The model checking query does not seem to be supported for the selected engine. Storm will try to solve the query, but you will most likely get an error for at least one of the provided properties.
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.472s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	212268 (18189 nodes)
+Transitions: 	481788 (89021 nodes)
+Choices: 	478752
+Reward Models:  time
+Variables: 	rows: 14 meta variables (60 DD variables), columns: 14 meta variables (60 DD variables), nondeterminism: 14 meta variables (14 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (61 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "deadline": Pmin=? [true Urew{"time"}<=800 (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8)))] ...
+ERROR (model-handling-main-cli.h:230): Property is unsupported by selected engine/settings.
+
+
+----------------------------------------
+Wallclock time:	0.656
+Return code:	0

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani tireworld.17.jani --janiproperty goal --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	tireworld.17.goal
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:54:41 2026
+Command line arguments: --jani tireworld.17.jani --janiproperty goal --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-wd0q97rl
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.215s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	8670 (31 nodes)
+Transitions: 	33436 (16430 nodes)
+Choices: 	18662
+Reward Models:  none
+Variables: 	rows: 11 meta variables (24 DD variables), columns: 11 meta variables (24 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	2
+   * deadlock -> 1600 state(s) (1059 nodes)
+   * init -> 1 state(s) (25 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "goal": Pmax=? [F (var9 = 0)] ...
+Result (for initial states): 0.233280013
+Time for model checking: 0.091s.
+
+----------------------------------------
+Wallclock time:	0.470
+Return code:	0

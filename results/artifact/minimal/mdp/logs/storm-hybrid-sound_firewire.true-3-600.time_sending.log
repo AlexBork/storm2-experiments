@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_sending --constants delay=3,deadline=600 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	firewire.true-3-600.time_sending
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:51:27 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_sending --constants 'delay=3,deadline=600' --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-ghxq5_65
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 2.004s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1078299 (21110 nodes)
+Transitions: 	1473698 (68262 nodes)
+Choices: 	1453092
+Reward Models:  time_sending
+Variables: 	rows: 16 meta variables (59 DD variables), columns: 16 meta variables (59 DD variables), nondeterminism: 14 meta variables (14 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (60 nodes)
+   * done
+-------------------------------------------------------------- 
+
+Model checking property "time_sending": R{"time_sending"}max=? [F "done"] ...
+Result (for initial states): 18
+Time for model checking: 1.045s.
+
+----------------------------------------
+Wallclock time:	3.231
+Return code:	0

@@ -1,0 +1,47 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta beb.4-8.jani --props LineSeized --experiment N=7 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	beb.4-8-7.LineSeized
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta beb.4-8.jani --props LineSeized --experiment N=7 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+beb.4-8.jani:model: info: beb-4-8 is an MDP model.
+beb.4-8.jani: info: Need 24 bytes per state.
+beb.4-8.jani: info: Explored 19401892 states for N=7.
+
+Peak memory usage: 5627 MB
+Analysis results for beb.4-8.jani
+Experiment N=7
+
++ State space exploration
+  State size: 24 bytes
+  States:     19401892
+  Choices:    20164086
+  Branches:   34723782
+  Rate:       1993413 states/s
+  Time:       10.2 s
+
++ Property LineSeized
+  Probability: 0.9998855004642985
+  Bounds:      [0.9998854984522032, 0.9998855024763937]
+  Time:        3.2 s
+
+  + Optimistic value iteration
+    Total iterations:  34
+    Verif. attempts:   1
+    Verif. iterations: 8
+    Final epsilon:     1E-06
+    Time:              3.2 s
+
+
+----------------------------------------
+Wallclock time:	13.633
+Return code:	0

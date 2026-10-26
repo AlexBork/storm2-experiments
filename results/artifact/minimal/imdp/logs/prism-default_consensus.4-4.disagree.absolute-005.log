@@ -1,0 +1,67 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.4-4.disagree.tra,sta,lab consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+Benchmark:	consensus.4-4.disagree.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:10:21 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=1g, java(heap)=8g
+Command line: prism -importmodel 'consensus.4-4.disagree.tra,sta,lab' consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+
+Importing model from "consensus.4-4.disagree.tra", "consensus.4-4.disagree.sta", "consensus.4-4.disagree.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.4-4.disagree.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.485 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 149 iterations and 2.195 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 2595 iterations and 34.439 seconds.
+target=56, yes=10872, no=910, maybe=31354
+Starting value iteration (maxmin)...
+Iteration 263: 5.01 sec so far
+Iteration 521: 10.02 sec so far
+Iteration 783: 15.03 sec so far
+Iteration 1045: 20.04 sec so far
+Iteration 1310: 25.05 sec so far
+Iteration 1574: 30.05 sec so far
+Iteration 1834: 35.07 sec so far
+Iteration 2094: 40.09 sec so far
+Iteration 2343: 45.10 sec so far
+Iteration 2588: 50.10 sec so far
+
+----------------------------------------
+Wallclock time:	91.071
+Return code:	None
+Computation aborted after 91.071 seconds since the time limit of 90 seconds was exceeded.

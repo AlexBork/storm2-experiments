@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani evade-mdp.jani --janiproperty prob_max --constants N=10,slippery=0.7 --exact
+Benchmark:	evade-mdp.10-0.7.prob_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:52:33 2026
+Command line arguments: --jani evade-mdp.jani --janiproperty prob_max --constants 'N=10,slippery=0.7' --exact
+Current working directory: /tmp/invocation-eioop2a5
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 23.467s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1611899
+Transitions: 	19107467
+Choices: 	4755775
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * notbad -> 1579858 item(s)
+   * goal -> 8098 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? ["notbad" U "goal"] ...
+
+----------------------------------------
+Wallclock time:	32.598
+Return code:	-9

@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani pnueli-zuck.5.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	pnueli-zuck.5.live
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:53:27 2026
+Command line arguments: --jani pnueli-zuck.5.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-nsk1l49b
+
+Time for model input parsing: 0.003s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.253s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	307523 (169 nodes)
+Transitions: 	1886851 (5441 nodes)
+Choices: 	1753715
+Reward Models:  none
+Variables: 	rows: 10 meta variables (25 DD variables), columns: 10 meta variables (25 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (26 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 2.056s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	12116
+Transitions: 	76843
+Choices: 	71534
+Reward Models:  none
+State Labels: 	3 labels
+   * (p1 = 10) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "live": Pmax=? [F (p1 = 10)] ...
+Result (for initial states): 1. Exact solution.
+Time for model checking: 0.002s.
+
+----------------------------------------
+Wallclock time:	2.440
+Return code:	0

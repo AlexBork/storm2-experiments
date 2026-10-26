@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta wlan.4.jani --props cost_min --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	wlan.4-0.cost_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta wlan.4.jani --props cost_min --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+wlan.4.jani:model: info: wlan.4 is an MDP model.
+wlan.4.jani:variables[7]: info: Expanding variable "s1" into 12 locations in automaton "station1".
+wlan.4.jani:variables[12]: info: Expanding variable "s2" into 12 locations in automaton "station2".
+wlan.4.jani: info: Need 16 bytes per state.
+wlan.4.jani: info: Explored 345000 states for COL=0.
+wlan.4.jani:properties[2]: warning: Computing minimum expected reward in property "cost_min" without checking for zero-reward end components.
+
+Peak memory usage: 228 MB
+Analysis results for wlan.4.jani
+Experiment COL=0
+
++ State space exploration
+  State size: 16 bytes
+  States:     345000
+  Choices:    440206
+  Branches:   762252
+  Rate:       658397 states/s
+  Time:       0.5 s
+
++ Property cost_min
+  Value:  7625.003390625
+  Bounds: [7625, 7625.00678125]
+  Time:   0.6 s
+
+  + Precomputations
+    Max. prob. 1 states:          345000
+    Time for max. prob. 1 states: 0.2 s
+
+  + Optimistic value iteration
+    Total iterations:  270
+    Verif. attempts:   1
+    Verif. iterations: 2
+    Final epsilon:     1E-06
+    Time:              0.4 s
+
+
+----------------------------------------
+Wallclock time:	1.362
+Return code:	0

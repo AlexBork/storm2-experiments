@@ -10,7 +10,10 @@ It reports and fails on
     time or memory (e.g. because the output format of a tool changed),
   - for pomdp, runs without a result, results that are not a bound of the
     expected kind, and lower bounds above upper bounds of the same benchmark.
-Runs that ran out of time or memory are counted, but not considered errors.
+Runs that ran out of time or memory are counted, but not considered errors. So are
+the runs whose outcome benchmarks/expected-outcomes.json of the experiment lists,
+e.g. of benchmarks a tool does not support, with the same outcome as in the runs of
+the paper; --expected lists them.
 """
 
 import argparse
@@ -38,18 +41,38 @@ def last_result_line(log):
     return found[-1].strip() if found else "(no result line in the log)"
 
 
-def check_common(results):
-    """Problems in the results.json of common/postprocess.py, and the status counts."""
-    problems, counts = [], {}
+def load_expected_outcomes():
+    """The expected outcomes of runs without a correct result, configuration ->
+    benchmark -> {status, reason}, from benchmarks/expected-outcomes.json of the
+    experiment, if there is one."""
+    path = ROOT / "benchmarks" / "expected-outcomes.json"
+    if not path.is_file():
+        return {}
+    with open(path) as f:
+        return json.load(f)
+
+
+def check_common(results, expected_outcomes):
+    """Problems in the results.json of common/postprocess.py, the runs with an expected
+    outcome, and the status counts."""
+    problems, expected, counts = [], [], {}
     for configuration, benchmarks in sorted(results.items()):
         for benchmark, repetitions in sorted(benchmarks.items()):
             for repetition, data in sorted(repetitions.items()):
                 status = data["status"]
-                counts[status] = counts.get(status, 0) + 1
-                if status in ("incorrect", "no-result"):
+                if status not in ("incorrect", "no-result"):
+                    counts[status] = counts.get(status, 0) + 1
+                    continue
+                entry = expected_outcomes.get(configuration, {}).get(benchmark)
+                if entry and entry["status"] == status:
+                    counts["expected"] = counts.get("expected", 0) + 1
+                    expected.append(f"{status}: {configuration} {benchmark} rep{repetition}: "
+                                 f"{entry['reason']}")
+                else:
+                    counts[status] = counts.get(status, 0) + 1
                     problems.append(f"{status}: {configuration} {benchmark} rep{repetition}: "
                                     f"{last_result_line(data['log'])}")
-    return problems, counts
+    return problems, expected, counts
 
 
 def check_pomdp(executions):
@@ -114,12 +137,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("results", help="directory written by postprocess.py")
+    parser.add_argument("--expected", action="store_true",
+                        help="also list the runs with an expected outcome, e.g. of "
+                             "benchmarks a tool does not support")
     args = parser.parse_args()
 
     results = Path(args.results)
+    expected = []
     if (results / "results.json").is_file():
         with open(results / "results.json") as f:
-            problems, counts = check_common(json.load(f))
+            problems, expected, counts = check_common(json.load(f), load_expected_outcomes())
     elif (results / "execution-data.json").is_file():
         with open(results / "execution-data.json", encoding="utf-8-sig") as f:
             problems, counts = check_pomdp(json.load(f))
@@ -128,6 +155,13 @@ def main():
 
     print(f"checked {sum(counts.values())} runs: "
           + ", ".join(f"{n} {s}" for s, n in sorted(counts.items())))
+    if expected:
+        print(f"  {len(expected)} expected: the same outcome as in the runs of the paper, "
+              f"e.g. for benchmarks a tool does not support"
+              + ("" if args.expected else " (--expected lists them)"))
+        if args.expected:
+            for run in expected:
+                print(f"    {run}")
     for problem in problems:
         print(f"  {problem}")
     if problems:

@@ -1,0 +1,182 @@
+{
+	"mcsta-ovi": {
+		"resource-gathering.1300-100-100.expgold": {
+			"status": "no-result",
+			"reason": "not supported: property"
+		},
+		"wlan-mec.3-0.cost_min": {
+			"status": "incorrect",
+			"reason": "incorrect result"
+		},
+		"wlan-mec.3-0.time_min": {
+			"status": "incorrect",
+			"reason": "incorrect result"
+		}
+	},
+	"prism-ii": {
+		"airport-mdp.130-130.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"airport-mdp.250-250.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"avoid-mdp.15-0.2.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"avoid-mdp.25-0.2.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"firewire.false-36-800.deadline": {
+			"status": "no-result",
+			"reason": "PRISM cannot parse the model"
+		},
+		"intercept-mdp.30-0.0.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"intercept-mdp.40-0.0.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"obstacle-mdp.400.steps_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"obstacle-mdp.800.steps_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"random-grid.40-0.3-0.3.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"random-grid.80-0.3-0.3.time_min": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"resource-gathering.1300-100-100.expsteps": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		},
+		"resource-gathering.400-30-30.expsteps": {
+			"status": "no-result",
+			"reason": "not supported: interval iteration for Rmin on non-contracting MDPs"
+		}
+	},
+	"storm-hybrid-sound": {
+		"brp-pta.64-12-32-256.Emin": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"brp-pta.64-12-32-256.P_1": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"brp-pta.64-12-32-256.P_3": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"firewire.false-36-800.deadline": {
+			"status": "no-result",
+			"reason": "not supported: property by the engine"
+		},
+		"ftwc.8-5.TimeMax": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"ftwc.8-5.TimeMin": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"polling-system.3-3-5.TmaxBothFull": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_1": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_and": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_or": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		}
+	},
+	"storm-old-exact": {
+		"intercept-mdp.30-0.0.time_min": {
+			"status": "no-result",
+			"reason": "crash (signal 11)"
+		},
+		"polling-system.3-3-5.TmaxBothFull": {
+			"status": "no-result",
+			"reason": "error: unknown variable"
+		}
+	},
+	"storm-old-sound": {
+		"polling-system.3-3-5.TmaxBothFull": {
+			"status": "no-result",
+			"reason": "error: unknown variable"
+		},
+		"random-grid.80-0.3-0.3.prob_max": {
+			"status": "incorrect",
+			"reason": "incorrect result"
+		}
+	},
+	"storm-sound-ddbisim": {
+		"brp-pta.64-12-32-256.Emin": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"brp-pta.64-12-32-256.P_1": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"brp-pta.64-12-32-256.P_3": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"eajs.5-250-11.ExpUtil": {
+			"status": "no-result",
+			"reason": "crash (signal 6)"
+		},
+		"eajs.6-300-13.ExpUtil": {
+			"status": "no-result",
+			"reason": "crash (signal 6)"
+		},
+		"ftwc.8-5.TimeMax": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"ftwc.8-5.TimeMin": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"pnueli-zuck.10.live": {
+			"status": "no-result",
+			"reason": "error without a message (return code 1)"
+		},
+		"polling-system.3-3-5.TmaxBothFull": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_1": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_and": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		},
+		"wlan-large.2.E_or": {
+			"status": "no-result",
+			"reason": "not supported: assignment levels in the symbolic engines"
+		}
+	}
+}

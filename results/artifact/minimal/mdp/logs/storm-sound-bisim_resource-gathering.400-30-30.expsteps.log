@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani resource-gathering.jani --janiproperty expsteps --constants B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30 --sound --bisimulation
+Benchmark:	resource-gathering.400-30-30.expsteps
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:29:55 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expsteps --constants 'B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30' --sound --bisimulation
+Current working directory: /tmp/invocation-akcl7rnt
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.272s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	90241
+Transitions: 	312961
+Choices: 	289921
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.107s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	86581
+Transitions: 	300721
+Choices: 	278341
+Reward Models:  none
+State Labels: 	2 labels
+   * success -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expsteps": Tmin=? [F "success"] ...
+Result (for initial states): 387.7777779. Solution bounds: [387.7773901, 387.7781656].
+Time for model checking: 0.051s.
+
+----------------------------------------
+Wallclock time:	0.487
+Return code:	0

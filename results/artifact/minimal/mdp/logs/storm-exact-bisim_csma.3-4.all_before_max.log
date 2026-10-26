@@ -1,0 +1,55 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani csma.3-4.jani --janiproperty all_before_max --exact --bisimulation
+Benchmark:	csma.3-4.all_before_max
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:37:39 2026
+Command line arguments: --jani csma.3-4.jani --janiproperty all_before_max --exact --bisimulation
+Current working directory: /tmp/invocation-wd5k0h2n
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 6.522s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1460287
+Transitions: 	2396727
+Choices: 	1471059
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * collision_max_backoff -> 1427 item(s)
+   * all_delivered -> 13 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 4.607s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	24472
+Transitions: 	59046
+Choices: 	24920
+Reward Models:  none
+State Labels: 	3 labels
+   * collision_max_backoff -> 116 item(s)
+   * all_delivered -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "all_before_max": Pmax=? [(!"collision_max_backoff") U "all_delivered"] ...
+Result (for initial states): 2599282671417859453572130598089066646673439/2787593149816327892691964784081045188247552 (approx. 0.9324469288). Exact solution.
+Time for model checking: 0.026s.
+
+----------------------------------------
+Wallclock time:	11.295
+Return code:	0

@@ -1,0 +1,69 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.4-4.c2.tra,sta,lab consensus.4-4.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+Benchmark:	consensus.4-4.c2.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:01:05 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=1g, java(heap)=8g
+Command line: prism -importmodel 'consensus.4-4.c2.tra,sta,lab' consensus.4-4.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+
+Importing model from "consensus.4-4.c2.tra", "consensus.4-4.c2.sta", "consensus.4-4.c2.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.4-4.c2.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.344 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 111 iterations and 1.234 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 2078 iterations and 14.866 seconds.
+target=4, yes=455, no=23292, maybe=19389
+Starting value iteration (minmax)...
+Value iteration (minmax, with Gauss-Seidel) took 400 iterations, 38883200 multiplications and 3.889 seconds.
+Probabilistic reachability took 3.89 seconds.
+
+Value in the initial state: 0.9999993991299416
+
+Time for model checking: 20.033 seconds.
+
+Result: 0.9999993991299416 (+/- 9.36124450956477E-6 estimated; rel err 9.361250134459685E-6)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	20.763
+Return code:	0

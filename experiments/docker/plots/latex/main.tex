@@ -36,8 +36,9 @@
     \ifresults{quantile.csv}{%
     \begin{minipage}[b]{0.49\linewidth}
         \centering
-        % PRISM shifted by the 36 benchmarks it does not support
-        \renewcommand{\quantileplotextras}{\addplot[colprism, densely dashed, forget plot] table [x expr=\thisrow{i}+36, y=prism-ii, col sep=comma] {\resultsdir/quantile.csv};}%
+        % PRISM shifted by the benchmarks it does not support (n/a in scatter.csv), 36 in the paper
+        \countplotna{scatter.csv}{prism-ii}%
+        \renewcommand{\quantileplotextras}{\addplot[colprism, densely dashed, forget plot] table [x expr=\thisrow{i}+\plotnacount, y=prism-ii, col sep=comma] {\resultsdir/quantile.csv};}%
         \quantileplot[width=0.8\linewidth, legend columns=3, legend style={at={(0.35,1.04)}, anchor=south}]{quantile.csv}{%
             storm-sound/colstorm/\storm,
             storm-exact/colstormexact/{\storm/\cfgshortstormexact},

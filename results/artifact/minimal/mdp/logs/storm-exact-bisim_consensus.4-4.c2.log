@@ -1,0 +1,55 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact --bisimulation
+Benchmark:	consensus.4-4.c2
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:19:51 2026
+Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact --bisimulation
+Current working directory: /tmp/invocation-5bp_9gzt
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.186s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	43136
+Transitions: 	144352
+Choices: 	115840
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 64 item(s)
+   * all_coins_equal_1 -> 497 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.118s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2189
+Transitions: 	5619
+Choices: 	4486
+Reward Models:  none
+State Labels: 	3 labels
+   * finished -> 1 item(s)
+   * all_coins_equal_1 -> 123 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
+Result (for initial states): 852021/2097152 (approx. 0.4062752724). Exact solution.
+Time for model checking: 0.221s.
+
+----------------------------------------
+Wallclock time:	0.593
+Return code:	0

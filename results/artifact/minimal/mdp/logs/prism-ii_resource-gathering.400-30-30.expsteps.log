@@ -1,0 +1,82 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 8g resource-gathering.pm resource-gathering.prctl --prop expsteps -const B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+Benchmark:	resource-gathering.400-30-30.expsteps
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 18:48:55 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=4g, java(heap)=8g
+Command line: prism -javamaxmem 8g resource-gathering.pm resource-gathering.prctl --prop expsteps -const 'B=400,GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+
+Parsing PRISM model file "resource-gathering.pm"...
+
+Type:        MDP
+Modules:     robot goldcounter gemcounter
+Actions:     [right] [left] [top] [down]
+Variables:   gold gem attacked x y required_gold required_gem
+Labels:      "success"
+Rewards:     "attacks" "rew_gold" "rew_gem" "time"
+
+Parsing properties file "resource-gathering.prctl"...
+
+3 properties:
+(1) "expgold": R{"rew_gold"}max=? [ C<=B ]
+(2) "expsteps": R{"time"}min=? [ F "success" ]
+(3) "prgoldgem": Pmax=? [ F<=B "success" ]
+
+---------------------------------------------------------------------
+
+Model checking: "expsteps": R{"time"}min=? [ F "success" ]
+Model constants: GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30,B=400
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: GOLD_TO_COLLECT=30,GEM_TO_COLLECT=30,B=400
+
+Computing reachable states... 90334 states
+Reachable states exploration and model construction done in 0.538 secs.
+Sorting reachable states list...
+
+Time for model construction: 0.696 seconds.
+
+Type:        MDP
+States:      90334 (1 initial)
+Transitions: 313286
+Choices:     290222
+Max/avg:     4/3.21
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 363 iterations and 0.389 seconds.
+target=94, inf=0, rest=90240
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.021 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.022 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 0.161 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 540.0
+Starting Prob1 (min)...
+Prob1 (min) took 2 iterations and 0.008 seconds.
+
+Error: Interval iteration for Rmin and non-contracting MDP currently not supported.
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	1.704
+Return code:	0

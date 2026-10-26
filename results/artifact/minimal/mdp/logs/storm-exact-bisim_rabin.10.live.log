@@ -1,0 +1,21 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani rabin.10.jani --janiproperty live --exact --bisimulation
+Benchmark:	rabin.10.live
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:29:16 2026
+Command line arguments: --jani rabin.10.jani --janiproperty live --exact --bisimulation
+Current working directory: /tmp/invocation-zpo363vx
+
+Time for model input parsing: 0.003s.
+
+
+----------------------------------------
+Wallclock time:	86.558
+Return code:	-9

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - consensus.4-4.disagree.absolute-25</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>consensus.4-4.disagree.absolute-25</h1>
+<p class="sub">prism-default &middot; absolute-25 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>31.533 s</td></tr><tr><th>result</th><td>0.0</td></tr><tr><th>difference</th><td>4.35e-23</td></tr><tr><th>states</th><td>43,136</td></tr></table>
+<p class="sub">prism-default_consensus.4-4.disagree.absolute-25.log</p>
+<pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.4-4.disagree.tra,sta,lab consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+Benchmark:	consensus.4-4.disagree.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:08:02 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=1g, java(heap)=8g
+Command line: prism -importmodel 'consensus.4-4.disagree.tra,sta,lab' consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
+
+Importing model from &quot;consensus.4-4.disagree.tra&quot;, &quot;consensus.4-4.disagree.sta&quot;, &quot;consensus.4-4.disagree.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;consensus.4-4.disagree.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.351 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 149 iterations and 1.357 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 2595 iterations and 26.723 seconds.
+target=56, yes=10872, no=910, maybe=31354
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 131 iterations, 20589008 multiplications and 2.643 seconds.
+Probabilistic reachability took 2.645 seconds.
+
+Value in the initial state: 0.0
+
+Time for model checking: 30.768 seconds.
+
+Result: 0.0 (+/- 9.326279438170992E-6 estimated; rel err Infinity)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	31.533
+Return code:	0
+</pre>
+</body></html>

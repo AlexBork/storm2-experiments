@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=25,slippery=0.2 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	avoid-mdp.25-0.2.time_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:50:56 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=25,slippery=0.2' --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-wlm00omb
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.257s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	3122501 (71 nodes)
+Transitions: 	17743285 (1205 nodes)
+Choices: 	7557501
+Reward Models:  none
+Variables: 	rows: 14 meta variables (30 DD variables), columns: 14 meta variables (30 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (31 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+Result (for initial states): 121.000051
+Time for model checking: 9.428s.
+
+----------------------------------------
+Wallclock time:	9.817
+Return code:	0

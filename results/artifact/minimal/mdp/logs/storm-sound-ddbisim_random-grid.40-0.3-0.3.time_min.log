@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani random-grid.jani --janiproperty time_min --constants N=40,pover=0.3,pstay=0.3 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	random-grid.40-0.3-0.3.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:20:25 2026
+Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=40,pover=0.3,pstay=0.3' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-75hke89s
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.130s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	64000 (13 nodes)
+Transitions: 	1123189 (715 nodes)
+Choices: 	383995
+Reward Models:  none
+Variables: 	rows: 6 meta variables (21 DD variables), columns: 6 meta variables (21 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (22 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 1.980s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	11480
+Transitions: 	201463
+Choices: 	68875
+Reward Models:  none
+State Labels: 	3 labels
+   * (((x = 40) & (y = 40)) & (z = 40)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F (((x = 40) & (y = 40)) & (z = 40))] ...
+Result (for initial states): 117.9000574. Solution bounds: [117.8999395, 117.9001753].
+Time for model checking: 0.022s.
+
+----------------------------------------
+Wallclock time:	2.243
+Return code:	0

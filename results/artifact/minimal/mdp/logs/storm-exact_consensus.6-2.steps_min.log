@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.6.jani --janiproperty steps_min --constants K=2 --exact
+Benchmark:	consensus.6-2.steps_min
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:21:47 2026
+Command line arguments: --jani consensus.6.jani --janiproperty steps_min --constants K=2 --exact
+Current working directory: /tmp/invocation-g8o0c0fe
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 7.842s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": R{"steps"}min=? [F "finished"] ...
+
+----------------------------------------
+Wallclock time:	91.135
+Return code:	None
+Computation aborted after 91.135 seconds since the time limit of 90 seconds was exceeded.

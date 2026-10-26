@@ -1,0 +1,25 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani mer.jani --janiproperty prob_max --constants n=500,x=0.1 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	mer.500-0.1.prob_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:31:17 2026
+Command line arguments: --jani mer.jani --janiproperty prob_max --constants 'n=500,x=0.1' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-2zce5i_l
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.616s.
+
+
+----------------------------------------
+Wallclock time:	91.057
+Return code:	None
+Computation aborted after 91.057 seconds since the time limit of 90 seconds was exceeded.

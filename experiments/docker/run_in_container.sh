@@ -3,7 +3,8 @@
 # (see scripts/1_load.sh of the artifact), copy what it produces to the current
 # directory and remove the container. Used by scripts/2_smoke.sh,
 # 3_representative.sh, 3_minimal.sh and 3_full.sh of the artifact; the set full is
-# that of docker/run_all.sh.
+# that of docker/run_all.sh, and the set smoke-TARGET that of docker/run_smoke.sh
+# TARGET, the smoke test with the cores and memory of the set TARGET.
 #   experiments/docker/run_in_container.sh SET [-p] [RUN.PY OPTIONS]
 # The runs take place one at a time; with -p, as many at the same time as fit into
 # the cores and the memory of the machine (run.py --parallel).
@@ -27,12 +28,12 @@ name=storm2-$set
 image=/opt/storm2-experiments
 # The logs and results of every experiment are in experiments/SET/ of its directory,
 # those of run_all.sh directly in experiments/
-script=run_$set.sh
-results=experiments/$set
-if [ "$set" = full ]; then
-  script=run_all.sh
-  results=experiments
-fi
+case $set in
+  full) script=run_all.sh results=experiments ;;
+  smoke-*) script=run_smoke.sh results=experiments/smoke
+           set -- "${set#smoke-}" "$@" ;;
+  *) script=run_$set.sh results=experiments/$set ;;
+esac
 
 if [ -e "$set" ] || [ -e "$set.pdf" ]; then
   echo "$PWD/$set or $set.pdf exists already, from an earlier run; move it away first" >&2

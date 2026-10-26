@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=2,reset=false --exact
+Benchmark:	zeroconf.20-2-false.correct_max
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:23:11 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=2,reset=false' --exact
+Current working directory: /tmp/invocation-eu76tzn_
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.455s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	88858
+Transitions: 	203550
+Choices: 	161320
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 2263 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 186137901729174268511065209171497320718694252975935739961231141070383297312458181231689761539699331000803/9251581321152439541256848521142356863865506387898411218420846883518125316026037895599741228066506366352800803 (approx. 2.011957689e-05)
+Time for model checking: 0.885s.
+
+----------------------------------------
+Wallclock time:	1.413
+Return code:	0

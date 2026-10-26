@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani intercept-mdp.jani --janiproperty time_min --constants N=30,slippery=0.0 --sound
+Benchmark:	intercept-mdp.30-0.0.time_min
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:36:06 2026
+Command line arguments: --jani intercept-mdp.jani --janiproperty time_min --constants 'N=30,slippery=0.0' --sound
+Current working directory: /tmp/invocation-1xgqc3zx
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 4.092s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1619941
+Transitions: 	6461957
+Choices: 	4043647
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * goal -> 1796 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+Result (for initial states): 98.30524354. Solution bounds: [98.30514523, 98.30534184].
+Time for model checking: 1.106s.
+
+----------------------------------------
+Wallclock time:	5.245
+Return code:	0

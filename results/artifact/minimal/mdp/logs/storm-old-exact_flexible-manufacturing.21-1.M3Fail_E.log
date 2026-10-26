@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Benchmark:	flexible-manufacturing.21-1.M3Fail_E
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:13:43 2026
+Command line arguments: --jani flexible-manufacturing.21.jani --janiproperty M3Fail_E --constants T=1 --exact
+Current working directory: /tmp/invocation-vppyj3y4
+
+Time for model input parsing: 0.009s.
+
+Time for model construction: 16.752s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate.: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((M3on > 0) & (M3go = 0)) -> 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.008s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	838951
+Transitions: 	1823858
+Choices: 	838951
+Markovian St.: 	314479
+Max. Rate.: 	1279/100
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((M3on > 0) & (M3go = 0)) -> 143451 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "M3Fail_E": T[exp]min=? [F ((M3on > 0) & (M3go = 0))] ...
+
+----------------------------------------
+Wallclock time:	22.501
+Return code:	-9

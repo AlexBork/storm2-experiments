@@ -1,0 +1,23 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani bigmec.jani --janiproperty prob_max --constants N=100000 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	bigmec.100000.prob_max
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:25:25 2026
+Command line arguments: --jani bigmec.jani --janiproperty prob_max --constants N=100000 --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-2vnjl_3v
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 2 parallel threads.
+
+----------------------------------------
+Wallclock time:	91.032
+Return code:	None
+Computation aborted after 91.032 seconds since the time limit of 90 seconds was exceeded.

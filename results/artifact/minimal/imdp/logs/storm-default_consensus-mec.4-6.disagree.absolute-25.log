@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/imdp/bin/storm --explicit-drn consensus-mec.4-6.disagree.drn --prop consensus-mec.4-6.disagree.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Benchmark:	consensus-mec.4-6.disagree.absolute-25
+Configuration:	storm-default
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 19:02:50 2026
+Command line arguments: --explicit-drn consensus-mec.4-6.disagree.drn --prop consensus-mec.4-6.disagree.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
+Current working directory: /tmp/invocation-5z3o4xbs
+
+Time for model construction: 4.123s.
+
+-------------------------------------------------------------- 
+Model type: 	IMDP (sparse)
+States: 	636160
+Transitions: 	4926656
+Choices: 	3180800
+Reward Models:  none
+State Labels: 	2 labels
+   * reach -> 560 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "1": Pmax=? [F "reach"] ...
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
+Result (for initial states): 1.870420256e-30. Solution bounds: [1.870420256e-30, 1].
+Time for model checking: 5.534s.
+
+----------------------------------------
+Wallclock time:	9.726
+Return code:	0

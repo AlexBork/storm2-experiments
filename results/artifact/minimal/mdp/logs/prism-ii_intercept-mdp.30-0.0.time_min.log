@@ -1,0 +1,80 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 8g intercept-mdp.prism intercept-mdp.props --prop time_min -const N=30,slippery=0.0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+Benchmark:	intercept-mdp.30-0.0.time_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 18:54:53 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=4g, java(heap)=8g
+Command line: prism -javamaxmem 8g intercept-mdp.prism intercept-mdp.props --prop time_min -const 'N=30,slippery=0.0' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+
+Parsing PRISM model file "intercept-mdp.prism"...
+
+Type:        MDP
+Modules:     master drone agent
+Actions:     [placement] [north] [south] [east] [west] [adv] [finished]
+Variables:   start turn dx dy ax ay
+Labels:      "goal" "notbad" "exits"
+Rewards:     "time"
+
+Parsing properties file "intercept-mdp.props"...
+
+1 property:
+(1) "time_min": R{"time"}min=? [ F "goal" ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_min": R{"time"}min=? [ F "goal" ]
+Model constants: N=30,slippery=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: N=30,slippery=0
+
+Computing reachable states... 788087 1583674 1619941 states
+Reachable states exploration and model construction done in 6.112 secs.
+Sorting reachable states list...
+
+Time for model construction: 7.969 seconds.
+
+Type:        MDP
+States:      1619941 (1 initial)
+Transitions: 6462855
+Choices:     4044545
+Max/avg:     4/2.50
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 3422 iterations and 56.648 seconds.
+target=1796, inf=1185289, rest=432856
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.063 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.268 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 1.066 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 217.9588343784822
+Starting Prob1 (min)...
+Prob1 (min) took 4 iterations and 0.038 seconds.
+
+Error: Interval iteration for Rmin and non-contracting MDP currently not supported.
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	66.276
+Return code:	0

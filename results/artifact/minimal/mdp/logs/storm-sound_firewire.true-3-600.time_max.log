@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_max --constants delay=3,deadline=600 --sound
+Benchmark:	firewire.true-3-600.time_max
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:53:02 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_max --constants 'delay=3,deadline=600' --sound
+Current working directory: /tmp/invocation-8n_1kg9w
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 3.643s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1078299
+Transitions: 	1473698
+Choices: 	1453092
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * done -> 656 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "done"] ...
+Result (for initial states): 299. Solution bounds: [298.999701, 299.000299].
+Time for model checking: 0.473s.
+
+----------------------------------------
+Wallclock time:	4.179
+Return code:	0

@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --sound --bisimulation
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:39:56 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --sound --bisimulation
+Current working directory: /tmp/invocation-gmu9sl6c
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 3.649s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958894
+Transitions: 	3325526
+Choices: 	3080702
+Reward Models:  rew_gold
+State Labels: 	2 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 3.347s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	48
+Transitions: 	166
+Choices: 	154
+Reward Models:  rew_gold
+State Labels: 	1 labels
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R{"rew_gold"}max=? [Csteps<=1300] ...
+Result (for initial states): 145.2875015. Exact solution.
+Time for model checking: 0.000s.
+
+----------------------------------------
+Wallclock time:	7.065
+Return code:	0

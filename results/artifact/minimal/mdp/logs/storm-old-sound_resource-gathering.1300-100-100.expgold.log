@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --sound
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 18:50:36 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --sound
+Current working directory: /tmp/invocation-w8wnfsqo
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 4.330s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958894
+Transitions: 	3325526
+Choices: 	3080702
+Reward Models:  rew_gold
+State Labels: 	2 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R[exp]{"rew_gold"}max=? [Csteps<=1300] ...
+Result (for initial states): 145.2875015
+Time for model checking: 8.479s.
+
+----------------------------------------
+Wallclock time:	12.857
+Return code:	0

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:35:11 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-1fonw7t9
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 0.244s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	958894 (39 nodes)
+Transitions: 	3325526 (643 nodes)
+Choices: 	3080702
+Reward Models:  rew_gold
+Variables: 	rows: 10 meta variables (26 DD variables), columns: 10 meta variables (26 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (27 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R{"rew_gold"}max=? [Csteps<=1300] ...
+Result (for initial states): 145.2875015
+Time for model checking: 6.404s.
+
+----------------------------------------
+Wallclock time:	6.769
+Return code:	0

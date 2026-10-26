@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani tireworld.17.jani --janiproperty goal --sound --bisimulation
+Benchmark:	tireworld.17.goal
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:54:49 2026
+Command line arguments: --jani tireworld.17.jani --janiproperty goal --sound --bisimulation
+Current working directory: /tmp/invocation-vahgazef
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.023s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	8670
+Transitions: 	33436
+Choices: 	18662
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 1600 item(s)
+   * init -> 1 item(s)
+   * (var9 = 0) -> 510 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.010s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	6562
+Transitions: 	30818
+Choices: 	16554
+Reward Models:  none
+State Labels: 	2 labels
+   * (var9 = 0) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal": Pmax=? [F (var9 = 0)] ...
+Result (for initial states): 0.23328. Solution bounds: [0.2332797667, 0.2332802333].
+Time for model checking: 0.001s.
+
+----------------------------------------
+Wallclock time:	0.103
+Return code:	0

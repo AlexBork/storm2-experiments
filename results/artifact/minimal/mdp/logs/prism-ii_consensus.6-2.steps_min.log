@@ -1,0 +1,95 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 8g consensus.6.prism consensus.props --prop steps_min -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+Benchmark:	consensus.6-2.steps_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 18:24:03 UTC 2026
+Hostname: b1e309d8ae82
+Memory limits: cudd=4g, java(heap)=8g
+Command line: prism -javamaxmem 8g consensus.6.prism consensus.props --prop steps_min -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 4g
+
+Parsing PRISM model file "consensus.6.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4 process5 process6
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4 pc5 coin5 pc6 coin6
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "steps_min": R{"steps"}min=? [ F "finished" ]
+Model constants: K=2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: K=2
+
+Computing reachable states... 727849 1258240 states
+Reachable states exploration and model construction done in 4.692 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.581 seconds.
+
+Type:        MDP
+States:      1258240 (1 initial)
+Transitions: 6236736
+Choices:     5008128
+Max/avg:     6/3.98
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 49 iterations and 0.718 seconds.
+target=384, inf=0, rest=1257856
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.074 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.135 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.961 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 18438.0
+Starting Prob1 (min)...
+Prob1 (min) took 64 iterations and 1.103 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 118: max relative diff=145.867255404, 5.03 sec so far
+Iteration 237: max relative diff=58.8363663679, 10.06 sec so far
+Iteration 356: max relative diff=31.6989382029, 15.10 sec so far
+Iteration 475: max relative diff=19.2121999073, 20.13 sec so far
+Iteration 594: max relative diff=12.3601016038, 25.14 sec so far
+Iteration 713: max relative diff=8.26261483103, 30.16 sec so far
+Iteration 832: max relative diff=5.61935349587, 35.19 sec so far
+Iteration 950: max relative diff=3.88504659484, 40.20 sec so far
+Iteration 1068: max relative diff=2.71082166966, 45.21 sec so far
+Iteration 1186: max relative diff=1.90980173988, 50.23 sec so far
+Iteration 1305: max relative diff=1.3435598054, 55.27 sec so far
+Iteration 1423: max relative diff=0.950302798233, 60.27 sec so far
+Iteration 1541: max relative diff=0.67581755252, 65.28 sec so far
+Iteration 1659: max relative diff=0.479722627167, 70.32 sec so far
+Iteration 1776: max relative diff=0.341676589463, 75.33 sec so far
+
+----------------------------------------
+Wallclock time:	91.052
+Return code:	None
+Computation aborted after 91.052 seconds since the time limit of 90 seconds was exceeded.

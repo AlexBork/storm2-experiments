@@ -39,6 +39,21 @@
 \newcommand{\plotna}{4800}
 \newcommand{\plotmax}{6400}
 
+%% \countplotna{FILE}{COLUMN} sets \plotnacount to the number of rows of the csv file
+%% FILE, relative to \resultsdir, in which COLUMN is n/a (\plotna), e.g. the number of
+%% benchmarks a tool does not support.
+\newcommand{\countplotna}[2]{%
+  \pgfplotstableread[col sep=comma]{\resultsdir/#1}\plotnatable
+  \pgfplotstablegetrowsof{\plotnatable}%
+  \pgfmathtruncatemacro{\plotnalast}{\pgfplotsretval-1}%
+  \xdef\plotnacount{0}%
+  \foreach \plotnarow in {0,...,\plotnalast}{%
+    \pgfplotstablegetelem{\plotnarow}{#2}\of\plotnatable
+    \pgfmathtruncatemacro{\plotnanew}{\plotnacount+(\pgfplotsretval==\plotna)}%
+    \xdef\plotnacount{\plotnanew}%
+  }%
+}
+
 \newlength{\quantileplotheight}
 \setlength{\quantileplotheight}{0.22\linewidth}
 \newlength{\scatterplotsize}

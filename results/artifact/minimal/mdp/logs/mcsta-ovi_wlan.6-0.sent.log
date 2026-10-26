@@ -1,0 +1,48 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta wlan.6.jani --props sent --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	wlan.6-0.sent
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta wlan.6.jani --props sent --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+wlan.6.jani:model: info: wlan.6 is an MDP model.
+wlan.6.jani:variables[7]: info: Expanding variable "s1" into 12 locations in automaton "station1".
+wlan.6.jani:variables[12]: info: Expanding variable "s2" into 12 locations in automaton "station2".
+wlan.6.jani: info: Need 16 bytes per state.
+wlan.6.jani: info: Explored 5007548 states for COL=0.
+
+Peak memory usage: 1527 MB
+Analysis results for wlan.6.jani
+Experiment COL=0
+
++ State space exploration
+  State size: 16 bytes
+  States:     5007548
+  Choices:    6350470
+  Branches:   11475748
+  Rate:       1946947 states/s
+  Time:       2.7 s
+
++ Property sent
+  Result: True
+  Bounds: [1, 1]
+  Time:   10.7 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 10.7 s
+    Min. prob. 1 states:          5007548
+    Time for min. prob. 1 states: 0.0 s
+
+
+----------------------------------------
+Wallclock time:	13.658
+Return code:	0

@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani pacman.jani --janiproperty crash --constants MAXSTEPS=60 --engine hybrid --sound --sylvan:threads 2 --sylvan:maxmem 4096
+Benchmark:	pacman.60.crash
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	8 GiB
+Cores:	2
+Decision diagram memory:	4 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 18:13:40 2026
+Command line arguments: --jani pacman.jani --janiproperty crash --constants MAXSTEPS=60 --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
+Current working directory: /tmp/invocation-e6diq7ov
+
+Time for model input parsing: 0.016s.
+
+Using Sylvan with 2 parallel threads.
+Time for model construction: 6.912s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	7253118 (327538 nodes)
+Transitions: 	9952883 (1720612 nodes)
+Choices: 	9097907
+Reward Models:  none
+Variables: 	rows: 15 meta variables (39 DD variables), columns: 15 meta variables (39 DD variables), nondeterminism: 9 meta variables (9 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (40 nodes)
+   * Crash
+-------------------------------------------------------------- 
+
+Model checking property "crash": Pmin=? [F "Crash"] ...
+Result (for initial states): 0.5511074971
+Time for model checking: 15.170s.
+
+----------------------------------------
+Wallclock time:	22.618
+Return code:	0
