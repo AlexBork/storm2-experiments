@@ -46,6 +46,45 @@ The scripts in `docker/common/` describe all their options with `--help`. The mo
 
 Every run gets 4 physical cores because some configurations use several threads: Storm's symbolic engines (`storm-hybrid-sound`, `storm-sound-ddbisim`) run Sylvan with 4 threads, and Java, which runs PRISM, chooses a single-threaded garbage collector when it sees only one core.
 
+## Running your own benchmarks
+The scripts can run all tool configurations of the MDP experiment `mdp` (Storm 2.0 in its configurations, Storm 1.6.2, mcsta and PRISM) on your own MDPs, and check and compare their results and runtimes like for the benchmarks of the paper. Storm and mcsta read the model as a JANI file, PRISM as a Prism program with a property file; a benchmark with only one of them is only run by the configurations that read it.
+
+1. Put your models and properties into a folder, e.g. `mine/`. Convert a Prism program with its property file into a JANI file with the properties in it with `storm-conv` in the image, without fixing the constants, which the configurations set:
+   ```bash
+   docker run --rm --entrypoint storm-conv -v "$PWD/mine:/w" -w /w storm2-experiments \
+       --prism consensus.4.prism --prop consensus.props --tojani consensus.4.jani
+   ```
+2. Describe the benchmarks in `mine/index.json`, in the format of `mdp/benchmarks/index.json`. The paths are relative to `mdp/benchmarks/`, where the next step makes the folder available as `mine/`:
+   ```json
+   {
+     "my-consensus": {
+       "type": "mine",
+       "jani": "mine/consensus.4.jani",
+       "prism": "mine/consensus.4.prism",
+       "prism-property": "mine/consensus.props",
+       "property": "c2",
+       "constants": "K=4"
+     }
+   }
+   ```
+   `property` is the name of the property in the JANI file and the property file, `constants` the values of the open constants (optional), and `type` a name for the class of the benchmark, which the figures use as its mark. An optional `reference-result` is the known result, e.g. `"852021/2097152"`; without it, the results are compared with the one that most configurations agree on.
+3. Run all configurations on them in the container, with the folder in `mdp/benchmarks/mine/`, from the directory that contains `mine/`:
+   ```bash
+   docker run --rm --privileged --cap-drop=all -e HOST_UID=$(id -u) \
+       -v "$PWD/mine:/opt/storm2-experiments/mdp/benchmarks/mine" storm2-experiments sh -c '
+     cd mdp &&
+     python3 ../docker/common/generate_invocations.py --index mine/index.json --out benchmarks/mine/inv.json \
+         --logdir benchmarks/mine/logs --timelimit 60 &&
+     python3 ../docker/common/run.py benchmarks/mine/inv.json --memlimit 16 &&
+     python3 ../docker/common/postprocess.py --index mine/index.json --agreement benchmarks/mine/logs benchmarks/mine/results;
+     python3 ../docker/common/check_results.py benchmarks/mine/results;
+     chown -R $HOST_UID:$HOST_UID benchmarks/mine'
+   ```
+   The options of the scripts select configurations (`--configs`), the time limit (`--timelimit`), the memory limit (`--memlimit`) and how many run at the same time (`--parallel`), see [Running individual experiments](#running-individual-experiments). The last command gives the files that the container writes back to you.
+4. The logs are then in `mine/logs/`, and the results in `mine/results/`: `results.json` with the status, runtime and result of every run, `table/index.html`, a table of all runs linking to their logs, and the csv files of the figures. `check_results.py` lists the runs with a result that differs from the reference result.
+
+For the consensus example above, all 10 configurations give 0.40627 (exactly 852021/2097152). This works for the MDP experiment only: the post-processing of the interval MDP and POMDP experiments only knows the benchmarks of their own `index.json`.
+
 ## Contents
 
 | Path | Description |
