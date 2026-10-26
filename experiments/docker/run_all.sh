@@ -5,6 +5,6 @@
 # Every experiment writes its logs and results to experiments/logs and
 # experiments/results of its directory. The options are passed on to common/run.py,
 # which by default runs as many invocations at once as fit into the machine, e.g.
-#   docker/run_all.sh --jobs 4
+#   docker/run_all.sh --parallel
 set -eu
 SET= TIMELIMIT=${TIMELIMIT:-900} MEMLIMIT=${MEMLIMIT:-32} exec "$(dirname "$0")/common/run_set.sh" "$@"

@@ -5,10 +5,12 @@ Each invocation is executed in its own temporary directory, into which the model
 files referenced by the command are copied (or, for a bundle, linked) first. The combined output (stdout and
 stderr) of the command is written to the log file of the invocation.
 
-Several invocations run at the same time, each pinned to its own physical cores and
-limited in memory by BenchExec (see requirements.txt); by default as many as fit into
-the cores and the memory of the machine. With --sequential, they run one after the
-other without BenchExec, pinning and memory limit.
+Every invocation is run by BenchExec (see requirements.txt), pinned to its own
+physical cores and limited in memory. By default the invocations run one after the
+other; with --parallel, as many run at the same time as fit into the cores and the
+memory of the machine, and with --jobs N, N of them. With --bare, they run one after
+the other without BenchExec, so without pinning and memory limit, e.g. where
+BenchExec cannot set up its cgroups.
 """
 
 import argparse
@@ -33,7 +35,7 @@ from commands import BUNDLE_KEYS, CMD_KEYS, FILE_KEYS, PLACEHOLDER, benchmark_di
 ROOT = Path.cwd()
 BENCHMARK_DIR = benchmark_dir(ROOT)
 
-# Seconds to wait for a killed process to actually terminate.
+# Seconds to wait for a killed process to actually terminate, with --bare.
 KILL_GRACE = 5
 
 # Memory left to the system (run.py itself, BenchExec, Docker) when choosing the
@@ -130,8 +132,8 @@ def bundle_files(prefix):
     return sorted(prefix.parent.glob(glob.escape(prefix.name) + ".*"))
 
 
-def execute(args, cwd, timelimit):
-    """Run a command, aborting it when it exceeds the time limit.
+def bare_execute(args, cwd, timelimit):
+    """Run a command without BenchExec, aborting it when it exceeds the time limit.
 
     Returns (output, wall_time, return_code); the return code is None on a timeout.
     """
@@ -173,8 +175,9 @@ def terminate(proc):
     return output
 
 
-def run(invocation, execute=execute):
-    """Run a single invocation and write its log file. Returns a status string."""
+def run(invocation, execute):
+    """Run a single invocation with execute, see pinned_execute() and bare_execute(),
+    and write its log file. Returns a status string."""
     config, benchmark = invocation["config"], invocation["benchmark"]
     log = Path(invocation["log"])
     timelimit = invocation["timelimit"]
@@ -267,15 +270,15 @@ def total_memory():
     sys.exit("cannot read the total memory from /proc/meminfo")
 
 
-def default_jobs(cpus, args):
+def fitting_jobs(cpus, args):
     """As many jobs as fit, with some cores and memory to spare, into the physical
-    cores and the memory of the machine."""
+    cores and the memory of the machine; exits if not even one fits."""
     cores = physical_cores(cpus)
     memory = total_memory()
     usable = memory - SPARE_MEMORY
     jobs = min((cores - SPARE_CORES) // args.cores_per_run, int(usable // args.memlimit))
-    print(f"jobs: {jobs} ({cores} physical cores with {args.cores_per_run} per run and "
-          f"at least {SPARE_CORES} to spare, {memory:.0f} GiB of memory with "
+    print(f"fitting jobs: {jobs} ({cores} physical cores with {args.cores_per_run} per run "
+          f"and at least {SPARE_CORES} to spare, {memory:.0f} GiB of memory with "
           f"{args.memlimit:g} GiB per run and {memory - usable:.0f} GiB to spare)")
     if jobs < 1:
         sys.exit("not enough cores or memory for a single run; "
@@ -290,12 +293,23 @@ def run_pinned(selected, counts, args):
         from benchexec.cgroups import Cgroups
         from benchexec.runexecutor import RunExecutor
     except ImportError:
-        sys.exit("run.py needs BenchExec, see requirements.txt, or use --sequential")
+        sys.exit("run.py needs BenchExec, see requirements.txt")
     cgroups = Cgroups.initialize()
     cgroups.handle_errors({s for s in (cgroups.CPUSET, cgroups.MEMORY, cgroups.FREEZE)
                            if not cgroups.require_subsystem(s)})
     cpus = util.parse_int_list(args.cores) if args.cores else sorted(os.sched_getaffinity(0))
-    jobs = args.jobs if args.jobs is not None else default_jobs(cpus, args)
+    # Checks that at least one run fits, also when not running in parallel
+    fitting = fitting_jobs(cpus, args)
+    if args.parallel:
+        jobs = fitting
+    elif args.jobs is not None:
+        jobs = args.jobs
+        if jobs > fitting:
+            print(f"warning: --jobs {jobs} is more than fit into the machine")
+    else:
+        jobs = 1
+    print(f"jobs: {jobs} at a time" + ("" if args.parallel or args.jobs else
+                                         " (use --parallel to run as many as fit)"))
     # Without hyperthreading, the sibling of every assigned core stays idle.
     assignment = resources.get_cpu_cores_per_run(
         args.cores_per_run, jobs, False, cgroups,
@@ -360,10 +374,12 @@ def main():
                         help="run only the I-th invocation (1-based, as numbered in the output)")
     parser.add_argument("--dry-run", action="store_true",
                         help="only show what would be run, do not execute anything")
+    parser.add_argument("--parallel", action="store_true",
+                        help="run as many invocations at the same time as fit into the "
+                             "physical cores and the memory, each pinned to its own cores "
+                             "(default: one at a time)")
     parser.add_argument("--jobs", type=int, metavar="N",
-                        help="run N invocations at the same time, each pinned to its own "
-                             "physical cores by BenchExec (default: as many as fit into "
-                             "the cores and the memory)")
+                        help="run N invocations at the same time (default: 1)")
     parser.add_argument("--cores-per-run", type=int, default=4, metavar="C",
                         help="physical cores of each run, e.g. for the threads of Sylvan "
                              "and the garbage collector of Java; the tools get it through "
@@ -378,12 +394,14 @@ def main():
                              "GiB, which the tools get through the placeholders %%ddmem "
                              "and %%ddmem-mb, e.g. PRISM's -cuddmaxmem and Storm's "
                              "--sylvan:maxmem (default: 8)")
-    parser.add_argument("--sequential", action="store_true",
+    parser.add_argument("--bare", action="store_true",
                         help="run the invocations one after the other without BenchExec, "
                              "i.e. without pinning and memory limit")
     args = parser.parse_args()
-    if args.sequential and (args.jobs is not None or args.cores):
-        sys.exit("--sequential cannot be combined with --jobs or --cores")
+    if args.parallel and args.jobs is not None:
+        sys.exit("--parallel cannot be combined with --jobs")
+    if args.bare and (args.parallel or args.jobs is not None or args.cores):
+        sys.exit("--bare cannot be combined with --parallel, --jobs or --cores")
 
     with open(args.invocations) as f:
         invocations = json.load(f)
@@ -415,18 +433,18 @@ def main():
         return
 
     counts = {"ok": 0, "timeout": 0, "error": 0, "skipped": 0}
-    width = len(str(len(invocations)))
-    if not args.sequential:
+    if not args.bare:
         run_pinned(selected, counts, args)
     else:
-        print("note: with --sequential, the memory limit is not enforced")
+        print("note: with --bare, the runs are not pinned and the memory limit is not enforced")
+        width = len(str(len(invocations)))
         for number, invocation in selected:
             label = f"{invocation['config']['id']} {invocation['benchmark']['id']}"
             if "repetition" in invocation:
                 label += f" rep{invocation['repetition']}"
             print(f"[{number:>{width}}/{len(invocations)}] {label} ... ", end="", flush=True)
             try:
-                status, wall_time, note = run(invocation)
+                status, wall_time, note = run(invocation, bare_execute)
             except KeyboardInterrupt:
                 print("interrupted")
                 sys.exit("aborted")

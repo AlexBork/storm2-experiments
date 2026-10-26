@@ -5,6 +5,6 @@
 # result or none at all, e.g. because the output of a tool changed. Takes about 8
 # minutes with one run at a time. Every experiment writes its logs and results to experiments/smoke/ of
 # its directory. The options are passed on to common/run.py, e.g.
-#   docker/run_smoke.sh --jobs 2
+#   docker/run_smoke.sh --parallel
 set -eu
 SET=smoke TIMELIMIT=${TIMELIMIT:-60} MEMLIMIT=${MEMLIMIT:-16} exec "$(dirname "$0")/common/run_set.sh" "$@"

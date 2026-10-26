@@ -6,6 +6,6 @@
 # Every experiment writes its logs and results to experiments/representative/ of its
 # directory. The limits can be changed, e.g. TIMELIMIT=60 docker/run_representative.sh,
 # and the options are passed on to common/run.py, e.g.
-#   docker/run_representative.sh --jobs 2
+#   docker/run_representative.sh --parallel
 set -eu
 SET=representative TIMELIMIT=${TIMELIMIT:-90} MEMLIMIT=${MEMLIMIT:-16} exec "$(dirname "$0")/common/run_set.sh" "$@"

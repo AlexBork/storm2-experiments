@@ -4,6 +4,12 @@ Experimental evaluation for the tool paper "The Probabilistic Model Checker Stor
 
 All experiments are meant to be run in the docker container provided. This README contains instructions for loading this container, and running a smoke, representative and full experiment set. The descriptions of how all experiments can be configured and run individually, and of how to build the container, are in [experiments/README.md](experiments/README.md). Lastly, this README details how to build this artifact.
 
+## License
+
+Storm is licensed under the license located at `storm/LICENSE`, stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
+The Modest Toolset is licensed under the license located at `Modest/License.txt` in the zips in `experiments/docker/modest/`.
+All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
+
 ## Host requirements
 This artifact was built for both x86 (amd64) and ARM (arm64) based Linux and macOS hosts. However, **Storm 1.6.2 is not supported on ARM based CPUs**, so its runs end with an error on these hosts and show up as errors in the results. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4 with the containerd image store); arm64 and macOS hosts were not tested.
 
@@ -19,12 +25,6 @@ The hardware needed and the running time depend on the experiment set. Every run
 The cores are physical cores; the second hardware thread of a core (hyperthreading) is not used. The memory is the total memory that Linux reports in `/proc/meminfo`, which is somewhat less than the installed memory. On macOS and Windows, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources. The container also needs **50 GB of free disk space** when loaded into docker. No network access is needed to run the experiments.
 
 To achieve fully stable experimental results additional configurations on the host machine need to be done as detailed in [Additional setup](experiments/README.md#additional-setup).
-
-## License
-
-Storm is licensed under the license located at `storm/LICENSE`, stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
-The Modest Toolset is licensed under the license located at `Modest/License.txt` in the zips in `experiments/docker/modest/`.
-All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
 
 ## Loading the container
 - Install [Docker](https://docs.docker.com/get-started/get-docker/).

@@ -7,7 +7,7 @@
 # experiments/minimal/ of its directory. The limits can be changed, e.g.
 # TIMELIMIT=60 docker/run_minimal.sh, and the options are passed on to
 # common/run.py, e.g.
-#   docker/run_minimal.sh --jobs 1
+#   docker/run_minimal.sh --parallel
 set -eu
 SET=minimal INDEX=representative TIMELIMIT=${TIMELIMIT:-90} MEMLIMIT=${MEMLIMIT:-8} CORES=${CORES:-2} \
   DDMEM=${DDMEM:-4} exec "$(dirname "$0")/common/run_set.sh" "$@"

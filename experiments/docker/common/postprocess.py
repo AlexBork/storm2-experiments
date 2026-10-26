@@ -713,6 +713,9 @@ def main():
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("logs", help="directory containing the log files")
     parser.add_argument("out", help="directory the results are written to")
+    parser.add_argument("--index", default="index.json",
+                        help="index of the benchmarks in the benchmark directory, as given to "
+                             "generate_invocations.py (default: index.json)")
     parser.add_argument("--promote-references", action="store_true",
                         help="store the result of an exact configuration as the reference "
                              "result of a benchmark that does not have one yet")
@@ -723,8 +726,9 @@ def main():
                         help=f"compare results with the absolute precision "
                              f"{exponent_format(GOAL_PRECISION)} instead of the relative one")
     args = parser.parse_args()
-    global ABSOLUTE_PRECISION
+    global ABSOLUTE_PRECISION, INDEX_FILE
     ABSOLUTE_PRECISION = args.absolute
+    INDEX_FILE = benchmark_dir(ROOT) / args.index
 
     logdir, outdir = Path(args.logs), Path(args.out)
     if not logdir.is_dir():
