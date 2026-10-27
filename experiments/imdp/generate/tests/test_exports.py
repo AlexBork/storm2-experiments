@@ -148,15 +148,17 @@ endmodule
         except ImportError:
             self.skipTest('install stormpy for Storm integration')
         self.export()
-        model = stormpy.build_interval_model_from_drn(str(self.base) + '.drn')
-        prop = stormpy.parse_properties(self.read('.storm.props'))[0]
-        task = stormpy.CheckTask(prop.raw_formula)
-        task.set_uncertainty_resolution_mode(stormpy.UncertaintyResolutionMode.ROBUST)
-        result = stormpy.check_interval_mdp(model, task, stormpy.Environment())
-        self.assertAlmostEqual(result.at(0), .45, places=7)
+        self.assertAlmostEqual(self.check(stormpy), .45, places=7)
         self.export(0)
-        model = stormpy.build_interval_model_from_drn(str(self.base) + '.drn')
-        self.assertAlmostEqual(stormpy.check_interval_mdp(model, task, stormpy.Environment()).at(0), .5, places=7)
+        self.assertAlmostEqual(self.check(stormpy), .5, places=7)
+
+    def check(self, stormpy):
+        """The robust value of the initial state of the exported model."""
+        model = stormpy.build_model_from_drn[stormpy.Interval](str(self.base) + '.drn')
+        prop = stormpy.parse_properties(self.read('.storm.props'))[0]
+        return stormpy.model_checking(
+            model, prop, uncertainty_resolution_mode=stormpy.UncertaintyResolutionMode.ROBUST,
+            environment=stormpy.Environment()).get_value(0)
 
     def test_empty_target_and_avoid_sets(self):
         self.prepared['targets'] = set()
@@ -169,11 +171,7 @@ endmodule
             import stormpy
         except ImportError:
             return
-        model = stormpy.build_interval_model_from_drn(str(self.base) + '.drn')
-        prop = stormpy.parse_properties(self.read('.storm.props'))[0]
-        task = stormpy.CheckTask(prop.raw_formula)
-        task.set_uncertainty_resolution_mode(stormpy.UncertaintyResolutionMode.ROBUST)
-        self.assertEqual(stormpy.check_interval_mdp(model, task, stormpy.Environment()).at(0), 0)
+        self.assertEqual(self.check(stormpy), 0)
 
     def test_legacy_configuration_is_rejected(self):
         path = Path(self.tmp.name) / 'legacy.json'

@@ -1,7 +1,7 @@
 # check=skip=FromPlatformFlagConstDisallowed
 # Dockerfile for the Storm 2 experiments
 #########################################
-# Build with build_docker.sh, or with
+# Build with ../scripts/4_build_docker.sh, or with
 #   docker buildx build --build-context mdp_benchmarks=../examples/mdp_benchmarks \
 #       --build-context pomdp_benchmarks=../examples/pomdp_benchmarks -t storm2-experiments .
 # The models of mdp and pomdp, benchmarks/models/ of each, are
@@ -11,7 +11,7 @@
 
 # Set the base images
 ARG STORM_BASE=movesrwth/storm:2.0.0
-ARG STORMPY_BASE=movesrwth/stormpy:1.14.0
+ARG STORMPY_BASE=movesrwth/stormpy:2.0.0
 ARG STORM_OLD_BASE=movesrwth/storm:1.6.2
 
 

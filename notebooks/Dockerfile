@@ -1,22 +1,23 @@
-# Build with 
-# docker build -t tutorial .
+# Jupyter environment for the notebooks, based on the official stormpy 2.0 image,
+# which also contains the command-line tools of Storm 2.0. The artifact ships it
+# prebuilt as storm2-tools, see scripts/4_build_docker.sh. Build with
+# docker build -t storm2-tools .
 # Run with
-# docker run -it -p 8888:8888 tutorial
+# docker run -it -p 8888:8888 storm2-tools
 
-FROM quay.io/jupyter/minimal-notebook:ubuntu-26.04
+FROM movesrwth/stormpy:2.0.0
 
 # Install graphviz for plotting decision trees with PAYNT
-USER root
-RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends \
-    graphviz && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-USER ${NB_UID}
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+    graphviz \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install Python libraries from requirements.txt
-COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
-RUN pip install --no-cache-dir --requirement /tmp/requirements.txt && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+# Install Jupyter and the Python libraries from requirements.txt into the virtual
+# environment of stormpy, which already has stormpy 2.0.0
+COPY requirements.txt /tmp/
+RUN pip install --no-cache-dir jupyterlab==4.6.4 --requirement /tmp/requirements.txt
 
-COPY --chown=${NB_UID}:${NB_GID} . .
+WORKDIR /opt/notebooks
+COPY . .
+EXPOSE 8888
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

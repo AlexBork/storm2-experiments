@@ -200,8 +200,8 @@ def supported_property(instance: dict[str, Any]) -> dict[str, str]:
 
 
 def define_constants(stormpy: Any, program: Any, constants: str) -> Any:
-    definitions = stormpy.parse_constants_string(program.expression_manager, constants)
-    return program.define_constants(definitions)
+    definitions = stormpy.developer.parse_constant_definition_string(program.expression_manager, constants)
+    return program.define_undefined_constants(definitions)
 
 
 def defined_constants(program: Any) -> dict[str, Any]:
@@ -240,7 +240,7 @@ def build_model(stormpy: Any, instance: dict[str, Any]) -> Any:
     options.set_build_state_valuations()
     options.set_build_all_labels()
     options.set_build_all_reward_models()
-    return stormpy.build_sparse_model_with_options(program, options)
+    return stormpy.build_model[float](program, options=options)
 
 
 def bitvector_has(bitvector: Any, state: int) -> bool:
@@ -268,7 +268,7 @@ def label_states(model: Any, label: str) -> set[int]:
 def valuations(model: Any) -> list[dict[str, Any]]:
     if not hasattr(model, "has_state_valuations") or not model.has_state_valuations():
         return [{} for _ in range(model.nr_states)]
-    return [json.loads(str(model.state_valuations.get_json(s))) for s in range(model.nr_states)]
+    return [json.loads(str(model.state_valuations.to_json(s))) for s in range(model.nr_states)]
 
 
 def expression_to_python(expression: str) -> str:
@@ -335,7 +335,7 @@ def row_distribution(model: Any, row: int) -> tuple[list[int], list[float]]:
     total = 0.0
 
     for entry in model.transition_matrix.get_row(row):
-        probability = float(entry.value())
+        probability = float(entry.value)
         if probability <= 0.0:
             continue
         support.append(int(entry.column) + 1)
@@ -427,17 +427,17 @@ def add_uncertainty(stormpy: Any, model: Any, prepared: dict[str, Any],
                     uncertainty: dict[str, Any]) -> tuple[list[list[tuple[float, float]]], float]:
     """Interval bounds per matrix row from stormpy's AddUncertainty (absolute width)."""
     minimum = minimal_value(prepared, uncertainty)
-    interval_model = stormpy.AddUncertaintyDouble(model).transform(uncertainty["delta"], minimum)
+    interval_model = stormpy.developer.AddUncertainty[float](model).transform(uncertainty["delta"], minimum)
     matrix, nominal = interval_model.transition_matrix, model.transition_matrix
     bounds = []
     for row in range(interval_model.nr_choices):
         row_bounds = []
         # Same entries as row_distribution: drop explicitly stored zeros.
         for entry, original in zip(matrix.get_row(row), nominal.get_row(row)):
-            p = float(original.value())
+            p = float(original.value)
             if p <= 0.0:
                 continue
-            value = entry.value()
+            value = entry.value
             row_bounds.append((float(value.lower()), float(value.upper())))
         # AddUncertainty only fixes p == 1 exactly; a deterministic row stored as
         # 0.9999999999999999 would get the empty interval [p, 1 - m].

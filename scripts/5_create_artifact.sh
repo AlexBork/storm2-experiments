@@ -1,8 +1,8 @@
 #!/bin/sh
 # Create the artifact zip, by default storm2-experiments-artifact.zip in the current
 # directory: the committed files of the repository, including those of the
-# submodules storm/ and stormpy/, plus the saved image experiments/storm2-experiments.tar.gz
-# (see experiments/build_docker.sh), the Modest Toolset zips and the compressed
+# submodules storm/ and stormpy/, plus the saved images experiments/storm2-experiments.tar.gz
+# (see scripts/4_build_docker.sh), the Modest Toolset zips and the compressed
 # interval MDPs.
 #   scripts/5_create_artifact.sh [FILE]
 set -eu
@@ -27,11 +27,11 @@ fi
 for file in $large; do
   [ -f "$file" ] || { echo "missing $file" >&2; exit 1; }
 done
-# The image contains the whole of experiments/ and the models in examples/, so it must
-# be saved after the last commit that changed them; results/ is not in the image, so
-# the sample runs made with the image can be committed after it
-if [ "$(stat -c %Y $image)" -lt "$(git log -1 --format=%ct -- experiments examples)" ]; then
-  echo "$image is older than the last commit of experiments/ or examples/, rebuild it with experiments/build_docker.sh" >&2
+# The images contain the whole of experiments/ and notebooks/ and the models in
+# examples/, so they must be saved after the last commit that changed them; results/
+# is not in the images, so the sample runs made with them can be committed after it
+if [ "$(stat -c %Y $image)" -lt "$(git log -1 --format=%ct -- experiments examples notebooks)" ]; then
+  echo "$image is older than the last commit of experiments/, examples/ or notebooks/, rebuild it with scripts/4_build_docker.sh" >&2
   exit 1
 fi
 

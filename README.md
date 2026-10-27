@@ -32,7 +32,7 @@ Run the largest experiment set that fits on your machine and in your time, from 
 [Representative]: #running-the-representative-experiments
 [Full]: #running-the-full-experiments
 
-Run the [smoke test](#running-the-smoke-test) of a set before the set itself. All cores are counted in **physical cores**. On a larger machine, add `-p` to run several benchmarks at the same time, e.g. `scripts/3_representative.sh -p`; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **80 GB of free disk space**: about 56 GB for the loaded image, and the rest for the downloaded and unpacked artifact; no network access is needed to run the experiments.
+Run the [smoke test](#running-the-smoke-test) of a set before the set itself. All cores are counted in **physical cores**. On a larger machine, add `-p` to run several benchmarks at the same time, e.g. `scripts/3_representative.sh -p`; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 62 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each); no network access is needed to run the experiments.
 
 The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4 with the containerd image store); arm64 and macOS hosts were not tested. On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
 
@@ -40,7 +40,7 @@ The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On AR
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/).
 2. On macOS (Docker Desktop), enable `Use containerd for pulling and storing images` in the Docker settings, which the provided [multi-platform image](https://docs.docker.com/build/building/multi-platform/) needs. On Linux this is usually not needed. The script will warn you if you need to change this.
 3. Download `storm2-experiments-artifact.zip` from [Zenodo](https://doi.org/10.5281/zenodo.23668956) and unzip it at a convenient location. Throughout this document, `$ARTIFACT_DIR` refers to the unzipped directory, i.e., this README is `$ARTIFACT_DIR/README.md`.
-4. Load the Docker image:[^privileged]
+4. Load the Docker images, `storm2-experiments` for the experiments and `storm2-tools` for [playing with Storm and stormpy](#playing-with-storm-and-stormpy):[^privileged]
    ```bash
    $ARTIFACT_DIR/scripts/1_load.sh
    ```
@@ -120,14 +120,14 @@ Compare `full.pdf` with the figures of the runs of the paper (see [Reproducing t
 The scripts of the experiments can also run all tool configurations of the MDP experiment on your own models, and check and compare their results and runtimes; see [Running your own benchmarks](experiments/README.md#running-your-own-benchmarks) in the README of the experiments. That README also describes how the experiments can be configured and run individually, and how to set up the host for stable timings.
 
 ## Playing with Storm and stormpy
-[TOOLS.md](TOOLS.md) describes Storm and stormpy briefly and shows how to try them in their official Docker images: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
+[TOOLS.md](TOOLS.md) describes Storm and stormpy briefly and shows how to try them in the Docker image `storm2-tools` of the artifact, without network access: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
 
 ## Difference storm 2.0 and storm used for included paper.
-The experimnets in the submitted paper where done one a beta version of storm 2.0. In this artifact we provided the stable release of storm and stormpy 2.0. No changes made between the beta release and the stable release impacted performance. We have also attached results of the full experiment set on the stable release and will replace all figures in the paper with these results.
+The experiments in the submitted paper where done one a beta version of storm 2.0. In this artifact we provided the stable release of storm and stormpy 2.0. No changes made between the beta release and the stable release significantly impacted performance. We have also attached results of the full experiment set on the stable release and will replace all figures in the paper with these results.
 
 ## License
 Storm is licensed under the license located at `storm/LICENSE`, stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
-The Modest Toolset is licensed under the license located at `Modest/License.txt` in the zips in `experiments/docker/modest/`.
+The Modest Toolset is licensed under the license located at `experiments/docker/modest/License.txt` (also `Modest/License.txt` in the zips in that folder).
 All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
 
 ## The artifact
@@ -135,26 +135,20 @@ All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org
 
 | Path | Description |
 | --- | --- |
-| `scripts/` | The scripts to run, in the order of this README: `1_load.sh` loads the image, `2_smoke.sh SET` runs the smoke test for a set, `3_minimal.sh`, `3_representative.sh` and `3_full.sh` run the experiment sets, all in a container (all four through `experiments/docker/run_in_container.sh`), and `5_create_artifact.sh` creates the artifact |
+| `scripts/` | The scripts to run, in the order of this README: `1_load.sh` loads the images, `2_smoke.sh SET` runs the smoke test for a set, `3_minimal.sh`, `3_representative.sh` and `3_full.sh` run the experiment sets, all in a container (all four through `experiments/docker/run_in_container.sh`), `4_build_docker.sh` builds and saves the images, and `5_create_artifact.sh` creates the artifact |
 | `results/` | `paper/` the logs, results and figure data of the runs in the paper (see [results/paper/README.md](results/paper/README.md)), and `artifact/` the pdf, logs and results of sample runs of the smoke tests of all three sets and of `scripts/3_minimal.sh` and `scripts/3_representative.sh` |
 | `experiments/` | The experiments and the Docker image they run in; see [experiments/README.md](experiments/README.md) |
-| `experiments/storm2-experiments.tar.gz` | The saved Docker image, for amd64 and arm64, loaded by `scripts/1_load.sh` |
+| `experiments/storm2-experiments.tar.gz` | The saved Docker images `storm2-experiments` and `storm2-tools`, for amd64 and arm64, loaded by `scripts/1_load.sh` |
 | `examples/` | Example files: `vacuum/` the robot vacuum example of the paper (Sec. 7), and `mdp_benchmarks/` and `pomdp_benchmarks/` the models and properties of the MDP and POMDP benchmarks of the experiments; see [TOOLS.md](TOOLS.md) |
 | `TOOLS.md` | A short description of Storm and stormpy and how to play with them on the examples |
-| `notebooks/` | Jupyter notebooks of the Storm tutorial on the Orchard game for stormpy 2.0, a copy of `tutorial_orchard/` of the [stormpyter repository](https://github.com/volkm/stormpyter/tree/stormpy2) (branch `stormpy2`, commit `c47a454`) |
+| `ARTIFACT.md` | How to build the Docker images and the artifact |
+| `notebooks/` | Jupyter notebooks of the Storm tutorial on the Orchard game for stormpy 2.0, a copy of `tutorial_orchard/` of the [stormpyter repository](https://github.com/volkm/stormpyter/tree/stormpy2) (branch `stormpy2`, commit `c47a454`), whose `Dockerfile` is changed to build the image `storm2-tools` on the stormpy 2.0 image |
 | `storm/` | The source code of Storm 2.0.0, a submodule of the [Storm repository](https://github.com/stormchecker/storm) at its tag `2.0.0` |
 | `stormpy/` | The source code of stormpy 2.0.0, a submodule of the [stormpy repository](https://github.com/stormchecker/stormpy) at its tag `2.0.0` |
 | `LICENSE` | The license of the artifact (CC-BY 4.0) |
 
-### Building the artifact
-The artifact building is based on the git repository it is build in. Thus, it assumes the artifact is a git repository, with the submodules `storm/` and `stormpy/` checked out (`git clone --recurse-submodules`, or `git submodule update --init` in an existing clone).
-
-- Commit all changes, as the artifact only contains the committed files of the repository and its submodules.
-- Build and save the image with `experiments/build_docker.sh` (see [experiments/README.md](experiments/README.md#building-the-docker)), after the last commit. It writes the image to `experiments/storm2-experiments.tar.gz`.
-- Update the sample runs in `results/artifact/` with this image: load it with `scripts/1_load.sh`, move the old sample runs away, execute `../../scripts/2_smoke.sh minimal`, `../../scripts/2_smoke.sh representative`, `../../scripts/2_smoke.sh full`, `../../scripts/3_minimal.sh` and `../../scripts/3_representative.sh` in `results/artifact/`, and commit the new ones. `results/` is not part of the image, so this does not require rebuilding it.
-- Execute `scripts/5_create_artifact.sh`. This writes `storm2-experiments-artifact.zip` to the current directory (or the file given as its argument), with the committed files of the repository and of `storm/` and `stormpy/`, the saved image, the zips of the Modest Toolset and `experiments/imdp/benchmarks.tar.xz`, all below `storm2-experiments/`.
-
-`scripts/5_create_artifact.sh` refuses to create the artifact when there are uncommitted changes, when a submodule is not checked out at its committed commit, when one of these files is missing, or when the saved image is older than the last commit that changed `experiments/` or `examples/`.
+### Building the docker and the artifact
+[ARTIFACT.md](ARTIFACT.md) describes how to build the Docker images with `scripts/4_build_docker.sh`, also with other versions of the tools such as a Storm of your own, and how to create the artifact with `scripts/5_create_artifact.sh`.
 
 ## Parallel execution
 With the option `-p`, `scripts/2_smoke.sh`, `scripts/3_minimal.sh`, `scripts/3_representative.sh` and `scripts/3_full.sh` run as many runs at the same time as fit into the machine, e.g. `scripts/3_representative.sh -p`. Every run is still pinned to its own physical cores and limited in memory, and one physical core and 1 GiB of memory stay free for the system. At the start of every experiment, the output shows how many runs fit (`fitting jobs: ...`) and how many run at a time (`jobs: ...`).

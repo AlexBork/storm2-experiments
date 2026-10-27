@@ -10,11 +10,11 @@ The Storm website [www.stormchecker.org](https://www.stormchecker.org/) provides
 
 ### Playing with Storm
 
-Use the official Docker image of Storm 2.0, `movesrwth/storm:2.0.0`, which Docker downloads on the first run. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
+Use the Docker image `storm2-tools` of the artifact, which `scripts/1_load.sh` loads together with the image of the experiments (see the [README](README.md#loading-the-container)), so no network access is needed. It is built from `notebooks/Dockerfile` on the official image of stormpy 2.0, `movesrwth/stormpy:2.0.0`, and contains the command-line tools of Storm 2.0, stormpy 2.0 and the Jupyter environment of the notebooks. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
 
 ```bash
 cd $ARTIFACT_DIR
-docker run --rm -v "$PWD/examples:/examples" -w /examples/vacuum movesrwth/storm:2.0.0 \
+docker run --rm -v "$PWD/examples:/examples" -w /examples/vacuum storm2-tools \
     storm --prism vacuum.prism --prop 'Tmin=? [F "docked"]' --exact
 ```
 
@@ -37,7 +37,7 @@ Replace the options after `storm` to try other queries and settings, for example
 The comments at the top of `vacuum.prism` describe its variants: a POMDP in which the robot only observes bumps, a parametric MDP with an undefined slip probability, and an interval MDP. The MDP benchmarks of the experiments can be checked in the same way, e.g. the coin-flip property `c2` of the consensus protocol with 4 processes, before and after bisimulation minimisation:
 
 ```bash
-docker run --rm -v "$PWD/examples:/examples" -w /examples/mdp_benchmarks/consensus movesrwth/storm:2.0.0 \
+docker run --rm -v "$PWD/examples:/examples" -w /examples/mdp_benchmarks/consensus storm2-tools \
     storm --prism consensus.4.prism --prop consensus.props c2 --constants K=4 --bisimulation
 ```
 
@@ -46,9 +46,9 @@ which reduces the model from 43136 to 2189 states and gives `0.4062465154`. `sto
 POMDPs are analysed by `storm-pomdp`, whose belief exploration computes sound bounds on the optimal value. For the refuel benchmark of the POMDP experiments, unfolding the beliefs up to a size limit of 100000 gives a lower bound, and discretising the beliefs with resolution 4 an upper bound on the maximal probability to reach the goal:
 
 ```bash
-docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel movesrwth/storm:2.0.0 \
+docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel storm2-tools \
     storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration unfold --size-threshold 100000
-docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel movesrwth/storm:2.0.0 \
+docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel storm2-tools \
     storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration discretize --resolution 4 --triangulationmode static
 ```
 
@@ -62,11 +62,11 @@ stormpy provides the Python bindings for Storm, created using [pybind11](https:/
 
 `examples/vacuum/vacuum.py` is the code of Fig. 4 of the paper. It builds the robot vacuum MDP with rational numbers, computes the minimal expected time to dock together with an optimal policy, applies the policy to obtain the induced DTMC, computes how often the robot visits the rug, and finally turns every probability into an interval of width 1/100 and computes the minimal expected time under robust semantics.
 
-Use the official Docker image of stormpy 2.0, `movesrwth/stormpy:2.0.0`, which Docker downloads on the first run:
+Run it in the same image `storm2-tools`:
 
 ```bash
 cd $ARTIFACT_DIR
-docker run --rm -v "$PWD/examples:/examples" -w /examples/vacuum movesrwth/stormpy:2.0.0 python3 vacuum.py
+docker run --rm -v "$PWD/examples:/examples" -w /examples/vacuum storm2-tools python3 vacuum.py
 ```
 
 This prints, apart from warnings that Storm switches to robust value iteration for the interval MDP:
@@ -77,16 +77,14 @@ Expected number of visits to the rug: 12.084022 [-, -]
 Interval result: ... approx: 50.768185 [...]
 ```
 
-To explore further, start an interactive Python shell with `docker run -it --rm -v "$PWD/examples:/examples" -w /examples/vacuum movesrwth/stormpy:2.0.0 python3` and enter the lines of `vacuum.py` one by one, e.g. to look at `mdp`, `result.get_scheduler()` or `visits`.
+To explore further, start an interactive Python shell with `docker run -it --rm -v "$PWD/examples:/examples" -w /examples/vacuum storm2-tools python3` and enter the lines of `vacuum.py` one by one, e.g. to look at `mdp`, `result.get_scheduler()` or `visits`.
 
 ### Notebooks
 
-`notebooks/` contains the Jupyter notebooks of the Storm tutorial on the Orchard game, which introduce modelling, model checking, policies, uncertainty and further extensions with stormpy 2.0 and [stormvogel](https://github.com/stormchecker/stormvogel). Build and start their Jupyter environment with
+`notebooks/` contains the Jupyter notebooks of the Storm tutorial on the Orchard game, which introduce modelling, model checking, policies, uncertainty and further extensions with stormpy 2.0 and [stormvogel](https://github.com/stormchecker/stormvogel). The image `storm2-tools` contains them in `/opt/notebooks` together with their Jupyter environment. Start it with
 
 ```bash
-cd $ARTIFACT_DIR/notebooks
-docker build -t storm-tutorial .
-docker run -it -p 8888:8888 storm-tutorial
+docker run -it --rm -p 8888:8888 storm2-tools
 ```
 
-and open the `localhost` link that it prints in a web browser; see [notebooks/README.md](notebooks/README.md).
+and open the `http://127.0.0.1:8888/lab?token=...` link that it prints in a web browser; see [notebooks/README.md](notebooks/README.md) for the notebooks. Changes to the notebooks are lost when the container stops; `File > Download` saves a notebook to the host.

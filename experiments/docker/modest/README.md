@@ -7,4 +7,5 @@ in this directory, one per architecture as Docker names them:
 - `arm64/Modest/`, from `Modest-Toolset-v3.1.315-g0a0763b35-linux-arm64.zip`
 
 The website https://www.modestchecker.net/downloads/ only offers the latest version,
-so it is kept here to build the image with the same mcsta later on.
+so it is kept here to build the image with the same mcsta later on. `License.txt` is
+the license of the Modest Toolset, `Modest/License.txt` of the zips (the same in both).

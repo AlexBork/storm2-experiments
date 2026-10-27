@@ -19,12 +19,12 @@ imdp/experiments*
 imdp/julia/intervalmdp.so
 docker/plots/latex/data/
 
-# The Modest Toolset (see docker/modest/README.md), unpacked by build_docker.sh
+# The Modest Toolset (see docker/modest/README.md), unpacked by ../scripts/4_build_docker.sh
 docker/modest/*.zip
 docker/modest/amd64/
 docker/modest/arm64/
 
-# The saved image, see build_docker.sh, and the artifact, see ../scripts/5_create_artifact.sh
+# The saved images, see ../scripts/4_build_docker.sh, and the artifact, see ../scripts/5_create_artifact.sh
 storm2-experiments.tar.gz
 storm2-experiments-artifact.zip
 imdp/benchmarks.tar.xz
