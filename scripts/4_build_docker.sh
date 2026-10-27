@@ -1,6 +1,6 @@
 #!/bin/sh
 # Build the Docker images of the artifact, storm2-experiments from experiments/Dockerfile
-# and storm2-tools for Storm, stormpy and the notebooks from notebooks/Dockerfile (see
+# and storm2-tools for Storm, Stormpy and the notebooks from notebooks/Dockerfile (see
 # TOOLS.md), for amd64 and arm64, load them into Docker and save both to a file, by
 # default experiments/storm2-experiments.tar.gz, where scripts/1_load.sh and
 # scripts/5_create_artifact.sh expect it. The build needs network access and Docker's

@@ -1,9 +1,9 @@
 # The experiments of "The Probabilistic Model Checker Storm: Lightning Strikes Twice"
 
-This folder holds the experiments of the artifact and the Docker image they run in; the results of the paper are in [`../results/paper/`](../results/paper/README.md). How to load the image and run the smoke test, the representative and the full experiments is described in the [README of the artifact](../README.md). This README describes how to set up the host for stable timings, how the experiments can be configured and run individually, and how to build the image.
+This folder holds the experiments of the artifact and the Docker image they run in; the results of the paper are in [`../results/paper/`](../results/paper/README.md). How to load the image and run the smoke test, the minimal, the representative and the full experiments is described in the [README of the artifact](../README.md), and how to build the image in [ARTIFACT.md](../ARTIFACT.md). This README describes how to set up the host for stable timings, how the experiments can be configured and run individually, and how to run them on your own benchmarks.
 
 ## Additional setup
-### Stable timings (Only for linux)
+### Stable timings (Linux only)
 Set the frequency governor of the host to `performance`
 and disable boost (turbo) before running, and do not run other workloads at
 the same time. With boost, the frequency of a core depends on the temperature
@@ -90,7 +90,7 @@ For the consensus example above, all 10 configurations give 0.40627 (exactly 852
 | Path | Description |
 | --- | --- |
 | `storm2-experiments.tar.gz` | The saved Docker images `storm2-experiments` and `storm2-tools`, for amd64 and arm64, loaded by `scripts/1_load.sh` of the artifact and saved by `scripts/4_build_docker.sh` |
-| `docker/` | `run_in_container.sh` runs an experiment set in a container and copies its results out; inside the container, `run_smoke.sh`, `run_representative.sh`, `run_minimal.sh` and `run_all.sh` run the experiment sets (all four through `common/run_set.sh`) and `build_figures.sh` builds the figures; `init.sh` is the entrypoint of the image, `storm-old` runs Storm 1.6.2, and `modest/` and `storm/` hold the licenses and, for `modest/`, the zips of the Modest Toolset |
+| `docker/` | `run_in_container.sh` runs an experiment set in a container and copies its results out; inside the container, `run_smoke.sh`, `run_representative.sh`, `run_minimal.sh` and `run_all.sh` run the experiment sets (all four through `common/run_set.sh`) and `build_figures.sh` builds the figures; `init.sh` is the entrypoint of the image, `storm-old` runs Storm 1.6.2, and `modest/` holds the license and the zips of the Modest Toolset |
 | `Dockerfile` | The Docker image with all tools: Storm 2.0.0, Storm 1.6.2, PRISM 4.10.1, the Modest Toolset v3.1.315, Julia 1.13.0 with IntervalMDP.jl, LaTeX, BenchExec, and this folder in `/opt/storm2-experiments` |
 | `mdp/` | Comparison of Storm, mcsta and PRISM, with and without bisimulation minimisation (Figures 6 and 7) |
 | `imdp/` | Comparison of Storm, PRISM and IntervalMDP.jl on interval MDPs derived from the MDP benchmarks of `mdp` (Figure 8); see [imdp/README.md](imdp/README.md) |
@@ -98,9 +98,9 @@ For the consensus example above, all 10 configurations give 0.40627 (exactly 852
 | `imdp/benchmarks.tar.xz` | The generated interval MDPs of `imdp`, which `scripts/4_build_docker.sh` unpacks |
 | `mdp/benchmarks/models/`, `pomdp/benchmarks/models/` | Links to the model and property files of the MDP and POMDP benchmarks in `examples/mdp_benchmarks/` and `examples/pomdp_benchmarks/` of the artifact; `scripts/4_build_docker.sh` passes these to the build as the named build contexts `mdp_benchmarks` and `pomdp_benchmarks` |
 | `docker/common/` | The scripts to generate, run, post-process and check the runs, shared by all experiments |
-| `docker/plots/latex/` | The source for the figure in paper, built by `docker/build_figures.sh` |
+| `docker/plots/latex/` | The sources of the figures of the paper, built by `docker/build_figures.sh` |
 
 Every experiment directory has the same layout: `scripts/configurations.json` lists the configurations, `bin/` holds the tools, `benchmarks/index.json` describes the benchmarks, and `experiments/` receives the logs and results. The model paths in an index are relative to its directory: those of `mdp` and `pomdp` point to `benchmarks/models/`, a link to the MDP or POMDP benchmarks in `examples/` of the artifact, and those of `imdp` to its generated models. Next to `index.json`, `index-representative.json` and `index-smoke.json` hold the benchmarks of the representative experiments (also used by `scripts/3_minimal.sh`) and the smoke test.
 
-## Building the docker
+## Building the Docker images
 See [Building the docker](../ARTIFACT.md#building-the-docker) in `ARTIFACT.md` of the artifact.

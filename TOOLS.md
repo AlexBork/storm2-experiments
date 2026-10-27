@@ -1,16 +1,16 @@
-# Storm and stormpy
+# Storm and Stormpy
 
-This artifact contains the source code of [Storm](https://www.stormchecker.org/) 2.0 in `storm/` and of [stormpy](https://stormchecker.github.io/stormpy/) 2.0 in `stormpy/`. This file describes both tools briefly and shows how to play with them on the robot vacuum example of the paper (Sec. 7, Fig. 4 and 5) in `examples/vacuum/` and on the MDP and POMDP benchmarks of the experiments in `examples/mdp_benchmarks/` and `examples/pomdp_benchmarks/`.
+This artifact contains the source code of [Storm](https://www.stormchecker.org/) 2.0 in `storm/` and of [Stormpy](https://stormchecker.github.io/stormpy/) 2.0 in `stormpy/`. This file describes both tools briefly and shows how to play with them on the robot vacuum example of the paper (Sec. 7, Fig. 4 and 5) in `examples/vacuum/` and on the MDP and POMDP benchmarks of the experiments in `examples/mdp_benchmarks/` and `examples/pomdp_benchmarks/`.
 
 ## Storm
 
-Storm is a versatile, modular, and efficient open-source probabilistic model checker. It has a C++ core, which builds a model from a high-level description such as a Prism program or a JANI model, preprocesses it, and solves the equations that characterise a query, a set of command-line interfaces, and a Python API, stormpy. Storm supports DTMCs, MDPs, POMDPs, CTMCs and Markov automata, as well as interval and parametric models. Queries include reachability probabilities, expected rewards, LTL, multi-objective queries, conditional probabilities and expected visiting times, and Storm can extract policies (schedulers) for them. Results come with the bounds that the chosen algorithm proves: Storm offers fast floating-point methods, sound methods with guaranteed precision, and exact methods with rational numbers.
+Storm is a versatile, modular, and efficient open-source probabilistic model checker. It has a C++ core, which builds a model from a high-level description such as a Prism program or a JANI model, preprocesses it, and solves the equations that characterise a query, a set of command-line interfaces, and a Python API, Stormpy. Storm supports DTMCs, MDPs, POMDPs, CTMCs and Markov automata, as well as interval and parametric models. Queries include reachability probabilities, expected rewards, LTL, multi-objective queries, conditional probabilities and expected visiting times, and Storm can extract policies (schedulers) for them. Results come with the bounds that the chosen algorithm proves: Storm offers fast floating-point methods, sound methods with guaranteed precision, and exact methods with rational numbers.
 
 The Storm website [www.stormchecker.org](https://www.stormchecker.org/) provides documentation, a [getting started guide](https://www.stormchecker.org/getting-started.html) and [tutorials](https://www.stormchecker.org/tutorials.html). Storm can also be tried without any installation in the online playground at [try.stormchecker.org](https://try.stormchecker.org/). More example models are in the [Quantitative Verification Benchmark Set](http://qcomp.org/benchmarks).
 
 ### Playing with Storm
 
-Use the Docker image `storm2-tools` of the artifact, which `scripts/1_load.sh` loads together with the image of the experiments (see the [README](README.md#loading-the-container)), so no network access is needed. It is built from `notebooks/Dockerfile` on the official image of stormpy 2.0, `movesrwth/stormpy:2.0.0`, and contains the command-line tools of Storm 2.0, stormpy 2.0 and the Jupyter environment of the notebooks. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
+Use the Docker image `storm2-tools` of the artifact, which `scripts/1_load.sh` loads together with the image of the experiments (see the [README](README.md#loading-the-container)), so no network access is needed. It is built from `notebooks/Dockerfile` on the official image of Stormpy 2.0, `movesrwth/stormpy:2.0.0`, and contains the command-line tools of Storm 2.0, Stormpy 2.0 and the Jupyter environment of the notebooks. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
 
 ```bash
 cd $ARTIFACT_DIR
@@ -54,11 +54,11 @@ docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refue
 
 which print `Result: ≥ 0.6721852107` and `Result: ≤ 0.7129547434`. Figure 9 of the paper shows how these bounds develop with the size limit.
 
-## stormpy
+## Stormpy
 
-stormpy provides the Python bindings for Storm, created using [pybind11](https://pybind11.readthedocs.io/). It brings Storm into the Python ecosystem for numerical computations, machine learning, and visualisation, so that algorithms on top of Storm, such as loops around model checking calls, can be prototyped quickly while the computations run in the C++ core. stormpy 2.0 has two layers: a Pythonic public API for common tasks, e.g. `build_model` picks the right builder for a model, and a developer layer with one-to-one bindings to the functions and classes of Storm. Specialisations such as the number representation are selected by indexing, e.g. `build_model[Rational](program)` builds a model with rational numbers. The [documentation of stormpy](https://stormchecker.github.io/stormpy/) has a getting started guide and the API reference.
+Stormpy provides the Python bindings for Storm, created using [pybind11](https://pybind11.readthedocs.io/). It brings Storm into the Python ecosystem for numerical computations, machine learning, and visualisation, so that algorithms on top of Storm, such as loops around model checking calls, can be prototyped quickly while the computations run in the C++ core. Stormpy 2.0 has two layers: a Pythonic public API for common tasks, e.g. `build_model` picks the right builder for a model, and a developer layer with one-to-one bindings to the functions and classes of Storm. Specialisations such as the number representation are selected by indexing, e.g. `build_model[Rational](program)` builds a model with rational numbers. The [documentation of Stormpy](https://stormchecker.github.io/stormpy/) has a getting started guide and the API reference.
 
-### Playing with stormpy
+### Playing with Stormpy
 
 `examples/vacuum/vacuum.py` is the code of Fig. 4 of the paper. It builds the robot vacuum MDP with rational numbers, computes the minimal expected time to dock together with an optimal policy, applies the policy to obtain the induced DTMC, computes how often the robot visits the rug, and finally turns every probability into an interval of width 1/100 and computes the minimal expected time under robust semantics.
 
@@ -81,7 +81,7 @@ To explore further, start an interactive Python shell with `docker run -it --rm 
 
 ### Notebooks
 
-`notebooks/` contains the Jupyter notebooks of the Storm tutorial on the Orchard game, which introduce modelling, model checking, policies, uncertainty and further extensions with stormpy 2.0 and [stormvogel](https://github.com/stormchecker/stormvogel). The image `storm2-tools` contains them in `/opt/notebooks` together with their Jupyter environment. Start it with
+`notebooks/` contains the Jupyter notebooks of the Storm tutorial on the Orchard game, which introduce modelling, model checking, policies, uncertainty and further extensions with Stormpy 2.0 and [stormvogel](https://github.com/stormchecker/stormvogel). The image `storm2-tools` contains them in `/opt/notebooks` together with their Jupyter environment. Start it with
 
 ```bash
 docker run -it --rm -p 8888:8888 storm2-tools

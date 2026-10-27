@@ -1,7 +1,7 @@
 #!/bin/sh
 # Load the saved images of the artifact, by default experiments/storm2-experiments.tar.gz
 # (see scripts/4_build_docker.sh), into Docker: storm2-experiments for the experiments
-# and storm2-tools for Storm, stormpy and the notebooks (see TOOLS.md). The images are
+# and storm2-tools for Storm, Stormpy and the notebooks (see TOOLS.md). The images are
 # for amd64 and arm64, which needs Docker's containerd image store ("Use containerd
 # for pulling and storing images" in the Docker settings).
 #   scripts/1_load.sh [FILE]

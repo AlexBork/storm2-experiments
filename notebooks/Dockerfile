@@ -1,4 +1,4 @@
-# Jupyter environment for the notebooks, based on the official stormpy 2.0 image,
+# Jupyter environment for the notebooks, based on the official Stormpy 2.0 image,
 # which also contains the command-line tools of Storm 2.0. The artifact ships it
 # prebuilt as storm2-tools, see scripts/4_build_docker.sh. Build with
 # docker build -t storm2-tools .
@@ -13,7 +13,7 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Jupyter and the Python libraries from requirements.txt into the virtual
-# environment of stormpy, which already has stormpy 2.0.0
+# environment of Stormpy, which already has Stormpy 2.0.0
 COPY requirements.txt /tmp/
 RUN pip install --no-cache-dir jupyterlab==4.6.4 --requirement /tmp/requirements.txt
 

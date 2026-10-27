@@ -41,8 +41,8 @@ Storm has to be 1.13 or newer, PRISM 4.10.1 or newer.
 ## Generating the models
 
 The models in `benchmarks/` come with the Docker image, which generates them when
-it is built (see the [README](../README.md) of the experiments). To generate them yourself you need
-Python 3.10+ with stormpy. Use a stormpy built against the
+it is built (see the [ARTIFACT](../ARTIFACT.md) of the experiments). To generate them yourself you need
+Python 3.10+ with Stormpy 2.0. Use a Stormpy built against the
 same Storm as `bin/storm`, so that the models are the ones Storm is measured on.
 
 ```bash
@@ -117,8 +117,8 @@ The `type` of every benchmark in `index.json` is its interval width, so
 
 ## Interval construction
 
-`generate/uncertainty_sets.json` contains the absolute widths `0.05` and `0.25`. The intervals come from stormpy's
-`AddUncertaintyDouble(model).transform(delta, minimal_value)`, applied to the
+`generate/uncertainty_sets.json` contains the absolute widths `0.05` and `0.25`. The intervals come from Stormpy's
+`stormpy.developer.AddUncertainty[float](model).transform(delta, minimal_value)`, applied to the
 nominal model. For each positive nominal probability `p < 1`:
 
 ```text
