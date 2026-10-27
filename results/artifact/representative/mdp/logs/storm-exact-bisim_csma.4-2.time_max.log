@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani csma.4-2.jani --janiproperty time_max --exact --bisimulation
+Benchmark:	csma.4-2.time_max
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:15:02 2026
+Command line arguments: --jani csma.4-2.jani --janiproperty time_max --exact --bisimulation
+Current working directory: /tmp/invocation-650ni7e4
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 4.289s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	761962
+Transitions: 	1327068
+Choices: 	825504
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * all_delivered -> 9 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 1.679s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	9830
+Transitions: 	17275
+Choices: 	10431
+Reward Models:  time
+State Labels: 	2 labels
+   * all_delivered -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "all_delivered"] ...
+Result (for initial states): 32315623775306742465754992904772086856590387189461759497043751326444129883/227235292031546136552071621151990131110732434575780471525732909819363328 (approx. 142.2121691). Exact solution.
+Time for model checking: 0.021s.
+
+----------------------------------------
+Wallclock time:	6.202
+Return code:	0

@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani rabin.10.jani --janiproperty live --sound
+Benchmark:	rabin.10.live
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 19:43:38 2026
+Command line arguments: --jani rabin.10.jani --janiproperty live --sound
+Current working directory: /tmp/invocation-xo8a0e3v
+
+Time for model input parsing: 0.003s.
+
+
+----------------------------------------
+Wallclock time:	91.099
+Return code:	None
+Computation aborted after 91.099 seconds since the time limit of 90 seconds was exceeded.

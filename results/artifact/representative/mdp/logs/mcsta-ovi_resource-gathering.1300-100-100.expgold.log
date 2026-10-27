@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta resource-gathering.jani --props expgold --experiment B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta resource-gathering.jani --props expgold --experiment B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+resource-gathering.jani:model: info: resource-gathering is an MDP model.
+resource-gathering.jani:properties[0]: warning: Skipping unsupported property "expgold".
+resource-gathering.jani: error: No properties to check.
+
+----------------------------------------
+Wallclock time:	0.144
+Return code:	0

@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta csma.4-2.jani --props time_min --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	csma.4-2.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta csma.4-2.jani --props time_min --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+csma.4-2.jani:model: info: csma.4-2 is an MDP model.
+csma.4-2.jani: info: Need 24 bytes per state.
+csma.4-2.jani: info: Explored 761962 states.
+csma.4-2.jani:properties[4]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 306 MB
+Analysis results for csma.4-2.jani
+
++ State space exploration
+  State size: 24 bytes
+  States:     761962
+  Choices:    825504
+  Branches:   1327068
+  Rate:       920244 states/s
+  Time:       0.9 s
+
++ Property time_min
+  Value:  124.46355154223099
+  Bounds: [124.46349551864465, 124.46360756581731]
+  Time:   0.3 s
+
+  + Precomputations
+    Max. prob. 1 states:          761962
+    Time for max. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  87
+    Verif. attempts:   2
+    Verif. iterations: 15
+    Final epsilon:     1.174049633249486E-07
+    Time:              0.3 s
+
+
+----------------------------------------
+Wallclock time:	1.339
+Return code:	0

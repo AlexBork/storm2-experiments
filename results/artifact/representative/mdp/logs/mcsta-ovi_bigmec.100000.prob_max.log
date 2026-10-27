@@ -1,0 +1,48 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta bigmec.jani --props prob_max --experiment N=100000 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	bigmec.100000.prob_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta bigmec.jani --props prob_max --experiment N=100000 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+bigmec.jani:model: info: bigmec is an MDP model.
+bigmec.jani:variables[0]: info: Expanding variable "state" into 5 locations in automaton "player1".
+bigmec.jani: info: Need 8 bytes per state.
+bigmec.jani: info: Explored 200003 states for N=100000.
+
+Peak memory usage: 136 MB
+Analysis results for bigmec.jani
+Experiment N=100000
+
++ State space exploration
+  State size: 8 bytes
+  States:     200003
+  Choices:    400004
+  Branches:   400006
+  Rate:       704236 states/s
+  Time:       0.3 s
+
++ Property prob_max
+  Probability: 0.5000005
+  Bounds:      [0.5, 0.5000009999999999]
+  Time:        75.3 s
+
+  + Optimistic value iteration
+    Total iterations:  100003
+    Verif. attempts:   1
+    Verif. iterations: 1
+    Final epsilon:     1E-06
+    Time:              75.3 s
+
+
+----------------------------------------
+Wallclock time:	75.772
+Return code:	0

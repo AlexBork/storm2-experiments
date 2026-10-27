@@ -1,0 +1,60 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta eajs.5.jani --props ExpUtil --experiment energy_capacity=250,B=11 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	eajs.5-250-11.ExpUtil
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta eajs.5.jani --props ExpUtil --experiment energy_capacity=250,B=11 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+eajs.5.jani:model: info: eajs.5 is an MDP model.
+eajs.5.jani:variables[11]: info: Expanding variable "loc_1" into 3 locations in automaton "Process_1".
+eajs.5.jani:variables[15]: info: Expanding variable "loc_2" into 3 locations in automaton "Process_2".
+eajs.5.jani:variables[17]: info: Expanding variable "user_1" into 6 locations in automaton "Resources".
+eajs.5.jani:variables[19]: info: Expanding variable "loc_3" into 3 locations in automaton "Process_3".
+eajs.5.jani:variables[20]: info: Expanding variable "loc_5" into 3 locations in automaton "Process_5".
+eajs.5.jani:variables[23]: info: Expanding variable "loc_4" into 3 locations in automaton "Process_4".
+eajs.5.jani: info: Need 24 bytes per state.
+eajs.5.jani: warning: The probabilities for a transition do not sum up to 1. Results will likely be affected by floating-point errors.
+eajs.5.jani: info: Explored 3049471 states for energy_capacity=250, B=11.
+
+Peak memory usage: 1313 MB
+Analysis results for eajs.5.jani
+Experiment energy_capacity=250, B=11
+
++ State space exploration
+  State size: 24 bytes
+  States:     3049471
+  Choices:    4250853
+  Branches:   6960278
+  Rate:       1186565 states/s
+  Time:       2.7 s
+
++ Property ExpUtil
+  Value:  10.032945937515112
+  Bounds: [10.032940688435431, 10.032951186594794]
+  Time:   0.7 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 0.1 s
+    Min. prob. 1 states:          3049471
+    Time for min. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  27
+    Verif. attempts:   1
+    Verif. iterations: 5
+    Final epsilon:     1E-06
+    Time:              0.5 s
+
+
+----------------------------------------
+Wallclock time:	3.548
+Return code:	0

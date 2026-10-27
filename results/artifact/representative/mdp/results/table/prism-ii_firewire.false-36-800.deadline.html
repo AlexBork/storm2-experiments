@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - firewire.false-36-800.deadline</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.false-36-800.deadline</h1>
+<p class="sub">prism-ii &middot; qcomp &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>481/512</code></p>
+<p class="sub">reference result: <code>0.939453125</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.329 s</td></tr></table>
+<p class="sub">prism-ii_firewire.false-36-800.deadline.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g firewire.false.prism firewire.false.props --prop deadline -const delay=36,deadline=800 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.false-36-800.deadline
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:44:23 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g firewire.false.prism firewire.false.props --prop deadline -const 'delay=36,deadline=800' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;firewire.false.prism&quot;...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2
+Labels:      &quot;done&quot;
+Rewards:     &quot;time&quot; &quot;time_sending&quot;
+
+Parsing properties file &quot;firewire.false.props&quot;...
+
+Error: Syntax error (&quot;^&quot;, line 10, column 23).
+
+----------------------------------------
+Wallclock time:	0.329
+Return code:	1
+</pre>
+</body></html>

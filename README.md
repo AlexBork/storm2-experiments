@@ -22,8 +22,8 @@ Run the largest experiment set that fits on your machine and in your time, from 
 
 | Experiment set   | Smoke test (about 8 minutes)        | Command                       | Needs at least  | Takes about | With `-p`, 4 runs at a time  |
 | ---------------- | ----------------------------------- | ----------------------------- | --------------- | ----------- | ---------------------------- |
-| [Minimal]        | `scripts/2_smoke.sh minimal`        | `scripts/3_minimal.sh`        | 3 cores, 9 GiB  | x hours     | y hours (9 cores, 33 GiB)    |
-| [Representative] | `scripts/2_smoke.sh representative` | `scripts/3_representative.sh` | 5 cores, 17 GiB | x hours     | y hours (17 cores, 65 GiB)   |
+| [Minimal]        | `scripts/2_smoke.sh minimal`        | `scripts/3_minimal.sh`        | 3 cores, 9 GiB  | 5.5 hours   | 1.5 hours (9 cores, 33 GiB)  |
+| [Representative] | `scripts/2_smoke.sh representative` | `scripts/3_representative.sh` | 5 cores, 17 GiB | 5.5 hours   | 1.5 hours (17 cores, 65 GiB) |
 | [Full]           | `scripts/2_smoke.sh full`           | `scripts/3_full.sh`           | 5 cores, 33 GiB | 70 hours    | 18 hours (17 cores, 129 GiB) |
 
 [Minimal]: #running-the-minimal-experiments
@@ -55,7 +55,7 @@ $ARTIFACT_DIR/scripts/2_smoke.sh representative
 This runs every tool configuration of every experiment on one small benchmark with a time limit of 60 seconds, but with the cores and memory per run of the given set, and then post-processes the results and builds the figures, like the experiment set. It checks that everything works, and that your machine can run the set: if the machine is too small for it, the smoke test stops right away with `not enough cores or memory for a single run`. It takes about 8 minutes.
 
 What to check:
-- The output shows the three experiments one after the other (`== ...: running experiment 1/3: mdp`, then `imdp` and `pomdp`), with a line `[done ...] CONFIGURATION BENCHMARK ... ok (...)` for every run. All runs of `mdp` and `imdp` should be `ok`. In `pomdp`, a few runs with the largest size limits (`cut30000000` and up) end with `timeout`, which is expected with the short time limit. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) end with `error`, which is expected as well.
+- The output shows the three experiments one after the other (`== ...: running experiment 1/3: mdp`, then `imdp` and `pomdp`), with a line `[done ...] CONFIGURATION BENCHMARK ... ok (...)` for every run. All runs of `mdp` and `imdp` should be `ok`. In `pomdp`, a few runs with the largest size limits (`cut20000000` and up) end with `timeout`, or in the smoke test for `minimal` with `error (...): return code -9` as they run out of memory, which is expected with the short time limit and the small memory. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) end with `error`, which is expected as well.
 - The output ends with `== all results checked`, followed by where the results are. If a run gave an incorrect result or none at all, it ends with `== results with problems in:` and the experiments concerned instead, and the problems are listed above it.
 - `smoke-SET.pdf` in your current directory, e.g. `smoke-representative.pdf`, contains Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and the curves of one model (refuel) in Figure 9. The logs and results are in `smoke-SET/`.
 - Compare with the sample runs in `$ARTIFACT_DIR/results/artifact/smoke-SET/`, which have the same output.
@@ -90,7 +90,7 @@ The container keeps running in the background, so the experiments go on when the
 $ARTIFACT_DIR/scripts/3_minimal.sh
 ```
 
-This runs the benchmarks of the [representative experiments](#running-the-representative-experiments) with a time limit of 90 seconds, but with 2 instead of 4 physical cores and 8 instead of 16 GiB of memory per run, so that it fits a smaller machine. It takes about x hours, and gives the figures in `minimal.pdf` and the logs and results in `minimal/`.
+This runs the benchmarks of the [representative experiments](#running-the-representative-experiments) with a time limit of 90 seconds, but with 2 instead of 4 physical cores and 8 instead of 16 GiB of memory per run, so that it fits a smaller machine. It takes about 5.5 hours, or 1.5 hours with `-p` on a machine that fits 4 runs at a time, and gives the figures in `minimal.pdf` and the logs and results in `minimal/`.
 
 With fewer cores and less memory, Storm's symbolic engines use 2 instead of 4 threads, PRISM gets 8 GiB for Java, and the decision diagram libraries of both (Sylvan and CUDD) get 4 instead of 8 GiB. More runs therefore time out or run out of memory, in particular those of the symbolic engines of Storm and of PRISM, and the figures deviate more from those of the paper than the representative ones. Use the representative experiments if your machine has the cores and memory for them.
 
@@ -99,7 +99,7 @@ With fewer cores and less memory, Storm's symbolic engines use 2 instead of 4 th
 $ARTIFACT_DIR/scripts/3_representative.sh
 ```
 
-This takes about x hours, and gives the figures in `representative.pdf` and the logs and results in `representative/`.
+This takes about 5.5 hours, or 1.5 hours with `-p` on a machine that fits 4 runs at a time, and gives the figures in `representative.pdf` and the logs and results in `representative/`.
 
 The representative experiments run all tool configurations on a subset of the benchmarks (53 of the 98 MDPs, 32 of the 52 interval MDPs and 8 of the 19 POMDPs, covering all models of the first two) with a time limit of 90 seconds and 16 GiB of memory per run, instead of 900 seconds and 32 GiB. The benchmarks were chosen such that the same trend as shown in the paper are produced in this experiment set.
 

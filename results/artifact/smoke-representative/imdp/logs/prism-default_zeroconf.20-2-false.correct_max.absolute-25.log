@@ -1,0 +1,69 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel zeroconf.20-2-false.correct_max.tra,sta,lab zeroconf.20-2-false.correct_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	zeroconf.20-2-false.correct_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	60
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 22:17:00 UTC 2026
+Hostname: 7590be525c75
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'zeroconf.20-2-false.correct_max.tra,sta,lab' zeroconf.20-2-false.correct_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "zeroconf.20-2-false.correct_max.tra", "zeroconf.20-2-false.correct_max.sta", "zeroconf.20-2-false.correct_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "zeroconf.20-2-false.correct_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.69 seconds.
+
+Type:        IMDP
+States:      89586 (1 initial)
+Transitions: 443617
+Choices:     358344
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 101 iterations and 2.527 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 998 iterations and 21.72 seconds.
+target=2991, yes=25575, no=26132, maybe=37879
+Starting value iteration (maxmin)...
+Value iteration (maxmin, with Gauss-Seidel) took 52 iterations, 10126896 multiplications and 1.26 seconds.
+Probabilistic reachability took 1.261 seconds.
+
+Value in the initial state: 2.291711051761493E-9
+
+Time for model checking: 25.574 seconds.
+
+Result: 2.291711051761493E-9 (+/- 6.2274364895364975E-6 estimated; rel err 2717.3742015817666)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	26.635
+Return code:	0

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut1000000.grid-avoid_grid-avoid_prbmax_sl0.1</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut1000000.grid-avoid_grid-avoid_prbmax_sl0.1</h1>
+<dl>
+<dt>Benchmark</dt><dd>grid-avoid_grid-avoid_prbmax_sl0.1</dd>
+<dt>Configuration</dt><dd>storm.cut1000000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≥ 0.9272459636</dd>
+<dt>Wall-clock time (s)</dt><dd>3.153</dd>
+<dt>Time limit (s)</dt><dd>90.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/representative/logs/cut1000000_grid-avoid_grid-avoid_prbmax_sl0.1.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-avoid-sl.prism --prop grid-avoid.props prbmax -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 1000000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-avoid-sl.prism --prop grid-avoid.props prbmax -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000
+Benchmark:	grid-avoid_grid-avoid_prbmax_sl0.1
+Configuration:	cut1000000
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Mon Oct 26 22:10:49 2026
+Command line arguments: --prism 4x4grid-avoid-sl.prism --prop grid-avoid.props prbmax -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000
+Current working directory: /tmp/invocation-rbfhb1_3
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.005s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	17
+Transitions: 	114
+Choices: 	59
+Observations: 	4
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -&gt; 0 item(s)
+   * goal -&gt; 1 item(s)
+   * init -&gt; 1 item(s)
+   * bad -&gt; 1 item(s)
+Choice Labels: 	6 labels
+   * east -&gt; 14 item(s)
+   * west -&gt; 14 item(s)
+   * done -&gt; 1 item(s)
+   * north -&gt; 14 item(s)
+   * south -&gt; 14 item(s)
+   * bad -&gt; 1 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Pmax=? [(!&quot;bad&quot;) U &quot;goal&quot;]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 1000004 beliefs discovered, 250002 beliefs explored.
+Constructed belief MDP: 1000005 states, 1750005 choices, 4000006 transitions.
+Time for exploring beliefs: 2078ms.
+Time for building the belief MDP: 474ms.
+Time for analyzing the belief MDP: 201ms.
+
+Result: ≥ 0.9272459636
+Time for POMDP analysis: 3.056s.
+
+Performance statistics:
+  * peak memory usage: 1005MB
+  * CPU time: 2.874s
+  * wallclock time: 3.064s
+
+----------------------------------------
+Wallclock time:	3.153
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut1000000.grid-avoid_grid-avoid_prbmax_sl0.1&quot;,
+  &quot;benchmark-id&quot;: &quot;grid-avoid_grid-avoid_prbmax_sl0.1&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut1000000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 1000000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism 4x4grid-avoid-sl.prism --prop grid-avoid.props prbmax -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000&quot;
+  ],
+  &quot;time-limit&quot;: 90.0,
+  &quot;log-dir&quot;: &quot;experiments/representative/logs&quot;,
+  &quot;log&quot;: &quot;experiments/representative/logs/cut1000000_grid-avoid_grid-avoid_prbmax_sl0.1.log&quot;,
+  &quot;wallclock-time&quot;: 3.153,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 1000000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;grid-avoid_grid-avoid_prbmax_sl0.1&quot;,
+    &quot;benchmark-set&quot;: &quot;grid-avoid&quot;,
+    &quot;name&quot;: &quot;grid-avoid&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;sl&quot;: 0.1
+      },
+      &quot;file&quot;: &quot;models/grid-avoid/4x4grid-avoid-sl.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;prbmax&quot;,
+      &quot;file&quot;: &quot;models/grid-avoid/grid-avoid.props&quot;,
+      &quot;type&quot;: &quot;prb&quot;,
+      &quot;dir&quot;: &quot;max&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 1000000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut1000000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 1000000
+  },
+  &quot;size-threshold&quot;: 1000000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.005,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 17,
+    &quot;transitions&quot;: 114,
+    &quot;choices&quot;: 59,
+    &quot;observations&quot;: 4
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 1000005,
+    &quot;choices&quot;: 1750005,
+    &quot;transitions&quot;: 4000006,
+    &quot;expl-time&quot;: 2.078,
+    &quot;build-time&quot;: 0.474,
+    &quot;chk-time&quot;: 0.201
+  },
+  &quot;result&quot;: &quot;≥ 0.9272459636&quot;,
+  &quot;total-chk-time&quot;: 3.056
+}
+</pre></details>
+</body>
+</html>

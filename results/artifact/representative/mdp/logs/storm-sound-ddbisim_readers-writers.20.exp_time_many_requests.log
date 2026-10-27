@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani readers-writers.20.jani --janiproperty exp_time_many_requests --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	readers-writers.20.exp_time_many_requests
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 19:35:19 2026
+Command line arguments: --jani readers-writers.20.jani --janiproperty exp_time_many_requests --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-bo0dx57v
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.646s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (symbolic)
+States: 	137070 (3433 nodes)
+Transitions: 	273580 (213808 nodes)
+Choices: 	137070
+Reward Models:  none
+Variables: 	rows: 14 meta variables (58 DD variables), columns: 14 meta variables (58 DD variables), nondeterminism: 1 meta variables (1 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (59 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 7.266s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	122406
+Transitions: 	254801
+Choices: 	122406
+Markovian St.: 	23833
+Max. Rate: 	200
+Reward Models:  none
+State Labels: 	3 labels
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) > (160 / 10)) -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "exp_time_many_requests": Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) > (160 / 10))] ...
+Result (for initial states): 15.44613296
+Time for model checking: 1.542s.
+
+----------------------------------------
+Wallclock time:	9.577
+Return code:	0

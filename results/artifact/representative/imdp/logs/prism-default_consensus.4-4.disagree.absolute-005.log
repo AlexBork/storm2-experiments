@@ -1,0 +1,78 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.4-4.disagree.tra,sta,lab consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	consensus.4-4.disagree.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 21:29:35 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'consensus.4-4.disagree.tra,sta,lab' consensus.4-4.disagree.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "consensus.4-4.disagree.tra", "consensus.4-4.disagree.sta", "consensus.4-4.disagree.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.4-4.disagree.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.378 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 149 iterations and 1.554 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 2595 iterations and 25.63 seconds.
+target=56, yes=10872, no=910, maybe=31354
+Starting value iteration (maxmin)...
+Iteration 338: 5.01 sec so far
+Iteration 678: 10.02 sec so far
+Iteration 1016: 15.03 sec so far
+Iteration 1352: 20.04 sec so far
+Iteration 1710: 25.05 sec so far
+Iteration 2120: 30.05 sec so far
+Iteration 2536: 35.06 sec so far
+Iteration 2950: 40.07 sec so far
+Iteration 3368: 45.08 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 3543 iterations, 556846224 multiplications and 47.219 seconds.
+Probabilistic reachability took 47.221 seconds.
+
+Value in the initial state: 0.002572494844899856
+
+Time for model checking: 74.441 seconds.
+
+Result: 0.002572494844899856 (+/- 9.998203297843615E-6 estimated; rel err 0.003886578555314008)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	75.152
+Return code:	0

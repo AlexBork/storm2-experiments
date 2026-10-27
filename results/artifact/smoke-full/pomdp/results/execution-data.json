@@ -1,0 +1,2889 @@
+{
+ "storm": {
+  "cut10000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut10000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut10000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 10000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 10000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut10000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 29.149,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 10000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 10000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut10000000",
+     "family": "cutoff",
+     "size-threshold": 10000000
+    },
+    "size-threshold": 10000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 10000001,
+     "choices": 18459894,
+     "transitions": 32563442,
+     "expl-time": 20.997,
+     "build-time": 2.393,
+     "chk-time": 2.449
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 28.909
+   }
+  },
+  "cut1000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut1000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut1000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 1000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 1000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut1000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 2.945,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 1000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 1000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut1000000",
+     "family": "cutoff",
+     "size-threshold": 1000000
+    },
+    "size-threshold": 1000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 1000003,
+     "choices": 1842502,
+     "transitions": 3261032,
+     "expl-time": 2.138,
+     "build-time": 0.237,
+     "chk-time": 0.197
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 2.846
+   }
+  },
+  "cut100000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut100000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut100000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 100000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut100000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.241,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 100000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 100000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut100000",
+     "family": "cutoff",
+     "size-threshold": 100000
+    },
+    "size-threshold": 100000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 100001,
+     "choices": 184188,
+     "transitions": 327457,
+     "expl-time": 0.123,
+     "build-time": 0.021,
+     "chk-time": 0.015
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.177
+   }
+  },
+  "cut10000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut10000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut10000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 10000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 10000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut10000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.078,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 10000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 10000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut10000",
+     "family": "cutoff",
+     "size-threshold": 10000
+    },
+    "size-threshold": 10000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 9999,
+     "choices": 18449,
+     "transitions": 32457,
+     "expl-time": 0.013,
+     "build-time": 0.001,
+     "chk-time": 0.001
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.019
+   }
+  },
+  "cut20000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut20000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut20000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 20000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 20000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut20000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 61.043,
+    "timeout": true,
+    "execution-error": false,
+    "return-codes": [
+     -9
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 20000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 20000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut20000000",
+     "family": "cutoff",
+     "size-threshold": 20000000
+    },
+    "size-threshold": 20000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 20000000,
+     "choices": 36962165,
+     "transitions": 65196751,
+     "expl-time": 44.527,
+     "build-time": 4.76,
+     "chk-time": 4.861
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 60.685
+   }
+  },
+  "cut2000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut2000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut2000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 2000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 2000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut2000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 5.801,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 2000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 2000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut2000000",
+     "family": "cutoff",
+     "size-threshold": 2000000
+    },
+    "size-threshold": 2000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 2000000,
+     "choices": 3686105,
+     "transitions": 6517641,
+     "expl-time": 4.211,
+     "build-time": 0.476,
+     "chk-time": 0.431
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 5.696
+   }
+  },
+  "cut200000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut200000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut200000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 200000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 200000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut200000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.536,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 200000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 200000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut200000",
+     "family": "cutoff",
+     "size-threshold": 200000
+    },
+    "size-threshold": 200000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 200002,
+     "choices": 368372,
+     "transitions": 654798,
+     "expl-time": 0.357,
+     "build-time": 0.046,
+     "chk-time": 0.034
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.482
+   }
+  },
+  "cut20000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut20000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut20000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 20000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 20000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut20000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.085,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 20000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 20000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut20000",
+     "family": "cutoff",
+     "size-threshold": 20000
+    },
+    "size-threshold": 20000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 19999,
+     "choices": 36857,
+     "transitions": 65157,
+     "expl-time": 0.024,
+     "build-time": 0.004,
+     "chk-time": 0.003
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.034
+   }
+  },
+  "cut30000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut30000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut30000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 30000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 30000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut30000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 61.392,
+    "timeout": true,
+    "execution-error": false,
+    "return-codes": [
+     -9
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 30000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 30000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut30000000",
+     "family": "cutoff",
+     "size-threshold": 30000000
+    },
+    "size-threshold": 30000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    }
+   }
+  },
+  "cut3000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut3000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut3000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 3000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 3000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut3000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 8.096,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 3000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 3000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut3000000",
+     "family": "cutoff",
+     "size-threshold": 3000000
+    },
+    "size-threshold": 3000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 3000002,
+     "choices": 5530843,
+     "transitions": 9773665,
+     "expl-time": 5.723,
+     "build-time": 0.731,
+     "chk-time": 0.648
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 7.987
+   }
+  },
+  "cut300000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut300000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut300000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 300000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut300000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.755,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 300000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 300000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut300000",
+     "family": "cutoff",
+     "size-threshold": 300000
+    },
+    "size-threshold": 300000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 299999,
+     "choices": 552509,
+     "transitions": 979626,
+     "expl-time": 0.513,
+     "build-time": 0.068,
+     "chk-time": 0.048
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.703
+   }
+  },
+  "cut30000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut30000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut30000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 30000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 30000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut30000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.085,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 30000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 30000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut30000",
+     "family": "cutoff",
+     "size-threshold": 30000
+    },
+    "size-threshold": 30000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 29999,
+     "choices": 55250,
+     "transitions": 98233,
+     "expl-time": 0.043,
+     "build-time": 0.005,
+     "chk-time": 0.005
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.057
+   }
+  },
+  "cut40000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut40000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut40000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 40000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 40000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut40000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 61.389,
+    "timeout": true,
+    "execution-error": false,
+    "return-codes": [
+     -9
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 40000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 40000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut40000000",
+     "family": "cutoff",
+     "size-threshold": 40000000
+    },
+    "size-threshold": 40000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    }
+   }
+  },
+  "cut4000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut4000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut4000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 4000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 4000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut4000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 11.516,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 4000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 4000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut4000000",
+     "family": "cutoff",
+     "size-threshold": 4000000
+    },
+    "size-threshold": 4000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 4000001,
+     "choices": 7374863,
+     "transitions": 13015011,
+     "expl-time": 8.305,
+     "build-time": 0.98,
+     "chk-time": 0.924
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 11.402
+   }
+  },
+  "cut400000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut400000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut400000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 400000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 400000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut400000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 1.063,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 400000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 400000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut400000",
+     "family": "cutoff",
+     "size-threshold": 400000
+    },
+    "size-threshold": 400000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 400002,
+     "choices": 736825,
+     "transitions": 1307309,
+     "expl-time": 0.715,
+     "build-time": 0.093,
+     "chk-time": 0.072
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.988
+   }
+  },
+  "cut40000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut40000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut40000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 40000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 40000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut40000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.101,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 40000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 40000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut40000",
+     "family": "cutoff",
+     "size-threshold": 40000
+    },
+    "size-threshold": 40000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 39999,
+     "choices": 73637,
+     "transitions": 130297,
+     "expl-time": 0.054,
+     "build-time": 0.008,
+     "chk-time": 0.006
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.074
+   }
+  },
+  "cut50000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut50000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut50000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 50000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 50000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut50000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 61.396,
+    "timeout": true,
+    "execution-error": false,
+    "return-codes": [
+     -9
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 50000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 50000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut50000000",
+     "family": "cutoff",
+     "size-threshold": 50000000
+    },
+    "size-threshold": 50000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    }
+   }
+  },
+  "cut5000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut5000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut5000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 5000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 5000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut5000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 14.712,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 5000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 5000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut5000000",
+     "family": "cutoff",
+     "size-threshold": 5000000
+    },
+    "size-threshold": 5000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 5000000,
+     "choices": 9222127,
+     "transitions": 16279450,
+     "expl-time": 10.718,
+     "build-time": 1.188,
+     "chk-time": 1.143
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 14.572
+   }
+  },
+  "cut500000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut500000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut500000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 500000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 500000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut500000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 1.27,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 500000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 500000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut500000",
+     "family": "cutoff",
+     "size-threshold": 500000
+    },
+    "size-threshold": 500000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 499999,
+     "choices": 920855,
+     "transitions": 1630389,
+     "expl-time": 0.845,
+     "build-time": 0.118,
+     "chk-time": 0.084
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 1.199
+   }
+  },
+  "cut50000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut50000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut50000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 50000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 50000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut50000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.146,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 50000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 50000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut50000",
+     "family": "cutoff",
+     "size-threshold": 50000
+    },
+    "size-threshold": 50000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 49999,
+     "choices": 92015,
+     "transitions": 163414,
+     "expl-time": 0.074,
+     "build-time": 0.009,
+     "chk-time": 0.008
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.098
+   }
+  },
+  "cut6000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut6000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut6000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 6000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 6000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut6000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 16.801,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 6000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 6000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut6000000",
+     "family": "cutoff",
+     "size-threshold": 6000000
+    },
+    "size-threshold": 6000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 5999999,
+     "choices": 11069857,
+     "transitions": 19545932,
+     "expl-time": 11.994,
+     "build-time": 1.467,
+     "chk-time": 1.416
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 16.671
+   }
+  },
+  "cut600000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut600000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut600000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 600000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 600000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut600000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 1.573,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 600000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 600000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut600000",
+     "family": "cutoff",
+     "size-threshold": 600000
+    },
+    "size-threshold": 600000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 600001,
+     "choices": 1105296,
+     "transitions": 1956827,
+     "expl-time": 1.097,
+     "build-time": 0.14,
+     "chk-time": 0.107
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 1.505
+   }
+  },
+  "cut60000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut60000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut60000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 60000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 60000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut60000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.181,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 60000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 60000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut60000",
+     "family": "cutoff",
+     "size-threshold": 60000
+    },
+    "size-threshold": 60000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 60000,
+     "choices": 110497,
+     "transitions": 196358,
+     "expl-time": 0.091,
+     "build-time": 0.013,
+     "chk-time": 0.009
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.123
+   }
+  },
+  "cut7000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut7000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut7000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 7000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 7000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut7000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 21.312,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 7000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 7000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut7000000",
+     "family": "cutoff",
+     "size-threshold": 7000000
+    },
+    "size-threshold": 7000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 7000002,
+     "choices": 12916083,
+     "transitions": 22793044,
+     "expl-time": 15.503,
+     "build-time": 1.721,
+     "chk-time": 1.744
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 21.15
+   }
+  },
+  "cut700000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut700000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut700000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 700000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 700000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut700000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 1.928,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 700000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 700000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut700000",
+     "family": "cutoff",
+     "size-threshold": 700000
+    },
+    "size-threshold": 700000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 700000,
+     "choices": 1289189,
+     "transitions": 2281483,
+     "expl-time": 1.36,
+     "build-time": 0.171,
+     "chk-time": 0.13
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 1.863
+   }
+  },
+  "cut70000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut70000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut70000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 70000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 70000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut70000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.2,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 70000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 70000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut70000",
+     "family": "cutoff",
+     "size-threshold": 70000
+    },
+    "size-threshold": 70000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 70000,
+     "choices": 128826,
+     "transitions": 228137,
+     "expl-time": 0.1,
+     "build-time": 0.015,
+     "chk-time": 0.011
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.137
+   }
+  },
+  "cut8000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut8000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut8000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 8000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 8000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut8000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 23.481,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 8000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 8000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut8000000",
+     "family": "cutoff",
+     "size-threshold": 8000000
+    },
+    "size-threshold": 8000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 8000002,
+     "choices": 14764454,
+     "transitions": 26061724,
+     "expl-time": 16.718,
+     "build-time": 1.933,
+     "chk-time": 2.003
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 23.282
+   }
+  },
+  "cut800000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut800000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut800000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 800000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut800000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 2.216,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 800000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 800000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut800000",
+     "family": "cutoff",
+     "size-threshold": 800000
+    },
+    "size-threshold": 800000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 799999,
+     "choices": 1473903,
+     "transitions": 2609950,
+     "expl-time": 1.595,
+     "build-time": 0.186,
+     "chk-time": 0.151
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 2.147
+   }
+  },
+  "cut80000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut80000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut80000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 80000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 80000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut80000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.222,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 80000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 80000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut80000",
+     "family": "cutoff",
+     "size-threshold": 80000
+    },
+    "size-threshold": 80000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.005,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 79999,
+     "choices": 147184,
+     "transitions": 261110,
+     "expl-time": 0.12,
+     "build-time": 0.015,
+     "chk-time": 0.013
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.162
+   }
+  },
+  "cut9000000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut9000000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut9000000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 9000000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 9000000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut9000000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 26.966,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 9000000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 9000000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut9000000",
+     "family": "cutoff",
+     "size-threshold": 9000000
+    },
+    "size-threshold": 9000000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 9000001,
+     "choices": 16612073,
+     "transitions": 29311594,
+     "expl-time": 19.727,
+     "build-time": 2.158,
+     "chk-time": 2.153
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 26.755
+   }
+  },
+  "cut900000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut900000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut900000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 900000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 900000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut900000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 2.38,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 900000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 900000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut900000",
+     "family": "cutoff",
+     "size-threshold": 900000
+    },
+    "size-threshold": 900000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.004,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 900000,
+     "choices": 1657753,
+     "transitions": 2930814,
+     "expl-time": 1.672,
+     "build-time": 0.217,
+     "chk-time": 0.168
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 2.303
+   }
+  },
+  "cut90000": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.cut90000.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "cut90000",
+    "invocation-note": "Storm-pomdp. Under-approximation with cut-offs, size threshold 90000",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 90000"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/cut90000_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.271,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Under-approximation with cut-offs, size threshold 90000"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Under-approximation with cut-offs, size threshold 90000"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "cut90000",
+     "family": "cutoff",
+     "size-threshold": 90000
+    },
+    "size-threshold": 90000,
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp-incomplete": true,
+    "belief-mdp": {
+     "states": 90000,
+     "choices": 165766,
+     "transitions": 295241,
+     "expl-time": 0.151,
+     "build-time": 0.02,
+     "chk-time": 0.014
+    },
+    "result": "≥ 0.67219",
+    "total-chk-time": 0.207
+   }
+  },
+  "discr004s": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.discr004s.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "discr004s",
+    "invocation-note": "Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/discr004s_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.065,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Over-approximation with discretization, resolution 4, triangulation mode static"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "discr004s",
+     "family": "discretisation"
+    },
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp": {
+     "states": 5471,
+     "choices": 12463,
+     "transitions": 43605,
+     "expl-time": 0.012,
+     "build-time": 0.001,
+     "chk-time": 0.002
+    },
+    "result": "≤ 0.7129687089",
+    "total-chk-time": 0.018
+   }
+  },
+  "discr005s": {
+   "refuel_refuel_prbmax_N06": {
+    "id": "storm.discr005s.refuel_refuel_prbmax_N06",
+    "benchmark-id": "refuel_refuel_prbmax_N06",
+    "tool": "storm",
+    "configuration-id": "discr005s",
+    "invocation-note": "Storm-pomdp. Over-approximation with discretization, resolution 5, triangulation mode static",
+    "commands": [
+     "/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 5 --triangulationmode static"
+    ],
+    "time-limit": 60.0,
+    "log-dir": "experiments/smoke/logs",
+    "log": "experiments/smoke/logs/discr005s_refuel_refuel_prbmax_N06.log",
+    "wallclock-time": 0.1,
+    "timeout": false,
+    "execution-error": false,
+    "return-codes": [
+     0
+    ],
+    "notes": [
+     "Storm-pomdp. Over-approximation with discretization, resolution 5, triangulation mode static"
+    ],
+    "benchmark": {
+     "id": "refuel_refuel_prbmax_N06",
+     "benchmark-set": "refuel",
+     "name": "refuel",
+     "model": {
+      "file-parameters": {},
+      "open-parameters": {
+       "N": 6
+      },
+      "file": "models/refuel/refuel.prism",
+      "formalism": "prism",
+      "type": "pomdp"
+     },
+     "property": {
+      "id": "prbmax",
+      "file": "models/refuel/refuel.props",
+      "type": "prb",
+      "dir": "max"
+     }
+    },
+    "configuration": {
+     "tool": "storm",
+     "notes": [
+      "Storm-pomdp",
+      "Over-approximation with discretization, resolution 5, triangulation mode static"
+     ],
+     "supported-obj-types": [
+      "prb",
+      "rew"
+     ],
+     "supported-model-types": [
+      "pomdp"
+     ],
+     "supported-model-formalisms": [
+      "prism"
+     ],
+     "id": "discr005s",
+     "family": "discretisation"
+    },
+    "not-supported": false,
+    "memout": false,
+    "expected-error": false,
+    "model-building-time": 0.006,
+    "input-model": {
+     "states": 208,
+     "transitions": 998,
+     "choices": 574,
+     "observations": 50
+    },
+    "belief-mdp": {
+     "states": 11769,
+     "choices": 24240,
+     "transitions": 93480,
+     "expl-time": 0.029,
+     "build-time": 0.003,
+     "chk-time": 0.004
+    },
+    "result": "≤ 0.696954659",
+    "total-chk-time": 0.039
+   }
+  }
+ }
+}

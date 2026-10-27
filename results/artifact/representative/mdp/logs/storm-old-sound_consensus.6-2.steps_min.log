@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani consensus.6.jani --janiproperty steps_min --constants K=2 --sound
+Benchmark:	consensus.6-2.steps_min
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 20:47:15 2026
+Command line arguments: --jani consensus.6.jani --janiproperty steps_min --constants K=2 --sound
+Current working directory: /tmp/invocation-b68m1kpo
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 4.251s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": R[exp]{"steps"}min=? [F "finished"] ...
+Result (for initial states): 431.9999972
+Time for model checking: 44.123s.
+
+----------------------------------------
+Wallclock time:	48.426
+Return code:	0

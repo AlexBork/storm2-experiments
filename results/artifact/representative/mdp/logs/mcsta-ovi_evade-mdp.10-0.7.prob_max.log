@@ -1,0 +1,23 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta evade-mdp.jani --props prob_max --experiment N=10,slippery=0.7 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	evade-mdp.10-0.7.prob_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta evade-mdp.jani --props prob_max --experiment N=10,slippery=0.7 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+evade-mdp.jani:model: info: evade-mdp is an MDP model.
+evade-mdp.jani: info: Need 16 bytes per state.
+evade-mdp.jani: info: Explored 1611899 states for N=10, slippery=0.7.
+
+----------------------------------------
+Wallclock time:	91.051
+Return code:	None
+Computation aborted after 91.051 seconds since the time limit of 90 seconds was exceeded.

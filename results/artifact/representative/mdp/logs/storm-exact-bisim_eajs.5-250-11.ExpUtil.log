@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani eajs.5.jani --janiproperty ExpUtil --constants energy_capacity=250,B=11 --exact --bisimulation
+Benchmark:	eajs.5-250-11.ExpUtil
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 21:05:35 2026
+Command line arguments: --jani eajs.5.jani --janiproperty ExpUtil --constants 'energy_capacity=250,B=11' --exact --bisimulation
+Current working directory: /tmp/invocation-4djm7omc
+
+Time for model input parsing: 0.003s.
+
+
+----------------------------------------
+Wallclock time:	91.081
+Return code:	None
+Computation aborted after 91.081 seconds since the time limit of 90 seconds was exceeded.

@@ -1,0 +1,88 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g zeroconf.prism zeroconf.props --prop correct_min -const N=20,K=8,reset=false -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	zeroconf.20-8-false.correct_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:59:37 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g zeroconf.prism zeroconf.props --prop correct_min -const 'N=20,K=8,reset=false' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "zeroconf.prism"...
+
+Type:        MDP
+Modules:     environment host0
+Actions:     [] [reset] [time] [send] [rec]
+Variables:   b_ip7 b_ip6 b_ip5 b_ip4 b_ip3 b_ip2 b_ip1 b_ip0 n n0 n1 b z ip_mess x y coll probes mess defend ip l
+
+Parsing properties file "zeroconf.props"...
+
+2 properties:
+(1) "correct_max": Pmax=? [ F (l=4&ip=1) ]
+(2) "correct_min": Pmin=? [ F (l=4&ip=1) ]
+
+---------------------------------------------------------------------
+
+Model checking: "correct_min": Pmin=? [ F (l=4&ip=1) ]
+Model constants: reset=false,N=20,K=8
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: reset=false,N=20,K=8
+
+Computing reachable states...
+
+Reachability (BFS): 592 iterations in 33.22 seconds (average 0.056115, setup 0.00)
+
+Time for model construction: 33.533 seconds.
+
+Type:        MDP
+States:      1870338 (1 initial)
+Transitions: 4245554
+
+Transition matrix: 154038 nodes (6 terminal), 4245554 minterms, vars: 58r/58c/7nd
+
+Prob0E: 133 iterations in 2.33 seconds (average 0.017519, setup 0.00)
+
+Prob1A: 91 iterations in 1.32 seconds (average 0.014505, setup 0.00)
+
+yes = 17943, no = 611330, maybe = 1241065
+
+Computing remaining probabilities...
+Engine: Sparse
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=1870338, nc=2315321, nnz=2865855, k=4] [36.8 MB]
+Creating vector for yes... [14.3 MB]
+Creating vector for maybe... [14.3 MB]
+Allocating iteration vectors... [4 x 14.3 MB]
+TOTAL: [122.4 MB]
+
+Starting iterations (interval iteration)...
+Iteration 304: max relative diff=0.293102, 5.02 sec so far
+Max relative diff between upper and lower bound on convergence: 8.31711E-07
+Iterative method (interval iteration): 409 iterations in 8.57 seconds (average 0.016479, setup 1.83)
+
+Value in the initial state: 9.928241269674575E-11
+
+Time for model checking: 12.253 seconds.
+
+Result: 9.928241269674575E-11 (+/- 8.25742719456396E-17; rel err 8.317109717897316E-7)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	46.174
+Return code:	0

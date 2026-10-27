@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut300000.network2_network2_rewmin_T8-K20</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut300000.network2_network2_rewmin_T8-K20</h1>
+<dl>
+<dt>Benchmark</dt><dd>network2_network2_rewmin_T8-K20</dd>
+<dt>Configuration</dt><dd>storm.cut300000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≤ 5.475999926</dd>
+<dt>Wall-clock time (s)</dt><dd>0.676</dd>
+<dt>Time limit (s)</dt><dd>90.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/representative/logs/cut300000_network2_network2_rewmin_T8-K20.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network2.prism --prop network.props rewmin -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 300000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network2.prism --prop network.props rewmin -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000
+Benchmark:	network2_network2_rewmin_T8-K20
+Configuration:	cut300000
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Mon Oct 26 22:04:43 2026
+Command line arguments: --prism network2.prism --prop network.props rewmin -const &#x27;T=8,K=20&#x27; --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000
+Current working directory: /tmp/invocation-cgqpns4a
+
+Time for model input parsing: 0.001s.
+
+WARN  (FormulaParserGrammar.cpp:347): Identifier `T&#x27; coincides with a reserved keyword or operator. Property expressions using the variable or constant &#x27;T&#x27; might not be parsed correctly.
+Time for model construction: 0.015s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	4589
+Transitions: 	14020
+Choices: 	6973
+Observations: 	1173
+Reward Models:  dropped_packets
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * (((sched = 0) &amp; (t = (8 - 1))) &amp; (k = (20 - 1))) -&gt; 16 item(s)
+Choice Labels: 	4 labels
+   * slot -&gt; 2349 item(s)
+   * idle -&gt; 2224 item(s)
+   * send1 -&gt; 1192 item(s)
+   * send2 -&gt; 1192 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;R{&quot;dropped_packets&quot;}min=? [F (((sched = 0) &amp; (t = (8 - 1))) &amp; (k = (20 - 1)))]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 300001 beliefs discovered, 294899 beliefs explored.
+Constructed belief MDP: 300002 states, 598000 choices, 865386 transitions.
+Time for exploring beliefs: 365ms.
+Time for building the belief MDP: 44ms.
+Time for analyzing the belief MDP: 112ms.
+
+Result: ≤ 5.475999926
+Time for POMDP analysis: 0.592s.
+
+Performance statistics:
+  * peak memory usage: 322MB
+  * CPU time: 0.585s
+  * wallclock time: 0.610s
+
+----------------------------------------
+Wallclock time:	0.676
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut300000.network2_network2_rewmin_T8-K20&quot;,
+  &quot;benchmark-id&quot;: &quot;network2_network2_rewmin_T8-K20&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut300000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 300000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network2.prism --prop network.props rewmin -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000&quot;
+  ],
+  &quot;time-limit&quot;: 90.0,
+  &quot;log-dir&quot;: &quot;experiments/representative/logs&quot;,
+  &quot;log&quot;: &quot;experiments/representative/logs/cut300000_network2_network2_rewmin_T8-K20.log&quot;,
+  &quot;wallclock-time&quot;: 0.676,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 300000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;network2_network2_rewmin_T8-K20&quot;,
+    &quot;benchmark-set&quot;: &quot;network2&quot;,
+    &quot;name&quot;: &quot;network2&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;T&quot;: 8,
+        &quot;K&quot;: 20
+      },
+      &quot;file&quot;: &quot;models/network/network2.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;models/network/network.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 300000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut300000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 300000
+  },
+  &quot;size-threshold&quot;: 300000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.015,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 4589,
+    &quot;transitions&quot;: 14020,
+    &quot;choices&quot;: 6973,
+    &quot;observations&quot;: 1173
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 300002,
+    &quot;choices&quot;: 598000,
+    &quot;transitions&quot;: 865386,
+    &quot;expl-time&quot;: 0.365,
+    &quot;build-time&quot;: 0.044,
+    &quot;chk-time&quot;: 0.112
+  },
+  &quot;result&quot;: &quot;≤ 5.475999926&quot;,
+  &quot;total-chk-time&quot;: 0.592
+}
+</pre></details>
+</body>
+</html>

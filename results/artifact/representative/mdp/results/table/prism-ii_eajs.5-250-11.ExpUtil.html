@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - eajs.5-250-11.ExpUtil</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>eajs.5-250-11.ExpUtil</h1>
+<p class="sub">prism-ii &middot; qcomp &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>266763997439241350774737/26588814358957503287787</code></p>
+<p class="sub">reference result: <code>10.03294069</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>15.869 s</td></tr><tr><th>result</th><td>10.032940688435431</td></tr><tr><th>relative difference</th><td>1.44e-15</td></tr><tr><th>states</th><td>3,049,471</td></tr></table>
+<p class="sub">prism-ii_eajs.5-250-11.ExpUtil.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g eajs.5.prism eajs.props --prop ExpUtil -const energy_capacity=250,B=11 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	eajs.5-250-11.ExpUtil
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:37:51 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g eajs.5.prism eajs.props --prop ExpUtil -const 'energy_capacity=250,B=11' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;eajs.5.prism&quot;...
+
+Type:        MDP
+Modules:     Battery Process_1 Process_2 Resources Process_3 Process_5 Process_4
+Actions:     [tick]
+Variables:   battery_load failure_1 loc_1 t_1 t_2 loc_2 boost_1 user_1 t_3 loc_3 loc_5 t_5 t_4 loc_4
+Labels:      &quot;localFailure&quot; &quot;noLocalFailure&quot; &quot;emptyBattery&quot; &quot;process_1_finishes&quot; &quot;process_2_finishes&quot; &quot;process_3_finishes&quot; &quot;process_4_finishes&quot; &quot;process_5_finishes&quot;
+Rewards:     &quot;energyLocal&quot; &quot;utilityLocal&quot;
+
+Parsing properties file &quot;eajs.props&quot;...
+
+1 property:
+(1) &quot;ExpUtil&quot;: R{&quot;utilityLocal&quot;}max=? [ F emptyBattery ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;ExpUtil&quot;: R{&quot;utilityLocal&quot;}max=? [ F emptyBattery ]
+Model constants: energy_capacity=250
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: energy_capacity=250
+
+Computing reachable states...
+
+Reachability (BFS): 73 iterations in 0.06 seconds (average 0.000822, setup 0.00)
+
+Time for model construction: 0.243 seconds.
+
+Type:        MDP
+States:      3049471 (1 initial)
+Transitions: 6977654
+
+Transition matrix: 25363 nodes (7 terminal), 6977654 minterms, vars: 43r/43c/5nd
+
+Prob0E: 250 iterations in 0.16 seconds (average 0.000640, setup 0.00)
+
+Prob1A: 1 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+goal = 13476, inf = 0, maybe = 3035995
+Time for computing an upper bound for expected reward: 1.75 seconds.
+Upper bound for max expectation (variant 2): 10488.0
+
+Computing remaining rewards...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=3049471, nc=4237377, nnz=6946802, k=10] [107.3 MB]
+Building sparse matrix (transition rewards)... [n=3049471, nc=4237377, nnz=105040, k=10] [29.0 MB]
+Creating vector for state rewards... [23.3 MB]
+Creating vector for inf... [23.3 MB]
+Creating vector for lower bounds... [23.3 MB]
+Creating vector for upper bounds... [23.3 MB]
+Allocating iteration vectors... [4 x 23.3 MB]
+TOTAL: [322.4 MB]
+
+Starting iterations (interval iteration)...
+Iteration 153: max relative diff=2086.089274, 5.02 sec so far
+Max relative diff between upper and lower bound on convergence: 0
+Iterative method: 249 iterations in 13.21 seconds (average 0.032892, setup 5.02)
+Maximum finite value in solution vector at end of interval iteration: 10.06278478984203
+
+Value in the initial state: 10.032940688435431
+
+Time for model checking: 15.27 seconds.
+
+Result: 10.032940688435431 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	15.869
+Return code:	0
+</pre>
+</body></html>

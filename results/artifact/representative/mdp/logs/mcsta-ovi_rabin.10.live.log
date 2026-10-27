@@ -1,0 +1,22 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta rabin.10.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	rabin.10.live
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta rabin.10.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+rabin.10.jani:model: info: rabin.10 is an MDP model.
+rabin.10.jani: info: Need 56 bytes per state.
+rabin.10.jani: error: Out of memory.
+
+----------------------------------------
+Wallclock time:	77.999
+Return code:	0

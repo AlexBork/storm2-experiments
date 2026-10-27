@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel avoid-mdp.15-0.2.goal_max.tra,sta,lab avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	avoid-mdp.15-0.2.goal_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 21:28:04 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'avoid-mdp.15-0.2.goal_max.tra,sta,lab' avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "avoid-mdp.15-0.2.goal_max.tra", "avoid-mdp.15-0.2.goal_max.sta", "avoid-mdp.15-0.2.goal_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "avoid-mdp.15-0.2.goal_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ !"avoid" U "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !"avoid" U "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 9.182 seconds.
+
+Type:        IMDP
+States:      404101 (1 initial)
+Transitions: 4426260
+Choices:     1616404
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 58 iterations and 6.986 seconds.
+Starting Prob1 (max)...
+
+----------------------------------------
+Wallclock time:	91.042
+Return code:	None
+Computation aborted after 91.042 seconds since the time limit of 90 seconds was exceeded.

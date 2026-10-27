@@ -1,0 +1,102 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g consensus.6.prism consensus.props --prop c2 -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	consensus.6-2.c2
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:49:58 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g consensus.6.prism consensus.props --prop c2 -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "consensus.6.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4 process5 process6
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4 pc5 coin5 pc6 coin6
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+Model constants: K=2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: K=2
+
+Computing reachable states...
+
+Reachability (BFS): 149 iterations in 0.03 seconds (average 0.000201, setup 0.00)
+
+Time for model construction: 0.046 seconds.
+
+Type:        MDP
+States:      1258240 (1 initial)
+Transitions: 6236736
+
+Transition matrix: 7075 nodes (3 terminal), 6236736 minterms, vars: 24r/24c/6nd
+
+Prob0E: 97 iterations in 0.07 seconds (average 0.000722, setup 0.00)
+
+Prob1A: 73 iterations in 0.03 seconds (average 0.000411, setup 0.00)
+
+yes = 13635, no = 880138, maybe = 364467
+
+Computing remaining probabilities...
+Engine: Sparse
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=1258240, nc=1744374, nnz=2187126, k=6] [27.9 MB]
+Creating vector for yes... [9.6 MB]
+Creating vector for maybe... [9.6 MB]
+Allocating iteration vectors... [4 x 9.6 MB]
+TOTAL: [85.5 MB]
+
+Starting iterations (interval iteration)...
+Iteration 515: max relative diff=1.843315, 5.01 sec so far
+Iteration 1031: max relative diff=0.246718, 10.02 sec so far
+Iteration 1546: max relative diff=0.051355, 15.03 sec so far
+Iteration 2061: max relative diff=0.011549, 20.04 sec so far
+Iteration 2577: max relative diff=0.002623, 25.05 sec so far
+Iteration 3089: max relative diff=0.000605, 30.06 sec so far
+Iteration 3605: max relative diff=0.000138, 35.07 sec so far
+Iteration 4121: max relative diff=0.000031, 40.08 sec so far
+Iteration 4634: max relative diff=0.000007, 45.09 sec so far
+Iteration 5150: max relative diff=0.000002, 50.10 sec so far
+Max relative diff between upper and lower bound on convergence: 9.95105E-07
+Iterative method (interval iteration): 5326 iterations in 52.13 seconds (average 0.009728, setup 0.32)
+
+Value in the initial state: 0.29435030518006866
+
+Time for model checking: 52.247 seconds.
+
+Result: 0.29435030518006866 (+/- 2.9290938865709883E-7; rel err 9.951047561439138E-7)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	52.597
+Return code:	0

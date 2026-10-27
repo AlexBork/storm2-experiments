@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani firewire.false.jani --janiproperty deadline --constants delay=36,deadline=800 --exact
+Benchmark:	firewire.false-36-800.deadline
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 20:48:36 2026
+Command line arguments: --jani firewire.false.jani --janiproperty deadline --constants 'delay=36,deadline=800' --exact
+Current working directory: /tmp/invocation-16n1jr03
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 2.126s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	212268
+Transitions: 	481788
+Choices: 	478752
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8))) -> 2 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "deadline": Pmin=? [true Urew{"time"}<=800 (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8)))] ...
+Result (for initial states): 481/512 (approx. 0.939453125)
+Time for model checking: 79.290s.
+
+----------------------------------------
+Wallclock time:	81.595
+Return code:	0

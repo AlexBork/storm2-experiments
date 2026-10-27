@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.discr004s.refuel_refuel_prbmax_N06</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.discr004s.refuel_refuel_prbmax_N06</h1>
+<dl>
+<dt>Benchmark</dt><dd>refuel_refuel_prbmax_N06</dd>
+<dt>Configuration</dt><dd>storm.discr004s</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≤ 0.7129687089</dd>
+<dt>Wall-clock time (s)</dt><dd>0.081</dd>
+<dt>Time limit (s)</dt><dd>60.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/smoke/logs/discr004s_refuel_refuel_prbmax_N06.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static</pre>
+<p>Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Benchmark:	refuel_refuel_prbmax_N06
+Configuration:	discr004s
+Repetition:	1
+Time limit:	60
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Mon Oct 26 22:18:28 2026
+Command line arguments: --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Current working directory: /tmp/invocation-7xf2i8mg
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.006s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	208
+Transitions: 	998
+Choices: 	574
+Observations: 	50
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -&gt; 3 item(s)
+   * init -&gt; 1 item(s)
+   * notbad -&gt; 159 item(s)
+   * goal -&gt; 4 item(s)
+Choice Labels: 	7 labels
+   * placement -&gt; 1 item(s)
+   * south -&gt; 129 item(s)
+   * refuel -&gt; 12 item(s)
+   * east -&gt; 129 item(s)
+   * north -&gt; 127 item(s)
+   * empty -&gt; 46 item(s)
+   * west -&gt; 127 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Pmax=? [&quot;notbad&quot; U &quot;goal&quot;]&#x27;
+Computing an over-approximation via belief MDP discretization...
+Belief exploration completed: 5473 beliefs discovered, 5469 beliefs explored.
+Constructed belief MDP: 5471 states, 12463 choices, 43605 transitions.
+Time for exploring beliefs: 13ms.
+Time for building the belief MDP: 1ms.
+Time for analyzing the belief MDP: 2ms.
+
+Result: ≤ 0.7129687089
+Time for POMDP analysis: 0.019s.
+
+Performance statistics:
+  * peak memory usage: 69MB
+  * CPU time: 0.037s
+  * wallclock time: 0.028s
+
+----------------------------------------
+Wallclock time:	0.081
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.discr004s.refuel_refuel_prbmax_N06&quot;,
+  &quot;benchmark-id&quot;: &quot;refuel_refuel_prbmax_N06&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;discr004s&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static&quot;
+  ],
+  &quot;time-limit&quot;: 60.0,
+  &quot;log-dir&quot;: &quot;experiments/smoke/logs&quot;,
+  &quot;log&quot;: &quot;experiments/smoke/logs/discr004s_refuel_refuel_prbmax_N06.log&quot;,
+  &quot;wallclock-time&quot;: 0.081,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Over-approximation with discretization, resolution 4, triangulation mode static&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;refuel_refuel_prbmax_N06&quot;,
+    &quot;benchmark-set&quot;: &quot;refuel&quot;,
+    &quot;name&quot;: &quot;refuel&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;N&quot;: 6
+      },
+      &quot;file&quot;: &quot;models/refuel/refuel.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;prbmax&quot;,
+      &quot;file&quot;: &quot;models/refuel/refuel.props&quot;,
+      &quot;type&quot;: &quot;prb&quot;,
+      &quot;dir&quot;: &quot;max&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Over-approximation with discretization, resolution 4, triangulation mode static&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;discr004s&quot;,
+    &quot;family&quot;: &quot;discretisation&quot;
+  },
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.006,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 208,
+    &quot;transitions&quot;: 998,
+    &quot;choices&quot;: 574,
+    &quot;observations&quot;: 50
+  },
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 5471,
+    &quot;choices&quot;: 12463,
+    &quot;transitions&quot;: 43605,
+    &quot;expl-time&quot;: 0.013,
+    &quot;build-time&quot;: 0.001,
+    &quot;chk-time&quot;: 0.002
+  },
+  &quot;result&quot;: &quot;≤ 0.7129687089&quot;,
+  &quot;total-chk-time&quot;: 0.019
+}
+</pre></details>
+</body>
+</html>

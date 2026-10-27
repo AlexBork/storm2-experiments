@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani manymecs.jani --janiproperty prob_max --constants N=10000 --exact --bisimulation
+Benchmark:	manymecs.10000.prob_max
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:05:13 2026
+Command line arguments: --jani manymecs.jani --janiproperty prob_max --constants N=10000 --exact --bisimulation
+Current working directory: /tmp/invocation-rl913r2n
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 0.075s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	30002
+Transitions: 	90002
+Choices: 	60002
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * p1win -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.059s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	20003
+Transitions: 	40007
+Choices: 	30005
+Reward Models:  none
+State Labels: 	2 labels
+   * p1win -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? [F "p1win"] ...
+Result (for initial states): 1/2 (approx. 0.5). Exact solution.
+Time for model checking: 0.672s.
+
+----------------------------------------
+Wallclock time:	0.852
+Return code:	0

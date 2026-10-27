@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --sound
+Benchmark:	wlan-large.2.E_1
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 21:05:52 2026
+Command line arguments: --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --sound
+Current working directory: /tmp/invocation-c3kth9kd
+
+Time for model input parsing: 0.011s.
+
+Time for model construction: 9.069s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3236578
+Transitions: 	6143745
+Choices: 	6123016
+Reward Models:  E_and_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success1_seen -> 85 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "E_1": R[exp]{"E_and_rate_reward"}max=? [F success1_seen] ...
+Result (for initial states): 46463.76724
+Time for model checking: 5.407s.
+
+----------------------------------------
+Wallclock time:	14.551
+Return code:	0

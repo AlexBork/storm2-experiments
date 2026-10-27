@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm-POMDP results</title>
+<link rel="stylesheet" href="results.css">
+</head>
+<body>
+<h1>Storm-POMDP benchmark results</h1>
+<p class="sub">Each measured run links to its invocation and log. Click a column header to sort; use the buttons to show or hide configurations.</p>
+<p class="sub">8 instances · 34 configurations · 272 recorded runs · cumulative runtime: 0h 55m 46s. 21 killed, 249 successful, 2 timeout.</p>
+<p class="sub">Sources: experiments/representative/logs.</p>
+<p class="sub">Green marks the tightest successful bound among visible configurations, comparing cut-offs separately from discretisation. Bounds are compared at six decimal places; runtime breaks ties. For maximisation, larger cut-off bounds and smaller discretisation bounds are better; minimisation reverses these directions. Marking is the same in every display view. Killed means SIGKILL without a recorded timeout.</p>
+<div class="controls"><label>Filter benchmarks <input id="filter" type="search" placeholder="Name, parameters, or objective"></label> <label>Cell display <select id="metric"><option value="both">Bound &amp; runtime</option><option value="runtime">Runtime (s)</option><option value="bound">Bound</option></select></label> <span id="row-count" role="status"></span></div>
+<div id="columns" class="controls" aria-label="Visible configurations"><button type="button" data-all="true">Show all</button> <button type="button" data-all="false">Hide all</button>
+<span class="family">cutoff:</span>
+<button type="button" class="toggle on" data-col="storm.cut10000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000">cut10000</button>
+<button type="button" class="toggle on" data-col="storm.cut20000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000">cut20000</button>
+<button type="button" class="toggle on" data-col="storm.cut30000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000">cut30000</button>
+<button type="button" class="toggle on" data-col="storm.cut40000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000">cut40000</button>
+<button type="button" class="toggle on" data-col="storm.cut50000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000">cut50000</button>
+<button type="button" class="toggle on" data-col="storm.cut60000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 60000">cut60000</button>
+<button type="button" class="toggle on" data-col="storm.cut70000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 70000">cut70000</button>
+<button type="button" class="toggle on" data-col="storm.cut80000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 80000">cut80000</button>
+<button type="button" class="toggle on" data-col="storm.cut90000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 90000">cut90000</button>
+<button type="button" class="toggle on" data-col="storm.cut100000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 100000">cut100000</button>
+<button type="button" class="toggle on" data-col="storm.cut200000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 200000">cut200000</button>
+<button type="button" class="toggle on" data-col="storm.cut300000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 300000">cut300000</button>
+<button type="button" class="toggle on" data-col="storm.cut400000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 400000">cut400000</button>
+<button type="button" class="toggle on" data-col="storm.cut500000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 500000">cut500000</button>
+<button type="button" class="toggle on" data-col="storm.cut600000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 600000">cut600000</button>
+<button type="button" class="toggle on" data-col="storm.cut700000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 700000">cut700000</button>
+<button type="button" class="toggle on" data-col="storm.cut800000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 800000">cut800000</button>
+<button type="button" class="toggle on" data-col="storm.cut900000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 900000">cut900000</button>
+<button type="button" class="toggle on" data-col="storm.cut1000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 1000000">cut1000000</button>
+<button type="button" class="toggle on" data-col="storm.cut2000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 2000000">cut2000000</button>
+<button type="button" class="toggle on" data-col="storm.cut3000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 3000000">cut3000000</button>
+<button type="button" class="toggle on" data-col="storm.cut4000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 4000000">cut4000000</button>
+<button type="button" class="toggle on" data-col="storm.cut5000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 5000000">cut5000000</button>
+<button type="button" class="toggle on" data-col="storm.cut6000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 6000000">cut6000000</button>
+<button type="button" class="toggle on" data-col="storm.cut7000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 7000000">cut7000000</button>
+<button type="button" class="toggle on" data-col="storm.cut8000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 8000000">cut8000000</button>
+<button type="button" class="toggle on" data-col="storm.cut9000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 9000000">cut9000000</button>
+<button type="button" class="toggle on" data-col="storm.cut10000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000000">cut10000000</button>
+<button type="button" class="toggle on" data-col="storm.cut20000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000000">cut20000000</button>
+<button type="button" class="toggle on" data-col="storm.cut30000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000000">cut30000000</button>
+<button type="button" class="toggle on" data-col="storm.cut40000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000000">cut40000000</button>
+<button type="button" class="toggle on" data-col="storm.cut50000000" aria-pressed="true" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000000">cut50000000</button>
+<span class="family">discretisation:</span>
+<button type="button" class="toggle on" data-col="storm.discr004s" aria-pressed="true" title="Storm-pomdp; Over-approximation with discretization, resolution 4, triangulation mode static">discr004s</button>
+<button type="button" class="toggle on" data-col="storm.discr005s" aria-pressed="true" title="Storm-pomdp; Over-approximation with discretization, resolution 5, triangulation mode static">discr005s</button>
+</div>
+<div class="table-scroll"><table id="results">
+<caption>Bounds and recorded wall-clock runtimes in seconds. Configuration columns sort by runtime, or by value in Bound view; unsuccessful and missing results stay last.</caption>
+<thead><tr>
+<th scope="col" data-kind="text"><button type="button" class="sort">benchmark</button></th>
+<th scope="col" data-kind="text"><button type="button" class="sort">objective</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">states</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">choices</button></th>
+<th scope="col" data-kind="number"><button type="button" class="sort">observations</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut10000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000"><button type="button" class="sort">cut10000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut20000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000"><button type="button" class="sort">cut20000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut30000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000"><button type="button" class="sort">cut30000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut40000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000"><button type="button" class="sort">cut40000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut50000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000"><button type="button" class="sort">cut50000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut60000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 60000"><button type="button" class="sort">cut60000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut70000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 70000"><button type="button" class="sort">cut70000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut80000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 80000"><button type="button" class="sort">cut80000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut90000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 90000"><button type="button" class="sort">cut90000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut100000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 100000"><button type="button" class="sort">cut100000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut200000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 200000"><button type="button" class="sort">cut200000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut300000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 300000"><button type="button" class="sort">cut300000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut400000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 400000"><button type="button" class="sort">cut400000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut500000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 500000"><button type="button" class="sort">cut500000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut600000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 600000"><button type="button" class="sort">cut600000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut700000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 700000"><button type="button" class="sort">cut700000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut800000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 800000"><button type="button" class="sort">cut800000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut900000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 900000"><button type="button" class="sort">cut900000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut1000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 1000000"><button type="button" class="sort">cut1000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut2000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 2000000"><button type="button" class="sort">cut2000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut3000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 3000000"><button type="button" class="sort">cut3000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut4000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 4000000"><button type="button" class="sort">cut4000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut5000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 5000000"><button type="button" class="sort">cut5000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut6000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 6000000"><button type="button" class="sort">cut6000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut7000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 7000000"><button type="button" class="sort">cut7000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut8000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 8000000"><button type="button" class="sort">cut8000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut9000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 9000000"><button type="button" class="sort">cut9000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut10000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 10000000"><button type="button" class="sort">cut10000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut20000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 20000000"><button type="button" class="sort">cut20000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut30000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 30000000"><button type="button" class="sort">cut30000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut40000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 40000000"><button type="button" class="sort">cut40000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.cut50000000" title="Storm-pomdp; Under-approximation with cut-offs, size threshold 50000000"><button type="button" class="sort">cut50000000</button></th>
+<th scope="col" data-kind="run" data-col="storm.discr004s" title="Storm-pomdp; Over-approximation with discretization, resolution 4, triangulation mode static"><button type="button" class="sort">discr004s</button></th>
+<th scope="col" data-kind="run" data-col="storm.discr005s" title="Storm-pomdp; Over-approximation with discretization, resolution 5, triangulation mode static"><button type="button" class="sort">discr005s</button></th>
+</tr></thead>
+<tbody>
+<tr data-direction="min" data-search="grid_grid_rewmin_sl0.3 grid/sl0.3 rew min">
+<td data-sort="grid/sl0.3" title="grid_grid_rewmin_sl0.3">grid/sl0.3</td>
+<td data-sort="rew min" title="grid_grid_rewmin_sl0.3">rew min</td>
+<td data-sort="17" title="grid_grid_rewmin_sl0.3">17</td>
+<td data-sort="62" title="grid_grid_rewmin_sl0.3">62</td>
+<td data-sort="3" title="grid_grid_rewmin_sl0.3">3</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.068" data-bound="6.432223762" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut10000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.432223762; wall-clock: 0.068s"><span class="bound">≤ 6.432223762</span> <span class="runtime">(0.07s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.129" data-bound="6.432223762" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut20000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.432223762; wall-clock: 0.129s"><span class="bound">≤ 6.432223762</span> <span class="runtime">(0.13s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.142" data-bound="6.432223762" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut30000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.432223762; wall-clock: 0.142s"><span class="bound">≤ 6.432223762</span> <span class="runtime">(0.14s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.18" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut40000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.18s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.203" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut50000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.203s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.258" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut60000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.258s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.292" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut70000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.292s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.321" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut80000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.321s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.32s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.372" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut90000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.372s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.37s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.405" data-bound="6.43222371" data-relation="≤" data-quality="6.432224">
+<a href="logs/storm.cut100000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.43222371; wall-clock: 0.405s"><span class="bound">≤ 6.43222371</span> <span class="runtime">(0.41s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.803" data-bound="6.367085247" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut200000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085247; wall-clock: 0.803s"><span class="bound">≤ 6.367085247</span> <span class="runtime">(0.80s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="1.196" data-bound="6.367085247" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut300000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085247; wall-clock: 1.196s"><span class="bound">≤ 6.367085247</span> <span class="runtime">(1.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.583" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut400000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 1.583s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(1.58s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.851" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut500000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 1.851s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(1.85s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="2.362" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut600000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 2.362s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(2.36s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="2.725" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut700000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 2.725s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(2.73s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="3.298" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut800000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 3.298s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(3.30s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="3.551" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut900000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 3.551s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(3.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="4.065" data-bound="6.367085224" data-relation="≤" data-quality="6.367085">
+<a href="logs/storm.cut1000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.367085224; wall-clock: 4.065s"><span class="bound">≤ 6.367085224</span> <span class="runtime">(4.07s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="8.14" data-bound="6.336628066" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut2000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628066; wall-clock: 8.14s"><span class="bound">≤ 6.336628066</span> <span class="runtime">(8.14s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="12.261" data-bound="6.336628066" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut3000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628066; wall-clock: 12.261s"><span class="bound">≤ 6.336628066</span> <span class="runtime">(12.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="16.08" data-bound="6.336628066" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut4000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628066; wall-clock: 16.08s"><span class="bound">≤ 6.336628066</span> <span class="runtime">(16.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="17.841" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut5000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 17.841s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(17.84s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="23.74" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut6000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 23.74s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(23.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="25.876" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut7000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 25.876s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(25.88s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="31.539" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut8000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 31.539s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(31.54s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="33.094" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut9000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 33.094s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(33.09s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="37.799" data-bound="6.336628057" data-relation="≤" data-quality="6.336628">
+<a href="logs/storm.cut10000000.grid_grid_rewmin_sl0.3.html" title="successful; result: ≤ 6.336628057; wall-clock: 37.799s"><span class="bound">≤ 6.336628057</span> <span class="runtime">(37.80s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut20000000" data-family="cutoff" data-status="killed" data-runtime="54.484" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.grid_grid_rewmin_sl0.3.html" title="killed; result: unavailable; wall-clock: 54.484s"><span class="bound">killed</span> <span class="runtime">(54.48s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="71.755" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.grid_grid_rewmin_sl0.3.html" title="killed; result: unavailable; wall-clock: 71.755s"><span class="bound">killed</span> <span class="runtime">(71.75s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut40000000" data-family="cutoff" data-status="killed" data-runtime="71.178" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.grid_grid_rewmin_sl0.3.html" title="killed; result: unavailable; wall-clock: 71.178s"><span class="bound">killed</span> <span class="runtime">(71.18s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut50000000" data-family="cutoff" data-status="killed" data-runtime="71.108" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.grid_grid_rewmin_sl0.3.html" title="killed; result: unavailable; wall-clock: 71.108s"><span class="bound">killed</span> <span class="runtime">(71.11s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.035" data-bound="5.402483885" data-relation="≥" data-quality="5.402484">
+<a href="logs/storm.discr004s.grid_grid_rewmin_sl0.3.html" title="successful; result: ≥ 5.402483885; wall-clock: 0.035s"><span class="bound">≥ 5.402483885</span> <span class="runtime">(0.04s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.108" data-bound="5.790445508" data-relation="≥" data-quality="5.790446">
+<a href="logs/storm.discr005s.grid_grid_rewmin_sl0.3.html" title="successful; result: ≥ 5.790445508; wall-clock: 0.108s"><span class="bound">≥ 5.790445508</span> <span class="runtime">(0.11s)</span></a>
+</td>
+</tr>
+<tr data-direction="max" data-search="grid-avoid_grid-avoid_prbmax_sl0.1 grid-avoid/sl0.1 prb max">
+<td data-sort="grid-avoid/sl0.1" title="grid-avoid_grid-avoid_prbmax_sl0.1">grid-avoid/sl0.1</td>
+<td data-sort="prb max" title="grid-avoid_grid-avoid_prbmax_sl0.1">prb max</td>
+<td data-sort="17" title="grid-avoid_grid-avoid_prbmax_sl0.1">17</td>
+<td data-sort="59" title="grid-avoid_grid-avoid_prbmax_sl0.1">59</td>
+<td data-sort="4" title="grid-avoid_grid-avoid_prbmax_sl0.1">4</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.084" data-bound="0.9019685106" data-relation="≥" data-quality="0.901969">
+<a href="logs/storm.cut10000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9019685106; wall-clock: 0.084s"><span class="bound">≥ 0.9019685106</span> <span class="runtime">(0.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.123" data-bound="0.9019685106" data-relation="≥" data-quality="0.901969">
+<a href="logs/storm.cut20000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9019685106; wall-clock: 0.123s"><span class="bound">≥ 0.9019685106</span> <span class="runtime">(0.12s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.149" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut30000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.149s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.174" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut40000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.174s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.17s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.203" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut50000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.203s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.203" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut60000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.203s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.214" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut70000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.214s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.21s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.283" data-bound="0.9202231666" data-relation="≥" data-quality="0.920223">
+<a href="logs/storm.cut80000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9202231666; wall-clock: 0.283s"><span class="bound">≥ 0.9202231666</span> <span class="runtime">(0.28s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.333" data-bound="0.9237564089" data-relation="≥" data-quality="0.923756">
+<a href="logs/storm.cut90000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9237564089; wall-clock: 0.333s"><span class="bound">≥ 0.9237564089</span> <span class="runtime">(0.33s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.324" data-bound="0.9237564089" data-relation="≥" data-quality="0.923756">
+<a href="logs/storm.cut100000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9237564089; wall-clock: 0.324s"><span class="bound">≥ 0.9237564089</span> <span class="runtime">(0.32s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.693" data-bound="0.9237564089" data-relation="≥" data-quality="0.923756">
+<a href="logs/storm.cut200000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9237564089; wall-clock: 0.693s"><span class="bound">≥ 0.9237564089</span> <span class="runtime">(0.69s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="1.056" data-bound="0.9237564089" data-relation="≥" data-quality="0.923756">
+<a href="logs/storm.cut300000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9237564089; wall-clock: 1.056s"><span class="bound">≥ 0.9237564089</span> <span class="runtime">(1.06s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.409" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut400000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 1.409s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(1.41s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.732" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut500000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 1.732s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(1.73s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="2.122" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut600000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 2.122s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(2.12s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="2.473" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut700000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 2.473s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(2.47s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.866" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut800000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 2.866s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(2.87s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="3.294" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut900000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 3.294s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(3.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="3.153" data-bound="0.9272459636" data-relation="≥" data-quality="0.927246">
+<a href="logs/storm.cut1000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9272459636; wall-clock: 3.153s"><span class="bound">≥ 0.9272459636</span> <span class="runtime">(3.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="6.518" data-bound="0.9278126059" data-relation="≥" data-quality="0.927813">
+<a href="logs/storm.cut2000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9278126059; wall-clock: 6.518s"><span class="bound">≥ 0.9278126059</span> <span class="runtime">(6.52s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="10.831" data-bound="0.9278126059" data-relation="≥" data-quality="0.927813">
+<a href="logs/storm.cut3000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9278126059; wall-clock: 10.831s"><span class="bound">≥ 0.9278126059</span> <span class="runtime">(10.83s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="14.028" data-bound="0.9278126059" data-relation="≥" data-quality="0.927813">
+<a href="logs/storm.cut4000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9278126059; wall-clock: 14.028s"><span class="bound">≥ 0.9278126059</span> <span class="runtime">(14.03s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="16.512" data-bound="0.9278126059" data-relation="≥" data-quality="0.927813">
+<a href="logs/storm.cut5000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9278126059; wall-clock: 16.512s"><span class="bound">≥ 0.9278126059</span> <span class="runtime">(16.51s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="21.424" data-bound="0.9283787194" data-relation="≥" data-quality="0.928379">
+<a href="logs/storm.cut6000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9283787194; wall-clock: 21.424s"><span class="bound">≥ 0.9283787194</span> <span class="runtime">(21.42s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="26.125" data-bound="0.9283787194" data-relation="≥" data-quality="0.928379">
+<a href="logs/storm.cut7000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9283787194; wall-clock: 26.125s"><span class="bound">≥ 0.9283787194</span> <span class="runtime">(26.12s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="27.944" data-bound="0.9283787194" data-relation="≥" data-quality="0.928379">
+<a href="logs/storm.cut8000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9283787194; wall-clock: 27.944s"><span class="bound">≥ 0.9283787194</span> <span class="runtime">(27.94s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="29.886" data-bound="0.9283787194" data-relation="≥" data-quality="0.928379">
+<a href="logs/storm.cut9000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9283787194; wall-clock: 29.886s"><span class="bound">≥ 0.9283787194</span> <span class="runtime">(29.89s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="33.478" data-bound="0.9283787194" data-relation="≥" data-quality="0.928379">
+<a href="logs/storm.cut10000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≥ 0.9283787194; wall-clock: 33.478s"><span class="bound">≥ 0.9283787194</span> <span class="runtime">(33.48s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut20000000" data-family="cutoff" data-status="killed" data-runtime="52.225" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="killed; result: unavailable; wall-clock: 52.225s"><span class="bound">killed</span> <span class="runtime">(52.23s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="73.598" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="killed; result: unavailable; wall-clock: 73.598s"><span class="bound">killed</span> <span class="runtime">(73.60s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut40000000" data-family="cutoff" data-status="killed" data-runtime="75.549" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="killed; result: unavailable; wall-clock: 75.549s"><span class="bound">killed</span> <span class="runtime">(75.55s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut50000000" data-family="cutoff" data-status="killed" data-runtime="73.497" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="killed; result: unavailable; wall-clock: 73.497s"><span class="bound">killed</span> <span class="runtime">(73.50s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.07" data-bound="1.0" data-relation="≤" data-quality="1.0">
+<a href="logs/storm.discr004s.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≤ 1; wall-clock: 0.07s"><span class="bound">≤ 1</span> <span class="runtime">(0.07s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.107" data-bound="1.0" data-relation="≤" data-quality="1.0">
+<a href="logs/storm.discr005s.grid-avoid_grid-avoid_prbmax_sl0.1.html" title="successful; result: ≤ 1; wall-clock: 0.107s"><span class="bound">≤ 1</span> <span class="runtime">(0.11s)</span></a>
+</td>
+</tr>
+<tr data-direction="min" data-search="samplerocks_samplerocks_rewmin_n12 samplerocks/n12 rew min">
+<td data-sort="samplerocks/N12" title="samplerocks_samplerocks_rewmin_N12">samplerocks/N12</td>
+<td data-sort="rew min" title="samplerocks_samplerocks_rewmin_N12">rew min</td>
+<td data-sort="6553" title="samplerocks_samplerocks_rewmin_N12">6,553</td>
+<td data-sort="31745" title="samplerocks_samplerocks_rewmin_N12">31,745</td>
+<td data-sort="1645" title="samplerocks_samplerocks_rewmin_N12">1,645</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.156" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut10000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.156s"><span class="bound">≤ 38</span> <span class="runtime">(0.16s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.182" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut20000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.182s"><span class="bound">≤ 38</span> <span class="runtime">(0.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.216" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut30000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.216s"><span class="bound">≤ 38</span> <span class="runtime">(0.22s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.236" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut40000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.236s"><span class="bound">≤ 38</span> <span class="runtime">(0.24s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.26" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut50000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.26s"><span class="bound">≤ 38</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.269" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut60000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.269s"><span class="bound">≤ 38</span> <span class="runtime">(0.27s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.304" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut70000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.304s"><span class="bound">≤ 38</span> <span class="runtime">(0.30s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.306" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut80000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.306s"><span class="bound">≤ 38</span> <span class="runtime">(0.31s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.342" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut90000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.342s"><span class="bound">≤ 38</span> <span class="runtime">(0.34s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.361" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut100000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.361s"><span class="bound">≤ 38</span> <span class="runtime">(0.36s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.657" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut200000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.657s"><span class="bound">≤ 38</span> <span class="runtime">(0.66s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="0.965" data-bound="38.0" data-relation="≤" data-quality="38.0">
+<a href="logs/storm.cut300000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 38; wall-clock: 0.965s"><span class="bound">≤ 38</span> <span class="runtime">(0.96s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.267" data-bound="37.67181054" data-relation="≤" data-quality="37.671811">
+<a href="logs/storm.cut400000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 37.67181054; wall-clock: 1.267s"><span class="bound">≤ 37.67181054</span> <span class="runtime">(1.27s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.596" data-bound="35.99539869" data-relation="≤" data-quality="35.995399">
+<a href="logs/storm.cut500000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.99539869; wall-clock: 1.596s"><span class="bound">≤ 35.99539869</span> <span class="runtime">(1.60s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="1.987" data-bound="35.99539869" data-relation="≤" data-quality="35.995399">
+<a href="logs/storm.cut600000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.99539869; wall-clock: 1.987s"><span class="bound">≤ 35.99539869</span> <span class="runtime">(1.99s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="2.312" data-bound="35.41220217" data-relation="≤" data-quality="35.412202">
+<a href="logs/storm.cut700000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.41220217; wall-clock: 2.312s"><span class="bound">≤ 35.41220217</span> <span class="runtime">(2.31s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.636" data-bound="35.41220217" data-relation="≤" data-quality="35.412202">
+<a href="logs/storm.cut800000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.41220217; wall-clock: 2.636s"><span class="bound">≤ 35.41220217</span> <span class="runtime">(2.64s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="2.946" data-bound="35.41220217" data-relation="≤" data-quality="35.412202">
+<a href="logs/storm.cut900000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.41220217; wall-clock: 2.946s"><span class="bound">≤ 35.41220217</span> <span class="runtime">(2.95s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="3.351" data-bound="35.41220217" data-relation="≤" data-quality="35.412202">
+<a href="logs/storm.cut1000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 35.41220217; wall-clock: 3.351s"><span class="bound">≤ 35.41220217</span> <span class="runtime">(3.35s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="6.719" data-bound="33.93442626" data-relation="≤" data-quality="33.934426">
+<a href="logs/storm.cut2000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 33.93442626; wall-clock: 6.719s"><span class="bound">≤ 33.93442626</span> <span class="runtime">(6.72s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="10.549" data-bound="33.23809526" data-relation="≤" data-quality="33.238095">
+<a href="logs/storm.cut3000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 33.23809526; wall-clock: 10.549s"><span class="bound">≤ 33.23809526</span> <span class="runtime">(10.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="14.252" data-bound="33.23809524" data-relation="≤" data-quality="33.238095">
+<a href="logs/storm.cut4000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 33.23809524; wall-clock: 14.252s"><span class="bound">≤ 33.23809524</span> <span class="runtime">(14.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="18.738" data-bound="33.23809524" data-relation="≤" data-quality="33.238095">
+<a href="logs/storm.cut5000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 33.23809524; wall-clock: 18.738s"><span class="bound">≤ 33.23809524</span> <span class="runtime">(18.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="21.875" data-bound="32.26657518" data-relation="≤" data-quality="32.266575">
+<a href="logs/storm.cut6000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 32.26657518; wall-clock: 21.875s"><span class="bound">≤ 32.26657518</span> <span class="runtime">(21.88s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="25.859" data-bound="32.26657518" data-relation="≤" data-quality="32.266575">
+<a href="logs/storm.cut7000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 32.26657518; wall-clock: 25.859s"><span class="bound">≤ 32.26657518</span> <span class="runtime">(25.86s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="29.803" data-bound="31.91176475" data-relation="≤" data-quality="31.911765">
+<a href="logs/storm.cut8000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 31.91176475; wall-clock: 29.803s"><span class="bound">≤ 31.91176475</span> <span class="runtime">(29.80s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="34.268" data-bound="31.91176475" data-relation="≤" data-quality="31.911765">
+<a href="logs/storm.cut9000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 31.91176475; wall-clock: 34.268s"><span class="bound">≤ 31.91176475</span> <span class="runtime">(34.27s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="38.165" data-bound="31.91176475" data-relation="≤" data-quality="31.911765">
+<a href="logs/storm.cut10000000.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≤ 31.91176475; wall-clock: 38.165s"><span class="bound">≤ 31.91176475</span> <span class="runtime">(38.16s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut20000000" data-family="cutoff" data-status="killed" data-runtime="48.406" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.samplerocks_samplerocks_rewmin_N12.html" title="killed; result: unavailable; wall-clock: 48.406s"><span class="bound">killed</span> <span class="runtime">(48.41s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="69.422" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.samplerocks_samplerocks_rewmin_N12.html" title="killed; result: unavailable; wall-clock: 69.422s"><span class="bound">killed</span> <span class="runtime">(69.42s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut40000000" data-family="cutoff" data-status="killed" data-runtime="73.85" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.samplerocks_samplerocks_rewmin_N12.html" title="killed; result: unavailable; wall-clock: 73.85s"><span class="bound">killed</span> <span class="runtime">(73.85s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut50000000" data-family="cutoff" data-status="killed" data-runtime="72.9" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.samplerocks_samplerocks_rewmin_N12.html" title="killed; result: unavailable; wall-clock: 72.9s"><span class="bound">killed</span> <span class="runtime">(72.90s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.381" data-bound="19.90365884" data-relation="≥" data-quality="19.903659">
+<a href="logs/storm.discr004s.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≥ 19.90365884; wall-clock: 0.381s"><span class="bound">≥ 19.90365884</span> <span class="runtime">(0.38s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.557" data-bound="19.97903229" data-relation="≥" data-quality="19.979032">
+<a href="logs/storm.discr005s.samplerocks_samplerocks_rewmin_N12.html" title="successful; result: ≥ 19.97903229; wall-clock: 0.557s"><span class="bound">≥ 19.97903229</span> <span class="runtime">(0.56s)</span></a>
+</td>
+</tr>
+<tr data-direction="max" data-search="drone_drone_prbmax_n4-r2 drone/n4-r2 prb max">
+<td data-sort="drone/N4-R2" title="drone_drone_prbmax_N4-R2">drone/N4-R2</td>
+<td data-sort="prb max" title="drone_drone_prbmax_N4-R2">prb max</td>
+<td data-sort="1226" title="drone_drone_prbmax_N4-R2">1,226</td>
+<td data-sort="3026" title="drone_drone_prbmax_N4-R2">3,026</td>
+<td data-sort="761" title="drone_drone_prbmax_N4-R2">761</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.093" data-bound="0.7755821315" data-relation="≥" data-quality="0.775582">
+<a href="logs/storm.cut10000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.7755821315; wall-clock: 0.093s"><span class="bound">≥ 0.7755821315</span> <span class="runtime">(0.09s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.135" data-bound="0.8565898148" data-relation="≥" data-quality="0.85659">
+<a href="logs/storm.cut20000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.8565898148; wall-clock: 0.135s"><span class="bound">≥ 0.8565898148</span> <span class="runtime">(0.14s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.171" data-bound="0.8615260129" data-relation="≥" data-quality="0.861526">
+<a href="logs/storm.cut30000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.8615260129; wall-clock: 0.171s"><span class="bound">≥ 0.8615260129</span> <span class="runtime">(0.17s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.206" data-bound="0.9328180032" data-relation="≥" data-quality="0.932818">
+<a href="logs/storm.cut40000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9328180032; wall-clock: 0.206s"><span class="bound">≥ 0.9328180032</span> <span class="runtime">(0.21s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.223" data-bound="0.9380291555" data-relation="≥" data-quality="0.938029">
+<a href="logs/storm.cut50000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9380291555; wall-clock: 0.223s"><span class="bound">≥ 0.9380291555</span> <span class="runtime">(0.22s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.292" data-bound="0.9397532739" data-relation="≥" data-quality="0.939753">
+<a href="logs/storm.cut60000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9397532739; wall-clock: 0.292s"><span class="bound">≥ 0.9397532739</span> <span class="runtime">(0.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.285" data-bound="0.940681295" data-relation="≥" data-quality="0.940681">
+<a href="logs/storm.cut70000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.940681295; wall-clock: 0.285s"><span class="bound">≥ 0.940681295</span> <span class="runtime">(0.28s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.375" data-bound="0.9412550723" data-relation="≥" data-quality="0.941255">
+<a href="logs/storm.cut80000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9412550723; wall-clock: 0.375s"><span class="bound">≥ 0.9412550723</span> <span class="runtime">(0.38s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.374" data-bound="0.9425559786" data-relation="≥" data-quality="0.942556">
+<a href="logs/storm.cut90000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9425559786; wall-clock: 0.374s"><span class="bound">≥ 0.9425559786</span> <span class="runtime">(0.37s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.447" data-bound="0.9440862416" data-relation="≥" data-quality="0.944086">
+<a href="logs/storm.cut100000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9440862416; wall-clock: 0.447s"><span class="bound">≥ 0.9440862416</span> <span class="runtime">(0.45s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.901" data-bound="0.9518600734" data-relation="≥" data-quality="0.95186">
+<a href="logs/storm.cut200000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9518600734; wall-clock: 0.901s"><span class="bound">≥ 0.9518600734</span> <span class="runtime">(0.90s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="1.407" data-bound="0.9535149336" data-relation="≥" data-quality="0.953515">
+<a href="logs/storm.cut300000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9535149336; wall-clock: 1.407s"><span class="bound">≥ 0.9535149336</span> <span class="runtime">(1.41s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.792" data-bound="0.9554158382" data-relation="≥" data-quality="0.955416">
+<a href="logs/storm.cut400000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9554158382; wall-clock: 1.792s"><span class="bound">≥ 0.9554158382</span> <span class="runtime">(1.79s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="2.283" data-bound="0.9573302678" data-relation="≥" data-quality="0.95733">
+<a href="logs/storm.cut500000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9573302678; wall-clock: 2.283s"><span class="bound">≥ 0.9573302678</span> <span class="runtime">(2.28s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="2.705" data-bound="0.9582198848" data-relation="≥" data-quality="0.95822">
+<a href="logs/storm.cut600000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9582198848; wall-clock: 2.705s"><span class="bound">≥ 0.9582198848</span> <span class="runtime">(2.71s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="3.026" data-bound="0.9589008966" data-relation="≥" data-quality="0.958901">
+<a href="logs/storm.cut700000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9589008966; wall-clock: 3.026s"><span class="bound">≥ 0.9589008966</span> <span class="runtime">(3.03s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="3.739" data-bound="0.9591616129" data-relation="≥" data-quality="0.959162">
+<a href="logs/storm.cut800000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9591616129; wall-clock: 3.739s"><span class="bound">≥ 0.9591616129</span> <span class="runtime">(3.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="4.31" data-bound="0.9594303118" data-relation="≥" data-quality="0.95943">
+<a href="logs/storm.cut900000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9594303118; wall-clock: 4.31s"><span class="bound">≥ 0.9594303118</span> <span class="runtime">(4.31s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="4.715" data-bound="0.9595884313" data-relation="≥" data-quality="0.959588">
+<a href="logs/storm.cut1000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9595884313; wall-clock: 4.715s"><span class="bound">≥ 0.9595884313</span> <span class="runtime">(4.71s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="8.535" data-bound="0.9630182153" data-relation="≥" data-quality="0.963018">
+<a href="logs/storm.cut2000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9630182153; wall-clock: 8.535s"><span class="bound">≥ 0.9630182153</span> <span class="runtime">(8.54s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="14.856" data-bound="0.9638366777" data-relation="≥" data-quality="0.963837">
+<a href="logs/storm.cut3000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9638366777; wall-clock: 14.856s"><span class="bound">≥ 0.9638366777</span> <span class="runtime">(14.86s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="20.493" data-bound="0.9643650236" data-relation="≥" data-quality="0.964365">
+<a href="logs/storm.cut4000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9643650236; wall-clock: 20.493s"><span class="bound">≥ 0.9643650236</span> <span class="runtime">(20.49s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="22.45" data-bound="0.9649624876" data-relation="≥" data-quality="0.964962">
+<a href="logs/storm.cut5000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9649624876; wall-clock: 22.45s"><span class="bound">≥ 0.9649624876</span> <span class="runtime">(22.45s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="26.759" data-bound="0.9658113413" data-relation="≥" data-quality="0.965811">
+<a href="logs/storm.cut6000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9658113413; wall-clock: 26.759s"><span class="bound">≥ 0.9658113413</span> <span class="runtime">(26.76s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="31.85" data-bound="0.9662144115" data-relation="≥" data-quality="0.966214">
+<a href="logs/storm.cut7000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9662144115; wall-clock: 31.85s"><span class="bound">≥ 0.9662144115</span> <span class="runtime">(31.85s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="35.423" data-bound="0.9665927602" data-relation="≥" data-quality="0.966593">
+<a href="logs/storm.cut8000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9665927602; wall-clock: 35.423s"><span class="bound">≥ 0.9665927602</span> <span class="runtime">(35.42s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="40.183" data-bound="0.966672798" data-relation="≥" data-quality="0.966673">
+<a href="logs/storm.cut9000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.966672798; wall-clock: 40.183s"><span class="bound">≥ 0.966672798</span> <span class="runtime">(40.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="47.16" data-bound="0.9667421104" data-relation="≥" data-quality="0.966742">
+<a href="logs/storm.cut10000000.drone_drone_prbmax_N4-R2.html" title="successful; result: ≥ 0.9667421104; wall-clock: 47.16s"><span class="bound">≥ 0.9667421104</span> <span class="runtime">(47.16s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut20000000" data-family="cutoff" data-status="killed" data-runtime="68.989" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.drone_drone_prbmax_N4-R2.html" title="killed; result: unavailable; wall-clock: 68.989s"><span class="bound">killed</span> <span class="runtime">(68.99s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="87.667" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.drone_drone_prbmax_N4-R2.html" title="killed; result: unavailable; wall-clock: 87.667s"><span class="bound">killed</span> <span class="runtime">(87.67s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut40000000" data-family="cutoff" data-status="timeout" data-runtime="91.457" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.drone_drone_prbmax_N4-R2.html" title="timeout; result: unavailable; wall-clock: 91.457s"><span class="bound">timeout</span> <span class="runtime">(91.46s)</span></a>
+</td>
+<td class="run timeout" data-col="storm.cut50000000" data-family="cutoff" data-status="timeout" data-runtime="91.459" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.drone_drone_prbmax_N4-R2.html" title="timeout; result: unavailable; wall-clock: 91.459s"><span class="bound">timeout</span> <span class="runtime">(91.46s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.261" data-bound="0.9773979867" data-relation="≤" data-quality="0.977398">
+<a href="logs/storm.discr004s.drone_drone_prbmax_N4-R2.html" title="successful; result: ≤ 0.9773979867; wall-clock: 0.261s"><span class="bound">≤ 0.9773979867</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.738" data-bound="0.9764191002" data-relation="≤" data-quality="0.976419">
+<a href="logs/storm.discr005s.drone_drone_prbmax_N4-R2.html" title="successful; result: ≤ 0.9764191002; wall-clock: 0.738s"><span class="bound">≤ 0.9764191002</span> <span class="runtime">(0.74s)</span></a>
+</td>
+</tr>
+<tr data-direction="min" data-search="grid-large-30-5_grid-large-30-5_rewmin_ grid-large-30-5 rew min">
+<td data-sort="grid-large-30-5" title="grid-large-30-5_grid-large-30-5_rewmin_">grid-large-30-5</td>
+<td data-sort="rew min" title="grid-large-30-5_grid-large-30-5_rewmin_">rew min</td>
+<td data-sort="900" title="grid-large-30-5_grid-large-30-5_rewmin_">900</td>
+<td data-sort="3600" title="grid-large-30-5_grid-large-30-5_rewmin_">3,600</td>
+<td data-sort="37" title="grid-large-30-5_grid-large-30-5_rewmin_">37</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.185" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut10000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.185s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.191" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut20000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.191s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.19s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.216" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut30000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.216s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.22s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.233" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut40000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.233s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.23s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.25" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut50000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.25s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.271" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut60000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.271s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.27s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.293" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut70000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.293s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.341" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut80000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.341s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.34s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.347" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut90000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.347s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.35s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.376" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut100000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.376s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.38s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.65" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut200000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.65s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.65s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="0.9" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut300000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 0.9s"><span class="bound">≤ 120.523539</span> <span class="runtime">(0.90s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.152" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut400000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 1.152s"><span class="bound">≤ 120.523539</span> <span class="runtime">(1.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.39" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut500000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 1.39s"><span class="bound">≤ 120.523539</span> <span class="runtime">(1.39s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="1.761" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut600000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 1.761s"><span class="bound">≤ 120.523539</span> <span class="runtime">(1.76s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="1.932" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut700000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 1.932s"><span class="bound">≤ 120.523539</span> <span class="runtime">(1.93s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.186" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut800000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 2.186s"><span class="bound">≤ 120.523539</span> <span class="runtime">(2.19s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="2.515" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut900000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 2.515s"><span class="bound">≤ 120.523539</span> <span class="runtime">(2.52s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="2.845" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut1000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 2.845s"><span class="bound">≤ 120.523539</span> <span class="runtime">(2.85s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="5.548" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut2000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 5.548s"><span class="bound">≤ 120.523539</span> <span class="runtime">(5.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="8.333" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut3000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 8.333s"><span class="bound">≤ 120.523539</span> <span class="runtime">(8.33s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="11.762" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut4000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 11.762s"><span class="bound">≤ 120.523539</span> <span class="runtime">(11.76s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="13.905" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut5000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 13.905s"><span class="bound">≤ 120.523539</span> <span class="runtime">(13.90s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="17.701" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut6000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 17.701s"><span class="bound">≤ 120.523539</span> <span class="runtime">(17.70s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="18.917" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut7000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 18.917s"><span class="bound">≤ 120.523539</span> <span class="runtime">(18.92s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="22.555" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut8000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 22.555s"><span class="bound">≤ 120.523539</span> <span class="runtime">(22.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="26.337" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut9000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 26.337s"><span class="bound">≤ 120.523539</span> <span class="runtime">(26.34s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="29.113" data-bound="120.523539" data-relation="≤" data-quality="120.523539">
+<a href="logs/storm.cut10000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≤ 120.523539; wall-clock: 29.113s"><span class="bound">≤ 120.523539</span> <span class="runtime">(29.11s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut20000000" data-family="cutoff" data-status="killed" data-runtime="45.003" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut20000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="killed; result: unavailable; wall-clock: 45.003s"><span class="bound">killed</span> <span class="runtime">(45.00s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="57.32" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="killed; result: unavailable; wall-clock: 57.32s"><span class="bound">killed</span> <span class="runtime">(57.32s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut40000000" data-family="cutoff" data-status="killed" data-runtime="66.086" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="killed; result: unavailable; wall-clock: 66.086s"><span class="bound">killed</span> <span class="runtime">(66.09s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut50000000" data-family="cutoff" data-status="killed" data-runtime="67.59" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.grid-large-30-5_grid-large-30-5_rewmin_.html" title="killed; result: unavailable; wall-clock: 67.59s"><span class="bound">killed</span> <span class="runtime">(67.59s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="8.235" data-bound="116.1476546" data-relation="≥" data-quality="116.147655">
+<a href="logs/storm.discr004s.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≥ 116.1476546; wall-clock: 8.235s"><span class="bound">≥ 116.1476546</span> <span class="runtime">(8.23s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="58.263" data-bound="116.1876753" data-relation="≥" data-quality="116.187675">
+<a href="logs/storm.discr005s.grid-large-30-5_grid-large-30-5_rewmin_.html" title="successful; result: ≥ 116.1876753; wall-clock: 58.263s"><span class="bound">≥ 116.1876753</span> <span class="runtime">(58.26s)</span></a>
+</td>
+</tr>
+<tr data-direction="min" data-search="network2_network2_rewmin_t8-k20 network2/t8-k20 rew min">
+<td data-sort="network2/T8-K20" title="network2_network2_rewmin_T8-K20">network2/T8-K20</td>
+<td data-sort="rew min" title="network2_network2_rewmin_T8-K20">rew min</td>
+<td data-sort="4589" title="network2_network2_rewmin_T8-K20">4,589</td>
+<td data-sort="6973" title="network2_network2_rewmin_T8-K20">6,973</td>
+<td data-sort="1173" title="network2_network2_rewmin_T8-K20">1,173</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.099" data-bound="6.685300778" data-relation="≤" data-quality="6.685301">
+<a href="logs/storm.cut10000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.685300778; wall-clock: 0.099s"><span class="bound">≤ 6.685300778</span> <span class="runtime">(0.10s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.112" data-bound="6.536297341" data-relation="≤" data-quality="6.536297">
+<a href="logs/storm.cut20000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.536297341; wall-clock: 0.112s"><span class="bound">≤ 6.536297341</span> <span class="runtime">(0.11s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.147" data-bound="6.498025841" data-relation="≤" data-quality="6.498026">
+<a href="logs/storm.cut30000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.498025841; wall-clock: 0.147s"><span class="bound">≤ 6.498025841</span> <span class="runtime">(0.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.148" data-bound="6.435337084" data-relation="≤" data-quality="6.435337">
+<a href="logs/storm.cut40000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.435337084; wall-clock: 0.148s"><span class="bound">≤ 6.435337084</span> <span class="runtime">(0.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.168" data-bound="6.344333789" data-relation="≤" data-quality="6.344334">
+<a href="logs/storm.cut50000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.344333789; wall-clock: 0.168s"><span class="bound">≤ 6.344333789</span> <span class="runtime">(0.17s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.179" data-bound="6.318827215" data-relation="≤" data-quality="6.318827">
+<a href="logs/storm.cut60000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.318827215; wall-clock: 0.179s"><span class="bound">≤ 6.318827215</span> <span class="runtime">(0.18s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.199" data-bound="6.289692054" data-relation="≤" data-quality="6.289692">
+<a href="logs/storm.cut70000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.289692054; wall-clock: 0.199s"><span class="bound">≤ 6.289692054</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.214" data-bound="6.197872075" data-relation="≤" data-quality="6.197872">
+<a href="logs/storm.cut80000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.197872075; wall-clock: 0.214s"><span class="bound">≤ 6.197872075</span> <span class="runtime">(0.21s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.228" data-bound="6.152370183" data-relation="≤" data-quality="6.15237">
+<a href="logs/storm.cut90000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.152370183; wall-clock: 0.228s"><span class="bound">≤ 6.152370183</span> <span class="runtime">(0.23s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.264" data-bound="6.138992541" data-relation="≤" data-quality="6.138993">
+<a href="logs/storm.cut100000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 6.138992541; wall-clock: 0.264s"><span class="bound">≤ 6.138992541</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.498" data-bound="5.765437153" data-relation="≤" data-quality="5.765437">
+<a href="logs/storm.cut200000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 5.765437153; wall-clock: 0.498s"><span class="bound">≤ 5.765437153</span> <span class="runtime">(0.50s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="0.676" data-bound="5.475999926" data-relation="≤" data-quality="5.476">
+<a href="logs/storm.cut300000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 5.475999926; wall-clock: 0.676s"><span class="bound">≤ 5.475999926</span> <span class="runtime">(0.68s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="0.876" data-bound="5.223671393" data-relation="≤" data-quality="5.223671">
+<a href="logs/storm.cut400000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 5.223671393; wall-clock: 0.876s"><span class="bound">≤ 5.223671393</span> <span class="runtime">(0.88s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="0.996" data-bound="4.907962956" data-relation="≤" data-quality="4.907963">
+<a href="logs/storm.cut500000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 4.907962956; wall-clock: 0.996s"><span class="bound">≤ 4.907962956</span> <span class="runtime">(1.00s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="1.254" data-bound="4.649656206" data-relation="≤" data-quality="4.649656">
+<a href="logs/storm.cut600000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 4.649656206; wall-clock: 1.254s"><span class="bound">≤ 4.649656206</span> <span class="runtime">(1.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="1.49" data-bound="4.408731252" data-relation="≤" data-quality="4.408731">
+<a href="logs/storm.cut700000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 4.408731252; wall-clock: 1.49s"><span class="bound">≤ 4.408731252</span> <span class="runtime">(1.49s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="1.655" data-bound="4.152670643" data-relation="≤" data-quality="4.152671">
+<a href="logs/storm.cut800000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 4.152670643; wall-clock: 1.655s"><span class="bound">≤ 4.152670643</span> <span class="runtime">(1.66s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="1.913" data-bound="3.879714642" data-relation="≤" data-quality="3.879715">
+<a href="logs/storm.cut900000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 3.879714642; wall-clock: 1.913s"><span class="bound">≤ 3.879714642</span> <span class="runtime">(1.91s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="2.036" data-bound="3.653162877" data-relation="≤" data-quality="3.653163">
+<a href="logs/storm.cut1000000.network2_network2_rewmin_T8-K20.html" title="successful; result: ≤ 3.653162877; wall-clock: 2.036s"><span class="bound">≤ 3.653162877</span> <span class="runtime">(2.04s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="2.687" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut2000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.687s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.69s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="2.632" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut3000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.632s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.63s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="2.58" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut4000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.58s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.58s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="2.554" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut5000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.554s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="2.288" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut6000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.288s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="2.611" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut7000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.611s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.61s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="2.514" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut8000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.514s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.51s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="2.604" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut9000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.604s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.60s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="2.613" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut10000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.613s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.61s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000000" data-family="cutoff" data-status="successful" data-runtime="2.335" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut20000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.335s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.33s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000000" data-family="cutoff" data-status="successful" data-runtime="2.594" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut30000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.594s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.59s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000000" data-family="cutoff" data-status="successful" data-runtime="2.554" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut40000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.554s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000000" data-family="cutoff" data-status="successful" data-runtime="2.482" data-bound="3.198957741" data-relation="=" data-quality="3.198958">
+<a href="logs/storm.cut50000000.network2_network2_rewmin_T8-K20.html" title="successful; result: 3.198957741; wall-clock: 2.482s"><span class="bound">= 3.198957741</span> <span class="runtime">(2.48s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.092" data-bound="2.965464254" data-relation="≥" data-quality="2.965464">
+<a href="logs/storm.discr004s.network2_network2_rewmin_T8-K20.html" title="successful; result: ≥ 2.965464254; wall-clock: 0.092s"><span class="bound">≥ 2.965464254</span> <span class="runtime">(0.09s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.119" data-bound="3.063863899" data-relation="≥" data-quality="3.063864">
+<a href="logs/storm.discr005s.network2_network2_rewmin_T8-K20.html" title="successful; result: ≥ 3.063863899; wall-clock: 0.119s"><span class="bound">≥ 3.063863899</span> <span class="runtime">(0.12s)</span></a>
+</td>
+</tr>
+<tr data-direction="max" data-search="network-priorities2_network-priorities2_rewmax_t8-k20 network-priorities2/t8-k20 rew max">
+<td data-sort="network-priorities2/T8-K20" title="network-priorities2_network-priorities2_rewmax_T8-K20">network-priorities2/T8-K20</td>
+<td data-sort="rew max" title="network-priorities2_network-priorities2_rewmax_T8-K20">rew max</td>
+<td data-sort="19373" title="network-priorities2_network-priorities2_rewmax_T8-K20">19,373</td>
+<td data-sort="34157" title="network-priorities2_network-priorities2_rewmax_T8-K20">34,157</td>
+<td data-sort="4909" title="network-priorities2_network-priorities2_rewmax_T8-K20">4,909</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.239" data-bound="535.6174002" data-relation="≥" data-quality="535.6174">
+<a href="logs/storm.cut10000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 535.6174002; wall-clock: 0.239s"><span class="bound">≥ 535.6174002</span> <span class="runtime">(0.24s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.246" data-bound="536.0378109" data-relation="≥" data-quality="536.037811">
+<a href="logs/storm.cut20000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.0378109; wall-clock: 0.246s"><span class="bound">≥ 536.0378109</span> <span class="runtime">(0.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.248" data-bound="536.285116" data-relation="≥" data-quality="536.285116">
+<a href="logs/storm.cut30000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.285116; wall-clock: 0.248s"><span class="bound">≥ 536.285116</span> <span class="runtime">(0.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.261" data-bound="536.3866129" data-relation="≥" data-quality="536.386613">
+<a href="logs/storm.cut40000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.3866129; wall-clock: 0.261s"><span class="bound">≥ 536.3866129</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.293" data-bound="536.4736416" data-relation="≥" data-quality="536.473642">
+<a href="logs/storm.cut50000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.4736416; wall-clock: 0.293s"><span class="bound">≥ 536.4736416</span> <span class="runtime">(0.29s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.304" data-bound="536.5453427" data-relation="≥" data-quality="536.545343">
+<a href="logs/storm.cut60000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.5453427; wall-clock: 0.304s"><span class="bound">≥ 536.5453427</span> <span class="runtime">(0.30s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.318" data-bound="536.6370241" data-relation="≥" data-quality="536.637024">
+<a href="logs/storm.cut70000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.6370241; wall-clock: 0.318s"><span class="bound">≥ 536.6370241</span> <span class="runtime">(0.32s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.417" data-bound="536.6408544" data-relation="≥" data-quality="536.640854">
+<a href="logs/storm.cut80000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.6408544; wall-clock: 0.417s"><span class="bound">≥ 536.6408544</span> <span class="runtime">(0.42s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.458" data-bound="536.9064402" data-relation="≥" data-quality="536.90644">
+<a href="logs/storm.cut90000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.9064402; wall-clock: 0.458s"><span class="bound">≥ 536.9064402</span> <span class="runtime">(0.46s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.442" data-bound="536.9082597" data-relation="≥" data-quality="536.90826">
+<a href="logs/storm.cut100000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 536.9082597; wall-clock: 0.442s"><span class="bound">≥ 536.9082597</span> <span class="runtime">(0.44s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.668" data-bound="537.5781135" data-relation="≥" data-quality="537.578113">
+<a href="logs/storm.cut200000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 537.5781135; wall-clock: 0.668s"><span class="bound">≥ 537.5781135</span> <span class="runtime">(0.67s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="1.09" data-bound="538.0166733" data-relation="≥" data-quality="538.016673">
+<a href="logs/storm.cut300000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 538.0166733; wall-clock: 1.09s"><span class="bound">≥ 538.0166733</span> <span class="runtime">(1.09s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.348" data-bound="538.5054406" data-relation="≥" data-quality="538.505441">
+<a href="logs/storm.cut400000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 538.5054406; wall-clock: 1.348s"><span class="bound">≥ 538.5054406</span> <span class="runtime">(1.35s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.483" data-bound="538.7643606" data-relation="≥" data-quality="538.764361">
+<a href="logs/storm.cut500000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 538.7643606; wall-clock: 1.483s"><span class="bound">≥ 538.7643606</span> <span class="runtime">(1.48s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="2.002" data-bound="539.1250877" data-relation="≥" data-quality="539.125088">
+<a href="logs/storm.cut600000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 539.1250877; wall-clock: 2.002s"><span class="bound">≥ 539.1250877</span> <span class="runtime">(2.00s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="2.168" data-bound="539.4878588" data-relation="≥" data-quality="539.487859">
+<a href="logs/storm.cut700000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 539.4878588; wall-clock: 2.168s"><span class="bound">≥ 539.4878588</span> <span class="runtime">(2.17s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.52" data-bound="539.71196" data-relation="≥" data-quality="539.71196">
+<a href="logs/storm.cut800000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 539.71196; wall-clock: 2.52s"><span class="bound">≥ 539.71196</span> <span class="runtime">(2.52s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="2.591" data-bound="539.9612212" data-relation="≥" data-quality="539.961221">
+<a href="logs/storm.cut900000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 539.9612212; wall-clock: 2.591s"><span class="bound">≥ 539.9612212</span> <span class="runtime">(2.59s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="3.27" data-bound="540.2335021" data-relation="≥" data-quality="540.233502">
+<a href="logs/storm.cut1000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 540.2335021; wall-clock: 3.27s"><span class="bound">≥ 540.2335021</span> <span class="runtime">(3.27s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="6.383" data-bound="542.4503308" data-relation="≥" data-quality="542.450331">
+<a href="logs/storm.cut2000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 542.4503308; wall-clock: 6.383s"><span class="bound">≥ 542.4503308</span> <span class="runtime">(6.38s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="8.889" data-bound="544.1456175" data-relation="≥" data-quality="544.145617">
+<a href="logs/storm.cut3000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 544.1456175; wall-clock: 8.889s"><span class="bound">≥ 544.1456175</span> <span class="runtime">(8.89s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="11.736" data-bound="545.7755739" data-relation="≥" data-quality="545.775574">
+<a href="logs/storm.cut4000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 545.7755739; wall-clock: 11.736s"><span class="bound">≥ 545.7755739</span> <span class="runtime">(11.74s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="14.554" data-bound="547.5577863" data-relation="≥" data-quality="547.557786">
+<a href="logs/storm.cut5000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 547.5577863; wall-clock: 14.554s"><span class="bound">≥ 547.5577863</span> <span class="runtime">(14.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="17.516" data-bound="549.3388012" data-relation="≥" data-quality="549.338801">
+<a href="logs/storm.cut6000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 549.3388012; wall-clock: 17.516s"><span class="bound">≥ 549.3388012</span> <span class="runtime">(17.52s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="19.526" data-bound="550.8830326" data-relation="≥" data-quality="550.883033">
+<a href="logs/storm.cut7000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 550.8830326; wall-clock: 19.526s"><span class="bound">≥ 550.8830326</span> <span class="runtime">(19.53s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="21.423" data-bound="552.6640444" data-relation="≥" data-quality="552.664044">
+<a href="logs/storm.cut8000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 552.6640444; wall-clock: 21.423s"><span class="bound">≥ 552.6640444</span> <span class="runtime">(21.42s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="25.697" data-bound="554.2821735" data-relation="≥" data-quality="554.282173">
+<a href="logs/storm.cut9000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 554.2821735; wall-clock: 25.697s"><span class="bound">≥ 554.2821735</span> <span class="runtime">(25.70s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="27.496" data-bound="556.2680614" data-relation="≥" data-quality="556.268061">
+<a href="logs/storm.cut10000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≥ 556.2680614; wall-clock: 27.496s"><span class="bound">≥ 556.2680614</span> <span class="runtime">(27.50s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000000" data-family="cutoff" data-status="successful" data-runtime="29.555" data-bound="556.7794043" data-relation="=" data-quality="556.779404">
+<a href="logs/storm.cut20000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: 556.7794043; wall-clock: 29.555s"><span class="bound">= 556.7794043</span> <span class="runtime">(29.55s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000000" data-family="cutoff" data-status="successful" data-runtime="28.355" data-bound="556.7794043" data-relation="=" data-quality="556.779404">
+<a href="logs/storm.cut30000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: 556.7794043; wall-clock: 28.355s"><span class="bound">= 556.7794043</span> <span class="runtime">(28.36s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000000" data-family="cutoff" data-status="successful" data-runtime="28.746" data-bound="556.7794043" data-relation="=" data-quality="556.779404">
+<a href="logs/storm.cut40000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: 556.7794043; wall-clock: 28.746s"><span class="bound">= 556.7794043</span> <span class="runtime">(28.75s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000000" data-family="cutoff" data-status="successful" data-runtime="27.771" data-bound="556.7794043" data-relation="=" data-quality="556.779404">
+<a href="logs/storm.cut50000000.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: 556.7794043; wall-clock: 27.771s"><span class="bound">= 556.7794043</span> <span class="runtime">(27.77s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.394" data-bound="559.9380932" data-relation="≤" data-quality="559.938093">
+<a href="logs/storm.discr004s.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≤ 559.9380932; wall-clock: 0.394s"><span class="bound">≤ 559.9380932</span> <span class="runtime">(0.39s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.476" data-bound="558.4862219" data-relation="≤" data-quality="558.486222">
+<a href="logs/storm.discr005s.network-priorities2_network-priorities2_rewmax_T8-K20.html" title="successful; result: ≤ 558.4862219; wall-clock: 0.476s"><span class="bound">≤ 558.4862219</span> <span class="runtime">(0.48s)</span></a>
+</td>
+</tr>
+<tr data-direction="max" data-search="refuel_refuel_prbmax_n06 refuel/n06 prb max">
+<td data-sort="refuel/N06" title="refuel_refuel_prbmax_N06">refuel/N06</td>
+<td data-sort="prb max" title="refuel_refuel_prbmax_N06">prb max</td>
+<td data-sort="208" title="refuel_refuel_prbmax_N06">208</td>
+<td data-sort="574" title="refuel_refuel_prbmax_N06">574</td>
+<td data-sort="50" title="refuel_refuel_prbmax_N06">50</td>
+<td class="run successful" data-col="storm.cut10000" data-family="cutoff" data-status="successful" data-runtime="0.079" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut10000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.079s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000" data-family="cutoff" data-status="successful" data-runtime="0.099" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut20000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.099s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.10s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut30000" data-family="cutoff" data-status="successful" data-runtime="0.11" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut30000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.11s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.11s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut40000" data-family="cutoff" data-status="successful" data-runtime="0.126" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut40000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.126s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.13s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut50000" data-family="cutoff" data-status="successful" data-runtime="0.148" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut50000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.148s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.15s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut60000" data-family="cutoff" data-status="successful" data-runtime="0.196" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut60000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.196s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut70000" data-family="cutoff" data-status="successful" data-runtime="0.188" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut70000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.188s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.19s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut80000" data-family="cutoff" data-status="successful" data-runtime="0.202" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut80000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.202s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.20s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut90000" data-family="cutoff" data-status="successful" data-runtime="0.261" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut90000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.261s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.26s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut100000" data-family="cutoff" data-status="successful" data-runtime="0.254" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut100000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.254s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.25s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut200000" data-family="cutoff" data-status="successful" data-runtime="0.537" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut200000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.537s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.54s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut300000" data-family="cutoff" data-status="successful" data-runtime="0.692" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut300000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 0.692s"><span class="bound">≥ 0.67219</span> <span class="runtime">(0.69s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut400000" data-family="cutoff" data-status="successful" data-runtime="1.058" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut400000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.058s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.06s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut500000" data-family="cutoff" data-status="successful" data-runtime="1.298" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut500000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.298s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.30s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut600000" data-family="cutoff" data-status="successful" data-runtime="1.628" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut600000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.628s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.63s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut700000" data-family="cutoff" data-status="successful" data-runtime="1.825" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut700000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 1.825s"><span class="bound">≥ 0.67219</span> <span class="runtime">(1.82s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut800000" data-family="cutoff" data-status="successful" data-runtime="2.22" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut800000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.22s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.22s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut900000" data-family="cutoff" data-status="successful" data-runtime="2.894" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut900000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.894s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.89s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut1000000" data-family="cutoff" data-status="successful" data-runtime="2.975" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut1000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 2.975s"><span class="bound">≥ 0.67219</span> <span class="runtime">(2.98s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut2000000" data-family="cutoff" data-status="successful" data-runtime="5.526" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut2000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 5.526s"><span class="bound">≥ 0.67219</span> <span class="runtime">(5.53s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut3000000" data-family="cutoff" data-status="successful" data-runtime="8.698" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut3000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 8.698s"><span class="bound">≥ 0.67219</span> <span class="runtime">(8.70s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut4000000" data-family="cutoff" data-status="successful" data-runtime="11.914" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut4000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 11.914s"><span class="bound">≥ 0.67219</span> <span class="runtime">(11.91s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut5000000" data-family="cutoff" data-status="successful" data-runtime="14.716" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut5000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 14.716s"><span class="bound">≥ 0.67219</span> <span class="runtime">(14.72s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut6000000" data-family="cutoff" data-status="successful" data-runtime="17.671" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut6000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 17.671s"><span class="bound">≥ 0.67219</span> <span class="runtime">(17.67s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut7000000" data-family="cutoff" data-status="successful" data-runtime="21.164" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut7000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 21.164s"><span class="bound">≥ 0.67219</span> <span class="runtime">(21.16s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut8000000" data-family="cutoff" data-status="successful" data-runtime="23.003" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut8000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 23.003s"><span class="bound">≥ 0.67219</span> <span class="runtime">(23.00s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut9000000" data-family="cutoff" data-status="successful" data-runtime="26.365" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut9000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 26.365s"><span class="bound">≥ 0.67219</span> <span class="runtime">(26.36s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut10000000" data-family="cutoff" data-status="successful" data-runtime="30.031" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut10000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 30.031s"><span class="bound">≥ 0.67219</span> <span class="runtime">(30.03s)</span></a>
+</td>
+<td class="run successful" data-col="storm.cut20000000" data-family="cutoff" data-status="successful" data-runtime="61.133" data-bound="0.67219" data-relation="≥" data-quality="0.67219">
+<a href="logs/storm.cut20000000.refuel_refuel_prbmax_N06.html" title="successful; result: ≥ 0.67219; wall-clock: 61.133s"><span class="bound">≥ 0.67219</span> <span class="runtime">(61.13s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut30000000" data-family="cutoff" data-status="killed" data-runtime="68.656" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut30000000.refuel_refuel_prbmax_N06.html" title="killed; result: unavailable; wall-clock: 68.656s"><span class="bound">killed</span> <span class="runtime">(68.66s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut40000000" data-family="cutoff" data-status="killed" data-runtime="73.668" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut40000000.refuel_refuel_prbmax_N06.html" title="killed; result: unavailable; wall-clock: 73.668s"><span class="bound">killed</span> <span class="runtime">(73.67s)</span></a>
+</td>
+<td class="run killed" data-col="storm.cut50000000" data-family="cutoff" data-status="killed" data-runtime="73.537" data-bound="" data-relation="" data-quality="">
+<a href="logs/storm.cut50000000.refuel_refuel_prbmax_N06.html" title="killed; result: unavailable; wall-clock: 73.537s"><span class="bound">killed</span> <span class="runtime">(73.54s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr004s" data-family="discretisation" data-status="successful" data-runtime="0.078" data-bound="0.7129687089" data-relation="≤" data-quality="0.712969">
+<a href="logs/storm.discr004s.refuel_refuel_prbmax_N06.html" title="successful; result: ≤ 0.7129687089; wall-clock: 0.078s"><span class="bound">≤ 0.7129687089</span> <span class="runtime">(0.08s)</span></a>
+</td>
+<td class="run successful" data-col="storm.discr005s" data-family="discretisation" data-status="successful" data-runtime="0.101" data-bound="0.696954659" data-relation="≤" data-quality="0.696955">
+<a href="logs/storm.discr005s.refuel_refuel_prbmax_N06.html" title="successful; result: ≤ 0.696954659; wall-clock: 0.101s"><span class="bound">≤ 0.696954659</span> <span class="runtime">(0.10s)</span></a>
+</td>
+</tr>
+</tbody></table></div>
+<script src="results.js"></script>
+</body>
+</html>

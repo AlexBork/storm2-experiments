@@ -1,0 +1,43 @@
+{
+	"intervalmdp-default": {
+		"zeroconf.20-2-false.correct_max.absolute-25": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/intervalmdp-default_zeroconf.20-2-false.correct_max.absolute-25.log",
+				"wallclock-time": 5.008,
+				"construction-time": 1.09195836,
+				"checking-time": 3.628814262,
+				"mcresult": "2.291725498851476e-9",
+				"result-diff": 0.0
+			}
+		}
+	},
+	"prism-default": {
+		"zeroconf.20-2-false.correct_max.absolute-25": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/prism-default_zeroconf.20-2-false.correct_max.absolute-25.log",
+				"wallclock-time": 27.034,
+				"construction-time": 0.757,
+				"checking-time": 25.92,
+				"mcresult": "2.291711051761493E-9",
+				"result-diff": 1.4447089983e-14,
+				"states": 89586
+			}
+		}
+	},
+	"storm-default": {
+		"zeroconf.20-2-false.correct_max.absolute-25": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-default_zeroconf.20-2-false.correct_max.absolute-25.log",
+				"wallclock-time": 0.574,
+				"construction-time": 0.384,
+				"checking-time": 0.169,
+				"mcresult": "2.291856696e-09.",
+				"result-diff": 1.31197148524e-13,
+				"states": 89586
+			}
+		}
+	}
+}

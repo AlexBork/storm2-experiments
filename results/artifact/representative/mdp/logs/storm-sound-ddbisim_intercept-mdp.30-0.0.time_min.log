@@ -1,0 +1,60 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani intercept-mdp.jani --janiproperty time_min --constants N=30,slippery=0.0 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	intercept-mdp.30-0.0.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 19:34:00 2026
+Command line arguments: --jani intercept-mdp.jani --janiproperty time_min --constants 'N=30,slippery=0.0' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-yp9jl6xn
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 4 parallel threads.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+Time for model construction: 0.354s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1619941 (57 nodes)
+Transitions: 	6461957 (34515 nodes)
+Choices: 	4043647
+Reward Models:  none
+Variables: 	rows: 9 meta variables (25 DD variables), columns: 9 meta variables (25 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (26 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 68.408s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1614607
+Transitions: 	6454823
+Choices: 	4036513
+Reward Models:  none
+State Labels: 	4 labels
+   * (((start & ((dx = ax) & (dy = ay))) | (((ax = 0) & (ay = 28)) | ((ax = 1) & (ay = 0)))) & !((((ax = 0) & (ay = 28)) | ((ax = 1) & (ay = 0))))) -> 1 item(s)
+   * goal -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+Result (for initial states): 98.30527496. Solution bounds: [98.30517665, 98.30537326].
+Time for model checking: 0.943s.
+
+----------------------------------------
+Wallclock time:	69.862
+Return code:	0

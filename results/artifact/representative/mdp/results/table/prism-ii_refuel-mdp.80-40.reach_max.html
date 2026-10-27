@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - refuel-mdp.80-40.reach_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>refuel-mdp.80-40.reach_max</h1>
+<p class="sub">prism-ii &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>3653380653778819704498802052281330342937979832521752121999684138390592205782461/3681807200483612150698388711959446722028150995086913681600000000000000000000000</code></p>
+<p class="sub">reference result: <code>0.9922791865</code></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>91.062 s</td></tr><tr><th>states</th><td>161,070</td></tr><tr><th>states after preprocessing</th><td>77,531</td></tr></table>
+<p class="sub">prism-ii_refuel-mdp.80-40.reach_max.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g refuel-mdp.prism refuel-mdp.props --prop reach_max -const N=80,ENERGY=40 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:57:00 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g refuel-mdp.prism refuel-mdp.props --prop reach_max -const 'N=80,ENERGY=40' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;refuel-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master tank rover
+Actions:     [placement] [north] [south] [east] [west] [done] [refuel] [empty]
+Variables:   start fuel ax ay
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;stationvisit&quot; &quot;notbad&quot;
+Rewards:     &quot;steps&quot; &quot;refuels&quot; &quot;costs&quot;
+
+Parsing properties file &quot;refuel-mdp.props&quot;...
+
+1 property:
+(1) &quot;reach_max&quot;: Pmax=? [ F &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;reach_max&quot;: Pmax=? [ F &quot;goal&quot; ]
+Model constants: N=80,ENERGY=40
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=80,ENERGY=40
+
+Computing reachable states...
+
+Reachability (BFS): 96 iterations in 0.02 seconds (average 0.000208, setup 0.00)
+
+Time for model construction: 0.057 seconds.
+
+Type:        MDP
+States:      161070 (1 initial)
+Transitions: 1226247
+
+Transition matrix: 24786 nodes (4 terminal), 1226247 minterms, vars: 21r/21c/8nd
+
+Prob0A: 97 iterations in 0.19 seconds (average 0.001959, setup 0.00)
+
+Prob1E: 1875 iterations in 4.80 seconds (average 0.002560, setup 0.00)
+
+yes = 1458, no = 76597, maybe = 83015
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.391 seconds, found 1 MECs.
+Time for building MEC quotient: 7.557 seconds.
+
+Quotient MDP:
+States:      77531 (1 initial)
+Transitions: 893980
+
+Transition matrix: 168991 nodes (4 terminal), 893980 minterms, vars: 21r/21c/30nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=77531, nc=310991, nnz=606577, k=2182] [8.4 MB]
+Creating vector for yes... [605.7 KB]
+Creating vector for maybe... [605.7 KB]
+Allocating iteration vectors... [4 x 605.7 KB]
+TOTAL: [12.0 MB]
+
+Starting iterations (interval iteration)...
+Iteration 4259: max relative diff=0.387164, 5.01 sec so far
+Iteration 8452: max relative diff=0.270439, 10.02 sec so far
+Iteration 12657: max relative diff=0.217835, 15.03 sec so far
+Iteration 16854: max relative diff=0.189334, 20.04 sec so far
+Iteration 21052: max relative diff=0.169659, 25.05 sec so far
+Iteration 25248: max relative diff=0.155530, 30.06 sec so far
+Iteration 29447: max relative diff=0.144922, 35.07 sec so far
+Iteration 33642: max relative diff=0.136751, 40.08 sec so far
+Iteration 37839: max relative diff=0.130413, 45.09 sec so far
+Iteration 42038: max relative diff=0.125370, 50.10 sec so far
+Iteration 46238: max relative diff=0.121112, 55.11 sec so far
+Iteration 50438: max relative diff=0.117376, 60.12 sec so far
+Iteration 54636: max relative diff=0.113937, 65.13 sec so far
+Iteration 58834: max relative diff=0.110709, 70.14 sec so far
+Iteration 63022: max relative diff=0.107671, 75.15 sec so far
+
+----------------------------------------
+Wallclock time:	91.062
+Return code:	None
+Computation aborted after 91.062 seconds since the time limit of 90 seconds was exceeded.
+</pre>
+</body></html>

@@ -1,0 +1,34 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g firewire.false.prism firewire.false.props --prop deadline -const delay=36,deadline=800 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.false-36-800.deadline
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:44:23 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g firewire.false.prism firewire.false.props --prop deadline -const 'delay=36,deadline=800' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "firewire.false.prism"...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2
+Labels:      "done"
+Rewards:     "time" "time_sending"
+
+Parsing properties file "firewire.false.props"...
+
+Error: Syntax error ("^", line 10, column 23).
+
+----------------------------------------
+Wallclock time:	0.329
+Return code:	1

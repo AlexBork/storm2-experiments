@@ -1,0 +1,96 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g consensus.6.prism consensus.props --prop steps_min -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	consensus.6-2.steps_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:49:54 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g consensus.6.prism consensus.props --prop steps_min -const K=2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "consensus.6.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4 process5 process6
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4 pc5 coin5 pc6 coin6
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "steps_min": R{"steps"}min=? [ F "finished" ]
+Model constants: K=2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: K=2
+
+Computing reachable states... 860442 1258240 states
+Reachable states exploration and model construction done in 4.049 secs.
+Sorting reachable states list...
+
+Time for model construction: 5.686 seconds.
+
+Type:        MDP
+States:      1258240 (1 initial)
+Transitions: 6236736
+Choices:     5008128
+Max/avg:     6/3.98
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 49 iterations and 0.684 seconds.
+target=384, inf=0, rest=1257856
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.069 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.099 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 2.489 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 18438.0
+Starting Prob1 (min)...
+Prob1 (min) took 64 iterations and 1.062 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 123: max relative diff=138.630835097, 5.03 sec so far
+Iteration 247: max relative diff=55.3321801324, 10.05 sec so far
+Iteration 371: max relative diff=29.7025089451, 15.07 sec so far
+Iteration 495: max relative diff=17.8103427637, 20.09 sec so far
+Iteration 619: max relative diff=11.3317448244, 25.11 sec so far
+Iteration 744: max relative diff=7.43800693307, 30.14 sec so far
+Iteration 867: max relative diff=5.02971614682, 35.15 sec so far
+Iteration 990: max relative diff=3.4333063574, 40.18 sec so far
+Iteration 1114: max relative diff=2.36668834705, 45.21 sec so far
+Iteration 1239: max relative diff=1.63171715844, 50.24 sec so far
+Iteration 1364: max relative diff=1.12953194948, 55.27 sec so far
+Iteration 1488: max relative diff=0.786021728038, 60.29 sec so far
+Iteration 1613: max relative diff=0.548585696143, 65.33 sec so far
+Iteration 1738: max relative diff=0.382077164054, 70.36 sec so far
+Iteration 1863: max relative diff=0.26638953087, 75.40 sec so far
+Iteration 1988: max relative diff=0.185833260411, 80.42 sec so far
+
+----------------------------------------
+Wallclock time:	91.043
+Return code:	None
+Computation aborted after 91.043 seconds since the time limit of 90 seconds was exceeded.

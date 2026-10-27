@@ -1,0 +1,59 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	consensus.4-4.c2
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:44:20 2026
+Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-f3d_edv1
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.237s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	43136 (111 nodes)
+Transitions: 	144352 (2372 nodes)
+Choices: 	115840
+Reward Models:  none
+Variables: 	rows: 13 meta variables (22 DD variables), columns: 13 meta variables (22 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (23 nodes)
+   * all_coins_equal_1
+   * finished
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.207s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2189
+Transitions: 	8980
+Choices: 	7175
+Reward Models:  none
+State Labels: 	6 labels
+   * (((pc4 = 3) & (pc2 = 3)) & ((pc3 = 3) & (pc1 = 3))) -> 1 item(s)
+   * finished -> 1 item(s)
+   * all_coins_equal_1 -> 125 item(s)
+   * deadlock -> 0 item(s)
+   * (((coin4 = 1) & (coin2 = 1)) & ((coin3 = 1) & (coin1 = 1))) -> 125 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
+Result (for initial states): 0.406275273. Solution bounds: [0.4062748668, 0.4062756793].
+Time for model checking: 0.034s.
+
+----------------------------------------
+Wallclock time:	0.543
+Return code:	0

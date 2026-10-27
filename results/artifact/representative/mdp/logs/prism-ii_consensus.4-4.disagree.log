@@ -1,0 +1,102 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g consensus.4.prism consensus.props --prop disagree -const K=4 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	consensus.4-4.disagree
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:25:53 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g consensus.4.prism consensus.props --prop disagree -const K=4 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "consensus.4.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "disagree": Pmax=? [ F "finished"&!"agree" ]
+Model constants: K=4
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: K=4
+
+Computing reachable states...
+
+Reachability (BFS): 195 iterations in 0.01 seconds (average 0.000051, setup 0.00)
+
+Time for model construction: 0.026 seconds.
+
+Type:        MDP
+States:      43136 (1 initial)
+Transitions: 144352
+
+Transition matrix: 2336 nodes (3 terminal), 144352 minterms, vars: 18r/18c/4nd
+
+Prob0A: 149 iterations in 0.05 seconds (average 0.000336, setup 0.00)
+
+Prob1E: 2480 iterations in 0.84 seconds (average 0.000339, setup 0.00)
+
+yes = 10872, no = 910, maybe = 31354
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.069 seconds, found 0 MECs.
+Time for building MEC quotient: 0.028 seconds.
+
+Quotient MDP:
+States:      31356 (1 initial)
+Transitions: 120872
+
+Transition matrix: 13776 nodes (3 terminal), 120872 minterms, vars: 18r/18c/23nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=31356, nc=94344, nnz=118168, k=4] [1.5 MB]
+Creating vector for yes... [245.0 KB]
+Creating vector for maybe... [245.0 KB]
+Allocating iteration vectors... [4 x 245.0 KB]
+TOTAL: [2.9 MB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 9.99842E-07
+Iterative method (interval iteration): 10196 iterations in 3.73 seconds (average 0.000364, setup 0.02)
+
+Value in the initial state: 0.1560730640009612
+
+Time for model checking: 4.735 seconds.
+
+Result: 0.1560730640009612
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	5.086
+Return code:	0

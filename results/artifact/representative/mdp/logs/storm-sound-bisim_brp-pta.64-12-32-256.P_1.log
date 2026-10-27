@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani brp-pta-mdp.jani --janiproperty P_1 --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --sound --bisimulation
+Benchmark:	brp-pta.64-12-32-256.P_1
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:21:19 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty P_1 --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --sound --bisimulation
+Current working directory: /tmp/invocation-m3migips
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 49.430s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	21572157
+Transitions: 	28832157
+Choices: 	28587581
+Reward Models:  none
+State Labels: 	3 labels
+   * init -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * (s_nok_seen | s_dk_seen) -> 29536 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 22.175s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	212194
+Transitions: 	294466
+Choices: 	265410
+Reward Models:  none
+State Labels: 	2 labels
+   * (s_nok_seen | s_dk_seen) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "P_1": Pmax=? [F (s_nok_seen | s_dk_seen)] ...
+Result (for initial states): 9.353871662e-19. Exact solution.
+Time for model checking: 0.048s.
+
+----------------------------------------
+Wallclock time:	71.775
+Return code:	0

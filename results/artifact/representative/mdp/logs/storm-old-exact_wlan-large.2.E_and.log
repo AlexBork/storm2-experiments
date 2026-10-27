@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani wlan-large-mdp.jani --janiproperty E_and --constants K=2 --exact
+Benchmark:	wlan-large.2.E_and
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 19:23:26 2026
+Command line arguments: --jani wlan-large-mdp.jani --janiproperty E_and --constants K=2 --exact
+Current working directory: /tmp/invocation-bhcijv5i
+
+Time for model input parsing: 0.011s.
+
+Time for model construction: 28.826s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3283371
+Transitions: 	6221633
+Choices: 	6200795
+Reward Models:  E_and_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (success1_seen & success2_seen) -> 2 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "E_and": R[exp]{"E_and_rate_reward"}max=? [F (success1_seen & success2_seen)] ...
+Result (for initial states): 50520455/1008 (approx. 50119.49901)
+Time for model checking: 7.547s.
+
+----------------------------------------
+Wallclock time:	37.940
+Return code:	0

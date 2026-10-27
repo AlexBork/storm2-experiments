@@ -1,0 +1,146 @@
+{
+	"mcsta-ovi": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/mcsta-ovi_consensus.4-4.c2.log",
+				"wallclock-time": 0.697,
+				"mcresult": "0.4062753527127493",
+				"result-diff": 1.9775597974697055e-07,
+				"states": 43136
+			}
+		}
+	},
+	"prism-ii": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/prism-ii_consensus.4-4.c2.log",
+				"wallclock-time": 3.348,
+				"construction-time": 0.028,
+				"checking-time": 2.88,
+				"mcresult": "0.4062752716526596",
+				"result-diff": 1.7641368165113302e-09,
+				"states": 43136
+			}
+		}
+	},
+	"storm-exact-bisim": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-exact-bisim_consensus.4-4.c2.log",
+				"wallclock-time": 0.548,
+				"construction-time": 0.182,
+				"checking-time": 0.226,
+				"mcresult": "852021/2097152",
+				"result-diff": 0.0,
+				"states": 43136,
+				"preprocessing-time": 0.115,
+				"states-after": 2189
+			}
+		}
+	},
+	"storm-exact": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-exact_consensus.4-4.c2.log",
+				"wallclock-time": 0.493,
+				"construction-time": 0.186,
+				"checking-time": 0.282,
+				"mcresult": "852021/2097152",
+				"result-diff": 0.0,
+				"states": 43136
+			}
+		}
+	},
+	"storm-hybrid-sound": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-hybrid-sound_consensus.4-4.c2.log",
+				"wallclock-time": 0.644,
+				"construction-time": 0.137,
+				"checking-time": 0.372,
+				"mcresult": "0.4062752822",
+				"result-diff": 2.4196932235238334e-08,
+				"states": 43136
+			}
+		}
+	},
+	"storm-old-exact": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-old-exact_consensus.4-4.c2.log",
+				"wallclock-time": 0.548,
+				"construction-time": 0.219,
+				"checking-time": 0.279,
+				"mcresult": "852021/2097152",
+				"result-diff": 0.0,
+				"states": 43136
+			}
+		}
+	},
+	"storm-old-sound": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-old-sound_consensus.4-4.c2.log",
+				"wallclock-time": 5.097,
+				"construction-time": 0.113,
+				"checking-time": 4.963,
+				"mcresult": "0.4062752777",
+				"result-diff": 1.3120698198753317e-08,
+				"states": 43136
+			}
+		}
+	},
+	"storm-sound-bisim": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-sound-bisim_consensus.4-4.c2.log",
+				"wallclock-time": 0.141,
+				"construction-time": 0.093,
+				"checking-time": 0.008,
+				"mcresult": "0.4062752785.",
+				"result-diff": 1.5089806471906208e-08,
+				"states": 43136,
+				"preprocessing-time": 0.022,
+				"states-after": 2189
+			}
+		}
+	},
+	"storm-sound-ddbisim": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-sound-ddbisim_consensus.4-4.c2.log",
+				"wallclock-time": 0.638,
+				"construction-time": 0.137,
+				"checking-time": 0.033,
+				"mcresult": "0.406275273.",
+				"result-diff": 1.552187093980078e-09,
+				"states": 43136,
+				"preprocessing-time": 0.34,
+				"states-after": 2189
+			}
+		}
+	},
+	"storm-sound": {
+		"consensus.4-4.c2": {
+			"1": {
+				"status": "ok",
+				"log": "experiments/smoke/logs/storm-sound_consensus.4-4.c2.log",
+				"wallclock-time": 0.286,
+				"construction-time": 0.102,
+				"checking-time": 0.112,
+				"mcresult": "0.4062752782.",
+				"result-diff": 1.4351390869473875e-08,
+				"states": 43136
+			}
+		}
+	}
+}

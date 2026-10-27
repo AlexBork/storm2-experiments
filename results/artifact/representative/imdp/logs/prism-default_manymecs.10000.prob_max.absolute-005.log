@@ -1,0 +1,63 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel manymecs.10000.prob_max.tra,sta,lab manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	manymecs.10000.prob_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 21:07:06 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'manymecs.10000.prob_max.tra,sta,lab' manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "manymecs.10000.prob_max.tra", "manymecs.10000.prob_max.sta", "manymecs.10000.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "manymecs.10000.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.235 seconds.
+
+Type:        IMDP
+States:      30002 (1 initial)
+Transitions: 90004
+Choices:     60004
+Max/avg:     2/2.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 20001 iterations and 35.28 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 20003 iterations and 23.934 seconds.
+target=1, yes=1, no=1, maybe=30000
+Starting value iteration (maxmin)...
+Iteration 1718: 5.00 sec so far
+Iteration 3238: 10.00 sec so far
+Iteration 4429: 15.01 sec so far
+Iteration 5618: 20.01 sec so far
+Iteration 6796: 25.02 sec so far
+Iteration 7984: 30.02 sec so far
+
+----------------------------------------
+Wallclock time:	91.008
+Return code:	None
+Computation aborted after 91.008 seconds since the time limit of 90 seconds was exceeded.

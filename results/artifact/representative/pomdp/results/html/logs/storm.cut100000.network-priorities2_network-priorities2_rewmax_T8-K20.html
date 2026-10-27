@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut100000.network-priorities2_network-priorities2_rewmax_T8-K20</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut100000.network-priorities2_network-priorities2_rewmax_T8-K20</h1>
+<dl>
+<dt>Benchmark</dt><dd>network-priorities2_network-priorities2_rewmax_T8-K20</dd>
+<dt>Configuration</dt><dd>storm.cut100000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≥ 536.9082597</dd>
+<dt>Wall-clock time (s)</dt><dd>0.442</dd>
+<dt>Time limit (s)</dt><dd>90.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/representative/logs/cut100000_network-priorities2_network-priorities2_rewmax_T8-K20.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network-priorities2.prism --prop network-priorities.props rewmax -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 100000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network-priorities2.prism --prop network-priorities.props rewmax -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000
+Benchmark:	network-priorities2_network-priorities2_rewmax_T8-K20
+Configuration:	cut100000
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Mon Oct 26 21:47:09 2026
+Command line arguments: --prism network-priorities2.prism --prop network-priorities.props rewmax -const &#x27;T=8,K=20&#x27; --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000
+Current working directory: /tmp/invocation-d8gaxctm
+
+Time for model input parsing: 0.001s.
+
+WARN  (FormulaParserGrammar.cpp:347): Identifier `T&#x27; coincides with a reserved keyword or operator. Property expressions using the variable or constant &#x27;T&#x27; might not be parsed correctly.
+Time for model construction: 0.061s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	19373
+Transitions: 	102420
+Choices: 	34157
+Observations: 	4909
+Reward Models:  priority
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * (((sched = 0) &amp; (t = (8 - 1))) &amp; (k = (20 - 1))) -&gt; 64 item(s)
+Choice Labels: 	4 labels
+   * slot -&gt; 9773 item(s)
+   * idle -&gt; 9536 item(s)
+   * send1 -&gt; 7392 item(s)
+   * send2 -&gt; 7392 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;R{&quot;priority&quot;}max=? [F (((sched = 0) &amp; (t = (8 - 1))) &amp; (k = (20 - 1)))]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 100001 beliefs discovered, 89983 beliefs explored.
+Constructed belief MDP: 100002 states, 242290 choices, 385038 transitions.
+Time for exploring beliefs: 201ms.
+Time for building the belief MDP: 23ms.
+Time for analyzing the belief MDP: 23ms.
+
+Result: ≥ 536.9082597
+Time for POMDP analysis: 0.337s.
+
+Performance statistics:
+  * peak memory usage: 164MB
+  * CPU time: 0.395s
+  * wallclock time: 0.406s
+
+----------------------------------------
+Wallclock time:	0.442
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut100000.network-priorities2_network-priorities2_rewmax_T8-K20&quot;,
+  &quot;benchmark-id&quot;: &quot;network-priorities2_network-priorities2_rewmax_T8-K20&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut100000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 100000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism network-priorities2.prism --prop network-priorities.props rewmax -const T=8,K=20 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000&quot;
+  ],
+  &quot;time-limit&quot;: 90.0,
+  &quot;log-dir&quot;: &quot;experiments/representative/logs&quot;,
+  &quot;log&quot;: &quot;experiments/representative/logs/cut100000_network-priorities2_network-priorities2_rewmax_T8-K20.log&quot;,
+  &quot;wallclock-time&quot;: 0.442,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 100000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;network-priorities2_network-priorities2_rewmax_T8-K20&quot;,
+    &quot;benchmark-set&quot;: &quot;network-priorities2&quot;,
+    &quot;name&quot;: &quot;network-priorities2&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;T&quot;: 8,
+        &quot;K&quot;: 20
+      },
+      &quot;file&quot;: &quot;models/network-priorities/network-priorities2.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmax&quot;,
+      &quot;file&quot;: &quot;models/network-priorities/network-priorities.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;max&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 100000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut100000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 100000
+  },
+  &quot;size-threshold&quot;: 100000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.061,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 19373,
+    &quot;transitions&quot;: 102420,
+    &quot;choices&quot;: 34157,
+    &quot;observations&quot;: 4909
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 100002,
+    &quot;choices&quot;: 242290,
+    &quot;transitions&quot;: 385038,
+    &quot;expl-time&quot;: 0.201,
+    &quot;build-time&quot;: 0.023,
+    &quot;chk-time&quot;: 0.023
+  },
+  &quot;result&quot;: &quot;≥ 536.9082597&quot;,
+  &quot;total-chk-time&quot;: 0.337
+}
+</pre></details>
+</body>
+</html>

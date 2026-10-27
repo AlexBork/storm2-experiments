@@ -1,0 +1,84 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g resource-gathering.pm resource-gathering.prctl --prop expgold -const B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:19:20 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g resource-gathering.pm resource-gathering.prctl --prop expgold -const 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "resource-gathering.pm"...
+
+Type:        MDP
+Modules:     robot goldcounter gemcounter
+Actions:     [right] [left] [top] [down]
+Variables:   gold gem attacked x y required_gold required_gem
+Labels:      "success"
+Rewards:     "attacks" "rew_gold" "rew_gem" "time"
+
+Parsing properties file "resource-gathering.prctl"...
+
+3 properties:
+(1) "expgold": R{"rew_gold"}max=? [ C<=B ]
+(2) "expsteps": R{"time"}min=? [ F "success" ]
+(3) "prgoldgem": Pmax=? [ F<=B "success" ]
+
+---------------------------------------------------------------------
+
+Model checking: "expgold": R{"rew_gold"}max=? [ C<=B ]
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Computing reachable states...
+
+Reachability (BFS): 1215 iterations in 0.22 seconds (average 0.000181, setup 0.00)
+
+Time for model construction: 0.226 seconds.
+
+Type:        MDP
+States:      958894 (1 initial)
+Transitions: 3325526
+
+Transition matrix: 898 nodes (4 terminal), 3325526 minterms, vars: 23r/23c/4nd
+
+Computing rewards...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=958894, nc=3080702, nnz=3325526, k=4] [53.5 MB]
+Building sparse matrix (transition rewards)... [n=958894, nc=3080702, nnz=61206, k=4] [16.1 MB]
+Creating vector for state rewards... [7.3 MB]
+Allocating iteration vectors... [2 x 7.3 MB]
+TOTAL: [91.5 MB]
+
+Starting iterations...
+Iteration 662 (of 1300): 5.01 sec so far
+
+Iterative method: 1300 iterations in 10.23 seconds (average 0.007638, setup 0.30)
+
+Value in the initial state: 145.28750146751008
+
+Time for model checking: 10.236 seconds.
+
+Result: 145.28750146751008 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	10.781
+Return code:	0

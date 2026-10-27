@@ -39,11 +39,13 @@ fi
 # the already compressed files are stored as they are, and links as links (-y),
 # e.g. benchmarks/models of mdp to examples/mdp_benchmarks
 repo=$(basename "$PWD")
+# The committed files without .gitmodules, which is of no use without git
+files() { git ls-files --recurse-submodules | grep -vx '\.gitmodules'; }
 # shellcheck disable=SC2086
-echo "== $(date): writing $(git ls-files --recurse-submodules | wc -l) committed files and $(du -ch $large | tail -1 | cut -f1) of large files to $out"
+echo "== $(date): writing $(files | wc -l) committed files and $(du -ch $large | tail -1 | cut -f1) of large files to $out"
 rm -f "$out"
 # shellcheck disable=SC2086
-{ git ls-files --recurse-submodules; ls $large; } \
+{ files; ls $large; } \
   | sed "s|^|$repo/|" | (cd .. && zip -q -y -n .gz:.xz:.zip "$out" -@)
 echo "== $(date): testing $out"
 unzip -tq "$out"

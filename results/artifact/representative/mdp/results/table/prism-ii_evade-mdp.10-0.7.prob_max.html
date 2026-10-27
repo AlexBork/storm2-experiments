@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - evade-mdp.10-0.7.prob_max</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>evade-mdp.10-0.7.prob_max</h1>
+<p class="sub">prism-ii &middot; mdpgridmec &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>91.094 s</td></tr><tr><th>states</th><td>1,611,901</td></tr><tr><th>states after preprocessing</th><td>1,409,942</td></tr></table>
+<p class="sub">prism-ii_evade-mdp.10-0.7.prob_max.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g evade-mdp.prism evade-mdp.props --prop prob_max -const N=10,slippery=0.7 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	evade-mdp.10-0.7.prob_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 20:28:12 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g evade-mdp.prism evade-mdp.props --prop prob_max -const 'N=10,slippery=0.7' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;evade-mdp.prism&quot;...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [scan]
+Variables:   start turn dx dy ax ay ax2 ay2
+Labels:      &quot;goal&quot; &quot;traps&quot; &quot;notbad&quot;
+
+Parsing properties file &quot;evade-mdp.props&quot;...
+
+1 property:
+(1) &quot;prob_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;prob_max&quot;: Pmax=? [ &quot;notbad&quot; U &quot;goal&quot; ]
+Model constants: N=10,slippery=0.7
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=10,slippery=0.7
+
+Computing reachable states...
+
+Reachability (BFS): 38 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Time for model construction: 0.018 seconds.
+
+Warning: Deadlocks detected and fixed in 8100 states
+
+Type:        MDP
+States:      1611901 (1 initial)
+Transitions: 19464265
+
+Transition matrix: 850 nodes (7 terminal), 19464265 minterms, vars: 26r/26c/7nd
+
+Prob0A: 38 iterations in 0.02 seconds (average 0.000526, setup 0.00)
+
+Prob1E: 883 iterations in 4.00 seconds (average 0.004530, setup 0.00)
+
+yes = 8100, no = 31862, maybe = 1571939
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.808 seconds, found 1 MECs.
+Time for building MEC quotient: 16.348 seconds.
+
+Quotient MDP:
+States:      1409942 (1 initial)
+Transitions: 17517452
+
+Transition matrix: 3573988 nodes (11 terminal), 17517452 minterms, vars: 26r/26c/34nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=1409942, nc=4310815, nnz=17162015, k=81000] [218.2 MB]
+Creating vector for yes... [10.8 MB]
+Creating vector for maybe... [10.8 MB]
+Allocating iteration vectors... [4 x 10.8 MB]
+TOTAL: [282.8 MB]
+
+Starting iterations (interval iteration)...
+Iteration 186: max relative diff=0.062123, 5.03 sec so far
+Iteration 369: max relative diff=0.001792, 10.05 sec so far
+Iteration 551: max relative diff=0.001508, 15.07 sec so far
+Iteration 733: max relative diff=0.001427, 20.09 sec so far
+Iteration 918: max relative diff=0.001384, 25.10 sec so far
+Iteration 1104: max relative diff=0.001357, 30.11 sec so far
+Iteration 1286: max relative diff=0.001338, 35.14 sec so far
+Iteration 1474: max relative diff=0.001323, 40.16 sec so far
+Iteration 1662: max relative diff=0.001310, 45.17 sec so far
+Iteration 1850: max relative diff=0.001299, 50.18 sec so far
+Iteration 2038: max relative diff=0.001290, 55.21 sec so far
+Iteration 2226: max relative diff=0.001281, 60.24 sec so far
+Iteration 2414: max relative diff=0.001273, 65.26 sec so far
+
+----------------------------------------
+Wallclock time:	91.094
+Return code:	None
+Computation aborted after 91.094 seconds since the time limit of 90 seconds was exceeded.
+</pre>
+</body></html>

@@ -1,0 +1,23 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta polling-system.3.jani --props TmaxBothFull --experiment C=3,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	polling-system.3-3-5.TmaxBothFull
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta polling-system.3.jani --props TmaxBothFull --experiment C=3,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+polling-system.3.jani:model: info: polling-system is an MA model.
+polling-system.3.jani: info: Need at least 56 bytes per state.
+polling-system.3.jani: info: Explored 10934 states for C=3, TIME_BOUND=5.0.
+
+----------------------------------------
+Wallclock time:	91.046
+Return code:	None
+Computation aborted after 91.046 seconds since the time limit of 90 seconds was exceeded.

@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani resource-gathering.jani --janiproperty expgold --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	resource-gathering.1300-100-100.expgold
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:12:10 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expgold --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-fdnva6d4
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.306s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	958894 (39 nodes)
+Transitions: 	3325526 (643 nodes)
+Choices: 	3080702
+Reward Models:  rew_gold
+Variables: 	rows: 10 meta variables (26 DD variables), columns: 10 meta variables (26 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (27 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.024s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	48
+Transitions: 	166
+Choices: 	154
+Reward Models:  rew_gold
+State Labels: 	2 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expgold": R{"rew_gold"}max=? [Csteps<=1300] ...
+Result (for initial states): 145.2875015. Exact solution.
+Time for model checking: 0.000s.
+
+----------------------------------------
+Wallclock time:	0.469
+Return code:	0

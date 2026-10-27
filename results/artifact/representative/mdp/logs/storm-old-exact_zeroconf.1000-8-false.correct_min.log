@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani zeroconf.jani --janiproperty correct_min --constants N=1000,K=8,reset=false --exact
+Benchmark:	zeroconf.1000-8-false.correct_min
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Mon Oct 26 21:04:25 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_min --constants 'N=1000,K=8,reset=false' --exact
+Current working directory: /tmp/invocation-6u3w0ujg
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 9.047s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1868787
+Transitions: 	4224736
+Choices: 	3430379
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 14972 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_min": Pmin=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 322687697779/64024000322687697779 (approx. 5.040105213e-09)
+Time for model checking: 3.934s.
+
+----------------------------------------
+Wallclock time:	13.148
+Return code:	0

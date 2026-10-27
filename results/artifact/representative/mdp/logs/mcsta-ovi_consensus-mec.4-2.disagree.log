@@ -1,0 +1,27 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta consensus-mec.4.jani --props disagree --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	consensus-mec.4-2.disagree
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta consensus-mec.4.jani --props disagree --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+consensus-mec.4.jani:model: info: consensus-mec.4 is an MDP model.
+consensus-mec.4.jani:variables[6]: info: Expanding variable "pc1" into 4 locations in automaton "process1".
+consensus-mec.4.jani:variables[8]: info: Expanding variable "pc2" into 4 locations in automaton "process2".
+consensus-mec.4.jani:variables[10]: info: Expanding variable "pc3" into 4 locations in automaton "process3".
+consensus-mec.4.jani:variables[12]: info: Expanding variable "pc4" into 4 locations in automaton "process4".
+consensus-mec.4.jani: info: Need 16 bytes per state.
+consensus-mec.4.jani: info: Explored 226560 states for K=2.
+
+----------------------------------------
+Wallclock time:	91.043
+Return code:	None
+Computation aborted after 91.043 seconds since the time limit of 90 seconds was exceeded.

@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 16g pacman.nm pacman.props --prop crash -const MAXSTEPS=60 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	pacman.60.crash
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 19:45:46 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=8g, java(heap)=16g
+Command line: prism -javamaxmem 16g pacman.nm pacman.props --prop crash -const MAXSTEPS=60 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "pacman.nm"...
+
+Type:        MDP
+Modules:     arbiter ghost0 ghost1 pacman
+Actions:     [] [g0] [stop0] [g1] [stop1] [p] [left] [right] [up] [down]
+Variables:   pMove steps xG0 yG0 dG0 xG1 yG1 dG1 xP yP dP
+Labels:      "Crash"
+
+Parsing properties file "pacman.props"...
+
+1 property:
+(1) "crash": Pmin=? [ F "Crash" ]
+
+---------------------------------------------------------------------
+
+Model checking: "crash": Pmin=? [ F "Crash" ]
+Model constants: MAXSTEPS=60
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: MAXSTEPS=60
+
+Computing reachable states...
+
+Reachability (BFS): 183 iterations in 41.34 seconds (average 0.225902, setup 0.00)
+
+----------------------------------------
+Wallclock time:	91.068
+Return code:	None
+Computation aborted after 91.068 seconds since the time limit of 90 seconds was exceeded.

@@ -1,0 +1,72 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel sensor.4.max_success.tra,sta,lab sensor.4.max_success.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	sensor.4.max_success.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 21:12:18 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'sensor.4.max_success.tra,sta,lab' sensor.4.max_success.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "sensor.4.max_success.tra", "sensor.4.max_success.sta", "sensor.4.max_success.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "sensor.4.max_success.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 5.146 seconds.
+
+Type:        IMDP
+States:      572452 (1 initial)
+Transitions: 5916500
+Choices:     5724520
+Max/avg:     10/10.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 16 iterations and 5.589 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 91 iterations and 29.611 seconds.
+target=128832, yes=147268, no=117172, maybe=308012
+Starting value iteration (maxmin)...
+Iteration 12: 5.09 sec so far
+Iteration 25: 10.45 sec so far
+Iteration 37: 15.50 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 46 iterations, 147083344 multiplications and 19.266 seconds.
+Probabilistic reachability took 19.267 seconds.
+
+Value in the initial state: 0.9589937500000001
+
+Time for model checking: 55.272 seconds.
+
+Result: 0.9589937500000001 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	60.873
+Return code:	0

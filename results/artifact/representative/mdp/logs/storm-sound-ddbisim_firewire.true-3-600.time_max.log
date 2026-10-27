@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_max --constants delay=3,deadline=600 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	firewire.true-3-600.time_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:59:26 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_max --constants 'delay=3,deadline=600' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-c2gwz6zn
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.225s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1078299 (21110 nodes)
+Transitions: 	1473698 (68262 nodes)
+Choices: 	1453092
+Reward Models:  time
+Variables: 	rows: 16 meta variables (59 DD variables), columns: 16 meta variables (59 DD variables), nondeterminism: 14 meta variables (14 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (60 nodes)
+   * done
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 2.592s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1961
+Transitions: 	2416
+Choices: 	2394
+Reward Models:  time
+State Labels: 	4 labels
+   * (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8))) -> 1 item(s)
+   * done -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "done"] ...
+Result (for initial states): 299.0000008. Solution bounds: [298.9997018, 299.0002998].
+Time for model checking: 0.001s.
+
+----------------------------------------
+Wallclock time:	3.993
+Return code:	0

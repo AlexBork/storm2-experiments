@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel zeroconf.20-8-false.correct_min.tra,sta,lab zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+Benchmark:	zeroconf.20-8-false.correct_min.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Oct 26 21:35:27 UTC 2026
+Hostname: cf5fa1f7a792
+Memory limits: cudd=1g, java(heap)=16g
+Command line: prism -importmodel 'zeroconf.20-8-false.correct_min.tra,sta,lab' zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 16g
+
+Importing model from "zeroconf.20-8-false.correct_min.tra", "zeroconf.20-8-false.correct_min.sta", "zeroconf.20-8-false.correct_min.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "zeroconf.20-8-false.correct_min.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 11.13 seconds.
+
+Type:        IMDP
+States:      1870338 (1 initial)
+Transitions: 8862306
+Choices:     7481352
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 133 iterations and 72.127 seconds.
+Starting Prob1 (min)...
+
+----------------------------------------
+Wallclock time:	91.059
+Return code:	None
+Computation aborted after 91.059 seconds since the time limit of 90 seconds was exceeded.

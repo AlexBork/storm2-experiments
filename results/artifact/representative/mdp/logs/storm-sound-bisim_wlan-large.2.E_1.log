@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --sound --bisimulation
+Benchmark:	wlan-large.2.E_1
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Mon Oct 26 20:08:11 2026
+Command line arguments: --jani wlan-large-mdp.jani --janiproperty E_1 --constants K=2 --sound --bisimulation
+Current working directory: /tmp/invocation-n9xyr7wj
+
+Time for model input parsing: 0.010s.
+
+Time for model construction: 6.043s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	3236578
+Transitions: 	6143745
+Choices: 	6123016
+Reward Models:  E_and_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success1_seen -> 85 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 2.500s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1523702
+Transitions: 	2887291
+Choices: 	2871796
+Reward Models:  E_and_rate_reward
+State Labels: 	2 labels
+   * success1_seen -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "E_1": R{"E_and_rate_reward"}max=? [F (success1_seen)] ...
+Result (for initial states): 46463.76724. Solution bounds: [46463.72077, 46463.8137].
+Time for model checking: 0.755s.
+
+----------------------------------------
+Wallclock time:	9.386
+Return code:	0

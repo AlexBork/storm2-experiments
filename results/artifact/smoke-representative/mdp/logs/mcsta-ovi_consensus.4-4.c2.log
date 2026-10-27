@@ -1,0 +1,51 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta consensus.4.jani --props c2 --experiment K=4 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	consensus.4-4.c2
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	60
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta consensus.4.jani --props c2 --experiment K=4 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+consensus.4.jani:model: info: consensus.4 is an MDP model.
+consensus.4.jani:variables[6]: info: Expanding variable "pc1" into 4 locations in automaton "process1".
+consensus.4.jani:variables[8]: info: Expanding variable "pc2" into 4 locations in automaton "process2".
+consensus.4.jani:variables[10]: info: Expanding variable "pc3" into 4 locations in automaton "process3".
+consensus.4.jani:variables[12]: info: Expanding variable "pc4" into 4 locations in automaton "process4".
+consensus.4.jani: info: Need 16 bytes per state.
+consensus.4.jani: info: Explored 43136 states for K=4.
+
+Peak memory usage: 96 MB
+Analysis results for consensus.4.jani
+Experiment K=4
+
++ State space exploration
+  State size: 16 bytes
+  States:     43136
+  Choices:    115840
+  Branches:   144352
+  Rate:       324331 states/s
+  Time:       0.1 s
+
++ Property c2
+  Probability: 0.4062753527127493
+  Bounds:      [0.4062751837806622, 0.4062755216448364]
+  Time:        0.4 s
+
+  + Optimistic value iteration
+    Total iterations:  1627
+    Verif. attempts:   6
+    Verif. iterations: 223
+    Final epsilon:     1.1222309290347941E-08
+    Time:              0.4 s
+
+
+----------------------------------------
+Wallclock time:	0.669
+Return code:	0

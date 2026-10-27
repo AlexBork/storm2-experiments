@@ -1,0 +1,14 @@
+Command:	/opt/storm2-experiments/imdp/scripts/intervalmdp.sh --precision 1e-6 zeroconf.20-8-false.correct_min
+Benchmark:	zeroconf.20-8-false.correct_min.absolute-005
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	90
+Memory limit:	16 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+
+----------------------------------------
+Wallclock time:	91.107
+Return code:	None
+Computation aborted after 91.107 seconds since the time limit of 90 seconds was exceeded.

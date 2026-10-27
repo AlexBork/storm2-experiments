@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Results</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+table { border-collapse: collapse; font-size: 0.82rem; }
+th, td { padding: 0.22rem 0.5rem; border-bottom: 1px solid #eee; text-align: right;
+          white-space: nowrap; }
+th { position: sticky; top: 0; z-index: 2; background: #fff; cursor: pointer;
+      border-bottom: 2px solid #ccc; user-select: none; }
+th:hover { background: #f0f0f0; }
+th.sorted::after { content: " \2191"; color: #888; }
+th.sorted.desc::after { content: " \2193"; }
+/* Keep the benchmark column in view while scrolling sideways. The page itself is
+   the scroll container, so this stacks with the sticky header above. */
+td:first-child, th:first-child { position: sticky; left: 0; background: #fff;
+                                 border-right: 1px solid #ddd; }
+td:first-child { z-index: 1; }
+th:first-child { z-index: 3; }
+td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align: left; }
+tbody tr:hover, tbody tr:hover td:first-child { background: #fafafa; }
+td.best { background: #cdf3cd; font-weight: 600; }
+/* Meta configurations are assembled from other columns rather than measured, so
+   they are tinted and take no part in the fastest-in-row highlight. */
+td.meta { background: #eceefb; }
+th.meta { background: #e3e6f7; font-style: italic; }
+tbody tr:hover td.meta { background: #e3e6f7; }
+button.toggle.meta.on { background: #5a4fcf; border-color: #5a4fcf; }
+td.timeout a, td.memout a { color: #b35c00; }
+td.incorrect a { color: #c01c28; }
+td.no-result a { color: #777; }
+td.na { color: #bbb; }
+.hidden { display: none; }
+#buttons { margin: 0.6rem 0 1rem; }
+button.toggle { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
+                 padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 999px;
+                 background: #fff; color: #888; cursor: pointer; }
+button.toggle.on { background: #1a5fb4; border-color: #1a5fb4; color: #fff; }
+button.bulk { font: inherit; font-size: 0.8rem; margin-right: 0.35rem;
+              padding: 0.2rem 0.6rem; border: 1px solid #bbb; border-radius: 4px;
+              background: #f3f3f3; color: #333; cursor: pointer; }
+button.bulk:hover { background: #e7e7e7; }
+button.bulk:last-of-type { margin-right: 1.1rem; }
+
+</style>
+</head>
+<body>
+<h1>Results</h1>
+<p class="sub">Each cell links to the logs of all repetitions. Click a column header to
+sort; the fastest runtime of each row is highlighted among the shown configurations.</p>
+<div id="buttons"><button class="bulk" onclick="setAllColumns(true)">show all</button><button class="bulk" onclick="setAllColumns(false)">hide all</button><button class="toggle on" data-col="mcsta-ovi" onclick="toggleColumn(this)">mcsta-ovi</button><button class="toggle on" data-col="prism-ii" onclick="toggleColumn(this)">prism-ii</button><button class="toggle on" data-col="storm-exact" onclick="toggleColumn(this)">storm-exact</button><button class="toggle on" data-col="storm-exact-bisim" onclick="toggleColumn(this)">storm-exact-bisim</button><button class="toggle on" data-col="storm-hybrid-sound" onclick="toggleColumn(this)">storm-hybrid-sound</button><button class="toggle on" data-col="storm-old-exact" onclick="toggleColumn(this)">storm-old-exact</button><button class="toggle on" data-col="storm-old-sound" onclick="toggleColumn(this)">storm-old-sound</button><button class="toggle on" data-col="storm-sound" onclick="toggleColumn(this)">storm-sound</button><button class="toggle meta on" data-col="storm-sound-best" onclick="toggleColumn(this)">storm-sound-best</button><button class="toggle on" data-col="storm-sound-bisim" onclick="toggleColumn(this)">storm-sound-bisim</button><button class="toggle on" data-col="storm-sound-ddbisim" onclick="toggleColumn(this)">storm-sound-ddbisim</button></div>
+<table id="results" data-fixed="5">
+<thead><tr><th data-kind="text" onclick="sortTable(0)">benchmark</th><th data-kind="text" onclick="sortTable(1)">type</th><th data-kind="number" onclick="sortTable(2)">states</th><th data-kind="number" onclick="sortTable(3)">states-sparse-bisim</th><th data-kind="number" onclick="sortTable(4)">time-exact-bisim</th><th class="cfg" data-col="mcsta-ovi" data-kind="number" onclick="sortTable(5)">mcsta-ovi</th><th class="cfg" data-col="prism-ii" data-kind="number" onclick="sortTable(6)">prism-ii</th><th class="cfg" data-col="storm-exact" data-kind="number" onclick="sortTable(7)">storm-exact</th><th class="cfg" data-col="storm-exact-bisim" data-kind="number" onclick="sortTable(8)">storm-exact-bisim</th><th class="cfg" data-col="storm-hybrid-sound" data-kind="number" onclick="sortTable(9)">storm-hybrid-sound</th><th class="cfg" data-col="storm-old-exact" data-kind="number" onclick="sortTable(10)">storm-old-exact</th><th class="cfg" data-col="storm-old-sound" data-kind="number" onclick="sortTable(11)">storm-old-sound</th><th class="cfg" data-col="storm-sound" data-kind="number" onclick="sortTable(12)">storm-sound</th><th class="cfg meta" data-col="storm-sound-best" data-kind="number" onclick="sortTable(13)">storm-sound-best</th><th class="cfg" data-col="storm-sound-bisim" data-kind="number" onclick="sortTable(14)">storm-sound-bisim</th><th class="cfg" data-col="storm-sound-ddbisim" data-kind="number" onclick="sortTable(15)">storm-sound-ddbisim</th></tr></thead>
+<tbody>
+<tr><td data-sort="consensus.4-4.c2">consensus.4-4.c2</td><td data-sort="mdpqvbs">mdpqvbs</td><td data-sort="43136">43136</td><td data-sort="2189">2189 (0.02s)</td><td data-sort="0.115">0.12s</td><td class="cfg time" data-col="mcsta-ovi" data-kind="time" data-sort="0.697"><a href="mcsta-ovi_consensus.4-4.c2.html">0.70</a></td><td class="cfg time" data-col="prism-ii" data-kind="time" data-sort="3.348"><a href="prism-ii_consensus.4-4.c2.html">3.35</a></td><td class="cfg time" data-col="storm-exact" data-kind="time" data-sort="0.493"><a href="storm-exact_consensus.4-4.c2.html">0.49</a></td><td class="cfg time" data-col="storm-exact-bisim" data-kind="time" data-sort="0.548"><a href="storm-exact-bisim_consensus.4-4.c2.html">0.55</a></td><td class="cfg time" data-col="storm-hybrid-sound" data-kind="time" data-sort="0.644"><a href="storm-hybrid-sound_consensus.4-4.c2.html">0.64</a></td><td class="cfg time" data-col="storm-old-exact" data-kind="time" data-sort="0.548"><a href="storm-old-exact_consensus.4-4.c2.html">0.55</a></td><td class="cfg time" data-col="storm-old-sound" data-kind="time" data-sort="5.097"><a href="storm-old-sound_consensus.4-4.c2.html">5.10</a></td><td class="cfg time" data-col="storm-sound" data-kind="time" data-sort="0.286"><a href="storm-sound_consensus.4-4.c2.html">0.29</a></td><td class="cfg meta time" data-col="storm-sound-best" data-kind="time" data-sort="0.141" title="storm-sound-bisim"><a href="storm-sound-bisim_consensus.4-4.c2.html">0.14</a></td><td class="cfg time" data-col="storm-sound-bisim" data-kind="time" data-sort="0.141"><a href="storm-sound-bisim_consensus.4-4.c2.html">0.14</a></td><td class="cfg time" data-col="storm-sound-ddbisim" data-kind="time" data-sort="0.638"><a href="storm-sound-ddbisim_consensus.4-4.c2.html">0.64</a></td></tr>
+</tbody>
+</table>
+<script>
+const table = document.getElementById("results");
+const rows = () => Array.from(table.tBodies[0].rows);
+
+function highlight() {
+  for (const row of rows()) {
+    let best = null;
+    for (const cell of row.cells) {
+      cell.classList.remove("best");
+      if (cell.dataset.kind !== "time" || cell.classList.contains("hidden")
+          || cell.classList.contains("meta")) continue;
+      const value = parseFloat(cell.dataset.sort);
+      if (best === null || value < parseFloat(best.dataset.sort)) best = cell;
+    }
+    if (best) best.classList.add("best");
+  }
+}
+
+function applyColumn(button, on) {
+  button.classList.toggle("on", on);
+  for (const cell of table.querySelectorAll('[data-col="' + CSS.escape(button.dataset.col) + '"]'))
+    cell.classList.toggle("hidden", !on);
+}
+
+function toggleColumn(button) {
+  applyColumn(button, !button.classList.contains("on"));
+  highlight();
+}
+
+function setAllColumns(on) {
+  for (const button of document.querySelectorAll("button.toggle")) applyColumn(button, on);
+  highlight();
+}
+
+let sorted = {index: null, descending: false};
+function sortTable(index) {
+  const header = table.tHead.rows[0].cells[index];
+  const descending = sorted.index === index ? !sorted.descending : false;
+  const numeric = header.dataset.kind === "number";
+  const body = table.tBodies[0];
+  rows().sort((a, b) => {
+    const x = a.cells[index].dataset.sort, y = b.cells[index].dataset.sort;
+    const cmp = numeric ? parseFloat(x) - parseFloat(y) : x.localeCompare(y);
+    return descending ? -cmp : cmp;
+  }).forEach(row => body.appendChild(row));
+  for (const cell of table.tHead.rows[0].cells) cell.classList.remove("sorted", "desc");
+  header.classList.add("sorted");
+  if (descending) header.classList.add("desc");
+  sorted = {index: index, descending: descending};
+}
+
+highlight();
+</script>
+</body></html>
