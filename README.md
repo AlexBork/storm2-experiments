@@ -2,6 +2,8 @@
 
 This artifact contains Storm 2.0 and stormpy 2.0, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. It reproduces Figures 6, 7, 8, and 9. All tools and experiments run in the provided Docker images, so nothing has to be compiled or installed apart from Docker.
 
+This artifact aims to obtain the reusable badge.
+
 - [What is in this artifact?](#overview)
 - [What do I need to run it?](#host-requirements), and [how do I install it?](#loading-the-container)
 - [How can I do a smoke test?](#running-the-smoke-test)
@@ -121,7 +123,7 @@ The scripts of the experiments can also run all tool configurations of the MDP e
 [TOOLS.md](TOOLS.md) describes Storm and stormpy briefly and shows how to try them in their official Docker images: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
 
 ## Difference storm 2.0 and storm used for included paper.
-*Fill in*
+The experimnets in the submitted paper where done one a beta version of storm 2.0. In this artifact we provided the stable release of storm and stormpy 2.0. No changes made between the beta release and the stable release impacted performance. We have also attached results of the full experiment set on the stable release and will replace all figures in the paper with these results.
 
 ## License
 Storm is licensed under the license located at `storm/LICENSE`, stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
