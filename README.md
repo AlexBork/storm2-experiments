@@ -1,30 +1,36 @@
 # Artifact for: "The Probabilistic Model Checker Storm: Lightning Strikes Twice"
 
-This artifact contains sources and precompiled binaries of Storm 2.0 and Stormpy 2.0, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. It reproduces Figures 6, 7, 8, and 9. All tools and experiments run in the provided Docker images. 
+This artifact contains sources and precompiled binaries of **Storm 2.0** and **stormpy 2.0**, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. 
+It reproduces Figures 6, 7, 8, and 9.
+In addition, it contains **TODO** FILL WITH MODEST/PRISM INFO
+All tools and experiments run in the provided Docker images.
 
-We apply for the reusable badge.
+We apply for the Available, Functional and Reusable badges.
 
 ## Getting started
 Check the [requirements](#requirements), then follow the steps in this order:
 
 1. [Load the Docker images](#step-1-load-the-docker-images) (at most 10 minutes).
 2. [Run the smoke test](#step-2-run-the-smoke-test) of the experiment set you want to run (at most 5 minutes).
-3. [Run the experiment set](#step-3-run-an-experiment-set) (hours to days, depending on the set).
+3. [Run the experiment set](#step-3-run-an-experiment-set) (hours to days, depending on the bechmark set and set-up).
 4. [Create the figures from the logs](#step-4-create-the-figures-from-logs), of your run or of the runs of the paper (at most a few minutes).
-5. Optionally, [play with Storm and Stormpy](#step-5-play-with-storm-and-stormpy).
+5. Optionally, [play with Storm and stormpy](#step-5-play-with-storm-and-stormpy).
 
 ## Overview
 The artifact consists of three parts:
 - **Storm 2.0**, the probabilistic model checker presented in the paper: its source code in `storm/`, and in the Docker images `storm2-experiments` and `storm2-tools`.
-- **Stormpy 2.0**, the Python API of Storm (Sec. 7 of the paper): its source code in `stormpy/`, with the robot vacuum example of the paper in `examples/vacuum/` and the Jupyter notebooks of the Storm tutorial in `notebooks/`. [TOOLS.md](TOOLS.md) shows how to try Storm and Stormpy.
-- **The experiments** of Sec. 8 of the paper, which compare Storm with other tools on MDPs, interval MDPs and POMDPs: the scripts to run them in `scripts/`, the experiments and their Docker image in `experiments/`, the benchmarks in `examples/`, and the logs and results of the runs in the paper and of sample runs of all experiment sets with this artifact in `results/`.
+- **stormpy 2.0**, the Python API of Storm (Sec. 7 of the paper): its source code in `stormpy/`, with the robot vacuum example of the paper in `examples/vacuum/`. We additionally provide an updated version the Jupyter notebooks of the Storm tutorial given at FM '26 in `notebooks/`.
+- **The experiments** of Sec. 8 of the paper, which compare Storm with other tools on MDPs and interval MDPs, and showcase its POMDP functionality: the scripts to run them in `scripts/`, the experiments and their Docker image in `experiments/`, the benchmarks in `examples/`, and the logs and results of the runs in the paper and of sample runs of all experiment sets with this artifact in `results/`.
 
-[Contents](#contents) near the end of this README lists all folders.
+[TOOLS.md](TOOLS.md) describes how you can try out Storm and stormpy yourself.
+
+Section [Contents](#contents) near the end of this README lists all folders.
 
 ## Requirements
-We provide three experiment sets for reproducing (subsets of) the experiments, described in [The experiment sets](#the-experiment-sets). Run the largest one that fits your machine and your time; the times are generous estimates from our runs, so most machines are faster:
+We provide three experiment sets for reproducing (subsets of) the experiments in the paper, described in [The experiment sets](#the-experiment-sets). 
+Run the largest one that fits your hardware and time constraints; the times are generous estimates based on our runs, so we expect most runs to be faster.
 
-| Experiment set   | Needs at least  | Takes about | With `-p`, 4 runs at a time  |
+| Experiment set   | Needs at least  | Takes about | With `-p`, 4 parallel runs   |
 | ---------------- | --------------- | ----------- | ---------------------------- |
 | [Minimal]        | 3 cores, 9 GiB  | 7 hours     | 2 hours (9 cores, 33 GiB)    |
 | [Representative] | 5 cores, 17 GiB | 7 hours     | 2 hours (17 cores, 65 GiB)   |
@@ -34,11 +40,16 @@ We provide three experiment sets for reproducing (subsets of) the experiments, d
 [Representative]: #representative
 [Full]: #full
 
-All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution). Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
+All cores are counted in **physical cores**. 
+On a larger machine, option `-p` allows running several benchmarks in parallel; see [Parallel execution](#parallel-execution). 
+Every machine additionally requires **Docker** and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). 
+No network access is needed.
 
-The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a recent arm64 MacBook running macOS with Docker Desktop. 
-
+The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. 
+On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86.
 On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
+
+We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a MacBook Pro (13-inch, M1, 2020) (ARM processor) running macOS 26.6.2 with Docker Desktop 4.97.0. 
 
 ## Step 1: Load the Docker images
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/).
@@ -47,27 +58,47 @@ On macOS, the cores and memory are those given to the virtual machine of Docker 
    ```bash
    $ARTIFACT_DIR/scripts/1_load.sh
    ```
-   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. 
+   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64. Docker keeps the one suitable for your machine. 
    
-   If loading fails, enable the containerd image store and try again: in Docker Desktop under Settings → General → "Use containerd for pulling and storing images", for Docker Engine with `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and a restart of Docker. The script says so when this may help.
+   If loading fails, enable the *containerd* image store and try again:
+    - Docker Desktop: Settings → General → enable "Use containerd for pulling and storing images",
+    - Docker Engine: set `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and restart Docker.
 
 [^privileged]: The scripts start the container with the options `--privileged --cap-drop=all`. These let the experiment runner pin every run to its own cores and enforce its memory limit; all other privileges are dropped.
 
 ## Step 2: Run the smoke test
-After loading the images, run the smoke test of the experiment set you want to run, `minimal`, `representative` or `full`, e.g.
+After loading the images, run the smoke test.
+It checks that the tool configurations and post-processing are working and that your machine can run the selected experiment set.
+
+To run the smoke test for the experiment set `representative`, run
 
 ```bash
 $ARTIFACT_DIR/scripts/2_smoke.sh representative
 ```
 
-This runs every tool configuration of the MDP and interval MDP experiments, and one cut-off and one discretisation of the POMDP experiment, on one small benchmark each with a time limit of 60 seconds, but with the cores and memory per run of the given set. Then it post-processes the results and builds the figures, like the experiment set. It checks that everything works and that your machine can run the set: if the machine is too small for it, the smoke test stops right away with `not enough cores or memory for a single run`. It takes at most 5 minutes; on our machine it took about a minute.
+Replace `representative` by `minimal` or `full` to run the smoke test for the respective set instead.
+CPU cores and memory per run are determined by the selected experiment set, see [Requirements](#requirements).
+If your hardware provides insufficent CPU cores or memory for the selected set, the smoke test stops right away and outputs `not enough cores or memory for a single run`.
 
-What to check:
-- Every run ends with `ok` in its line `[done ...] CONFIGURATION BENCHMARK ... ok (...)`. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) are `skipped` instead.
-- The output ends with a summary of the three experiments and `== all results checked`. If a run gave an incorrect result or none at all, the summary marks its experiment, the output ends with `== results with problems in:` and the experiments concerned, and the runs with problems are listed in the output of that experiment, below its line `checked ... runs`.
-- `smoke-SET.pdf` in your current directory, e.g. `smoke-representative.pdf`, contains Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and in each panel of Figure 9.
+The smoke test includes a test run on one small benchmark with a time limit of 60 seconds for
 
-The logs and results are in `smoke-SET/`. If you encounter issues with the smoke test, please provide a zip of `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
+- MDPs: every tool and configuration from the experiments,
+- interval MDPs: every tool and configuration from the experiments, and
+- POMDPs: one cut-off and one discretisation configuration.
+
+After the full run has finished, the smoke test post-processes the results and tests building the figures.
+Overall, the smoke test should take at most 5 minutes; on our machines it took about a minute.
+
+After the test has finished, check the following:
+- In the command-line output, each run should end with `ok` in its line `[done ...] CONFIGURATION BENCHMARK ... ok (...)`. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) should indicate `skipped`.
+- The command-line output should end with a summary of the three experiments and `== all results checked`.
+- Your current directory should contain a file `smoke-SET.pdf`, where `SET` is your selected experiment set, e.g. `smoke-representative.pdf`. The file should contain variants of Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and in each panel of Figure 9.
+- Your current directory should contain a directory `smoke-SET/`, containing logs and additional result data.
+
+If the command-line output ends with `== results with problems in:`, some run did not yield correct results.
+This indiactes a failure of the smoke test.
+
+If you encounter this or any other issue with the smoke test, please provide a zip containing the command-line output, `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
 
 ## Step 3: Run an experiment set
 Run the experiment set, `minimal`, `representative` or `full`, e.g.
