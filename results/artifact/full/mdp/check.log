@@ -1,0 +1,2 @@
+checked 957 runs: 41 expected, 36 memout, 750 ok, 130 timeout
+  41 expected: the same outcome as in the runs of the paper, e.g. for benchmarks a tool does not support (--expected lists them)

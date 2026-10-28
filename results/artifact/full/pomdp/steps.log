@@ -1,0 +1,10 @@
+wrote 646 invocations (34 configurations x 19 benchmarks x 1 repetition(s)) to inv.json
+  index:       /opt/storm2-experiments/pomdp/benchmarks/index.json
+  time limit:  900s
+  log dir:     experiments/logs (created)
+  repetitions: 1
+
+Gathering execution data for logfiles in experiments/logs ...
+Generated experiments/results/html/index.html and 646 run pages.
+Generated aggregate plots for 19 instances in experiments/results/plots
+Generated results for 19 instances in experiments/results

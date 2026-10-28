@@ -1,0 +1,10 @@
+wrote 272 invocations (34 configurations x 8 benchmarks x 1 repetition(s)) to inv-representative.json
+  index:       /opt/storm2-experiments/pomdp/benchmarks/index-representative.json
+  time limit:  90s
+  log dir:     experiments/representative/logs (created)
+  repetitions: 1
+
+Gathering execution data for logfiles in experiments/representative/logs ...
+Generated experiments/representative/results/html/index.html and 272 run pages.
+Generated aggregate plots for 8 instances in experiments/representative/results/plots
+Generated results for 8 instances in experiments/representative/results

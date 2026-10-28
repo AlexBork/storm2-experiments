@@ -1,11 +1,4 @@
 == Mon Oct 26 18:13:39 UTC 2026: running experiment 1/3: mdp
-wrote 517 invocations (10 configurations x 53 benchmarks x 1 repetition(s)) to inv-minimal.json
-  index:       /opt/storm2-experiments/mdp/benchmarks/index-representative.json
-  ignored:     1 meta configuration(s): storm-sound-best
-  skipped:     13 configuration/benchmark pairs the configuration is not applicable to
-  time limit:  90s
-  log dir:     experiments/minimal/logs (created)
-  repetitions: 1
 fitting jobs: 5 (12 physical cores with 2 per run and at least 1 to spare, 94 GiB of memory with 8 GiB per run and 1 GiB to spare)
 jobs: 5 at a time
 worker 1: cores 0,1, governor performance
@@ -535,25 +528,10 @@ memory limit: 8 GiB per run
 [done 517/517, 0h 42m] storm-old-sound brp-pta.64-12-32-256.P_1 ... timeout (91.1s)
 
 517 invocations: 405 ok, 81 timeout, 31 error, 0 skipped
-read 517 executions of 53 benchmarks in 11 configurations from experiments/minimal/logs
-  1 incorrect, 28 no-result, 13 memout, 81 timeout, 394 ok
-  12743.4 s of wallclock time in total, i.e. 3h 32m when run sequentially
-  no state count from storm-sound for 1 benchmark(s): rabin.10.live
-  column states-sparse-bisim: preprocessing state count and time from storm-sound-bisim
-  column time-exact-bisim: preprocessing time from storm-exact-bisim
-  meta configuration storm-sound-best: best of storm-sound, storm-sound-bisim, storm-hybrid-sound, storm-sound-ddbisim, storm-exact, storm-exact-bisim
-  40 of 53 benchmarks are supported by every configuration
-wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/minimal/results, and the same csv files for the model checking time only with the suffix -checking
-wrote the html table to experiments/minimal/results/table/index.html
 checked 517 runs: 29 expected, 13 memout, 394 ok, 81 timeout
   29 expected: the same outcome as in the runs of the paper, e.g. for benchmarks a tool does not support (--expected lists them)
 == Mon Oct 26 18:56:31 UTC 2026: finished experiment 1/3: mdp in 0h 42m 52s, 0h 42m 52s in total
 == Mon Oct 26 18:56:31 UTC 2026: running experiment 2/3: imdp
-wrote 96 invocations (3 configurations x 32 benchmarks x 1 repetition(s)) to inv-minimal.json
-  index:       /opt/storm2-experiments/imdp/benchmarks/index-representative.json
-  time limit:  90s
-  log dir:     experiments/minimal/logs (created)
-  repetitions: 1
 fitting jobs: 5 (12 physical cores with 2 per run and at least 1 to spare, 94 GiB of memory with 8 GiB per run and 1 GiB to spare)
 jobs: 5 at a time
 worker 1: cores 0,1, governor performance
@@ -662,21 +640,9 @@ memory limit: 8 GiB per run
 [done 96/96, 0h 16m] intervalmdp-default mer.250-0.1.prob_max.absolute-005 ... timeout (91.1s)
 
 96 invocations: 57 ok, 38 timeout, 1 error, 0 skipped
-read 96 executions of 32 benchmarks in 3 configurations from experiments/minimal/logs
-  0 incorrect, 0 no-result, 1 memout, 38 timeout, 57 ok
-  4722.7 s of wallclock time in total, i.e. 1h 18m when run sequentially
-  compared 15 benchmark(s) against the result most configurations agree on
-  32 of 32 benchmarks are supported by every configuration
-wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/minimal/results, and the same csv files for the model checking time only with the suffix -checking
-wrote the html table to experiments/minimal/results/table/index.html
 checked 96 runs: 1 memout, 57 ok, 38 timeout
 == Mon Oct 26 19:12:52 UTC 2026: finished experiment 2/3: imdp in 0h 16m 21s, 0h 59m 13s in total
 == Mon Oct 26 19:12:52 UTC 2026: running experiment 3/3: pomdp
-wrote 272 invocations (34 configurations x 8 benchmarks x 1 repetition(s)) to inv-minimal.json
-  index:       /opt/storm2-experiments/pomdp/benchmarks/index-representative.json
-  time limit:  90s
-  log dir:     experiments/minimal/logs (created)
-  repetitions: 1
 fitting jobs: 5 (12 physical cores with 2 per run and at least 1 to spare, 94 GiB of memory with 8 GiB per run and 1 GiB to spare)
 jobs: 5 at a time
 worker 1: cores 0,1, governor performance
@@ -961,32 +927,12 @@ memory limit: 8 GiB per run
 [done 272/272, 0h 08m] cut50000000 grid_grid_rewmin_sl0.3 ... error (36.7s): return code -9
 
 272 invocations: 230 ok, 0 timeout, 42 error, 0 skipped
-
-Gathering execution data for logfiles in experiments/minimal/logs ...
-Generated experiments/minimal/results/html/index.html and 272 run pages.
-Generated aggregate plots for 8 instances in experiments/minimal/results/plots
-Generated results for 8 instances in experiments/minimal/results
 checked 272 runs: 42 memout, 230 ok
 == Mon Oct 26 19:21:46 UTC 2026: finished experiment 3/3: pomdp in 0h 08m 54s, 1h 08m 07s in total
 == Mon Oct 26 19:21:46 UTC 2026: building the figures
-Rc files read (in order):
-  /etc/LatexMk
-Latexmk: Run number 1 of rule 'pdflatex'
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-Latexmk: Getting log file 'main.log'
-Latexmk: Run number 2 of rule 'pdflatex'
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-Latexmk: Getting log file 'main.log'
-Latexmk: Summary of warnings from last run of *latex:
-  Latex found 2 multiply defined reference(s)
-Latexmk: ====Problematic refs and citations with line #s in .tex file:
-  Label `scatterlegendfalse' multiply defined
-  Label `scatterlegendfalse' multiply defined
-
-wrote docker/plots/latex/main.pdf
 == Mon Oct 26 19:21:49 UTC 2026: finished in 1h 08m 10s in total
+== summary:
+  mdp: checked 517 runs: 29 expected, 13 memout, 394 ok, 81 timeout
+  imdp: checked 96 runs: 1 memout, 57 ok, 38 timeout
+  pomdp: checked 272 runs: 42 memout, 230 ok
 == all results checked

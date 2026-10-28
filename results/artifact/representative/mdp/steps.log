@@ -1,0 +1,17 @@
+wrote 517 invocations (10 configurations x 53 benchmarks x 1 repetition(s)) to inv-representative.json
+  index:       /opt/storm2-experiments/mdp/benchmarks/index-representative.json
+  ignored:     1 meta configuration(s): storm-sound-best
+  skipped:     13 configuration/benchmark pairs the configuration is not applicable to
+  time limit:  90s
+  log dir:     experiments/representative/logs (created)
+  repetitions: 1
+read 517 executions of 53 benchmarks in 11 configurations from experiments/representative/logs
+  1 incorrect, 28 no-result, 4 memout, 85 timeout, 399 ok
+  12563.7 s of wallclock time in total, i.e. 3h 29m when run sequentially
+  no state count from storm-sound for 1 benchmark(s): rabin.10.live
+  column states-sparse-bisim: preprocessing state count and time from storm-sound-bisim
+  column time-exact-bisim: preprocessing time from storm-exact-bisim
+  meta configuration storm-sound-best: best of storm-sound, storm-sound-bisim, storm-hybrid-sound, storm-sound-ddbisim, storm-exact, storm-exact-bisim
+  40 of 53 benchmarks are supported by every configuration
+wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/representative/results, and the same csv files for the model checking time only with the suffix -checking
+wrote the html table to experiments/representative/results/table/index.html

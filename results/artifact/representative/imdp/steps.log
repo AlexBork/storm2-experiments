@@ -1,0 +1,12 @@
+wrote 96 invocations (3 configurations x 32 benchmarks x 1 repetition(s)) to inv-representative.json
+  index:       /opt/storm2-experiments/imdp/benchmarks/index-representative.json
+  time limit:  90s
+  log dir:     experiments/representative/logs (created)
+  repetitions: 1
+read 96 executions of 32 benchmarks in 3 configurations from experiments/representative/logs
+  0 incorrect, 0 no-result, 0 memout, 37 timeout, 59 ok
+  4603.1 s of wallclock time in total, i.e. 1h 16m when run sequentially
+  compared 17 benchmark(s) against the result most configurations agree on
+  32 of 32 benchmarks are supported by every configuration
+wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/representative/results, and the same csv files for the model checking time only with the suffix -checking
+wrote the html table to experiments/representative/results/table/index.html
