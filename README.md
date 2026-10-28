@@ -1,6 +1,6 @@
 # Artifact for: "The Probabilistic Model Checker Storm: Lightning Strikes Twice"
 
-This artifact contains Storm 2.0 and Stormpy 2.0, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. It reproduces Figures 6, 7, 8, and 9. All tools and experiments run in the provided Docker images, so nothing has to be compiled or installed apart from Docker.
+This artifact contains sources and precompiled binaries of Storm 2.0 and Stormpy 2.0, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. It reproduces Figures 6, 7, 8, and 9. All tools and experiments run in the provided Docker images. 
 
 We apply for the reusable badge.
 
@@ -34,7 +34,7 @@ We provide three experiment sets for reproducing (subsets of) the experiments, d
 [Representative]: #representative
 [Full]: #full
 
-All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
+All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution). Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
 
 The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a recent arm64 MacBook running macOS with Docker Desktop. 
 
