@@ -1,7 +1,8 @@
 # Artifact for: "The Probabilistic Model Checker Storm: Lightning Strikes Twice"
 
 This artifact contains sources and precompiled binaries of **Storm 2.0** and **stormpy 2.0**, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. 
-It reproduces Figures 6, 7, 8, and 9. 
+It reproduces Figures 6, 7, 8, and 9.
+In addition, it contains **TODO** FILL WITH MODEST/PRISM INFO
 All tools and experiments run in the provided Docker images.
 
 We apply for the Available, Functional and Reusable badges.
@@ -61,25 +62,43 @@ We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux
    
    If loading fails, enable the *containerd* image store and try again:
     - Docker Desktop: Settings → General → enable "Use containerd for pulling and storing images",
-    - Docker Engine: set `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` restart Docker.
+    - Docker Engine: set `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and restart Docker.
 
 [^privileged]: The scripts start the container with the options `--privileged --cap-drop=all`. These let the experiment runner pin every run to its own cores and enforce its memory limit; all other privileges are dropped.
 
 ## Step 2: Run the smoke test
-After loading the images, run the smoke test of the experiment set you want to run, `minimal`, `representative` or `full`, e.g.
+After loading the images, run the smoke test.
+It checks that the tool configurations and post-processing are working and that your machine can run the selected experiment set.
+
+To run the smoke test for the experiment set `representative`, run
 
 ```bash
 $ARTIFACT_DIR/scripts/2_smoke.sh representative
 ```
 
-This runs every tool configuration of the MDP and interval MDP experiments, and one cut-off and one discretisation of the POMDP experiment, on one small benchmark each with a time limit of 60 seconds, but with the cores and memory per run of the given set. Then it post-processes the results and builds the figures, like the experiment set. It checks that everything works and that your machine can run the set: if the machine is too small for it, the smoke test stops right away with `not enough cores or memory for a single run`. It takes at most 5 minutes; on our machine it took about a minute.
+Replace `representative` by `minimal` or `full` to run the smoke test for the respective set instead.
+CPU cores and memory per run are determined by the selected experiment set, see [Requirements](#requirements).
+If your hardware provides insufficent CPU cores or memory for the selected set, the smoke test stops right away and outputs `not enough cores or memory for a single run`.
 
-What to check:
-- Every run ends with `ok` in its line `[done ...] CONFIGURATION BENCHMARK ... ok (...)`. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) are `skipped` instead.
-- The output ends with a summary of the three experiments and `== all results checked`. If a run gave an incorrect result or none at all, the summary marks its experiment, the output ends with `== results with problems in:` and the experiments concerned, and the runs with problems are listed in the output of that experiment, below its line `checked ... runs`.
-- `smoke-SET.pdf` in your current directory, e.g. `smoke-representative.pdf`, contains Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and in each panel of Figure 9.
+The smoke test includes a test run on one small benchmark with a time limit of 60 seconds for
 
-The logs and results are in `smoke-SET/`. If you encounter issues with the smoke test, please provide a zip of `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
+- MDPs: every tool and configuration from the experiments,
+- interval MDPs: every tool and configuration from the experiments, and
+- POMDPs: one cut-off and one discretisation configuration.
+
+After the full run has finished, the smoke test post-processes the results and tests building the figures.
+Overall, the smoke test should take at most 5 minutes; on our machines it took about a minute.
+
+After the test has finished, check the following:
+- In the command-line output, each run should end with `ok` in its line `[done ...] CONFIGURATION BENCHMARK ... ok (...)`. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) should indicate `skipped`.
+- The command-line output should end with a summary of the three experiments and `== all results checked`.
+- Your current directory should contain a file `smoke-SET.pdf`, where `SET` is your selected experiment set, e.g. `smoke-representative.pdf`. The file should contain variants of Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and in each panel of Figure 9.
+- Your current directory should contain a directory `smoke-SET/`, containing logs and additional result data.
+
+If the command-line output ends with `== results with problems in:`, some run did not yield correct results.
+This indiactes a failure of the smoke test.
+
+If you encounter this or any other issue with the smoke test, please provide a zip containing the command-line output, `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
 
 ## Step 3: Run an experiment set
 Run the experiment set, `minimal`, `representative` or `full`, e.g.
