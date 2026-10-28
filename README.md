@@ -1,30 +1,35 @@
 # Artifact for: "The Probabilistic Model Checker Storm: Lightning Strikes Twice"
 
-This artifact contains Storm 2.0 and Stormpy 2.0, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. It reproduces Figures 6, 7, 8, and 9. All tools and experiments run in the provided Docker images, so nothing has to be compiled or installed apart from Docker.
+This artifact contains sources and precompiled binaries of **Storm 2.0** and **stormpy 2.0**, all benchmarks and scripts of the experiments of Sec. 8 of the tool paper "The Probabilistic Model Checker Storm: Lightning Strikes Twice", and the logs and results of the runs shown in the paper. 
+It reproduces Figures 6, 7, 8, and 9. 
+All tools and experiments run in the provided Docker images.
 
-We apply for the reusable badge.
+We apply for the Available, Functional and Reusable badges.
 
 ## Getting started
 Check the [requirements](#requirements), then follow the steps in this order:
 
 1. [Load the Docker images](#step-1-load-the-docker-images) (at most 10 minutes).
 2. [Run the smoke test](#step-2-run-the-smoke-test) of the experiment set you want to run (at most 5 minutes).
-3. [Run the experiment set](#step-3-run-an-experiment-set) (hours to days, depending on the set).
+3. [Run the experiment set](#step-3-run-an-experiment-set) (hours to days, depending on the bechmark set and set-up).
 4. [Create the figures from the logs](#step-4-create-the-figures-from-logs), of your run or of the runs of the paper (at most a few minutes).
-5. Optionally, [play with Storm and Stormpy](#step-5-play-with-storm-and-stormpy).
+5. Optionally, [play with Storm and stormpy](#step-5-play-with-storm-and-stormpy).
 
 ## Overview
 The artifact consists of three parts:
 - **Storm 2.0**, the probabilistic model checker presented in the paper: its source code in `storm/`, and in the Docker images `storm2-experiments` and `storm2-tools`.
-- **Stormpy 2.0**, the Python API of Storm (Sec. 7 of the paper): its source code in `stormpy/`, with the robot vacuum example of the paper in `examples/vacuum/` and the Jupyter notebooks of the Storm tutorial in `notebooks/`. [TOOLS.md](TOOLS.md) shows how to try Storm and Stormpy.
-- **The experiments** of Sec. 8 of the paper, which compare Storm with other tools on MDPs, interval MDPs and POMDPs: the scripts to run them in `scripts/`, the experiments and their Docker image in `experiments/`, the benchmarks in `examples/`, and the logs and results of the runs in the paper and of sample runs of all experiment sets with this artifact in `results/`.
+- **stormpy 2.0**, the Python API of Storm (Sec. 7 of the paper): its source code in `stormpy/`, with the robot vacuum example of the paper in `examples/vacuum/`. We additionally provide an updated version the Jupyter notebooks of the Storm tutorial given at FM '26 in `notebooks/`.
+- **The experiments** of Sec. 8 of the paper, which compare Storm with other tools on MDPs and interval MDPs, and showcase its POMDP functionality: the scripts to run them in `scripts/`, the experiments and their Docker image in `experiments/`, the benchmarks in `examples/`, and the logs and results of the runs in the paper and of sample runs of all experiment sets with this artifact in `results/`.
 
-[Contents](#contents) near the end of this README lists all folders.
+[TOOLS.md](TOOLS.md) describes how you can try out Storm and stormpy yourself.
+
+Section [Contents](#contents) near the end of this README lists all folders.
 
 ## Requirements
-We provide three experiment sets for reproducing (subsets of) the experiments, described in [The experiment sets](#the-experiment-sets). Run the largest one that fits your machine and your time; the times are generous estimates from our runs, so most machines are faster:
+We provide three experiment sets for reproducing (subsets of) the experiments in the paper, described in [The experiment sets](#the-experiment-sets). 
+Run the largest one that fits your hardware and time constraints; the times are generous estimates based on our runs, so we expect most runs to be faster.
 
-| Experiment set   | Needs at least  | Takes about | With `-p`, 4 runs at a time  |
+| Experiment set   | Needs at least  | Takes about | With `-p`, 4 parallel runs   |
 | ---------------- | --------------- | ----------- | ---------------------------- |
 | [Minimal]        | 3 cores, 9 GiB  | 7 hours     | 2 hours (9 cores, 33 GiB)    |
 | [Representative] | 5 cores, 17 GiB | 7 hours     | 2 hours (17 cores, 65 GiB)   |
@@ -34,11 +39,16 @@ We provide three experiment sets for reproducing (subsets of) the experiments, d
 [Representative]: #representative
 [Full]: #full
 
-All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
+All cores are counted in **physical cores**. 
+On a larger machine, option `-p` allows running several benchmarks in parallel; see [Parallel execution](#parallel-execution). 
+Every machine additionally requires **Docker** and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). 
+No network access is needed.
 
-The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a recent arm64 MacBook running macOS with Docker Desktop. 
-
+The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. 
+On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86.
 On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
+
+We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a MacBook Pro (13-inch, M1, 2020) (ARM processor) running macOS 26.6.2 with Docker Desktop 4.97.0. 
 
 ## Step 1: Load the Docker images
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/).
@@ -47,9 +57,11 @@ On macOS, the cores and memory are those given to the virtual machine of Docker 
    ```bash
    $ARTIFACT_DIR/scripts/1_load.sh
    ```
-   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. 
+   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64. Docker keeps the one suitable for your machine. 
    
-   If loading fails, enable the containerd image store and try again: in Docker Desktop under Settings → General → "Use containerd for pulling and storing images", for Docker Engine with `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and a restart of Docker. The script says so when this may help.
+   If loading fails, enable the *containerd* image store and try again:
+    - Docker Desktop: Settings → General → enable "Use containerd for pulling and storing images",
+    - Docker Engine: set `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` restart Docker.
 
 [^privileged]: The scripts start the container with the options `--privileged --cap-drop=all`. These let the experiment runner pin every run to its own cores and enforce its memory limit; all other privileges are dropped.
 
