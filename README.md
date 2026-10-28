@@ -36,7 +36,9 @@ We provide three experiment sets for reproducing (subsets of) the experiments, d
 
 All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
 
-The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store); arm64 and macOS hosts were not tested. On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
+The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store) and on a recent arm64 MacBook running macOS with Docker Desktop. 
+
+On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
 
 ## Step 1: Load the Docker images
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/).
@@ -45,7 +47,9 @@ The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On AR
    ```bash
    $ARTIFACT_DIR/scripts/1_load.sh
    ```
-   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. If loading fails, enable the containerd image store and try again: in Docker Desktop under Settings → General → "Use containerd for pulling and storing images", for Docker Engine with `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and a restart of Docker. The script says so when this may help.
+   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. 
+   
+   If loading fails, enable the containerd image store and try again: in Docker Desktop under Settings → General → "Use containerd for pulling and storing images", for Docker Engine with `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and a restart of Docker. The script says so when this may help.
 
 [^privileged]: The scripts start the container with the options `--privileged --cap-drop=all`. These let the experiment runner pin every run to its own cores and enforce its memory limit; all other privileges are dropped.
 
@@ -94,17 +98,17 @@ where `DIR` is a folder of logs in the layout of the runs, e.g. `representative/
 [results/paper/README.md](results/paper/README.md) describes the logs and results of the paper. The figures and results of sample runs of the minimal, representative and full experiments and of their smoke tests with this artifact are in `$ARTIFACT_DIR/results/artifact/`.
 
 ## Step 5: Play with Storm and Stormpy
-[TOOLS.md](TOOLS.md) describes Storm and Stormpy briefly and shows how to try them in the Docker image `storm2-tools` of the artifact, without network access: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the Stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
+[TOOLS.md](TOOLS.md) describes Storm and Stormpy briefly and shows how to try them in the Docker image `storm2-tools` of the artifact: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the Stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
 
 ## The experiment sets
-All three sets run the tools again and create Figures 6 to 9 of the paper from their own results:
+All three experiment sets run all experiments on different benchmark sets with different amount of cores and memory. They all produce Figures 6 to 9 of the paper:
 - **Figure 6**: the MDP model checking performance of Storm compared with mcsta, PRISM and the previous version Storm 1.6.2, and of the configurations of Storm compared with each other (experiment `mdp`).
 - **Figure 7**: bisimulation minimisation in Storm (experiment `mdp`).
 - **Figure 8**: Storm, PRISM and IntervalMDP.jl on interval MDPs (experiment `imdp`).
 - **Figure 9**: the belief exploration of Storm for POMDPs with different size limits (experiment `pomdp`).
 
 ### Full
-The full experiments run every configuration on all benchmarks with a time limit of 900 seconds and 4 physical cores and 32 GiB of memory per run, as in the paper: 1759 runs, 957 of `mdp`, 156 of `imdp` and 646 of `pomdp`. They take up to 85 hours with one run at a time; the runtimes of our run with this artifact add up to about 71 hours (if every run timed out, 440 hours). Compare `full.pdf` with the figures of the paper ([Step 4](#step-4-create-the-figures-from-logs) creates them from `$ARTIFACT_DIR/results/paper/`), and `full/` with their results in `$ARTIFACT_DIR/results/paper/`.
+The full experiments run every configuration on all benchmarks with a time limit of 900 seconds and 4 physical cores and 32 GiB of memory per run, as in the paper: 1759 runs, 957 of `mdp`, 156 of `imdp` and 646 of `pomdp`. They take up to 85 hours with one run at a time; the runtimes of our run with this artifact add up to about 71 hours. Compare `full.pdf` with the figures of the paper ([Step 4](#step-4-create-the-figures-from-logs) creates them from `$ARTIFACT_DIR/results/paper/`), and `full/` with their results in `$ARTIFACT_DIR/results/paper/`.
 
 ### Representative
 The representative experiments run all tool configurations on a subset of the benchmarks (53 of the 98 MDPs, 32 of the 52 interval MDPs and 8 of the 19 POMDPs, covering all models of the first two), 885 runs, with a time limit of 90 seconds and 16 GiB of memory per run instead of 900 seconds and 32 GiB. The benchmarks were chosen such that they show the same trends as the paper. With the shorter time limit, more runs time out than in the paper.
@@ -136,7 +140,7 @@ The experiments in the submitted paper were done on a beta version of Storm 2.0,
 
 ## License
 Storm is licensed under the license located at `storm/LICENSE`, Stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
-The Modest Toolset is licensed under the license located at `experiments/docker/modest/License.txt` (also `Modest/License.txt` in the zips in that folder).
+The Modest Toolset is licensed under the license located at `experiments/docker/modest/License.txt` (also `Modest/License.txt` in the zips in that folder), which permits its redistribution as part of this artifact.
 All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
 
 ## The artifact
