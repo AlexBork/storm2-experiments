@@ -30,29 +30,29 @@ Replace the options after `storm` to try other queries and settings, for example
 | --- | --- |
 | `--prism vacuum.prism --prop 'Tmin=? [F "docked"]'` | 39.30873742 with the default floating-point value iteration, which only proves the bounds [0, 246.26] |
 | `--prism vacuum.prism --prop 'Tmin=? [F "docked"]' --sound` | 39.30777562 with sound value iteration, which proves the bounds [39.30773631, 39.30781493] |
-| `--prism vacuum.prism --prop 'Pmax=? [F<=10 "docked"]'` | 0.7519414556, the maximal probability to dock within 10 steps |
-| `--prism vacuum.prism --prop 'R{"steps"}min=? [F "docked"]'` | 38.30873742, the minimal expected number of moves to dock (the first step only starts the robot) |
-| `--prism vacuum.prism --prop 'Tmin=? [F "docked"]' --buildstateval --exportscheduler sched.json` | also writes the optimal policy to `examples/vacuum/sched.json`, with the chosen action for every state given by its variables |
+| `--prism vacuum.prism --prop 'Pmax=? [F<=10 "docked"]' --sound` | 0.7519414556, the maximal probability to dock within 10 steps, which Storm computes exactly |
+| `--prism vacuum.prism --prop 'R{"steps"}min=? [F "docked"]' --sound` | 38.30777562, the minimal expected number of moves to dock (the first step only starts the robot), with the bounds [38.30773731, 38.30781393] |
+| `--prism vacuum.prism --prop 'Tmin=? [F "docked"]' --sound --buildstateval --buildchoicelab --exportscheduler sched.json` | also writes the optimal policy to `examples/vacuum/sched.json`: for every state, given by its variables, the action to choose, e.g. `east` |
 
 The comments at the top of `vacuum.prism` describe its variants: a POMDP in which the robot only observes bumps, a parametric MDP with an undefined slip probability, and an interval MDP. The MDP benchmarks of the experiments can be checked in the same way, e.g. the coin-flip property `c2` of the consensus protocol with 4 processes, before and after bisimulation minimisation:
 
 ```bash
 docker run --rm -v "$PWD/examples:/examples" -w /examples/mdp_benchmarks/consensus storm2-tools \
-    storm --prism consensus.4.prism --prop consensus.props c2 --constants K=4 --bisimulation
+    storm --prism consensus.4.prism --prop consensus.props c2 --constants K=4 --bisimulation --sound
 ```
 
-which reduces the model from 43136 to 2189 states and gives `0.4062465154`. `storm --help` lists all options, and `storm --help all` also the advanced ones.
+which reduces the model from 43136 to 2189 states and gives `0.4062752785` with the bounds `[0.4062748722, 0.4062756848]`; the exact value is 852021/2097152 ≈ 0.4062752724. `storm --help` lists all options, and `storm --help all` also the advanced ones.
 
 POMDPs are analysed by `storm-pomdp`, whose belief exploration computes sound bounds on the optimal value. For the refuel benchmark of the POMDP experiments, unfolding the beliefs up to a size limit of 100000 gives a lower bound, and discretising the beliefs with resolution 4 an upper bound on the maximal probability to reach the goal:
 
 ```bash
 docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel storm2-tools \
-    storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration unfold --size-threshold 100000
+    storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration unfold --size-threshold 100000 --sound
 docker run --rm -v "$PWD/examples:/examples" -w /examples/pomdp_benchmarks/refuel storm2-tools \
-    storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration discretize --resolution 4 --triangulationmode static
+    storm-pomdp --prism refuel.prism --prop refuel.props prbmax -const N=6 --belief-exploration discretize --resolution 4 --triangulationmode static --sound
 ```
 
-which print `Result: ≥ 0.6721852107` and `Result: ≤ 0.7129547434`. Figure 9 of the paper shows how these bounds develop with the size limit.
+which print `Result: ≥ 0.67219` and `Result: ≤ 0.7129687089`; with `--sound`, as in the experiments, the bounds hold despite rounding errors. Figure 9 of the paper shows how these bounds develop with the size limit.
 
 ## Stormpy
 
