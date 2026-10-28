@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan.4.jani --janiproperty cost_min --constants COL=0 --sound
+Benchmark:	wlan.4-0.cost_min
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 14:18:02 2026
+Command line arguments: --jani wlan.4.jani --janiproperty cost_min --constants COL=0 --sound
+Current working directory: /tmp/invocation-ncf8a_19
+
+Time for model input parsing: 0.006s.
+
+Time for model construction: 1.094s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	345000
+Transitions: 	762252
+Choices: 	440206
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((s1 = 12) & (s2 = 12)) -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625. Solution bounds: [7624.992375, 7625.007625].
+Time for model checking: 0.205s.
+
+----------------------------------------
+Wallclock time:	1.366
+Return code:	0

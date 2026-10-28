@@ -6,11 +6,13 @@
   },
   "storm-old-sound": {
     "bin": "bin/storm-old",
+    "architectures": ["x86_64"],
     "cmd": "--jani %jani --janiproperty %property --constants %constants --sound",
     "description": "Storm 1.6.2 with sound computations, like storm-sound."
   },
   "storm-old-exact": {
     "bin": "bin/storm-old",
+    "architectures": ["x86_64"],
     "cmd": "--jani %jani --janiproperty %property --constants %constants --exact",
     "description": "Storm 1.6.2 with exact computations, like storm-exact."
   },

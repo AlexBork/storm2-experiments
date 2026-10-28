@@ -9,14 +9,14 @@ Decision diagram memory:	4 GiB
 Output:
 Storm 2.0.0
 
-Date: Mon Oct 26 22:15:01 2026
+Date: Wed Oct 28 08:24:51 2026
 Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --engine hybrid --sound '--sylvan:threads' 2 '--sylvan:maxmem' 4096
-Current working directory: /tmp/invocation-af0cp2i4
+Current working directory: /tmp/invocation-pztt0vyl
 
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 2 parallel threads.
-Time for model construction: 0.137s.
+Time for model construction: 0.168s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -34,8 +34,8 @@ Labels: 	4
 
 Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
 Result (for initial states): 0.4062752822
-Time for model checking: 0.372s.
+Time for model checking: 0.467s.
 
 ----------------------------------------
-Wallclock time:	0.644
+Wallclock time:	0.884
 Return code:	0

@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	beb.4-8-7.GaveUp
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 12:40:34 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-bwupo3tp
+
+Time for model input parsing: 0.003s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.123s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	20175095 (14176 nodes)
+Transitions: 	34825903 (63411 nodes)
+Choices: 	20924543
+Reward Models:  none
+Variables: 	rows: 20 meta variables (62 DD variables), columns: 20 meta variables (62 DD variables), nondeterminism: 6 meta variables (6 DD variables)
+Labels: 	2
+   * deadlock -> 966016 state(s) (2752 nodes)
+   * init -> 1 state(s) (63 nodes)
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 30.127s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	109689
+Transitions: 	304846
+Choices: 	128162
+Reward Models:  none
+State Labels: 	3 labels
+   * gave_up -> 1 item(s)
+   * deadlock -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "GaveUp": Pmax=? [F (gave_up)] ...
+Result (for initial states): 0.0001145015478. Exact solution.
+Time for model checking: 0.048s.
+
+----------------------------------------
+Wallclock time:	31.545
+Return code:	0

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan.6.jani --janiproperty cost_min --constants COL=0 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	wlan.6-0.cost_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 12:49:39 2026
+Command line arguments: --jani wlan.6.jani --janiproperty cost_min --constants COL=0 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-e8589ojt
+
+Time for model input parsing: 0.010s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.436s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	5007548 (3897 nodes)
+Transitions: 	11475748 (20468 nodes)
+Choices: 	6350470
+Reward Models:  cost
+Variables: 	rows: 16 meta variables (50 DD variables), columns: 16 meta variables (50 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (51 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "cost_min": R{"cost"}min=? [F ((s1 = 12) & (s2 = 12))] ...
+Result (for initial states): 7625
+Time for model checking: 14.244s.
+
+----------------------------------------
+Wallclock time:	16.103
+Return code:	0

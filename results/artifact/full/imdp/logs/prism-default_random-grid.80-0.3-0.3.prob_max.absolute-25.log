@@ -1,0 +1,187 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel random-grid.80-0.3-0.3.prob_max.tra,sta,lab random-grid.80-0.3-0.3.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	random-grid.80-0.3-0.3.prob_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:15:33 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'random-grid.80-0.3-0.3.prob_max.tra,sta,lab' random-grid.80-0.3-0.3.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "random-grid.80-0.3-0.3.prob_max.tra", "random-grid.80-0.3-0.3.prob_max.sta", "random-grid.80-0.3-0.3.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "random-grid.80-0.3-0.3.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ !"avoid" U "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !"avoid" U "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 25.842 seconds.
+
+Type:        IMDP
+States:      512000 (1 initial)
+Transitions: 9100800
+Choices:     3072000
+Max/avg:     6/6.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 121 iterations and 43.774 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 205 iterations and 74.221 seconds.
+target=1, yes=160, no=12720, maybe=499120
+Starting value iteration (maxmin)...
+Iteration 7: 5.83 sec so far
+Iteration 14: 11.65 sec so far
+Iteration 20: 16.69 sec so far
+Iteration 26: 21.80 sec so far
+Iteration 32: 26.92 sec so far
+Iteration 38: 32.12 sec so far
+Iteration 44: 37.33 sec so far
+Iteration 50: 42.57 sec so far
+Iteration 56: 47.84 sec so far
+Iteration 62: 53.11 sec so far
+Iteration 68: 58.38 sec so far
+Iteration 74: 63.65 sec so far
+Iteration 80: 68.93 sec so far
+Iteration 86: 74.21 sec so far
+Iteration 92: 79.50 sec so far
+Iteration 98: 84.83 sec so far
+Iteration 104: 90.13 sec so far
+Iteration 110: 95.42 sec so far
+Iteration 116: 100.72 sec so far
+Iteration 122: 106.00 sec so far
+Iteration 128: 111.30 sec so far
+Iteration 134: 116.61 sec so far
+Iteration 140: 121.90 sec so far
+Iteration 146: 127.20 sec so far
+Iteration 152: 132.48 sec so far
+Iteration 158: 137.76 sec so far
+Iteration 164: 143.03 sec so far
+Iteration 170: 148.31 sec so far
+Iteration 176: 153.58 sec so far
+Iteration 182: 158.83 sec so far
+Iteration 188: 164.10 sec so far
+Iteration 194: 169.37 sec so far
+Iteration 200: 174.63 sec so far
+Iteration 206: 179.89 sec so far
+Iteration 212: 185.17 sec so far
+Iteration 218: 190.46 sec so far
+Iteration 224: 195.73 sec so far
+Iteration 230: 201.00 sec so far
+Iteration 236: 206.27 sec so far
+Iteration 242: 211.54 sec so far
+Iteration 248: 216.84 sec so far
+Iteration 254: 222.15 sec so far
+Iteration 260: 227.44 sec so far
+Iteration 266: 232.74 sec so far
+Iteration 272: 238.04 sec so far
+Iteration 278: 243.32 sec so far
+Iteration 284: 248.61 sec so far
+Iteration 290: 253.89 sec so far
+Iteration 296: 259.19 sec so far
+Iteration 302: 264.47 sec so far
+Iteration 308: 269.75 sec so far
+Iteration 314: 275.03 sec so far
+Iteration 320: 280.34 sec so far
+Iteration 326: 285.62 sec so far
+Iteration 332: 290.93 sec so far
+Iteration 338: 296.23 sec so far
+Iteration 344: 301.54 sec so far
+Iteration 350: 306.82 sec so far
+Iteration 356: 312.13 sec so far
+Iteration 362: 317.42 sec so far
+Iteration 368: 322.71 sec so far
+Iteration 374: 327.95 sec so far
+Iteration 380: 333.20 sec so far
+Iteration 386: 338.45 sec so far
+Iteration 392: 343.70 sec so far
+Iteration 398: 348.95 sec so far
+Iteration 404: 354.22 sec so far
+Iteration 410: 359.49 sec so far
+Iteration 416: 364.77 sec so far
+Iteration 422: 370.05 sec so far
+Iteration 428: 375.33 sec so far
+Iteration 434: 380.62 sec so far
+Iteration 440: 385.92 sec so far
+Iteration 446: 391.18 sec so far
+Iteration 452: 396.44 sec so far
+Iteration 458: 401.71 sec so far
+Iteration 464: 407.00 sec so far
+Iteration 470: 412.30 sec so far
+Iteration 476: 417.59 sec so far
+Iteration 482: 422.86 sec so far
+Iteration 488: 428.15 sec so far
+Iteration 494: 433.44 sec so far
+Iteration 500: 438.71 sec so far
+Iteration 506: 443.99 sec so far
+Iteration 512: 449.27 sec so far
+Iteration 518: 454.55 sec so far
+Iteration 524: 459.83 sec so far
+Iteration 530: 465.12 sec so far
+Iteration 536: 470.41 sec so far
+Iteration 542: 475.71 sec so far
+Iteration 548: 480.99 sec so far
+Iteration 554: 486.28 sec so far
+Iteration 560: 491.57 sec so far
+Iteration 566: 496.85 sec so far
+Iteration 572: 502.18 sec so far
+Iteration 578: 507.59 sec so far
+Iteration 584: 512.96 sec so far
+Iteration 590: 518.35 sec so far
+Iteration 596: 523.71 sec so far
+Iteration 602: 529.02 sec so far
+Iteration 608: 534.31 sec so far
+Iteration 614: 539.60 sec so far
+Iteration 620: 544.91 sec so far
+Iteration 626: 550.19 sec so far
+Iteration 632: 555.49 sec so far
+Iteration 638: 560.79 sec so far
+Iteration 644: 566.08 sec so far
+Iteration 650: 571.36 sec so far
+Iteration 656: 576.65 sec so far
+Iteration 662: 581.93 sec so far
+Iteration 668: 587.24 sec so far
+Iteration 674: 592.55 sec so far
+Iteration 680: 597.88 sec so far
+Iteration 686: 603.14 sec so far
+Iteration 692: 608.38 sec so far
+Iteration 698: 613.62 sec so far
+Iteration 704: 618.84 sec so far
+Iteration 710: 624.09 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 711 iterations, 6312091626 multiplications and 625.049 seconds.
+Probabilistic reachability took 625.051 seconds.
+
+Value in the initial state: 0.0050069460743583675
+
+Time for model checking: 744.592 seconds.
+
+Result: 0.0050069460743583675 (+/- 9.978183394317858E-6 estimated; rel err 0.001992868156782884)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	771.076
+Return code:	0

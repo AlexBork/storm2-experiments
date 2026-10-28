@@ -19,6 +19,7 @@ import concurrent.futures
 import json
 import logging
 import os
+import platform
 import shlex
 import shutil
 import signal
@@ -111,6 +112,10 @@ def prepare(invocation):
     if cmd is None:
         raise NotApplicable(f"configuration '{config['id']}' is not applicable to "
                             f"benchmark '{benchmark['id']}'")
+    # E.g. Storm 1.6.2, which only exists for x86_64
+    if "architectures" in config and platform.machine() not in config["architectures"]:
+        raise NotApplicable(f"configuration '{config['id']}' is only available for "
+                            f"{', '.join(config['architectures'])}, not for {platform.machine()}")
     binary = resolve_binary(config["bin"])
     if not binary.is_file():
         raise ValueError(f"binary not found: {binary}")

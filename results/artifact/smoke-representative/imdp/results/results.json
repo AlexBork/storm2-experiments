@@ -4,9 +4,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/intervalmdp-default_zeroconf.20-2-false.correct_max.absolute-25.log",
-				"wallclock-time": 4.855,
-				"construction-time": 1.064526795,
-				"checking-time": 3.512517319,
+				"wallclock-time": 5.091,
+				"construction-time": 0.986990681,
+				"checking-time": 3.441577305,
 				"mcresult": "2.291725498851476e-9",
 				"result-diff": 0.0
 			}
@@ -17,9 +17,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/prism-default_zeroconf.20-2-false.correct_max.absolute-25.log",
-				"wallclock-time": 26.635,
-				"construction-time": 0.69,
-				"checking-time": 25.574,
+				"wallclock-time": 26.624,
+				"construction-time": 0.649,
+				"checking-time": 25.612,
 				"mcresult": "2.291711051761493E-9",
 				"result-diff": 1.4447089983e-14,
 				"states": 89586
@@ -31,9 +31,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-default_zeroconf.20-2-false.correct_max.absolute-25.log",
-				"wallclock-time": 0.579,
-				"construction-time": 0.374,
-				"checking-time": 0.155,
+				"wallclock-time": 0.548,
+				"construction-time": 0.378,
+				"checking-time": 0.15,
 				"mcresult": "2.291856696e-09.",
 				"result-diff": 1.31197148524e-13,
 				"states": 89586

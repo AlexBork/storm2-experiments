@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-ii - firewire.true-3-600.time_sending</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>firewire.true-3-600.time_sending</h1>
+<p class="sub">prism-ii &middot; mdpqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>18</code></p>
+<p class="sub">reference result: <code>18</code></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>152.338 s</td></tr><tr><th>result</th><td>18.000005060936445</td></tr><tr><th>relative difference</th><td>2.81e-07</td></tr><tr><th>states</th><td>1,078,695</td></tr></table>
+<p class="sub">prism-ii_firewire.true-3-600.time_sending.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_sending -const delay=3,deadline=600 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.true-3-600.time_sending
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 12:11:36 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_sending -const 'delay=3,deadline=600' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file &quot;firewire.true.prism&quot;...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2 timer
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2 t
+Labels:      &quot;done&quot;
+Rewards:     &quot;time&quot; &quot;time_sending&quot;
+
+Parsing properties file &quot;firewire.true.props&quot;...
+
+5 properties:
+(1) &quot;elected&quot;: P&gt;=1 [ F &quot;done&quot; ]
+(2) &quot;time_max&quot;: R{&quot;time&quot;}max=? [ F &quot;done&quot; ]
+(3) &quot;time_min&quot;: R{&quot;time&quot;}min=? [ F &quot;done&quot; ]
+(4) &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [ F &quot;done&quot; ]
+(5) &quot;deadline&quot;: Pmin=? [ F (((s1=8)&amp;(s2=7))|((s1=7)&amp;(s2=8)))&amp;(t&lt;=deadline) ]
+
+---------------------------------------------------------------------
+
+Model checking: &quot;time_sending&quot;: R{&quot;time_sending&quot;}max=? [ F &quot;done&quot; ]
+Model constants: deadline=600,delay=3
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: deadline=600,delay=3
+
+Computing reachable states...
+
+Reachability (BFS): 669 iterations in 8.78 seconds (average 0.013124, setup 0.00)
+
+Time for model construction: 9.118 seconds.
+
+Type:        MDP
+States:      1078695 (1 initial)
+Transitions: 1476198
+
+Transition matrix: 68250 nodes (3 terminal), 1476198 minterms, vars: 54r/54c/14nd
+
+Prob0E: 355 iterations in 1.57 seconds (average 0.004423, setup 0.00)
+
+Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
+
+goal = 1052, inf = 0, maybe = 1077643
+Time for computing an upper bound for expected reward: 66.607 seconds.
+Upper bound for max expectation (variant 2): 177072.0
+
+Computing remaining rewards...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=1078695, nc=1452436, nnz=1473042, k=3] [26.5 MB]
+Building sparse matrix (transition rewards)... [n=1078695, nc=1452436, nnz=176097, k=3] [11.7 MB]
+Creating vector for state rewards... [8.2 MB]
+Creating vector for inf... [8.2 MB]
+Creating vector for lower bounds... [8.2 MB]
+Creating vector for upper bounds... [8.2 MB]
+Allocating iteration vectors... [4 x 8.2 MB]
+TOTAL: [104.0 MB]
+
+Starting iterations (interval iteration)...
+Iteration 333: max relative diff=12876.963636, 5.01 sec so far
+Iteration 667: max relative diff=1183.963970, 10.03 sec so far
+Iteration 1001: max relative diff=188.782545, 15.05 sec so far
+Iteration 1335: max relative diff=47.402707, 20.06 sec so far
+Iteration 1668: max relative diff=7.970855, 25.07 sec so far
+Iteration 2002: max relative diff=1.425071, 30.08 sec so far
+Iteration 2336: max relative diff=0.316573, 35.10 sec so far
+Iteration 2669: max relative diff=0.059135, 40.11 sec so far
+Iteration 3003: max relative diff=0.010721, 45.13 sec so far
+Iteration 3337: max relative diff=0.002278, 50.14 sec so far
+Iteration 3670: max relative diff=0.000436, 55.15 sec so far
+Iteration 4004: max relative diff=0.000080, 60.16 sec so far
+Iteration 4338: max relative diff=0.000017, 65.18 sec so far
+Iteration 4672: max relative diff=0.000003, 70.19 sec so far
+Max relative diff between upper and lower bound on convergence: 9.56699E-07
+Iterative method: 4901 iterations in 74.04 seconds (average 0.015023, setup 0.41)
+Maximum finite value in solution vector at end of interval iteration: 27.00001204563013
+
+Value in the initial state: 18.000005060936445
+
+Time for model checking: 142.321 seconds.
+
+Result: 18.000005060936445 (+/- 1.7220581031085893E-5; rel err 9.566986771830384E-7)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	152.338
+Return code:	0
+</pre>
+</body></html>

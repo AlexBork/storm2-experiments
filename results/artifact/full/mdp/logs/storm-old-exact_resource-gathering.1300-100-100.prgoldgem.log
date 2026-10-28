@@ -1,0 +1,38 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani resource-gathering.jani --janiproperty prgoldgem --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --exact
+Benchmark:	resource-gathering.1300-100-100.prgoldgem
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 18:21:17 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty prgoldgem --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --exact
+Current working directory: /tmp/invocation-b5u0lxcj
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 12.153s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958801
+Transitions: 	3325201
+Choices: 	3080401
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prgoldgem": Pmax=? [true Usteps<=1300 "success"] ...
+
+----------------------------------------
+Wallclock time:	901.138
+Return code:	None
+Computation aborted after 901.138 seconds since the time limit of 900 seconds was exceeded.

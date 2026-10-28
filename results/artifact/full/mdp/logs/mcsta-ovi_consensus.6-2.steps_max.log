@@ -1,0 +1,59 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta consensus.6.jani --props steps_max --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	consensus.6-2.steps_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta consensus.6.jani --props steps_max --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+consensus.6.jani:model: info: consensus.6 is an MDP model.
+consensus.6.jani:variables[6]: info: Expanding variable "pc1" into 4 locations in automaton "process1".
+consensus.6.jani:variables[8]: info: Expanding variable "pc2" into 4 locations in automaton "process2".
+consensus.6.jani:variables[10]: info: Expanding variable "pc3" into 4 locations in automaton "process3".
+consensus.6.jani:variables[12]: info: Expanding variable "pc4" into 4 locations in automaton "process4".
+consensus.6.jani:variables[14]: info: Expanding variable "pc5" into 4 locations in automaton "process5".
+consensus.6.jani:variables[16]: info: Expanding variable "pc6" into 4 locations in automaton "process6".
+consensus.6.jani: info: Need 24 bytes per state.
+consensus.6.jani: info: Explored 1258240 states for K=2.
+
+Peak memory usage: 1124 MB
+Analysis results for consensus.6.jani
+Experiment K=2
+
++ State space exploration
+  State size: 24 bytes
+  States:     1258240
+  Choices:    5008128
+  Branches:   6236736
+  Rate:       252709 states/s
+  Time:       5.2 s
+
++ Property steps_max
+  Value:  867.0000369349989
+  Bounds: [866.999243347253, 867.0008305227446]
+  Time:   27.8 s
+
+  + Precomputations
+    Min. prob. 0 states:          0
+    Time for min. prob. 0 states: 0.1 s
+    Min. prob. 1 states:          1258240
+    Time for min. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  1630
+    Verif. attempts:   6
+    Verif. iterations: 137
+    Final epsilon:     8.614290766686358E-09
+    Time:              27.7 s
+
+
+----------------------------------------
+Wallclock time:	33.233
+Return code:	0

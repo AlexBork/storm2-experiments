@@ -1,2 +1,2 @@
 benchmark,type,states,states-sparse-bisim,time-sparse-bisim,time-exact-bisim,mcsta-ovi,prism-ii,storm-exact,storm-exact-bisim,storm-hybrid-sound,storm-old-exact,storm-old-sound,storm-sound,storm-sound-best,storm-sound-bisim,storm-sound-ddbisim
-consensus.4-4.c2,mdpqvbs,43136,2189,0.021,0.103,4800,2.928,1.000,1.000,1.000,1.000,4.878,1.000,1.000,1.000,1.000
+consensus.4-4.c2,mdpqvbs,43136,2189,0.029,0.111,4800,2.870,1.000,1.000,1.000,1.000,4.675,1.000,1.000,1.000,1.000

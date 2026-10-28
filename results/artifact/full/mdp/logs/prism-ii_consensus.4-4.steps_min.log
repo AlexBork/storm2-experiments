@@ -1,0 +1,97 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g consensus.4.prism consensus.props --prop steps_min -const K=4 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	consensus.4-4.steps_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 19:54:47 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g consensus.4.prism consensus.props --prop steps_min -const K=4 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "consensus.4.prism"...
+
+Type:        MDP
+Modules:     process1 process2 process3 process4
+Actions:     [] [done]
+Variables:   counter pc1 coin1 pc2 coin2 pc3 coin3 pc4 coin4
+Labels:      "finished" "all_coins_equal_0" "all_coins_equal_1" "agree"
+Rewards:     "steps"
+
+Parsing properties file "consensus.props"...
+
+5 properties:
+(1) "c1": P>=1 [ F "finished" ]
+(2) "c2": Pmin=? [ F "finished"&"all_coins_equal_1" ]
+(3) "disagree": Pmax=? [ F "finished"&!"agree" ]
+(4) "steps_max": R{"steps"}max=? [ F "finished" ]
+(5) "steps_min": R{"steps"}min=? [ F "finished" ]
+
+---------------------------------------------------------------------
+
+Model checking: "steps_min": R{"steps"}min=? [ F "finished" ]
+Model constants: K=4
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: K=4
+
+Computing reachable states... 43136 states
+Reachable states exploration and model construction done in 0.226 secs.
+Sorting reachable states list...
+
+Time for model construction: 0.353 seconds.
+
+Type:        MDP
+States:      43136 (1 initial)
+Transitions: 144352
+Choices:     115840
+Max/avg:     4/2.69
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 57 iterations and 0.061 seconds.
+target=64, inf=0, rest=43072
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 0.02 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.015 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 0.129 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 294914.0
+Starting Prob1 (min)...
+Prob1 (min) took 66 iterations and 0.057 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 3849: max relative diff=1.00738129158, 5.00 sec so far
+Iteration 7704: max relative diff=0.00203676468583, 10.00 sec so far
+Iteration 11568: max relative diff=4.06356687057e-06, 15.01 sec so far
+Max relative diff between upper and lower bound on convergence: 9.9779577472e-07
+Interval iteration (min, with Power method) took 12440 iterations, 3589885440 multiplications and 16.153 seconds.
+Maximum finite value in solution vector at end of interval iteration: 776.0003830222761
+Expected reachability took 16.438 seconds.
+
+Value in the initial state: 768.0003793450269
+
+Time for model checking: 16.462 seconds.
+
+Result: 768.0003793450269 (+/- 7.663075334937463E-4; rel err 9.977957747198975E-7)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	17.278
+Return code:	0

@@ -9,13 +9,13 @@ Decision diagram memory:	8 GiB
 Output:
 Storm 2.0.0
 
-Date: Mon Oct 26 22:16:55 2026
+Date: Wed Oct 28 08:19:13 2026
 Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact
-Current working directory: /tmp/invocation-amb3owsp
+Current working directory: /tmp/invocation-33sb55gi
 
 Time for model input parsing: 0.001s.
 
-Time for model construction: 0.176s.
+Time for model construction: 0.181s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -33,8 +33,8 @@ Choice Labels: 	none
 
 Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
 Result (for initial states): 852021/2097152 (approx. 0.4062752724). Exact solution.
-Time for model checking: 0.267s.
+Time for model checking: 0.272s.
 
 ----------------------------------------
-Wallclock time:	0.492
+Wallclock time:	0.486
 Return code:	0

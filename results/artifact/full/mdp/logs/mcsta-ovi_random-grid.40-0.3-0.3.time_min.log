@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta random-grid.jani --props time_min --experiment N=40,pover=0.3,pstay=0.3 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	random-grid.40-0.3-0.3.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta random-grid.jani --props time_min --experiment N=40,pover=0.3,pstay=0.3 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+random-grid.jani:model: info: random-grid is an MDP model.
+random-grid.jani: info: Need 8 bytes per state.
+random-grid.jani: info: Explored 64000 states for N=40, pover=0.3, pstay=0.3.
+random-grid.jani:properties[1]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 225 MB
+Analysis results for random-grid.jani
+Experiment N=40, pover=0.3, pstay=0.3
+
++ State space exploration
+  State size: 8 bytes
+  States:     64000
+  Choices:    383995
+  Branches:   1151983
+  Rate:       117647 states/s
+  Time:       0.6 s
+
++ Property time_min
+  Value:  117.90009296744013
+  Bounds: [117.89999999330306, 117.9001859415772]
+  Time:   0.3 s
+
+  + Precomputations
+    Max. prob. 1 states:          64000
+    Time for max. prob. 1 states: 0.0 s
+
+  + Optimistic value iteration
+    Total iterations:  140
+    Verif. attempts:   1
+    Verif. iterations: 11
+    Final epsilon:     1E-06
+    Time:              0.2 s
+
+
+----------------------------------------
+Wallclock time:	1.070
+Return code:	0

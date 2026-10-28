@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.6.jani --janiproperty steps_min --constants K=2 --sound --bisimulation
+Benchmark:	consensus.6-2.steps_min
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 12:13:58 2026
+Command line arguments: --jani consensus.6.jani --janiproperty steps_min --constants K=2 --sound --bisimulation
+Current working directory: /tmp/invocation-aidpuoz5
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 5.001s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 2.278s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2673
+Transitions: 	8071
+Choices: 	6465
+Reward Models:  steps
+State Labels: 	2 labels
+   * finished -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": R{"steps"}min=? [F "finished"] ...
+Result (for initial states): 432.0000007. Solution bounds: [431.9995687, 432.0004327].
+Time for model checking: 0.009s.
+
+----------------------------------------
+Wallclock time:	7.356
+Return code:	0

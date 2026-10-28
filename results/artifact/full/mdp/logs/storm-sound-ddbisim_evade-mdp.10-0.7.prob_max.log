@@ -1,0 +1,59 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani evade-mdp.jani --janiproperty prob_max --constants N=10,slippery=0.7 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	evade-mdp.10-0.7.prob_max
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:05:28 2026
+Command line arguments: --jani evade-mdp.jani --janiproperty prob_max --constants 'N=10,slippery=0.7' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-d52bwqgh
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.632s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1611899 (88 nodes)
+Transitions: 	19107467 (31520 nodes)
+Choices: 	4755775
+Reward Models:  none
+Variables: 	rows: 12 meta variables (30 DD variables), columns: 12 meta variables (30 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	4
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (31 nodes)
+   * goal
+   * notbad
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 41.021s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	794793
+Transitions: 	9488051
+Choices: 	2384373
+Reward Models:  none
+State Labels: 	6 labels
+   * !((((dx = ax) & (dy = ay)) | ((dx = ax2) & (dy = ay2)))) -> 794792 item(s)
+   * ((start & (dx = 9)) & (dy = 9)) -> 1 item(s)
+   * goal -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * notbad -> 794792 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prob_max": Pmax=? ["notbad" U "goal"] ...
+Result (for initial states): 0.9986631837. Solution bounds: [0.998662185, 0.9986641824].
+Time for model checking: 30.499s.
+
+----------------------------------------
+Wallclock time:	72.516
+Return code:	0

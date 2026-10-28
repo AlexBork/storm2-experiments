@@ -1,0 +1,87 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g resource-gathering.pm resource-gathering.prctl --prop prgoldgem -const B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	resource-gathering.1300-100-100.prgoldgem
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 15:16:29 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g resource-gathering.pm resource-gathering.prctl --prop prgoldgem -const 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "resource-gathering.pm"...
+
+Type:        MDP
+Modules:     robot goldcounter gemcounter
+Actions:     [right] [left] [top] [down]
+Variables:   gold gem attacked x y required_gold required_gem
+Labels:      "success"
+Rewards:     "attacks" "rew_gold" "rew_gem" "time"
+
+Parsing properties file "resource-gathering.prctl"...
+
+3 properties:
+(1) "expgold": R{"rew_gold"}max=? [ C<=B ]
+(2) "expsteps": R{"time"}min=? [ F "success" ]
+(3) "prgoldgem": Pmax=? [ F<=B "success" ]
+
+---------------------------------------------------------------------
+
+Model checking: "prgoldgem": Pmax=? [ F<=B "success" ]
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100,B=1300
+
+Computing reachable states...
+
+Reachability (BFS): 1215 iterations in 0.35 seconds (average 0.000288, setup 0.00)
+
+Time for model construction: 0.385 seconds.
+
+Type:        MDP
+States:      958894 (1 initial)
+Transitions: 3325526
+
+Transition matrix: 898 nodes (4 terminal), 3325526 minterms, vars: 23r/23c/4nd
+
+Prob0A: 1203 iterations in 0.53 seconds (average 0.000441, setup 0.00)
+
+yes = 94, no = 0, maybe = 958800
+
+Computing probabilities...
+Engine: Sparse
+
+Building sparse matrix... [n=958894, nc=3080400, nnz=3325200, k=4] [41.9 MB]
+Creating vector for yes... [7.3 MB]
+Allocating iteration vectors... [2 x 7.3 MB]
+TOTAL: [63.9 MB]
+
+Starting iterations...
+Iteration 841 (of 1300): 5.01 sec so far
+
+Iterative method: 1300 iterations in 8.09 seconds (average 0.005946, setup 0.36)
+
+Value in the initial state: 0.6630608525241822
+
+Time for model checking: 8.625 seconds.
+
+Result: 0.6630608525241822 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	9.541
+Return code:	0

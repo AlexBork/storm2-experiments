@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_sending --constants delay=36,deadline=200 --exact
+Benchmark:	firewire.true-36-200.time_sending
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 11:43:37 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_sending --constants 'delay=36,deadline=200' --exact
+Current working directory: /tmp/invocation-p9h6a2kc
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 111.074s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	6931981
+Transitions: 	15782932
+Choices: 	15669366
+Reward Models:  time_sending
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * done -> 192 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_sending": R{"time_sending"}max=? [F "done"] ...
+Result (for initial states): 809/4 (approx. 202.25). Exact solution.
+Time for model checking: 23.222s.
+
+----------------------------------------
+Wallclock time:	139.114
+Return code:	0

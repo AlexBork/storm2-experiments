@@ -11,8 +11,8 @@ PRISM
 =====
 
 Version: 4.10.1
-Date: Mon Oct 26 22:21:20 UTC 2026
-Hostname: 43141cd97e36
+Date: Wed Oct 28 08:20:20 UTC 2026
+Hostname: 0dffff6c09ec
 Memory limits: cudd=1g, java(heap)=32g
 Command line: prism -importmodel 'zeroconf.20-2-false.correct_max.tra,sta,lab' zeroconf.20-2-false.correct_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
 
@@ -35,7 +35,7 @@ Warning: Switching to explicit engine to allow model checking of interval model.
 
 Building model (engine:explicit)...
 
-Time for model construction: 0.674 seconds.
+Time for model construction: 0.602 seconds.
 
 Type:        IMDP
 States:      89586 (1 initial)
@@ -45,17 +45,17 @@ Max/avg:     4/4.00
 
 Starting probabilistic reachability...
 Starting Prob0 (max)...
-Prob0 (max) took 101 iterations and 3.016 seconds.
+Prob0 (max) took 101 iterations and 3.181 seconds.
 Starting Prob1 (max)...
-Prob1 (max) took 998 iterations and 28.06 seconds.
+Prob1 (max) took 998 iterations and 27.865 seconds.
 target=2991, yes=25575, no=26132, maybe=37879
 Starting value iteration (maxmin)...
-Value iteration (maxmin, with Gauss-Seidel) took 52 iterations, 10126896 multiplications and 1.603 seconds.
-Probabilistic reachability took 1.605 seconds.
+Value iteration (maxmin, with Gauss-Seidel) took 52 iterations, 10126896 multiplications and 1.516 seconds.
+Probabilistic reachability took 1.518 seconds.
 
 Value in the initial state: 2.291711051761493E-9
 
-Time for model checking: 32.764 seconds.
+Time for model checking: 32.633 seconds.
 
 Result: 2.291711051761493E-9 (+/- 6.2274364895364975E-6 estimated; rel err 2717.3742015817666)
 
@@ -65,5 +65,5 @@ Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	33.798
+Wallclock time:	33.585
 Return code:	0

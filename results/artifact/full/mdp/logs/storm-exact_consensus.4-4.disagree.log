@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.4.jani --janiproperty disagree --constants K=4 --exact
+Benchmark:	consensus.4-4.disagree
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 19:08:56 2026
+Command line arguments: --jani consensus.4.jani --janiproperty disagree --constants K=4 --exact
+Current working directory: /tmp/invocation-ydkwznx8
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.247s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	43136
+Transitions: 	144352
+Choices: 	115840
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 64 item(s)
+   * agree -> 9170 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "disagree": Pmax=? [F ("finished" & (!"agree"))] ...
+Result (for initial states): 45666330762076479/292595849630842880 (approx. 0.156073064). Exact solution.
+Time for model checking: 4.012s.
+
+----------------------------------------
+Wallclock time:	4.321
+Return code:	0

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - avoid-mdp.15-0.2.goal_max.absolute-005</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>avoid-mdp.15-0.2.goal_max.absolute-005</h1>
+<p class="sub">prism-default &middot; absolute-005 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>252.871 s</td></tr><tr><th>result</th><td>0.22613006924577875</td></tr><tr><th>difference</th><td>2.26e-06</td></tr><tr><th>states</th><td>404,101</td></tr></table>
+<p class="sub">prism-default_avoid-mdp.15-0.2.goal_max.absolute-005.log</p>
+<pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel avoid-mdp.15-0.2.goal_max.tra,sta,lab avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	avoid-mdp.15-0.2.goal_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:37:43 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'avoid-mdp.15-0.2.goal_max.tra,sta,lab' avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;avoid-mdp.15-0.2.goal_max.tra&quot;, &quot;avoid-mdp.15-0.2.goal_max.sta&quot;, &quot;avoid-mdp.15-0.2.goal_max.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;avoid-mdp.15-0.2.goal_max.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ !&quot;avoid&quot; U &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !&quot;avoid&quot; U &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 13.209 seconds.
+
+Type:        IMDP
+States:      404101 (1 initial)
+Transitions: 4426260
+Choices:     1616404
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 58 iterations and 9.136 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 1100 iterations and 155.688 seconds.
+target=900, yes=900, no=155730, maybe=247471
+Starting value iteration (maxmin)...
+Iteration 18: 5.12 sec so far
+Iteration 36: 10.37 sec so far
+Iteration 53: 15.40 sec so far
+Iteration 70: 20.44 sec so far
+Iteration 87: 25.48 sec so far
+Iteration 104: 30.54 sec so far
+Iteration 121: 35.60 sec so far
+Iteration 138: 40.65 sec so far
+Iteration 155: 45.72 sec so far
+Iteration 172: 50.79 sec so far
+Iteration 189: 55.85 sec so far
+Iteration 206: 60.90 sec so far
+Iteration 223: 65.95 sec so far
+Iteration 240: 71.03 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 248 iterations, 662216544 multiplications and 73.455 seconds.
+Probabilistic reachability took 73.457 seconds.
+
+Value in the initial state: 0.22613006924577875
+
+Time for model checking: 239.064 seconds.
+
+Result: 0.22613006924577875 (+/- 9.985801933121152E-6 estimated; rel err 4.4159549264842236E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	252.871
+Return code:	0
+</pre>
+</body></html>

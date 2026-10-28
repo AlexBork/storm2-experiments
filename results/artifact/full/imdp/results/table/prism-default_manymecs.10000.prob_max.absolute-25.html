@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - manymecs.10000.prob_max.absolute-25</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>manymecs.10000.prob_max.absolute-25</h1>
+<p class="sub">prism-default &middot; absolute-25 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>632.389 s</td></tr><tr><th>result</th><td>0.24981922560108677</td></tr><tr><th>difference</th><td>5.43e-13</td></tr><tr><th>states</th><td>30,002</td></tr></table>
+<p class="sub">prism-default_manymecs.10000.prob_max.absolute-25.log</p>
+<pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel manymecs.10000.prob_max.tra,sta,lab manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	manymecs.10000.prob_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 21:54:13 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'manymecs.10000.prob_max.tra,sta,lab' manymecs.10000.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;manymecs.10000.prob_max.tra&quot;, &quot;manymecs.10000.prob_max.sta&quot;, &quot;manymecs.10000.prob_max.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;manymecs.10000.prob_max.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.357 seconds.
+
+Type:        IMDP
+States:      30002 (1 initial)
+Transitions: 90004
+Choices:     60004
+Max/avg:     2/2.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 20001 iterations and 60.093 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 20003 iterations and 55.909 seconds.
+target=1, yes=1, no=1, maybe=30000
+Starting value iteration (maxmin)...
+Iteration 764: 5.01 sec so far
+Iteration 1545: 10.01 sec so far
+Iteration 2327: 15.01 sec so far
+Iteration 3106: 20.02 sec so far
+Iteration 3888: 25.02 sec so far
+Iteration 4669: 30.03 sec so far
+Iteration 5449: 35.03 sec so far
+Iteration 6215: 40.04 sec so far
+Iteration 6980: 45.04 sec so far
+Iteration 7743: 50.05 sec so far
+Iteration 8503: 55.05 sec so far
+Iteration 9269: 60.06 sec so far
+Iteration 10035: 65.07 sec so far
+Iteration 10792: 70.07 sec so far
+Iteration 11550: 75.08 sec so far
+Iteration 12313: 80.08 sec so far
+Iteration 13068: 85.09 sec so far
+Iteration 13825: 90.09 sec so far
+Iteration 14587: 95.09 sec so far
+Iteration 15352: 100.09 sec so far
+Iteration 16113: 105.09 sec so far
+Iteration 16878: 110.10 sec so far
+Iteration 17640: 115.10 sec so far
+Iteration 18410: 120.10 sec so far
+Iteration 19170: 125.11 sec so far
+Iteration 19928: 130.11 sec so far
+Iteration 20682: 135.11 sec so far
+Iteration 21436: 140.12 sec so far
+Iteration 22193: 145.12 sec so far
+Iteration 22947: 150.13 sec so far
+Iteration 23699: 155.13 sec so far
+Iteration 24456: 160.13 sec so far
+Iteration 25217: 165.14 sec so far
+Iteration 25980: 170.14 sec so far
+Iteration 26737: 175.15 sec so far
+Iteration 27497: 180.15 sec so far
+Iteration 28255: 185.15 sec so far
+Iteration 29016: 190.15 sec so far
+Iteration 29776: 195.16 sec so far
+Iteration 30538: 200.16 sec so far
+Iteration 31298: 205.16 sec so far
+Iteration 32059: 210.17 sec so far
+Iteration 32818: 215.18 sec so far
+Iteration 33576: 220.18 sec so far
+Iteration 34335: 225.18 sec so far
+Iteration 35096: 230.19 sec so far
+Iteration 35859: 235.19 sec so far
+Iteration 36621: 240.20 sec so far
+Iteration 37376: 245.20 sec so far
+Iteration 38134: 250.20 sec so far
+Iteration 38894: 255.21 sec so far
+Iteration 39654: 260.21 sec so far
+Iteration 40413: 265.21 sec so far
+Iteration 41171: 270.21 sec so far
+Iteration 41925: 275.22 sec so far
+Iteration 42681: 280.22 sec so far
+Iteration 43436: 285.23 sec so far
+Iteration 44189: 290.23 sec so far
+Iteration 44941: 295.24 sec so far
+Iteration 45697: 300.24 sec so far
+Iteration 46454: 305.25 sec so far
+Iteration 47208: 310.25 sec so far
+Iteration 47958: 315.25 sec so far
+Iteration 48717: 320.26 sec so far
+Iteration 49475: 325.26 sec so far
+Iteration 50227: 330.26 sec so far
+Iteration 50983: 335.27 sec so far
+Iteration 51743: 340.27 sec so far
+Iteration 52502: 345.28 sec so far
+Iteration 53263: 350.28 sec so far
+Iteration 54020: 355.29 sec so far
+Iteration 54781: 360.29 sec so far
+Iteration 55542: 365.30 sec so far
+Iteration 56301: 370.31 sec so far
+Iteration 57059: 375.31 sec so far
+Iteration 57817: 380.31 sec so far
+Iteration 58578: 385.32 sec so far
+Iteration 59339: 390.32 sec so far
+Iteration 60095: 395.32 sec so far
+Iteration 60849: 400.33 sec so far
+Iteration 61609: 405.33 sec so far
+Iteration 62377: 410.34 sec so far
+Iteration 63141: 415.34 sec so far
+Iteration 63912: 420.34 sec so far
+Iteration 64682: 425.35 sec so far
+Iteration 65446: 430.35 sec so far
+Iteration 66217: 435.36 sec so far
+Iteration 66992: 440.36 sec so far
+Iteration 67769: 445.36 sec so far
+Iteration 68540: 450.36 sec so far
+Iteration 69316: 455.37 sec so far
+Iteration 70092: 460.37 sec so far
+Iteration 70865: 465.37 sec so far
+Iteration 71640: 470.38 sec so far
+Iteration 72414: 475.38 sec so far
+Iteration 73190: 480.38 sec so far
+Iteration 73966: 485.38 sec so far
+Iteration 74747: 490.39 sec so far
+Iteration 75522: 495.39 sec so far
+Iteration 76296: 500.39 sec so far
+Iteration 77073: 505.40 sec so far
+Iteration 77850: 510.40 sec so far
+Iteration 78623: 515.40 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 78637 iterations, 7077330000 multiplications and 515.501 seconds.
+Probabilistic reachability took 515.504 seconds.
+
+Value in the initial state: 0.24981922560108677
+
+Time for model checking: 631.546 seconds.
+
+Result: 0.24981922560108677 (+/- 9.977286901108329E-6 estimated; rel err 3.993802669551196E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	632.389
+Return code:	0
+</pre>
+</body></html>

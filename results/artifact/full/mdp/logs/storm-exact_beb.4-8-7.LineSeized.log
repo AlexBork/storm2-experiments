@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --exact
+Benchmark:	beb.4-8-7.LineSeized
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 19:03:35 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty LineSeized --constants N=7 --exact
+Current working directory: /tmp/invocation-q_4jkx7e
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 87.652s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	20186888
+Transitions: 	35508778
+Choices: 	20949082
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 240263 item(s)
+   * init -> 1 item(s)
+   * line_seized -> 966016 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "LineSeized": Pmax=? [F (line_seized)] ...
+Result (for initial states): 1180456441149525318505/1180591620717411303424 (approx. 0.9998854985). Exact solution.
+Time for model checking: 28.245s.
+
+----------------------------------------
+Wallclock time:	117.446
+Return code:	0

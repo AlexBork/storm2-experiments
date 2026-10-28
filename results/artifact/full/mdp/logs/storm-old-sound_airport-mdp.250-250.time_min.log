@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani airport-mdp.jani --janiproperty time_min --constants DMAX=250,PMAX=250 --sound
+Benchmark:	airport-mdp.250-250.time_min
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 16:38:17 2026
+Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=250,PMAX=250' --sound
+Current working directory: /tmp/invocation-z381r3hd
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 11.460s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1860992
+Transitions: 	13877006
+Choices: 	2738496
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((p = 0) & (d = 0)) -> 10 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": T[exp]min=? [F ((p = 0) & (d = 0))] ...
+Result (for initial states): 581.9853225
+Time for model checking: 51.881s.
+
+----------------------------------------
+Wallclock time:	63.408
+Return code:	0

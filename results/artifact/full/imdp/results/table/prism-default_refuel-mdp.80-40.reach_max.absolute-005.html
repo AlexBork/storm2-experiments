@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - refuel-mdp.80-40.reach_max.absolute-005</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>refuel-mdp.80-40.reach_max.absolute-005</h1>
+<p class="sub">prism-default &middot; absolute-005 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>timeout</td></tr><tr><th>wallclock time</th><td>901.052 s</td></tr><tr><th>states</th><td>161,070</td></tr></table>
+<p class="sub">prism-default_refuel-mdp.80-40.reach_max.absolute-005.log</p>
+<pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel refuel-mdp.80-40.reach_max.tra,sta,lab refuel-mdp.80-40.reach_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	refuel-mdp.80-40.reach_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:46:18 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'refuel-mdp.80-40.reach_max.tra,sta,lab' refuel-mdp.80-40.reach_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;refuel-mdp.80-40.reach_max.tra&quot;, &quot;refuel-mdp.80-40.reach_max.sta&quot;, &quot;refuel-mdp.80-40.reach_max.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;refuel-mdp.80-40.reach_max.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 2.819 seconds.
+
+Type:        IMDP
+States:      161070 (1 initial)
+Transitions: 1256794
+Choices:     644280
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 97 iterations and 10.184 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 1946 iterations and 158.014 seconds.
+target=13, yes=1458, no=76597, maybe=83015
+Starting value iteration (maxmin)...
+Iteration 55: 5.04 sec so far
+Iteration 109: 10.06 sec so far
+Iteration 163: 15.08 sec so far
+Iteration 217: 20.10 sec so far
+Iteration 272: 25.18 sec so far
+Iteration 327: 30.26 sec so far
+Iteration 381: 35.27 sec so far
+Iteration 435: 40.33 sec so far
+Iteration 488: 45.42 sec so far
+Iteration 540: 50.43 sec so far
+Iteration 592: 55.46 sec so far
+Iteration 646: 60.55 sec so far
+Iteration 701: 65.63 sec so far
+Iteration 756: 70.69 sec so far
+Iteration 811: 75.77 sec so far
+Iteration 865: 80.79 sec so far
+Iteration 919: 85.81 sec so far
+Iteration 973: 90.86 sec so far
+Iteration 1027: 95.90 sec so far
+Iteration 1082: 100.98 sec so far
+Iteration 1137: 106.03 sec so far
+Iteration 1192: 111.09 sec so far
+Iteration 1247: 116.13 sec so far
+Iteration 1302: 121.16 sec so far
+Iteration 1357: 126.18 sec so far
+Iteration 1412: 131.22 sec so far
+Iteration 1468: 136.29 sec so far
+Iteration 1523: 141.34 sec so far
+Iteration 1578: 146.41 sec so far
+Iteration 1633: 151.46 sec so far
+Iteration 1688: 156.49 sec so far
+Iteration 1743: 161.53 sec so far
+Iteration 1798: 166.56 sec so far
+Iteration 1853: 171.58 sec so far
+Iteration 1908: 176.59 sec so far
+Iteration 1963: 181.63 sec so far
+Iteration 2018: 186.69 sec so far
+Iteration 2073: 191.74 sec so far
+Iteration 2128: 196.78 sec so far
+Iteration 2183: 201.84 sec so far
+Iteration 2238: 206.90 sec so far
+Iteration 2293: 211.94 sec so far
+Iteration 2348: 217.00 sec so far
+Iteration 2403: 222.06 sec so far
+Iteration 2458: 227.08 sec so far
+Iteration 2513: 232.10 sec so far
+Iteration 2568: 237.14 sec so far
+Iteration 2623: 242.18 sec so far
+Iteration 2678: 247.25 sec so far
+Iteration 2733: 252.27 sec so far
+Iteration 2788: 257.29 sec so far
+Iteration 2843: 262.34 sec so far
+Iteration 2898: 267.37 sec so far
+Iteration 2953: 272.39 sec so far
+Iteration 3008: 277.40 sec so far
+Iteration 3064: 282.48 sec so far
+Iteration 3119: 287.48 sec so far
+Iteration 3174: 292.48 sec so far
+Iteration 3229: 297.48 sec so far
+Iteration 3284: 302.49 sec so far
+Iteration 3339: 307.54 sec so far
+Iteration 3394: 312.55 sec so far
+Iteration 3449: 317.57 sec so far
+Iteration 3505: 322.66 sec so far
+Iteration 3560: 327.67 sec so far
+Iteration 3615: 332.68 sec so far
+Iteration 3670: 337.71 sec so far
+Iteration 3725: 342.75 sec so far
+Iteration 3780: 347.77 sec so far
+Iteration 3835: 352.78 sec so far
+Iteration 3890: 357.79 sec so far
+Iteration 3945: 362.83 sec so far
+Iteration 4000: 367.87 sec so far
+Iteration 4055: 372.89 sec so far
+Iteration 4110: 377.91 sec so far
+Iteration 4165: 382.93 sec so far
+Iteration 4220: 387.97 sec so far
+Iteration 4275: 392.99 sec so far
+Iteration 4330: 398.02 sec so far
+Iteration 4385: 403.08 sec so far
+Iteration 4440: 408.14 sec so far
+Iteration 4495: 413.19 sec so far
+Iteration 4550: 418.25 sec so far
+Iteration 4605: 423.30 sec so far
+Iteration 4660: 428.32 sec so far
+Iteration 4715: 433.37 sec so far
+Iteration 4770: 438.42 sec so far
+Iteration 4825: 443.49 sec so far
+Iteration 4880: 448.54 sec so far
+Iteration 4935: 453.61 sec so far
+Iteration 4990: 458.61 sec so far
+Iteration 5045: 463.61 sec so far
+Iteration 5101: 468.70 sec so far
+Iteration 5157: 473.75 sec so far
+Iteration 5212: 478.77 sec so far
+Iteration 5268: 483.85 sec so far
+Iteration 5323: 488.86 sec so far
+Iteration 5378: 493.90 sec so far
+Iteration 5433: 498.92 sec so far
+Iteration 5488: 503.95 sec so far
+Iteration 5543: 509.01 sec so far
+Iteration 5598: 514.01 sec so far
+Iteration 5653: 519.02 sec so far
+Iteration 5708: 524.04 sec so far
+Iteration 5763: 529.05 sec so far
+Iteration 5818: 534.07 sec so far
+Iteration 5873: 539.11 sec so far
+Iteration 5928: 544.14 sec so far
+Iteration 5983: 549.17 sec so far
+Iteration 6038: 554.23 sec so far
+Iteration 6093: 559.26 sec so far
+Iteration 6149: 564.33 sec so far
+Iteration 6205: 569.37 sec so far
+Iteration 6261: 574.40 sec so far
+Iteration 6317: 579.41 sec so far
+Iteration 6373: 584.43 sec so far
+Iteration 6429: 589.46 sec so far
+Iteration 6485: 594.50 sec so far
+Iteration 6541: 599.57 sec so far
+Iteration 6597: 604.64 sec so far
+Iteration 6653: 609.71 sec so far
+Iteration 6709: 614.78 sec so far
+Iteration 6765: 619.84 sec so far
+Iteration 6821: 624.90 sec so far
+Iteration 6877: 629.98 sec so far
+Iteration 6933: 635.04 sec so far
+Iteration 6989: 640.07 sec so far
+Iteration 7045: 645.12 sec so far
+Iteration 7101: 650.17 sec so far
+Iteration 7157: 655.24 sec so far
+Iteration 7213: 660.28 sec so far
+Iteration 7269: 665.32 sec so far
+Iteration 7325: 670.37 sec so far
+Iteration 7381: 675.43 sec so far
+Iteration 7437: 680.48 sec so far
+Iteration 7493: 685.56 sec so far
+Iteration 7549: 690.62 sec so far
+Iteration 7605: 695.65 sec so far
+Iteration 7661: 700.72 sec so far
+Iteration 7717: 705.77 sec so far
+Iteration 7773: 710.85 sec so far
+Iteration 7828: 715.86 sec so far
+Iteration 7884: 720.93 sec so far
+Iteration 7940: 725.98 sec so far
+
+----------------------------------------
+Wallclock time:	901.052
+Return code:	None
+Computation aborted after 901.052 seconds since the time limit of 900 seconds was exceeded.
+</pre>
+</body></html>

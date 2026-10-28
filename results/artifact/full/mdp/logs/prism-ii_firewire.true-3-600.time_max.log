@@ -1,0 +1,111 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_max -const delay=3,deadline=600 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.true-3-600.time_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 15:06:40 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_max -const 'delay=3,deadline=600' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "firewire.true.prism"...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2 timer
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2 t
+Labels:      "done"
+Rewards:     "time" "time_sending"
+
+Parsing properties file "firewire.true.props"...
+
+5 properties:
+(1) "elected": P>=1 [ F "done" ]
+(2) "time_max": R{"time"}max=? [ F "done" ]
+(3) "time_min": R{"time"}min=? [ F "done" ]
+(4) "time_sending": R{"time_sending"}max=? [ F "done" ]
+(5) "deadline": Pmin=? [ F (((s1=8)&(s2=7))|((s1=7)&(s2=8)))&(t<=deadline) ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_max": R{"time"}max=? [ F "done" ]
+Model constants: deadline=600,delay=3
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: deadline=600,delay=3
+
+Computing reachable states...
+
+Reachability (BFS): 669 iterations in 8.84 seconds (average 0.013214, setup 0.00)
+
+Time for model construction: 9.189 seconds.
+
+Type:        MDP
+States:      1078695 (1 initial)
+Transitions: 1476198
+
+Transition matrix: 68250 nodes (3 terminal), 1476198 minterms, vars: 54r/54c/14nd
+
+Prob0E: 355 iterations in 1.53 seconds (average 0.004310, setup 0.00)
+
+Prob1A: 1 iterations in 0.01 seconds (average 0.010000, setup 0.00)
+
+goal = 1052, inf = 0, maybe = 1077643
+Time for computing an upper bound for expected reward: 64.656 seconds.
+Upper bound for max expectation (variant 2): 989267.0
+
+Computing remaining rewards...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=1078695, nc=1452436, nnz=1473042, k=3] [26.5 MB]
+Building sparse matrix (transition rewards)... [n=1078695, nc=1452436, nnz=983072, k=3] [20.9 MB]
+Creating vector for state rewards... [8.2 MB]
+Creating vector for inf... [8.2 MB]
+Creating vector for lower bounds... [8.2 MB]
+Creating vector for upper bounds... [8.2 MB]
+Allocating iteration vectors... [4 x 8.2 MB]
+TOTAL: [113.3 MB]
+
+Starting iterations (interval iteration)...
+Iteration 317: max relative diff=3253.167763, 5.01 sec so far
+Iteration 633: max relative diff=394.962018, 10.02 sec so far
+Iteration 948: max relative diff=87.334743, 15.03 sec so far
+Iteration 1264: max relative diff=16.490009, 20.04 sec so far
+Iteration 1579: max relative diff=3.747471, 25.05 sec so far
+Iteration 1894: max relative diff=0.784792, 30.07 sec so far
+Iteration 2209: max relative diff=0.165476, 35.09 sec so far
+Iteration 2524: max relative diff=0.036385, 40.10 sec so far
+Iteration 2840: max relative diff=0.007310, 45.12 sec so far
+Iteration 3156: max relative diff=0.001656, 50.14 sec so far
+Iteration 3472: max relative diff=0.000323, 55.16 sec so far
+Iteration 3788: max relative diff=0.000075, 60.17 sec so far
+Iteration 4104: max relative diff=0.000014, 65.19 sec so far
+Iteration 4420: max relative diff=0.000003, 70.21 sec so far
+Max relative diff between upper and lower bound on convergence: 9.98423E-07
+Iterative method: 4643 iterations in 74.28 seconds (average 0.015884, setup 0.53)
+Maximum finite value in solution vector at end of interval iteration: 469.00022986673787
+
+Value in the initial state: 299.0001033185034
+
+Time for model checking: 140.551 seconds.
+
+Result: 299.0001033185034 (+/- 2.9852855615841815E-4; rel err 9.984229197419944E-7)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	150.621
+Return code:	0

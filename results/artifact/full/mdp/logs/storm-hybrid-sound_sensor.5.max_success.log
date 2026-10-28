@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani sensor.5.jani --janiproperty max_success --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	sensor.5.max_success
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 11:22:50 2026
+Command line arguments: --jani sensor.5.jani --janiproperty max_success --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-abcjhbf3
+
+Time for model input parsing: 0.002s.
+
+Using Sylvan with 4 parallel threads.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+WARN  (DdJaniModelBuilder.cpp:1513): Destination does not have any effect.
+Time for model construction: 1.118s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	2781085 (4334 nodes)
+Transitions: 	14851720 (77739 nodes)
+Choices: 	14087370
+Reward Models:  none
+Variables: 	rows: 25 meta variables (51 DD variables), columns: 25 meta variables (51 DD variables), nondeterminism: 41 meta variables (41 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (52 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "max_success": Pmax=? [F (x = 1)] ...
+Result (for initial states): 0.9996800289
+Time for model checking: 7.480s.
+
+----------------------------------------
+Wallclock time:	9.007
+Return code:	0

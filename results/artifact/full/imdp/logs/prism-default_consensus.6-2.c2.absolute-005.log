@@ -1,0 +1,130 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.6-2.c2.tra,sta,lab consensus.6-2.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	consensus.6-2.c2.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 21:40:53 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'consensus.6-2.c2.tra,sta,lab' consensus.6-2.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "consensus.6-2.c2.tra", "consensus.6-2.c2.sta", "consensus.6-2.c2.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.6-2.c2.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 16.767 seconds.
+
+Type:        IMDP
+States:      1258240 (1 initial)
+Transitions: 9401280
+Choices:     7549440
+Max/avg:     6/6.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 97 iterations and 41.85 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 1531 iterations and 462.015 seconds.
+target=6, yes=13635, no=880138, maybe=364467
+Starting value iteration (minmax)...
+Iteration 11: 5.19 sec so far
+Iteration 22: 10.35 sec so far
+Iteration 33: 15.48 sec so far
+Iteration 44: 20.66 sec so far
+Iteration 55: 25.96 sec so far
+Iteration 66: 31.11 sec so far
+Iteration 77: 36.27 sec so far
+Iteration 88: 41.40 sec so far
+Iteration 99: 46.74 sec so far
+Iteration 110: 51.91 sec so far
+Iteration 121: 57.07 sec so far
+Iteration 132: 62.18 sec so far
+Iteration 143: 67.49 sec so far
+Iteration 154: 72.64 sec so far
+Iteration 165: 77.75 sec so far
+Iteration 176: 82.83 sec so far
+Iteration 187: 88.07 sec so far
+Iteration 198: 93.17 sec so far
+Iteration 209: 98.25 sec so far
+Iteration 220: 103.38 sec so far
+Iteration 231: 108.57 sec so far
+Iteration 242: 113.78 sec so far
+Iteration 253: 118.88 sec so far
+Iteration 264: 124.02 sec so far
+Iteration 275: 129.20 sec so far
+Iteration 286: 134.57 sec so far
+Iteration 297: 139.79 sec so far
+Iteration 308: 144.94 sec so far
+Iteration 319: 150.02 sec so far
+Iteration 330: 155.33 sec so far
+Iteration 341: 160.42 sec so far
+Iteration 352: 165.50 sec so far
+Iteration 363: 170.58 sec so far
+Iteration 374: 175.86 sec so far
+Iteration 385: 180.93 sec so far
+Iteration 396: 185.99 sec so far
+Iteration 407: 191.09 sec so far
+Iteration 418: 196.39 sec so far
+Iteration 429: 201.50 sec so far
+Iteration 440: 206.59 sec so far
+Iteration 451: 211.70 sec so far
+Iteration 462: 216.89 sec so far
+Iteration 473: 222.19 sec so far
+Iteration 484: 227.33 sec so far
+Iteration 495: 232.44 sec so far
+Iteration 506: 237.55 sec so far
+Iteration 517: 242.85 sec so far
+Iteration 528: 247.95 sec so far
+Iteration 539: 253.02 sec so far
+Iteration 550: 258.11 sec so far
+Iteration 561: 263.42 sec so far
+Iteration 572: 268.50 sec so far
+Iteration 583: 273.59 sec so far
+Iteration 594: 278.66 sec so far
+Iteration 605: 283.89 sec so far
+Iteration 616: 289.00 sec so far
+Iteration 627: 294.06 sec so far
+Iteration 638: 299.18 sec so far
+Iteration 649: 304.44 sec so far
+Iteration 660: 309.55 sec so far
+Iteration 671: 314.64 sec so far
+Iteration 682: 319.77 sec so far
+Iteration 693: 324.98 sec so far
+Iteration 704: 330.17 sec so far
+Iteration 715: 335.26 sec so far
+Iteration 726: 340.37 sec so far
+Iteration 737: 345.49 sec so far
+Iteration 748: 350.71 sec so far
+Iteration 759: 355.75 sec so far
+Iteration 770: 360.83 sec so far
+Iteration 781: 365.92 sec so far
+Iteration 792: 371.19 sec so far
+Iteration 803: 376.25 sec so far
+
+----------------------------------------
+Wallclock time:	901.053
+Return code:	None
+Computation aborted after 901.053 seconds since the time limit of 900 seconds was exceeded.

@@ -1,0 +1,160 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel avoid-mdp.15-0.2.goal_max.tra,sta,lab avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	avoid-mdp.15-0.2.goal_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 21:42:19 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'avoid-mdp.15-0.2.goal_max.tra,sta,lab' avoid-mdp.15-0.2.goal_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "avoid-mdp.15-0.2.goal_max.tra", "avoid-mdp.15-0.2.goal_max.sta", "avoid-mdp.15-0.2.goal_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "avoid-mdp.15-0.2.goal_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ !"avoid" U "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !"avoid" U "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 8.864 seconds.
+
+Type:        IMDP
+States:      404101 (1 initial)
+Transitions: 4426260
+Choices:     1616404
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 58 iterations and 10.222 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 1100 iterations and 164.867 seconds.
+target=900, yes=900, no=155730, maybe=247471
+Starting value iteration (maxmin)...
+Iteration 18: 5.25 sec so far
+Iteration 35: 10.28 sec so far
+Iteration 52: 15.43 sec so far
+Iteration 69: 20.59 sec so far
+Iteration 86: 25.74 sec so far
+Iteration 103: 30.89 sec so far
+Iteration 120: 36.01 sec so far
+Iteration 137: 41.15 sec so far
+Iteration 154: 46.27 sec so far
+Iteration 171: 51.44 sec so far
+Iteration 188: 56.59 sec so far
+Iteration 205: 61.74 sec so far
+Iteration 222: 66.90 sec so far
+Iteration 239: 72.04 sec so far
+Iteration 256: 77.18 sec so far
+Iteration 273: 82.31 sec so far
+Iteration 290: 87.46 sec so far
+Iteration 307: 92.64 sec so far
+Iteration 324: 97.80 sec so far
+Iteration 341: 102.95 sec so far
+Iteration 358: 108.11 sec so far
+Iteration 375: 113.27 sec so far
+Iteration 392: 118.41 sec so far
+Iteration 409: 123.55 sec so far
+Iteration 426: 128.69 sec so far
+Iteration 443: 133.83 sec so far
+Iteration 460: 138.98 sec so far
+Iteration 477: 144.14 sec so far
+Iteration 494: 149.30 sec so far
+Iteration 511: 154.47 sec so far
+Iteration 528: 159.72 sec so far
+Iteration 545: 164.98 sec so far
+Iteration 562: 170.22 sec so far
+Iteration 579: 175.44 sec so far
+Iteration 596: 180.67 sec so far
+Iteration 613: 185.92 sec so far
+Iteration 630: 191.15 sec so far
+Iteration 647: 196.37 sec so far
+Iteration 664: 201.61 sec so far
+Iteration 681: 206.84 sec so far
+Iteration 698: 212.08 sec so far
+Iteration 715: 217.33 sec so far
+Iteration 732: 222.57 sec so far
+Iteration 749: 227.79 sec so far
+Iteration 766: 233.01 sec so far
+Iteration 783: 238.18 sec so far
+Iteration 800: 243.40 sec so far
+Iteration 817: 248.71 sec so far
+Iteration 834: 253.95 sec so far
+Iteration 851: 259.18 sec so far
+Iteration 868: 264.39 sec so far
+Iteration 885: 269.57 sec so far
+Iteration 902: 274.75 sec so far
+Iteration 919: 279.93 sec so far
+Iteration 936: 285.11 sec so far
+Iteration 953: 290.27 sec so far
+Iteration 970: 295.43 sec so far
+Iteration 987: 300.60 sec so far
+Iteration 1004: 305.78 sec so far
+Iteration 1021: 310.96 sec so far
+Iteration 1038: 316.14 sec so far
+Iteration 1055: 321.32 sec so far
+Iteration 1072: 326.49 sec so far
+Iteration 1089: 331.66 sec so far
+Iteration 1106: 336.84 sec so far
+Iteration 1123: 342.00 sec so far
+Iteration 1140: 347.16 sec so far
+Iteration 1157: 352.36 sec so far
+Iteration 1174: 357.53 sec so far
+Iteration 1191: 362.70 sec so far
+Iteration 1208: 367.87 sec so far
+Iteration 1225: 373.06 sec so far
+Iteration 1242: 378.29 sec so far
+Iteration 1259: 383.51 sec so far
+Iteration 1276: 388.78 sec so far
+Iteration 1293: 394.05 sec so far
+Iteration 1310: 399.24 sec so far
+Iteration 1327: 404.45 sec so far
+Iteration 1344: 409.66 sec so far
+Iteration 1361: 414.86 sec so far
+Iteration 1378: 420.06 sec so far
+Iteration 1395: 425.25 sec so far
+Iteration 1412: 430.46 sec so far
+Iteration 1429: 435.66 sec so far
+Iteration 1446: 440.87 sec so far
+Iteration 1463: 446.06 sec so far
+Iteration 1480: 451.26 sec so far
+Iteration 1497: 456.46 sec so far
+Iteration 1514: 461.65 sec so far
+Iteration 1531: 466.85 sec so far
+Iteration 1548: 472.06 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 1565 iterations, 4178906820 multiplications and 477.313 seconds.
+Probabilistic reachability took 477.315 seconds.
+
+Value in the initial state: 1.6047430301936937E-8
+
+Time for model checking: 652.922 seconds.
+
+Result: 1.6047430301936937E-8 (+/- 9.98270978547211E-6 estimated; rel err 622.0752854285455)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	662.383
+Return code:	0

@@ -1,143 +1,56 @@
 == smoke test for the representative experiments: 4 physical cores and 16 GiB of memory per run
-== Mon Oct 26 22:16:53 UTC 2026: running experiment 1/3: mdp
-wrote 10 invocations (10 configurations x 1 benchmarks x 1 repetition(s)) to inv-smoke.json
-  index:       /opt/storm2-experiments/mdp/benchmarks/index-smoke.json
-  ignored:     1 meta configuration(s): storm-sound-best
-  time limit:  60s
-  log dir:     experiments/smoke/logs (created)
-  repetitions: 1
+== Wed Oct 28 08:19:13 UTC 2026: running experiment 1/3: mdp
 fitting jobs: 2 (12 physical cores with 4 per run and at least 1 to spare, 94 GiB of memory with 16 GiB per run and 1 GiB to spare)
-jobs: 2 at a time
+jobs: 1 at a time (use --parallel to run as many as fit)
 worker 1: cores 0,1,2,3, governor performance
-worker 2: cores 4,5,6,7, governor performance
 boost: enabled
   for stable timings run: sudo cpupower set --turbo-boost 0
 memory limit: 16 GiB per run
-[done  1/10, 0h 00m] storm-sound-ddbisim consensus.4-4.c2 ... ok (0.6s)
-[done  2/10, 0h 00m] storm-hybrid-sound consensus.4-4.c2 ... ok (0.7s)
-[done  3/10, 0h 00m] storm-sound-bisim consensus.4-4.c2 ... ok (0.2s)
-[done  4/10, 0h 00m] storm-exact consensus.4-4.c2 ... ok (0.5s)
-[done  5/10, 0h 00m] storm-old-sound consensus.4-4.c2 ... ok (5.0s)
-[done  6/10, 0h 00m] prism-ii consensus.4-4.c2 ... ok (3.3s)
-[done  7/10, 0h 00m] storm-exact-bisim consensus.4-4.c2 ... ok (0.5s)
-[done  8/10, 0h 00m] storm-old-exact consensus.4-4.c2 ... ok (0.5s)
-[done  9/10, 0h 00m] mcsta-ovi consensus.4-4.c2 ... ok (0.7s)
-[done 10/10, 0h 00m] storm-sound consensus.4-4.c2 ... ok (0.2s)
+[done  1/10, 0h 00m] storm-exact consensus.4-4.c2 ... ok (0.5s)
+[done  2/10, 0h 00m] mcsta-ovi consensus.4-4.c2 ... ok (0.8s)
+[done  3/10, 0h 00m] storm-sound-ddbisim consensus.4-4.c2 ... ok (1.8s)
+[done  4/10, 0h 00m] storm-sound consensus.4-4.c2 ... ok (0.3s)
+[done  5/10, 0h 00m] storm-old-exact consensus.4-4.c2 ... ok (0.6s)
+[done  6/10, 0h 00m] storm-sound-bisim consensus.4-4.c2 ... ok (0.2s)
+[done  7/10, 0h 00m] storm-old-sound consensus.4-4.c2 ... ok (4.8s)
+[done  8/10, 0h 00m] storm-hybrid-sound consensus.4-4.c2 ... ok (1.1s)
+[done  9/10, 0h 00m] storm-exact-bisim consensus.4-4.c2 ... ok (0.5s)
+[done 10/10, 0h 00m] prism-ii consensus.4-4.c2 ... ok (3.4s)
 
 10 invocations: 10 ok, 0 timeout, 0 error, 0 skipped
-read 10 executions of 1 benchmarks in 11 configurations from experiments/smoke/logs
-  0 incorrect, 0 no-result, 0 memout, 0 timeout, 10 ok
-  12.2 s of wallclock time in total, i.e. 0m 12s when run sequentially
-  column states-sparse-bisim: preprocessing state count and time from storm-sound-bisim
-  column time-exact-bisim: preprocessing time from storm-exact-bisim
-  meta configuration storm-sound-best: best of storm-sound, storm-sound-bisim, storm-hybrid-sound, storm-sound-ddbisim, storm-exact, storm-exact-bisim
-  1 of 1 benchmarks are supported by every configuration
-wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/smoke/results, and the same csv files for the model checking time only with the suffix -checking
-wrote the html table to experiments/smoke/results/table/index.html
 checked 10 runs: 10 ok
-== Mon Oct 26 22:17:00 UTC 2026: finished experiment 1/3: mdp in 0h 00m 07s, 0h 00m 07s in total
-== Mon Oct 26 22:17:00 UTC 2026: running experiment 2/3: imdp
-wrote 3 invocations (3 configurations x 1 benchmarks x 1 repetition(s)) to inv-smoke.json
-  index:       /opt/storm2-experiments/imdp/benchmarks/index-smoke.json
-  time limit:  60s
-  log dir:     experiments/smoke/logs (created)
-  repetitions: 1
+== Wed Oct 28 08:19:28 UTC 2026: finished experiment 1/3: mdp in 0h 00m 15s, 0h 00m 15s in total
+== Wed Oct 28 08:19:28 UTC 2026: running experiment 2/3: imdp
 fitting jobs: 2 (12 physical cores with 4 per run and at least 1 to spare, 94 GiB of memory with 16 GiB per run and 1 GiB to spare)
-jobs: 2 at a time
+jobs: 1 at a time (use --parallel to run as many as fit)
 worker 1: cores 0,1,2,3, governor performance
-worker 2: cores 4,5,6,7, governor performance
 boost: enabled
   for stable timings run: sudo cpupower set --turbo-boost 0
 memory limit: 16 GiB per run
-[done 1/3, 0h 00m] intervalmdp-default zeroconf.20-2-false.correct_max.absolute-25 ... ok (4.9s)
-[done 2/3, 0h 00m] storm-default zeroconf.20-2-false.correct_max.absolute-25 ... ok (0.6s)
+[done 1/3, 0h 00m] storm-default zeroconf.20-2-false.correct_max.absolute-25 ... ok (0.5s)
+[done 2/3, 0h 00m] intervalmdp-default zeroconf.20-2-false.correct_max.absolute-25 ... ok (5.1s)
 [done 3/3, 0h 00m] prism-default zeroconf.20-2-false.correct_max.absolute-25 ... ok (26.6s)
 
 3 invocations: 3 ok, 0 timeout, 0 error, 0 skipped
-read 3 executions of 1 benchmarks in 3 configurations from experiments/smoke/logs
-  0 incorrect, 0 no-result, 0 memout, 0 timeout, 3 ok
-  32.1 s of wallclock time in total, i.e. 0m 32s when run sequentially
-  compared 1 benchmark(s) against the result most configurations agree on
-  1 of 1 benchmarks are supported by every configuration
-wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/smoke/results, and the same csv files for the model checking time only with the suffix -checking
-wrote the html table to experiments/smoke/results/table/index.html
 checked 3 runs: 3 ok
-== Mon Oct 26 22:17:27 UTC 2026: finished experiment 2/3: imdp in 0h 00m 27s, 0h 00m 34s in total
-== Mon Oct 26 22:17:27 UTC 2026: running experiment 3/3: pomdp
-wrote 34 invocations (34 configurations x 1 benchmarks x 1 repetition(s)) to inv-smoke.json
-  index:       /opt/storm2-experiments/pomdp/benchmarks/index-smoke.json
-  time limit:  60s
-  log dir:     experiments/smoke/logs (created)
-  repetitions: 1
+== Wed Oct 28 08:20:01 UTC 2026: finished experiment 2/3: imdp in 0h 00m 33s, 0h 00m 48s in total
+== Wed Oct 28 08:20:01 UTC 2026: running experiment 3/3: pomdp
 fitting jobs: 2 (12 physical cores with 4 per run and at least 1 to spare, 94 GiB of memory with 16 GiB per run and 1 GiB to spare)
-jobs: 2 at a time
+jobs: 1 at a time (use --parallel to run as many as fit)
 worker 1: cores 0,1,2,3, governor performance
-worker 2: cores 4,5,6,7, governor performance
 boost: enabled
   for stable timings run: sudo cpupower set --turbo-boost 0
 memory limit: 16 GiB per run
-[done  1/34, 0h 00m] cut70000 refuel_refuel_prbmax_N06 ... ok (0.2s)
-[done  2/34, 0h 00m] cut600000 refuel_refuel_prbmax_N06 ... ok (1.5s)
-[done  3/34, 0h 00m] cut200000 refuel_refuel_prbmax_N06 ... ok (0.5s)
-[done  4/34, 0h 00m] cut2000000 refuel_refuel_prbmax_N06 ... ok (5.7s)
-[done  5/34, 0h 00m] cut500000 refuel_refuel_prbmax_N06 ... ok (1.4s)
-[done  6/34, 0h 00m] cut100000 refuel_refuel_prbmax_N06 ... ok (0.2s)
-[done  7/34, 0h 00m] cut400000 refuel_refuel_prbmax_N06 ... ok (1.1s)
-[done  8/34, 0h 00m] cut800000 refuel_refuel_prbmax_N06 ... ok (2.2s)
-[done  9/34, 0h 00m] cut900000 refuel_refuel_prbmax_N06 ... ok (2.6s)
-[done 10/34, 0h 00m] cut700000 refuel_refuel_prbmax_N06 ... ok (1.9s)
-[done 11/34, 0h 00m] cut60000 refuel_refuel_prbmax_N06 ... ok (0.2s)
-[done 12/34, 0h 00m] cut9000000 refuel_refuel_prbmax_N06 ... ok (25.7s)
-[done 13/34, 0h 00m] cut30000 refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 14/34, 0h 00m] cut50000 refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 15/34, 0h 00m] discr005s refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 16/34, 0h 00m] cut3000000 refuel_refuel_prbmax_N06 ... ok (8.7s)
-[done 17/34, 0h 00m] cut10000 refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 18/34, 0h 00m] cut10000000 refuel_refuel_prbmax_N06 ... ok (29.8s)
-[done 19/34, 0h 00m] cut40000 refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 20/34, 0h 01m] cut8000000 refuel_refuel_prbmax_N06 ... ok (23.7s)
-[done 21/34, 0h 01m] cut5000000 refuel_refuel_prbmax_N06 ... ok (15.0s)
-[done 22/34, 0h 01m] cut20000 refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 23/34, 0h 01m] discr004s refuel_refuel_prbmax_N06 ... ok (0.1s)
-[done 24/34, 0h 02m] cut20000000 refuel_refuel_prbmax_N06 ... ok (59.0s)
-[done 25/34, 0h 02m] cut80000 refuel_refuel_prbmax_N06 ... ok (0.2s)
-[done 26/34, 0h 02m] cut30000000 refuel_refuel_prbmax_N06 ... timeout (61.4s)
-[done 27/34, 0h 02m] cut300000 refuel_refuel_prbmax_N06 ... ok (0.8s)
-[done 28/34, 0h 02m] cut7000000 refuel_refuel_prbmax_N06 ... ok (20.1s)
-[done 29/34, 0h 02m] cut1000000 refuel_refuel_prbmax_N06 ... ok (2.6s)
-[done 30/34, 0h 02m] cut90000 refuel_refuel_prbmax_N06 ... ok (0.3s)
-[done 31/34, 0h 02m] cut6000000 refuel_refuel_prbmax_N06 ... ok (16.7s)
-[done 32/34, 0h 03m] cut40000000 refuel_refuel_prbmax_N06 ... timeout (61.4s)
-[done 33/34, 0h 03m] cut4000000 refuel_refuel_prbmax_N06 ... ok (11.4s)
-[done 34/34, 0h 03m] cut50000000 refuel_refuel_prbmax_N06 ... timeout (61.4s)
+[done 1/2, 0h 00m] cut100000 refuel_refuel_prbmax_N06 ... ok (0.2s)
+[done 2/2, 0h 00m] discr004s refuel_refuel_prbmax_N06 ... ok (0.1s)
 
-34 invocations: 31 ok, 3 timeout, 0 error, 0 skipped
-
-Gathering execution data for logfiles in experiments/smoke/logs ...
-Generated experiments/smoke/results/html/index.html and 34 run pages.
-Generated aggregate plots for 1 instances in experiments/smoke/results/plots
-Generated results for 1 instances in experiments/smoke/results
-checked 34 runs: 31 ok, 3 timeout
-== Mon Oct 26 22:21:10 UTC 2026: finished experiment 3/3: pomdp in 0h 03m 43s, 0h 04m 17s in total
-== Mon Oct 26 22:21:10 UTC 2026: building the figures
-Rc files read (in order):
-  /etc/LatexMk
-Latexmk: Run number 1 of rule 'pdflatex'
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-Latexmk: Getting log file 'main.log'
-Latexmk: Run number 2 of rule 'pdflatex'
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-Latexmk: Getting log file 'main.log'
-Latexmk: Summary of warnings from last run of *latex:
-  Latex found 2 multiply defined reference(s)
-Latexmk: ====Problematic refs and citations with line #s in .tex file:
-  Label `scatterlegendfalse' multiply defined
-  Label `scatterlegendfalse' multiply defined
-
-wrote docker/plots/latex/main.pdf
-== Mon Oct 26 22:21:12 UTC 2026: finished in 0h 04m 19s in total
+2 invocations: 2 ok, 0 timeout, 0 error, 0 skipped
+checked 2 runs: 2 ok
+== Wed Oct 28 08:20:02 UTC 2026: finished experiment 3/3: pomdp in 0h 00m 01s, 0h 00m 49s in total
+== Wed Oct 28 08:20:02 UTC 2026: building the figures
+== Wed Oct 28 08:20:04 UTC 2026: finished in 0h 00m 51s in total
+== summary:
+  mdp: checked 10 runs: 10 ok
+  imdp: checked 3 runs: 3 ok
+  pomdp: checked 2 runs: 2 ok
 == all results checked

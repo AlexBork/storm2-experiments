@@ -1,0 +1,61 @@
+Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Benchmark:	samplerocks_samplerocks_rewmin_N16
+Configuration:	discr004s
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Wed Oct 28 00:23:11 2026
+Command line arguments: --prism samplerocks.prism --prop samplerocks.props rewmin -const N=16 --timemem --statistics --sound --belief-exploration discretize --resolution 4 --triangulationmode static
+Current working directory: /tmp/invocation-xa4ffbc4
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.090s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	11017
+Transitions: 	68388
+Choices: 	54561
+Observations: 	2761
+Reward Models:  cost
+State Labels: 	3 labels
+   * deadlock -> 68 item(s)
+   * init -> 1 item(s)
+   * goal -> 612 item(s)
+Choice Labels: 	10 labels
+   * placement -> 1 item(s)
+   * r1sense -> 7338 item(s)
+   * r2sense -> 7338 item(s)
+   * west -> 9792 item(s)
+   * r2sample -> 18 item(s)
+   * north -> 9792 item(s)
+   * finish -> 612 item(s)
+   * south -> 9792 item(s)
+   * east -> 9792 item(s)
+   * r1sample -> 18 item(s)
+-------------------------------------------------------------- 
+Analyzing property 'Rmin=? [F "goal"]'
+Computing an over-approximation via belief MDP discretization...
+Belief exploration completed: 90507 beliefs discovered, 85217 beliefs explored.
+Constructed belief MDP: 85218 states, 438795 choices, 786273 transitions.
+Time for exploring beliefs: 427ms.
+Time for building the belief MDP: 49ms.
+Time for analyzing the belief MDP: 87ms.
+
+Result: ≥ 25.59968032
+Time for POMDP analysis: 0.770s.
+
+Performance statistics:
+  * peak memory usage: 221MB
+  * CPU time: 0.834s
+  * wallclock time: 0.884s
+
+----------------------------------------
+Wallclock time:	0.943
+Return code:	0

@@ -672,7 +672,8 @@ def write_table(outdir, index, results, configurations, benchmarks, cells,
                 page = log_page_name(source[0], benchmark_id) if source else None
                 title = f" title=\"{escape(source[0])}\"" if source else ""
             else:
-                repetitions = results[configuration].get(benchmark_id)
+                # Configurations without any run have no entry in the results
+                repetitions = results.get(configuration, {}).get(benchmark_id)
                 page = None if repetitions is None else log_page_name(configuration, benchmark_id)
                 if page is not None:
                     write_log_page(tabledir / page, configuration, benchmark_id,
@@ -812,13 +813,18 @@ def main():
     # Meta configurations get a column of their own, assembled from the columns of
     # their members; they have no executions and so no entry in results.json.
     meta = {}
+    # Configurations without any run, e.g. Storm 1.6.2 on ARM, get a column without
+    # results, so that the figures still find it
+    missing = []
     if CONFIGS_FILE.is_file():
         with open(CONFIGS_FILE) as f:
             defined = json.load(f)
         for name, config in defined.items():
             if is_meta(config) and any(m in results for m in members(config)):
                 meta[name] = [m for m in members(config) if m in results]
-    configurations = sorted(executed + list(meta))
+            elif not is_meta(config) and name not in results:
+                missing.append(name)
+    configurations = sorted(executed + list(meta) + missing)
 
     with open(outdir / "results.json", "w") as f:
         json.dump(results, f, indent="\t")

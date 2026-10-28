@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --sound --bisimulation
+Benchmark:	beb.4-8-7.GaveUp
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 12:03:46 2026
+Command line arguments: --jani beb.4-8.jani --janiproperty GaveUp --constants N=7 --sound --bisimulation
+Current working directory: /tmp/invocation-zozlp6hj
+
+Time for model input parsing: 0.004s.
+
+Time for model construction: 31.569s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	20175095
+Transitions: 	34825903
+Choices: 	20924543
+Reward Models:  none
+State Labels: 	3 labels
+   * init -> 1 item(s)
+   * deadlock -> 966016 item(s)
+   * gave_up -> 333536 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 45.503s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	109689
+Transitions: 	266646
+Choices: 	115721
+Reward Models:  none
+State Labels: 	2 labels
+   * gave_up -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "GaveUp": Pmax=? [F (gave_up)] ...
+Result (for initial states): 0.0001145015478. Exact solution.
+Time for model checking: 0.035s.
+
+----------------------------------------
+Wallclock time:	77.229
+Return code:	0

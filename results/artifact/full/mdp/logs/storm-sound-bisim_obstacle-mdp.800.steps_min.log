@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --sound --bisimulation
+Benchmark:	obstacle-mdp.800.steps_min
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 11:22:43 2026
+Command line arguments: --jani obstacle-mdp.jani --janiproperty steps_min --constants N=800 --sound --bisimulation
+Current working directory: /tmp/invocation-nlcbdc40
+
+Time for model input parsing: 0.000s.
+
+Time for model construction: 2.204s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	640001
+Transitions: 	5113599
+Choices: 	2559998
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * goal -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 1.833s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	320401
+Transitions: 	2556801
+Choices: 	1279999
+Reward Models:  none
+State Labels: 	2 labels
+   * goal -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_min": Tmin=? [F "goal"] ...
+Result (for initial states): 1089.349238. Solution bounds: [1089.348149, 1089.350328].
+Time for model checking: 3.244s.
+
+----------------------------------------
+Wallclock time:	7.349
+Return code:	0

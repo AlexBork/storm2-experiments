@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=2,reset=false --exact --bisimulation
+Benchmark:	zeroconf.20-2-false.correct_max
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:04:50 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=2,reset=false' --exact --bisimulation
+Current working directory: /tmp/invocation-tdngc3o1
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.504s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	88858
+Transitions: 	203550
+Choices: 	161320
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * ((l = 4) & (ip = 1)) -> 2263 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.351s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	35732
+Transitions: 	91402
+Choices: 	67797
+Reward Models:  none
+State Labels: 	2 labels
+   * ((l = 4) & (ip = 1)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 186137901729174268511065209171497320718694252975935739961231141070383297312458181231689761539699331000803/9251581321152439541256848521142356863865506387898411218420846883518125316026037895599741228066506366352800803 (approx. 2.011957689e-05). Exact solution.
+Time for model checking: 1.025s.
+
+----------------------------------------
+Wallclock time:	1.957
+Return code:	0

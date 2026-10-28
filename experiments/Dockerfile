@@ -1,7 +1,7 @@
 # check=skip=FromPlatformFlagConstDisallowed
 # Dockerfile for the Storm 2 experiments
 #########################################
-# Build with ../scripts/4_build_docker.sh, or with
+# Build with ../scripts/5_build_docker.sh, or with
 #   docker buildx build --build-context mdp_benchmarks=../examples/mdp_benchmarks \
 #       --build-context pomdp_benchmarks=../examples/pomdp_benchmarks -t storm2-experiments .
 # The models of mdp and pomdp, benchmarks/models/ of each, are

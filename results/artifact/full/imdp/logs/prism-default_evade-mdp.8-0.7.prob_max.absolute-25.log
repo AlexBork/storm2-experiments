@@ -1,0 +1,75 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel evade-mdp.8-0.7.prob_max.tra,sta,lab evade-mdp.8-0.7.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	evade-mdp.8-0.7.prob_max.absolute-25
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:49:46 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'evade-mdp.8-0.7.prob_max.tra,sta,lab' evade-mdp.8-0.7.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "evade-mdp.8-0.7.prob_max.tra", "evade-mdp.8-0.7.prob_max.sta", "evade-mdp.8-0.7.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "evade-mdp.8-0.7.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ !"avoid" U "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !"avoid" U "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 26.311 seconds.
+
+Warning: Deadlocks detected and fixed in 3136 states
+
+Type:        IMDP
+States:      398273 (1 initial)
+Transitions: 16945717
+Choices:     1991365
+Max/avg:     5/5.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 30 iterations and 11.266 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 544 iterations and 176.396 seconds.
+target=3136, yes=3136, no=12210, maybe=382927
+Starting value iteration (maxmin)...
+Iteration 6: 5.62 sec so far
+Iteration 12: 11.56 sec so far
+Iteration 17: 17.03 sec so far
+Iteration 22: 22.77 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 24 iterations, 393700968 multiplications and 25.164 seconds.
+Probabilistic reachability took 25.166 seconds.
+
+Value in the initial state: 0.0
+
+Time for model checking: 213.802 seconds.
+
+Result: 0.0 (+/- 8.126734764135856E-6 estimated; rel err Infinity)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	240.722
+Return code:	0

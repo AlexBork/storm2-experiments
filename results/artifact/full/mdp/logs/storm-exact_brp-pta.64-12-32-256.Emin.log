@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani brp-pta-mdp.jani --janiproperty Emin --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --exact
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:32:30 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty Emin --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --exact
+Current working directory: /tmp/invocation-uz5fdrm3
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 422.335s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	56784160
+Transitions: 	64044160
+Choices: 	63799584
+Reward Models:  Emax_rate_reward
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * first_file_done -> 99 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "Emin": R{"Emax_rate_reward"}min=? [F (first_file_done)] ...
+
+----------------------------------------
+Wallclock time:	471.250
+Return code:	-9

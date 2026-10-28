@@ -9,11 +9,11 @@ Decision diagram memory:	4 GiB
 Output:
 Storm 2.0.0
 
-Date: Mon Oct 26 22:15:05 2026
+Date: Wed Oct 28 08:24:57 2026
 Command line arguments: --explicit-drn zeroconf.20-2-false.correct_max.drn --prop zeroconf.20-2-false.correct_max.storm.props --uncertainty-resolution robust --precision 1e-6 --absolute
-Current working directory: /tmp/invocation-2ppt192t
+Current working directory: /tmp/invocation-wg5kt74u
 
-Time for model construction: 0.384s.
+Time for model construction: 0.399s.
 
 -------------------------------------------------------------- 
 Model type: 	IMDP (sparse)
@@ -33,8 +33,8 @@ WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not suppo
 WARN  (MinMaxLinearEquationSolver.cpp:315): Selected method is not supported for this solver and interval models, switching to robust value iteration.
 WARN  (IterativeMinMaxLinearEquationSolver.cpp:85): Selected method is not supported for this solver and interval models, switching to robust value iteration.
 Result (for initial states): 2.291856696e-09. Solution bounds: [2.291856696e-09, 1].
-Time for model checking: 0.169s.
+Time for model checking: 0.157s.
 
 ----------------------------------------
-Wallclock time:	0.574
+Wallclock time:	0.576
 Return code:	0

@@ -1,0 +1,88 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel zeroconf.20-8-false.correct_min.tra,sta,lab zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	zeroconf.20-8-false.correct_min.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 22:50:10 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'zeroconf.20-8-false.correct_min.tra,sta,lab' zeroconf.20-8-false.correct_min.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "zeroconf.20-8-false.correct_min.tra", "zeroconf.20-8-false.correct_min.sta", "zeroconf.20-8-false.correct_min.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "zeroconf.20-8-false.correct_min.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 15.698 seconds.
+
+Type:        IMDP
+States:      1870338 (1 initial)
+Transitions: 8862306
+Choices:     7481352
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 133 iterations and 101.409 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 323 iterations and 180.965 seconds.
+target=16523, yes=17943, no=611330, maybe=1241065
+Starting value iteration (minmax)...
+Iteration 5: 5.49 sec so far
+Iteration 10: 11.05 sec so far
+Iteration 15: 16.52 sec so far
+Iteration 20: 21.90 sec so far
+Iteration 25: 27.70 sec so far
+Iteration 30: 33.12 sec so far
+Iteration 35: 38.55 sec so far
+Iteration 40: 44.05 sec so far
+Iteration 45: 49.65 sec so far
+Iteration 50: 55.26 sec so far
+Iteration 55: 60.71 sec so far
+Iteration 60: 66.15 sec so far
+Iteration 65: 71.62 sec so far
+Iteration 70: 77.30 sec so far
+Iteration 75: 82.72 sec so far
+Iteration 80: 88.05 sec so far
+Iteration 85: 93.36 sec so far
+Iteration 90: 99.05 sec so far
+Iteration 95: 104.38 sec so far
+Value iteration (minmax, with Gauss-Seidel) took 97 iterations, 568997926 multiplications and 106.635 seconds.
+Probabilistic reachability took 106.637 seconds.
+
+Value in the initial state: 1.7236566700127668E-6
+
+Time for model checking: 390.98 seconds.
+
+Result: 1.7236566700127668E-6 (+/- 7.2536497386116206E-6 estimated; rel err 4.208291514665675)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	407.479
+Return code:	0

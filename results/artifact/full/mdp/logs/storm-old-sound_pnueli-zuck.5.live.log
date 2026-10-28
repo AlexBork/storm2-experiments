@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani pnueli-zuck.5.jani --janiproperty live --sound
+Benchmark:	pnueli-zuck.5.live
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 12:58:31 2026
+Command line arguments: --jani pnueli-zuck.5.jani --janiproperty live --sound
+Current working directory: /tmp/invocation-wtabgrrr
+
+Time for model input parsing: 0.005s.
+
+Time for model construction: 1.683s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	307523
+Transitions: 	1886851
+Choices: 	1753715
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (p1 = 10) -> 4096 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "live": Pmax=? [F (p1 = 10)] ...
+Result (for initial states): 1
+Time for model checking: 0.187s.
+
+----------------------------------------
+Wallclock time:	1.929
+Return code:	0

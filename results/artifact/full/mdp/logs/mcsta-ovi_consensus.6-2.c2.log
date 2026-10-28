@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta consensus.6.jani --props c2 --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	consensus.6-2.c2
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta consensus.6.jani --props c2 --experiment K=2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+consensus.6.jani:model: info: consensus.6 is an MDP model.
+consensus.6.jani:variables[6]: info: Expanding variable "pc1" into 4 locations in automaton "process1".
+consensus.6.jani:variables[8]: info: Expanding variable "pc2" into 4 locations in automaton "process2".
+consensus.6.jani:variables[10]: info: Expanding variable "pc3" into 4 locations in automaton "process3".
+consensus.6.jani:variables[12]: info: Expanding variable "pc4" into 4 locations in automaton "process4".
+consensus.6.jani:variables[14]: info: Expanding variable "pc5" into 4 locations in automaton "process5".
+consensus.6.jani:variables[16]: info: Expanding variable "pc6" into 4 locations in automaton "process6".
+consensus.6.jani: info: Need 24 bytes per state.
+consensus.6.jani: info: Explored 1258240 states for K=2.
+
+Peak memory usage: 798 MB
+Analysis results for consensus.6.jani
+Experiment K=2
+
++ State space exploration
+  State size: 24 bytes
+  States:     1258240
+  Choices:    5008128
+  Branches:   6236736
+  Rate:       684198 states/s
+  Time:       2.0 s
+
++ Property c2
+  Probability: 0.2943503395405358
+  Bounds:      [0.294350246391205, 0.29435043268986666]
+  Time:        15.7 s
+
+  + Optimistic value iteration
+    Total iterations:  925
+    Verif. attempts:   5
+    Verif. iterations: 136
+    Final epsilon:     2.5725265593106613E-08
+    Time:              15.7 s
+
+
+----------------------------------------
+Wallclock time:	17.880
+Return code:	0

@@ -1,0 +1,24 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta refuel-mdp.jani --props reach_max --experiment N=80,ENERGY=40 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	refuel-mdp.80-40.reach_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta refuel-mdp.jani --props reach_max --experiment N=80,ENERGY=40 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+refuel-mdp.jani:model: info: refuel-mdp is an MDP model.
+refuel-mdp.jani: info: Need 8 bytes per state.
+refuel-mdp.jani: warning: The probabilities for a transition do not sum up to 1. Results will likely be affected by floating-point errors.
+refuel-mdp.jani: info: Explored 161070 states for N=80, ENERGY=40.
+
+----------------------------------------
+Wallclock time:	901.043
+Return code:	None
+Computation aborted after 901.043 seconds since the time limit of 900 seconds was exceeded.

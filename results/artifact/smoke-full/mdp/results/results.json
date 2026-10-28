@@ -4,7 +4,7 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/mcsta-ovi_consensus.4-4.c2.log",
-				"wallclock-time": 0.723,
+				"wallclock-time": 0.737,
 				"mcresult": "0.4062753527127493",
 				"result-diff": 1.9775597974697055e-07,
 				"states": 43136
@@ -16,9 +16,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/prism-ii_consensus.4-4.c2.log",
-				"wallclock-time": 3.249,
-				"construction-time": 0.028,
-				"checking-time": 2.883,
+				"wallclock-time": 3.198,
+				"construction-time": 0.026,
+				"checking-time": 2.868,
 				"mcresult": "0.4062752716526596",
 				"result-diff": 1.7641368165113302e-09,
 				"states": 43136
@@ -30,13 +30,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-exact-bisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.543,
-				"construction-time": 0.172,
-				"checking-time": 0.214,
+				"wallclock-time": 0.557,
+				"construction-time": 0.175,
+				"checking-time": 0.21,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136,
-				"preprocessing-time": 0.107,
+				"preprocessing-time": 0.105,
 				"states-after": 2189
 			}
 		}
@@ -46,9 +46,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-exact_consensus.4-4.c2.log",
-				"wallclock-time": 0.502,
-				"construction-time": 0.168,
-				"checking-time": 0.266,
+				"wallclock-time": 0.486,
+				"construction-time": 0.163,
+				"checking-time": 0.265,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136
@@ -60,9 +60,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-hybrid-sound_consensus.4-4.c2.log",
-				"wallclock-time": 0.894,
-				"construction-time": 0.398,
-				"checking-time": 0.363,
+				"wallclock-time": 1.033,
+				"construction-time": 0.209,
+				"checking-time": 0.475,
 				"mcresult": "0.4062752822",
 				"result-diff": 2.4196932235238334e-08,
 				"states": 43136
@@ -74,9 +74,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-old-exact_consensus.4-4.c2.log",
-				"wallclock-time": 0.531,
-				"construction-time": 0.201,
-				"checking-time": 0.254,
+				"wallclock-time": 0.496,
+				"construction-time": 0.2,
+				"checking-time": 0.26,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136
@@ -88,9 +88,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-old-sound_consensus.4-4.c2.log",
-				"wallclock-time": 4.929,
-				"construction-time": 0.107,
-				"checking-time": 4.782,
+				"wallclock-time": 4.897,
+				"construction-time": 0.106,
+				"checking-time": 4.731,
 				"mcresult": "0.4062752777",
 				"result-diff": 1.3120698198753317e-08,
 				"states": 43136
@@ -102,13 +102,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound-bisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.218,
-				"construction-time": 0.101,
-				"checking-time": 0.009,
+				"wallclock-time": 0.153,
+				"construction-time": 0.084,
+				"checking-time": 0.007,
 				"mcresult": "0.4062752785.",
 				"result-diff": 1.5089806471906208e-08,
 				"states": 43136,
-				"preprocessing-time": 0.084,
+				"preprocessing-time": 0.019,
 				"states-after": 2189
 			}
 		}
@@ -118,13 +118,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound-ddbisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.643,
-				"construction-time": 0.298,
+				"wallclock-time": 1.612,
+				"construction-time": 0.206,
 				"checking-time": 0.032,
 				"mcresult": "0.406275273.",
 				"result-diff": 1.552187093980078e-09,
 				"states": 43136,
-				"preprocessing-time": 0.208,
+				"preprocessing-time": 0.683,
 				"states-after": 2189
 			}
 		}
@@ -134,9 +134,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound_consensus.4-4.c2.log",
-				"wallclock-time": 0.239,
-				"construction-time": 0.093,
-				"checking-time": 0.104,
+				"wallclock-time": 0.241,
+				"construction-time": 0.094,
+				"checking-time": 0.101,
 				"mcresult": "0.4062752782.",
 				"result-diff": 1.4351390869473875e-08,
 				"states": 43136

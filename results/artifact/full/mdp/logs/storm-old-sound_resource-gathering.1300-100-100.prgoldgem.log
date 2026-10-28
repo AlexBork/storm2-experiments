@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani resource-gathering.jani --janiproperty prgoldgem --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --sound
+Benchmark:	resource-gathering.1300-100-100.prgoldgem
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 14:47:07 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty prgoldgem --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --sound
+Current working directory: /tmp/invocation-pyqvrkk0
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 5.448s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958801
+Transitions: 	3325201
+Choices: 	3080401
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "prgoldgem": Pmax=? [true Usteps<=1300 "success"] ...
+Result (for initial states): 0.6630608525
+Time for model checking: 32.592s.
+
+----------------------------------------
+Wallclock time:	38.089
+Return code:	0

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani resource-gathering.jani --janiproperty expsteps --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --exact
+Benchmark:	resource-gathering.1300-100-100.expsteps
+Configuration:	storm-old-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 18:19:10 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expsteps --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --exact
+Current working directory: /tmp/invocation-3te25av4
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 12.069s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	958801
+Transitions: 	3325201
+Choices: 	3080401
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * success -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "expsteps": T[exp]min=? [F "success"] ...
+Result (for initial states): 34900/27 (approx. 1292.592593)
+Time for model checking: 31.813s.
+
+----------------------------------------
+Wallclock time:	44.103
+Return code:	0

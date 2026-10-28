@@ -1,0 +1,46 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta readers-writers.40.jani --props pr_network --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	readers-writers.40.pr_network
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta readers-writers.40.jani --props pr_network --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+readers-writers.40.jani:model: info: ReadersWriters is an MA model.
+readers-writers.40.jani: info: Need 16 bytes per state.
+readers-writers.40.jani: info: Explored 1884366 states.
+
+Peak memory usage: 622 MB
+Analysis results for readers-writers.40.jani
+
++ State space exploration
+  State size: 16 bytes
+  States:     1884366
+  Choices:    1884366
+  Branches:   3815040
+  Rate:       1297773 states/s
+  Time:       1.6 s
+
++ Property pr_network
+  Probability: 0.8971438822991833
+  Bounds:      [0.8971437962951321, 0.8971439683032344]
+  Time:        4.7 s
+
+  + Optimistic value iteration
+    Total iterations:  288
+    Verif. attempts:   3
+    Verif. iterations: 62
+    Final epsilon:     8.354215910464682E-08
+    Time:              4.7 s
+
+
+----------------------------------------
+Wallclock time:	6.536
+Return code:	0

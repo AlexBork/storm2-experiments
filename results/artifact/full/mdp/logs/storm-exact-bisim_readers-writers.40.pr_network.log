@@ -1,0 +1,58 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani readers-writers.40.jani --janiproperty pr_network --exact --bisimulation
+Benchmark:	readers-writers.40.pr_network
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:48:04 2026
+Command line arguments: --jani readers-writers.40.jani --janiproperty pr_network --exact --bisimulation
+Current working directory: /tmp/invocation-1kv3lzdj
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 54.565s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1884366
+Transitions: 	3815040
+Choices: 	1884366
+Markovian St.: 	372594
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) -> 1828328 item(s)
+   * init -> 1 item(s)
+   * ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w))) -> 33192 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 8.970s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1773060
+Transitions: 	3673171
+Choices: 	1773060
+Markovian St.: 	316462
+Max. Rate: 	400
+Reward Models:  none
+State Labels: 	3 labels
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) -> 1773058 item(s)
+   * ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w))) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "pr_network": Pmax=? [(((p_lan_w + p_w) + (p_lan_r + p_r)) <= ((8 / 10) * 40)) U ((((p_lan_w + p_w) + (p_lan_r + p_r)) > ((8 / 10) * 40)) & ((p_lan_r + p_lan_w) > (p_r + p_w)))] ...
+
+----------------------------------------
+Wallclock time:	901.798
+Return code:	None
+Computation aborted after 901.798 seconds since the time limit of 900 seconds was exceeded.

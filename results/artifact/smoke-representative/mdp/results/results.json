@@ -4,7 +4,7 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/mcsta-ovi_consensus.4-4.c2.log",
-				"wallclock-time": 0.669,
+				"wallclock-time": 0.778,
 				"mcresult": "0.4062753527127493",
 				"result-diff": 1.9775597974697055e-07,
 				"states": 43136
@@ -16,9 +16,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/prism-ii_consensus.4-4.c2.log",
-				"wallclock-time": 3.278,
-				"construction-time": 0.027,
-				"checking-time": 2.928,
+				"wallclock-time": 3.374,
+				"construction-time": 0.03,
+				"checking-time": 2.87,
 				"mcresult": "0.4062752716526596",
 				"result-diff": 1.7641368165113302e-09,
 				"states": 43136
@@ -30,13 +30,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-exact-bisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.55,
-				"construction-time": 0.174,
-				"checking-time": 0.211,
+				"wallclock-time": 0.537,
+				"construction-time": 0.167,
+				"checking-time": 0.205,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136,
-				"preprocessing-time": 0.103,
+				"preprocessing-time": 0.111,
 				"states-after": 2189
 			}
 		}
@@ -46,9 +46,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-exact_consensus.4-4.c2.log",
-				"wallclock-time": 0.492,
-				"construction-time": 0.176,
-				"checking-time": 0.267,
+				"wallclock-time": 0.486,
+				"construction-time": 0.181,
+				"checking-time": 0.272,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136
@@ -60,9 +60,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-hybrid-sound_consensus.4-4.c2.log",
-				"wallclock-time": 0.72,
-				"construction-time": 0.26,
-				"checking-time": 0.355,
+				"wallclock-time": 1.075,
+				"construction-time": 0.218,
+				"checking-time": 0.519,
 				"mcresult": "0.4062752822",
 				"result-diff": 2.4196932235238334e-08,
 				"states": 43136
@@ -74,9 +74,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-old-exact_consensus.4-4.c2.log",
-				"wallclock-time": 0.502,
-				"construction-time": 0.201,
-				"checking-time": 0.252,
+				"wallclock-time": 0.601,
+				"construction-time": 0.233,
+				"checking-time": 0.249,
 				"mcresult": "852021/2097152",
 				"result-diff": 0.0,
 				"states": 43136
@@ -88,9 +88,9 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-old-sound_consensus.4-4.c2.log",
-				"wallclock-time": 5.019,
-				"construction-time": 0.121,
-				"checking-time": 4.878,
+				"wallclock-time": 4.815,
+				"construction-time": 0.096,
+				"checking-time": 4.675,
 				"mcresult": "0.4062752777",
 				"result-diff": 1.3120698198753317e-08,
 				"states": 43136
@@ -102,13 +102,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound-bisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.165,
-				"construction-time": 0.095,
+				"wallclock-time": 0.171,
+				"construction-time": 0.092,
 				"checking-time": 0.007,
 				"mcresult": "0.4062752785.",
 				"result-diff": 1.5089806471906208e-08,
 				"states": 43136,
-				"preprocessing-time": 0.021,
+				"preprocessing-time": 0.029,
 				"states-after": 2189
 			}
 		}
@@ -118,13 +118,13 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound-ddbisim_consensus.4-4.c2.log",
-				"wallclock-time": 0.587,
+				"wallclock-time": 1.763,
 				"construction-time": 0.25,
 				"checking-time": 0.033,
 				"mcresult": "0.406275273.",
 				"result-diff": 1.552187093980078e-09,
 				"states": 43136,
-				"preprocessing-time": 0.208,
+				"preprocessing-time": 0.766,
 				"states-after": 2189
 			}
 		}
@@ -134,8 +134,8 @@
 			"1": {
 				"status": "ok",
 				"log": "experiments/smoke/logs/storm-sound_consensus.4-4.c2.log",
-				"wallclock-time": 0.244,
-				"construction-time": 0.086,
+				"wallclock-time": 0.275,
+				"construction-time": 0.116,
 				"checking-time": 0.103,
 				"mcresult": "0.4062752782.",
 				"result-diff": 1.4351390869473875e-08,

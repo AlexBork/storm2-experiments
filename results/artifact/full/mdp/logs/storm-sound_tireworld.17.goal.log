@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani tireworld.17.jani --janiproperty goal --sound
+Benchmark:	tireworld.17.goal
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 20:36:54 2026
+Command line arguments: --jani tireworld.17.jani --janiproperty goal --sound
+Current working directory: /tmp/invocation-51j07tyq
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.028s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	8670
+Transitions: 	33436
+Choices: 	18662
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 1600 item(s)
+   * init -> 1 item(s)
+   * (var9 = 0) -> 510 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal": Pmax=? [F (var9 = 0)] ...
+Result (for initial states): 0.23328. Solution bounds: [0.2332797667, 0.2332802333].
+Time for model checking: 0.002s.
+
+----------------------------------------
+Wallclock time:	0.088
+Return code:	0

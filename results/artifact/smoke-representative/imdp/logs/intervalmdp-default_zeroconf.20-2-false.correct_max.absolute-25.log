@@ -13,9 +13,9 @@ solved it!
 Initial state 0: 2.291725498851476e-9
 Iterations: 66
 Maximum Bellman residual: 9.389204522758376e-7
-Time for reading: 1.064526795s
-Time for solving: 3.512517319s
+Time for reading: 0.986990681s
+Time for solving: 3.441577305s
 
 ----------------------------------------
-Wallclock time:	4.855
+Wallclock time:	5.091
 Return code:	0

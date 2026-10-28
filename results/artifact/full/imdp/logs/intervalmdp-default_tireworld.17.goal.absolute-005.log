@@ -1,0 +1,21 @@
+Command:	/opt/storm2-experiments/imdp/scripts/intervalmdp.sh --precision 1e-6 tireworld.17.goal
+Benchmark:	tireworld.17.goal.absolute-005
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 0.173861874974901
+Iterations: 51
+Maximum Bellman residual: 6.905969879289486e-7
+Time for reading: 0.272350643s
+Time for solving: 0.913785715s
+
+----------------------------------------
+Wallclock time:	1.614
+Return code:	0

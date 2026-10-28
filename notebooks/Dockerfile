@@ -1,6 +1,6 @@
 # Jupyter environment for the notebooks, based on the official Stormpy 2.0 image,
 # which also contains the command-line tools of Storm 2.0. The artifact ships it
-# prebuilt as storm2-tools, see scripts/4_build_docker.sh. Build with
+# prebuilt as storm2-tools, see scripts/5_build_docker.sh. Build with
 # docker build -t storm2-tools .
 # Run with
 # docker run -it -p 8888:8888 storm2-tools

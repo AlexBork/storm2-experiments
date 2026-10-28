@@ -1,0 +1,30 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta sensor.5.jani --props max_success --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	sensor.5.max_success
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta sensor.5.jani --props max_success --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+sensor.5.jani:model: info: sensor.5 is an MDP model.
+sensor.5.jani:variables[3]: info: Expanding variable "y1" into 7 locations in automaton "sensor1".
+sensor.5.jani:variables[5]: info: Expanding variable "y2" into 7 locations in automaton "sensor2".
+sensor.5.jani:variables[7]: info: Expanding variable "y3" into 7 locations in automaton "sensor3".
+sensor.5.jani:variables[9]: info: Expanding variable "y4" into 7 locations in automaton "sensor4".
+sensor.5.jani:variables[11]: info: Expanding variable "y5" into 7 locations in automaton "sensor5".
+sensor.5.jani:variables[13]: info: Expanding variable "c" into 4 locations in automaton "channel".
+sensor.5.jani:variables[19]: info: Expanding variable "x" into 3 locations in automaton "proc".
+sensor.5.jani: info: Need 32 bytes per state.
+sensor.5.jani: info: Explored 2781085 states.
+
+----------------------------------------
+Wallclock time:	901.044
+Return code:	None
+Computation aborted after 901.044 seconds since the time limit of 900 seconds was exceeded.

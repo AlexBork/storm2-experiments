@@ -9,13 +9,13 @@ Decision diagram memory:	8 GiB
 Output:
 Storm-POMDP 2.0.0
 
-Date: Mon Oct 26 22:22:15 2026
+Date: Wed Oct 28 08:20:59 2026
 Command line arguments: --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000
-Current working directory: /tmp/invocation-6gl63ukj
+Current working directory: /tmp/invocation-5j5rbu5_
 
-Time for model input parsing: 0.001s.
+Time for model input parsing: 0.004s.
 
-Time for model construction: 0.006s.
+Time for model construction: 0.007s.
 
 -------------------------------------------------------------- 
 Model type: 	POMDP (sparse)
@@ -42,18 +42,18 @@ Analyzing property 'Pmax=? ["notbad" U "goal"]'
 Computing an under-approximation via belief MDP unfolding...
 Belief exploration stopped early: 100003 beliefs discovered, 82871 beliefs explored.
 Constructed belief MDP: 100001 states, 184188 choices, 327457 transitions.
-Time for exploring beliefs: 123ms.
-Time for building the belief MDP: 21ms.
+Time for exploring beliefs: 148ms.
+Time for building the belief MDP: 22ms.
 Time for analyzing the belief MDP: 15ms.
 
 Result: ≥ 0.67219
-Time for POMDP analysis: 0.177s.
+Time for POMDP analysis: 0.204s.
 
 Performance statistics:
-  * peak memory usage: 139MB
-  * CPU time: 0.187s
-  * wallclock time: 0.186s
+  * peak memory usage: 136MB
+  * CPU time: 0.200s
+  * wallclock time: 0.219s
 
 ----------------------------------------
-Wallclock time:	0.241
+Wallclock time:	0.247
 Return code:	0

@@ -1,0 +1,54 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta wlan-mec.3.jani --props time_min --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	wlan-mec.3-0.time_min
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta wlan-mec.3.jani --props time_min --experiment COL=0 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+wlan-mec.3.jani:model: info: wlan-mec.3 is an MDP model.
+wlan-mec.3.jani:variables[5]: info: Expanding variable "s1" into 12 locations in automaton "station1".
+wlan-mec.3.jani:variables[7]: info: Expanding variable "s2" into 12 locations in automaton "station2".
+wlan-mec.3.jani: info: Need 24 bytes per state.
+wlan-mec.3.jani: info: Explored 963020 states for COL=0.
+wlan-mec.3.jani:properties[1]: warning: Computing minimum expected reward in property "time_min" without checking for zero-reward end components.
+
+Peak memory usage: 638 MB
+Analysis results for wlan-mec.3.jani
+Experiment COL=0
+
++ State space exploration
+  State size: 24 bytes
+  States:     963020
+  Choices:    2200310
+  Branches:   3971780
+  Rate:       747686 states/s
+  Time:       1.4 s
+
++ Property time_min
+  Value:  0
+  Bounds: [0, 0]
+  Time:   0.7 s
+
+  + Precomputations
+    Max. prob. 1 states:          963020
+    Time for max. prob. 1 states: 0.7 s
+
+  + Optimistic value iteration
+    Total iterations:  2
+    Verif. attempts:   1
+    Verif. iterations: 1
+    Final epsilon:     1E-06
+    Time:              0.0 s
+
+
+----------------------------------------
+Wallclock time:	2.428
+Return code:	0

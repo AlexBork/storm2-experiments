@@ -4,12 +4,14 @@ This artifact contains Storm 2.0 and Stormpy 2.0, all benchmarks and scripts of 
 
 We apply for the reusable badge.
 
-- [What is in this artifact?](#overview)
-- [What do I need to run it?](#host-requirements), and [how do I install it?](#loading-the-container)
-- [How can I do a smoke test?](#running-the-smoke-test)
-- [How can I reproduce the figures from the precomputed logs?](#reproducing-the-figures-from-the-logs-of-the-paper)
-- [How can I create my own figures by running the experiments?](#running-the-experiments), also [on my own models](#running-your-own-benchmarks)
-- [How can I run Storm and Stormpy?](#playing-with-storm-and-stormpy)
+## Getting started
+Check the [requirements](#requirements), then follow the steps in this order:
+
+1. [Load the Docker images](#step-1-load-the-docker-images) (at most 10 minutes).
+2. [Run the smoke test](#step-2-run-the-smoke-test) of the experiment set you want to run (at most 5 minutes).
+3. [Run the experiment set](#step-3-run-an-experiment-set) (hours to days, depending on the set).
+4. [Create the figures from the logs](#step-4-create-the-figures-from-logs), of your run or of the runs of the paper (at most a few minutes).
+5. Optionally, [play with Storm and Stormpy](#step-5-play-with-storm-and-stormpy).
 
 ## Overview
 The artifact consists of three parts:
@@ -17,125 +19,104 @@ The artifact consists of three parts:
 - **Stormpy 2.0**, the Python API of Storm (Sec. 7 of the paper): its source code in `stormpy/`, with the robot vacuum example of the paper in `examples/vacuum/` and the Jupyter notebooks of the Storm tutorial in `notebooks/`. [TOOLS.md](TOOLS.md) shows how to try Storm and Stormpy.
 - **The experiments** of Sec. 8 of the paper, which compare Storm with other tools on MDPs, interval MDPs and POMDPs: the scripts to run them in `scripts/`, the experiments and their Docker image in `experiments/`, the benchmarks in `examples/`, and the logs and results of the runs in the paper and of sample runs of all experiment sets with this artifact in `results/`.
 
-[Contents](#contents) at the end of this README lists all folders.
+[Contents](#contents) near the end of this README lists all folders.
 
-## Host requirements
-Run the largest experiment set that fits on your machine and in your time, from the table below:
+## Requirements
+We provide three experiment sets for reproducing (subsets of) the experiments, described in [The experiment sets](#the-experiment-sets). Run the largest one that fits your machine and your time; the times are generous estimates from our runs, so most machines are faster:
 
-| Experiment set   | Smoke test (about 8 minutes)        | Command                       | Needs at least  | Takes about | With `-p`, 4 runs at a time  |
-| ---------------- | ----------------------------------- | ----------------------------- | --------------- | ----------- | ---------------------------- |
-| [Minimal]        | `scripts/2_smoke.sh minimal`        | `scripts/3_minimal.sh`        | 3 cores, 9 GiB  | 5.5 hours   | 1.5 hours (9 cores, 33 GiB)  |
-| [Representative] | `scripts/2_smoke.sh representative` | `scripts/3_representative.sh` | 5 cores, 17 GiB | 5.5 hours   | 1.5 hours (17 cores, 65 GiB) |
-| [Full]           | `scripts/2_smoke.sh full`           | `scripts/3_full.sh`           | 5 cores, 33 GiB | 70 hours    | 18 hours (17 cores, 129 GiB) |
+| Experiment set   | Needs at least  | Takes about | With `-p`, 4 runs at a time  |
+| ---------------- | --------------- | ----------- | ---------------------------- |
+| [Minimal]        | 3 cores, 9 GiB  | 7 hours     | 2 hours (9 cores, 33 GiB)    |
+| [Representative] | 5 cores, 17 GiB | 7 hours     | 2 hours (17 cores, 65 GiB)   |
+| [Full]           | 5 cores, 33 GiB | 85 hours    | 22 hours (17 cores, 129 GiB) |
 
-[Minimal]: #running-the-minimal-experiments
-[Representative]: #running-the-representative-experiments
-[Full]: #running-the-full-experiments
+[Minimal]: #minimal
+[Representative]: #representative
+[Full]: #full
 
-Run the [smoke test](#running-the-smoke-test) of a set before the set itself. All cores are counted in **physical cores**. On a larger machine, add `-p` to run several benchmarks at the same time, e.g. `scripts/3_representative.sh -p`; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each); no network access is needed to run the experiments.
+All cores are counted in **physical cores**. On a larger machine, `-p` runs several benchmarks at the same time; see [Parallel execution](#parallel-execution) for what this needs. Every machine additionally needs Docker and **90 GB of free disk space**: about 60 GB for the loaded images, and the rest for the downloaded and unpacked artifact (about 12 GB each). No network access is needed.
 
 The artifact runs on Linux and macOS, on x86 (amd64) and ARM (arm64) CPUs. On ARM, the comparison with the previous version **Storm 1.6.2 is left out**, as Storm 1.6.2 only exists for x86. We tested the artifact on amd64 hosts running Linux (Debian forky/sid with Linux 6.18 and Docker 29.4, with both the containerd and the classic image store); arm64 and macOS hosts were not tested. On macOS, the cores and memory are those given to the virtual machine of Docker Desktop, which can be set under Settings → Resources.
 
-## Loading the container
+## Step 1: Load the Docker images
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/).
-2. Download `storm2-artifact.zip` from [Zenodo](https://doi.org/10.5281/zenodo.23668956) and unzip it at a convenient location. Throughout this document, `$ARTIFACT_DIR` refers to the unzipped directory, i.e., this README is `$ARTIFACT_DIR/README.md`.
-3. Load the Docker images, `storm2-experiments` for the experiments and `storm2-tools` for [playing with Storm and Stormpy](#playing-with-storm-and-stormpy):[^privileged]
+2. Download `storm2-artifact.zip` from [Zenodo](https://doi.org/10.5281/zenodo.23668956) and unzip it at a convenient location. Throughout this document, `$ARTIFACT_DIR` refers to the unzipped directory `storm2-artifact/`, which contains this README as `README.md`.
+3. Load the Docker images, `storm2-experiments` for the experiments and `storm2-tools` for [playing with Storm and Stormpy](#step-5-play-with-storm-and-stormpy):[^privileged]
    ```bash
    $ARTIFACT_DIR/scripts/1_load.sh
    ```
-   The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. If loading fails, enable `Use containerd for pulling and storing images` in the Docker settings (Docker Desktop), or `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` (Docker Engine), restart Docker and try again; the script says so when this may help.
+   This takes up to 10 minutes, and shows the progress of every layer of the images. The saved images are [multi-platform images](https://docs.docker.com/build/building/multi-platform/) for amd64 and arm64, of which Docker keeps the one of your machine. If loading fails, enable the containerd image store and try again: in Docker Desktop under Settings → General → "Use containerd for pulling and storing images", for Docker Engine with `"features": {"containerd-snapshotter": true}` in `/etc/docker/daemon.json` and a restart of Docker. The script says so when this may help.
 
 [^privileged]: The scripts start the container with the options `--privileged --cap-drop=all`. These let the experiment runner pin every run to its own cores and enforce its memory limit; all other privileges are dropped.
 
-## Running the smoke test
-Before running an experiment set, run the smoke test for it, with the name of the set (`minimal`, `representative` or `full`):
+## Step 2: Run the smoke test
+After loading the images, run the smoke test of the experiment set you want to run, `minimal`, `representative` or `full`, e.g.
 
 ```bash
 $ARTIFACT_DIR/scripts/2_smoke.sh representative
 ```
 
-This runs every tool configuration of every experiment on one small benchmark with a time limit of 60 seconds, but with the cores and memory per run of the given set, and then post-processes the results and builds the figures, like the experiment set. It checks that everything works, and that your machine can run the set: if the machine is too small for it, the smoke test stops right away with `not enough cores or memory for a single run`. It takes about 8 minutes.
+This runs every tool configuration of the MDP and interval MDP experiments, and one cut-off and one discretisation of the POMDP experiment, on one small benchmark each with a time limit of 60 seconds, but with the cores and memory per run of the given set. Then it post-processes the results and builds the figures, like the experiment set. It checks that everything works and that your machine can run the set: if the machine is too small for it, the smoke test stops right away with `not enough cores or memory for a single run`. It takes at most 5 minutes; on our machine it took about a minute.
 
 What to check:
-- The output shows the three experiments one after the other (`== ...: running experiment 1/3: mdp`, then `imdp` and `pomdp`), with a line `[done ...] CONFIGURATION BENCHMARK ... ok (...)` for every run. All runs of `mdp` and `imdp` should be `ok`. In `pomdp`, a few runs with the largest size limits (`cut20000000` and up) end with `timeout`, or in the smoke test for `minimal` with `error (...): return code -9` as they run out of memory, which is expected with the short time limit and the small memory. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) end with `error`, which is expected as well.
-- The output ends with `== all results checked`, followed by where the results are. If a run gave an incorrect result or none at all, it ends with `== results with problems in:` and the experiments concerned instead, and the problems are listed above it.
-- `smoke-SET.pdf` in your current directory, e.g. `smoke-representative.pdf`, contains Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and the curves of one model (refuel) in Figure 9. The logs and results are in `smoke-SET/`.
-- Compare with the sample runs in `$ARTIFACT_DIR/results/artifact/smoke-SET/`, which have the same output.
+- Every run ends with `ok` in its line `[done ...] CONFIGURATION BENCHMARK ... ok (...)`. On ARM, the runs of Storm 1.6.2 (`storm-old-sound`, `storm-old-exact`) are `skipped` instead.
+- The output ends with a summary of the three experiments and `== all results checked`. If a run gave an incorrect result or none at all, the summary marks its experiment, the output ends with `== results with problems in:` and the experiments concerned, and the runs with problems are listed in the output of that experiment, below its line `checked ... runs`.
+- `smoke-SET.pdf` in your current directory, e.g. `smoke-representative.pdf`, contains Figures 6, 7, 8 and 9 of the paper, with only one point in each scatter plot and in each panel of Figure 9.
 
-If you encounter issues with the smoke test, please provide a zip of `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
+The logs and results are in `smoke-SET/`. If you encounter issues with the smoke test, please provide a zip of `smoke-SET.pdf` and `smoke-SET/` with a description of your issues.
 
-## Reproducing the figures from the logs of the paper
-`$ARTIFACT_DIR/results/paper/` contains the logs, results and figure data of the runs shown in the paper. Build Figures 6 to 9 from them in the container, from `$ARTIFACT_DIR`, with
+## Step 3: Run an experiment set
+Run the experiment set, `minimal`, `representative` or `full`, e.g.
 
 ```bash
-docker run --rm -e HOST_UID=$(id -u) -v "$PWD/results/paper:/paper:ro" -v "$PWD:/out" storm2-experiments \
-    sh -c 'docker/build_figures.sh /paper/data && cp docker/plots/latex/main.pdf /out/paper.pdf && chown $HOST_UID /out/paper.pdf'
+$ARTIFACT_DIR/scripts/3_run.sh representative
 ```
 
-which writes them to `paper.pdf`. [results/paper/README.md](results/paper/README.md) describes the logs and results, and how the figure data is computed from the logs. The figures and results of sample runs of the minimal, representative and full experiments and of their smoke tests with this artifact, i.e. with the stable release of Storm 2.0, are in `$ARTIFACT_DIR/results/artifact/`.
+or with `-p` to run as many benchmarks at the same time as fit into your machine, e.g. `scripts/3_run.sh representative -p` (see [Parallel execution](#parallel-execution)). The run writes the figures to `SET.pdf` and the logs and results to `SET/` in the current directory, e.g. `representative.pdf` and `representative/`. Like the smoke test, it should end with `== all results checked`; some runs end with `timeout` or `memout`, which is expected.
 
-## Running the experiments
-The minimal, representative and full experiments run the tools again and create Figures 6 to 9 of the paper from their own results:
+What to compare with the paper:
+- The absolute runtimes depend on the machine, so compare the shape of the figures with those of the paper: which tools and configurations solve how many benchmarks within a given time, and which is faster on which benchmarks.
+- [The experiment sets](#the-experiment-sets) describes how the minimal and representative sets differ from the full experiments of the paper, and which deviations to expect.
+- **On ARM, Storm 1.6.2 is missing** from Figure 6: its lines in the quantile plots are empty, and the scatter plot against it shows only n/a.
+- Sample runs of all three sets with this artifact are in `$ARTIFACT_DIR/results/artifact/`, e.g. `representative.pdf` and `representative/`.
+
+The experiments run in a container in the background, so they go on when the script or the terminal is closed. Executing the same command again in the same directory waits for them to finish and then copies the results. To abort them, execute `docker rm -f storm2-SET`, e.g. `docker rm -f storm2-representative`, which also removes the logs of the finished runs. A run that was aborted, or stopped by a restart of Docker or the machine, cannot be resumed.
+
+## Step 4: Create the figures from logs
+Create Figures 6 to 9 from the logs of any run with
+
+```bash
+$ARTIFACT_DIR/scripts/4_figures.sh DIR
+```
+
+where `DIR` is a folder of logs in the layout of the runs, e.g. `representative/` of your own run in Step 3, `$ARTIFACT_DIR/results/artifact/full/` of the sample run of the full experiments, or `$ARTIFACT_DIR/results/paper/` of the runs of the paper. This post-processes the logs of every experiment in the container, like the experiment sets, and writes the figures to `NAME-figures.pdf` in the current directory, e.g. `paper-figures.pdf`. It takes at most a few minutes.
+
+[results/paper/README.md](results/paper/README.md) describes the logs and results of the paper. The figures and results of sample runs of the minimal, representative and full experiments and of their smoke tests with this artifact are in `$ARTIFACT_DIR/results/artifact/`.
+
+## Step 5: Play with Storm and Stormpy
+[TOOLS.md](TOOLS.md) describes Storm and Stormpy briefly and shows how to try them in the Docker image `storm2-tools` of the artifact, without network access: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the Stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
+
+## The experiment sets
+All three sets run the tools again and create Figures 6 to 9 of the paper from their own results:
 - **Figure 6**: the MDP model checking performance of Storm compared with mcsta, PRISM and the previous version Storm 1.6.2, and of the configurations of Storm compared with each other (experiment `mdp`).
 - **Figure 7**: bisimulation minimisation in Storm (experiment `mdp`).
 - **Figure 8**: Storm, PRISM and IntervalMDP.jl on interval MDPs (experiment `imdp`).
 - **Figure 9**: the belief exploration of Storm for POMDPs with different size limits (experiment `pomdp`).
 
-Each experiment set writes the figures to `SET.pdf` and the logs and results to `SET/` in the current directory, e.g. `representative.pdf` and `representative/`. The absolute runtimes depend on the machine, so compare the shape of the figures with those of the paper: which tools and configurations solve how many benchmarks within a given time, and which is faster on which benchmarks. **On ARM, Storm 1.6.2 is missing** from Figure 6: its lines in the quantile plots are empty, and the scatter plot against it shows only n/a.
+### Full
+The full experiments run every configuration on all benchmarks with a time limit of 900 seconds and 4 physical cores and 32 GiB of memory per run, as in the paper: 1759 runs, 957 of `mdp`, 156 of `imdp` and 646 of `pomdp`. They take up to 85 hours with one run at a time; the runtimes of our run with this artifact add up to about 71 hours (if every run timed out, 440 hours). Compare `full.pdf` with the figures of the paper ([Step 4](#step-4-create-the-figures-from-logs) creates them from `$ARTIFACT_DIR/results/paper/`), and `full/` with their results in `$ARTIFACT_DIR/results/paper/`.
 
-Like the smoke test, these experiment sets should end with `== all results checked`.
+### Representative
+The representative experiments run all tool configurations on a subset of the benchmarks (53 of the 98 MDPs, 32 of the 52 interval MDPs and 8 of the 19 POMDPs, covering all models of the first two), 885 runs, with a time limit of 90 seconds and 16 GiB of memory per run instead of 900 seconds and 32 GiB. The benchmarks were chosen such that they show the same trends as the paper. With the shorter time limit, more runs time out than in the paper.
 
-The container keeps running in the background, so the experiments go on when the terminal is closed. Executing the same script again in the same directory waits for them to finish and then copies the results. To abort them, execute `docker rm -f storm2-SET`, e.g. `docker rm -f storm2-representative`, which also removes the logs of the finished runs; there is no resuming.
-
-### Running the minimal experiments
-```bash
-$ARTIFACT_DIR/scripts/3_minimal.sh
-```
-
-This runs the benchmarks of the [representative experiments](#running-the-representative-experiments) with a time limit of 90 seconds, but with 2 instead of 4 physical cores and 8 instead of 16 GiB of memory per run, so that it fits a smaller machine. It takes about 5.5 hours, or 1.5 hours with `-p` on a machine that fits 4 runs at a time, and gives the figures in `minimal.pdf` and the logs and results in `minimal/`.
-
-With fewer cores and less memory, Storm's symbolic engines use 2 instead of 4 threads, PRISM gets 8 GiB for Java, and the decision diagram libraries of both (Sylvan and CUDD) get 4 instead of 8 GiB. More runs therefore time out or run out of memory, in particular those of the symbolic engines of Storm and of PRISM, and the figures deviate more from those of the paper than the representative ones. Use the representative experiments if your machine has the cores and memory for them.
-
-We provide the figures and results of a sample run in `$ARTIFACT_DIR/results/artifact/minimal.pdf` and `$ARTIFACT_DIR/results/artifact/minimal/`.
-
-### Running the representative experiments
-```bash
-$ARTIFACT_DIR/scripts/3_representative.sh
-```
-
-This takes about 5.5 hours, or 1.5 hours with `-p` on a machine that fits 4 runs at a time, and gives the figures in `representative.pdf` and the logs and results in `representative/`.
-
-The representative experiments run all tool configurations on a subset of the benchmarks (53 of the 98 MDPs, 32 of the 52 interval MDPs and 8 of the 19 POMDPs, covering all models of the first two) with a time limit of 90 seconds and 16 GiB of memory per run, instead of 900 seconds and 32 GiB. The benchmarks were chosen such that they show the same trends as the paper.
-
-We provide the figures and results of a sample run in `$ARTIFACT_DIR/results/artifact/representative.pdf` and `$ARTIFACT_DIR/results/artifact/representative/`.
-
-### Running the full experiments
-```bash
-$ARTIFACT_DIR/scripts/3_full.sh
-```
-
-This runs every configuration on all benchmarks with a time limit of 900 seconds and 32 GiB of memory per run, as in the paper: 1759 runs, 957 of `mdp`, 156 of `imdp` and 646 of `pomdp`. It takes about 70 hours, the sum of the runtimes in the paper (if every run timed out, 440 hours), and gives the figures in `full.pdf` and the logs and results in `full/`.
-
-Compare `full.pdf` with the figures of the runs of the paper (see [Reproducing the figures from the logs of the paper](#reproducing-the-figures-from-the-logs-of-the-paper)), and `full/` with their results in `$ARTIFACT_DIR/results/paper/`.
-
-We provide the figures and results of a sample run with this artifact in `$ARTIFACT_DIR/results/artifact/full.pdf` and `$ARTIFACT_DIR/results/artifact/full/`.
+### Minimal
+The minimal experiments run the benchmarks of the representative experiments with a time limit of 90 seconds, but with 2 instead of 4 physical cores and 8 instead of 16 GiB of memory per run, so that they fit a smaller machine. Storm's symbolic engines then use 2 instead of 4 threads, PRISM gets 8 GiB for Java, and the decision diagram libraries of both (Sylvan and CUDD) get 4 instead of 8 GiB. More runs therefore time out or run out of memory, in particular those of the symbolic engines of Storm and of PRISM, and the figures deviate more from those of the paper than the representative ones. Use the representative experiments if your machine has the cores and memory for them.
 
 ### Running your own benchmarks
 The scripts of the experiments can also run all tool configurations of the MDP experiment on your own models, and check and compare their results and runtimes; see [Running your own benchmarks](experiments/README.md#running-your-own-benchmarks) in the README of the experiments. That README also describes how the experiments can be configured and run individually, and how to set up the host for stable timings.
 
-## Playing with Storm and Stormpy
-[TOOLS.md](TOOLS.md) describes Storm and Stormpy briefly and shows how to try them in the Docker image `storm2-tools` of the artifact, without network access: Storm on the robot vacuum example of the paper (Sec. 7) in `examples/vacuum/` and on the benchmarks of the experiments in `examples/`, the Stormpy code of Fig. 4 of the paper, and the Jupyter notebooks of the Storm tutorial in `notebooks/`.
-
-## Differences between Storm 2.0 and the Storm used for the paper
-The experiments in the submitted paper were done on a beta version of Storm 2.0, commit [`276d4fe0a5`](https://github.com/stormchecker/storm/commit/276d4fe0a56ee61952e4d5e04ce5f69c19f216eb) of the Storm repository (13 October 2026), which reports itself as version `1.14.0 (dev)` in the logs. In this artifact we provide the stable release of Storm and Stormpy 2.0. None of the changes between the beta and the stable release affects performance significantly. The results of the full experiments with the stable release are in `$ARTIFACT_DIR/results/artifact/full/`, with their figures in `$ARTIFACT_DIR/results/artifact/full.pdf`, and we will replace all figures in the paper with these results.
-
-## License
-Storm is licensed under the license located at `storm/LICENSE`, Stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
-The Modest Toolset is licensed under the license located at `experiments/docker/modest/License.txt` (also `Modest/License.txt` in the zips in that folder).
-All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
-
 ## Parallel execution
-With the option `-p`, `scripts/2_smoke.sh`, `scripts/3_minimal.sh`, `scripts/3_representative.sh` and `scripts/3_full.sh` run as many runs at the same time as fit into the machine, e.g. `scripts/3_representative.sh -p`. Every run is still pinned to its own physical cores and limited in memory, and one physical core and 1 GiB of memory stay free for the system. At the start of every experiment, the output shows how many runs fit (`fitting jobs: ...`) and how many run at a time (`jobs: ...`).
+With the option `-p`, `scripts/2_smoke.sh` and `scripts/3_run.sh` run as many runs at the same time as fit into the machine, e.g. `scripts/3_run.sh representative -p`. Every run is still pinned to its own physical cores and limited in memory, and one physical core and 1 GiB of memory stay free for the system. At the start of every experiment, the output shows how many runs fit (`fitting jobs: ...`) and how many run at a time (`jobs: ...`).
 
 Every run gets 2 physical cores and 8 GiB of memory in the minimal experiments, 4 physical cores and 16 GiB in the representative experiments, and 4 physical cores and 32 GiB in the full experiments; the smoke test for a set uses the same. Running several at the same time needs these for every run, plus one physical core and 1 GiB:
 
@@ -150,13 +131,21 @@ and so on, with the cores and memory of one more run for every further run. Only
 
 For timings that are as stable as possible follow [Additional setup](experiments/README.md#additional-setup).
 
+## Differences between Storm 2.0 and the Storm used for the paper
+The experiments in the submitted paper were done on a beta version of Storm 2.0, commit [`276d4fe0a5`](https://github.com/stormchecker/storm/commit/276d4fe0a56ee61952e4d5e04ce5f69c19f216eb) of the Storm repository (13 October 2026), which reports itself as version `1.14.0 (dev)` in the logs. In this artifact we provide the stable release of Storm and Stormpy 2.0. None of the changes between the beta and the stable release affects performance significantly. The results of the full experiments with the stable release are in `$ARTIFACT_DIR/results/artifact/full/`, with their figures in `$ARTIFACT_DIR/results/artifact/full.pdf`, and we will replace all figures in the paper with these results.
+
+## License
+Storm is licensed under the license located at `storm/LICENSE`, Stormpy under the license located at `stormpy/LICENSE`, and the notebooks under the license located at `notebooks/LICENSE` (all GPL-3.0).
+The Modest Toolset is licensed under the license located at `experiments/docker/modest/License.txt` (also `Modest/License.txt` in the zips in that folder).
+All other contents are licensed under the [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) license, see `LICENSE`.
+
 ## The artifact
 ### Contents
 
 | Path | Description |
 | --- | --- |
-| `scripts/` | The scripts to run, in the order of this README: `1_load.sh` loads the images, `2_smoke.sh SET` runs the smoke test for a set, `3_minimal.sh`, `3_representative.sh` and `3_full.sh` run the experiment sets, all in a container (all four through `experiments/docker/run_in_container.sh`), `4_build_docker.sh` builds and saves the images, and `5_create_artifact.sh` creates the artifact |
-| `results/` | `paper/` the logs, results and figure data of the runs in the paper (see [results/paper/README.md](results/paper/README.md)), and `artifact/` the pdf, logs and results of sample runs of the smoke tests of all three sets and of `scripts/3_minimal.sh`, `scripts/3_representative.sh` and `scripts/3_full.sh` |
+| `scripts/` | The scripts of the steps of this README: `1_load.sh` loads the images, `2_smoke.sh SET` runs the smoke test for a set and `3_run.sh SET` the set itself, both in a container through `experiments/docker/run_in_container.sh`, and `4_figures.sh DIR` creates the figures from the logs in `DIR`; `5_build_docker.sh` builds and saves the images, and `6_create_artifact.sh` creates the artifact |
+| `results/` | `paper/` the logs, results and figure data of the runs in the paper (see [results/paper/README.md](results/paper/README.md)), and `artifact/` the pdf, logs and results of sample runs of the smoke tests of all three sets and of `scripts/3_run.sh` for all three sets |
 | `experiments/` | The experiments and the Docker image they run in; see [experiments/README.md](experiments/README.md) |
 | `experiments/storm2-experiments.tar.gz` | The saved Docker images `storm2-experiments` and `storm2-tools`, for amd64 and arm64, loaded by `scripts/1_load.sh` |
 | `examples/` | Example files: `vacuum/` the robot vacuum example of the paper (Sec. 7), and `mdp_benchmarks/` and `pomdp_benchmarks/` the models and properties of the MDP and POMDP benchmarks of the experiments; see [TOOLS.md](TOOLS.md) |
@@ -168,4 +157,4 @@ For timings that are as stable as possible follow [Additional setup](experiments
 | `LICENSE` | The license of the artifact (CC-BY 4.0) |
 
 ### Building the Docker images and the artifact
-[ARTIFACT.md](ARTIFACT.md) describes how to build the Docker images with `scripts/4_build_docker.sh`, also with other versions of the tools such as a Storm of your own, and how to create the artifact with `scripts/5_create_artifact.sh`.
+[ARTIFACT.md](ARTIFACT.md) describes how to build the Docker images with `scripts/5_build_docker.sh`, also with other versions of the tools such as a Storm of your own, and how to create the artifact with `scripts/6_create_artifact.sh`.

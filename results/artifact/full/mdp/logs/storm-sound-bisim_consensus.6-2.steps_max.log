@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani consensus.6.jani --janiproperty steps_max --constants K=2 --sound --bisimulation
+Benchmark:	consensus.6-2.steps_max
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 19:23:19 2026
+Command line arguments: --jani consensus.6.jani --janiproperty steps_max --constants K=2 --sound --bisimulation
+Current working directory: /tmp/invocation-o97g579q
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 4.894s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1258240
+Transitions: 	6236736
+Choices: 	5008128
+Reward Models:  steps
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * finished -> 384 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 2.247s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	2673
+Transitions: 	8071
+Choices: 	6465
+Reward Models:  steps
+State Labels: 	2 labels
+   * finished -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "steps_max": R{"steps"}max=? [F "finished"] ...
+Result (for initial states): 867.0000235. Solution bounds: [866.9991565, 867.0008905].
+Time for model checking: 0.017s.
+
+----------------------------------------
+Wallclock time:	7.224
+Return code:	0

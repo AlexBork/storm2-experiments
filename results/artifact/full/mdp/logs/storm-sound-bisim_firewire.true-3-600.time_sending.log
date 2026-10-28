@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_sending --constants delay=3,deadline=600 --sound --bisimulation
+Benchmark:	firewire.true-3-600.time_sending
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 17:12:58 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_sending --constants 'delay=3,deadline=600' --sound --bisimulation
+Current working directory: /tmp/invocation-ijqkvrbb
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 4.559s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1078299
+Transitions: 	1473698
+Choices: 	1453092
+Reward Models:  time_sending
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * done -> 656 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.934s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1919
+Transitions: 	2346
+Choices: 	2325
+Reward Models:  time_sending
+State Labels: 	2 labels
+   * done -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_sending": R{"time_sending"}max=? [F "done"] ...
+Result (for initial states): 18. Solution bounds: [17.999982, 18.000018].
+Time for model checking: 0.000s.
+
+----------------------------------------
+Wallclock time:	5.568
+Return code:	0

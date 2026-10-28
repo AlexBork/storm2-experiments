@@ -9,13 +9,13 @@ Decision diagram memory:	4 GiB
 Output:
 Storm 2.0.0
 
-Date: Mon Oct 26 22:15:00 2026
+Date: Wed Oct 28 08:24:51 2026
 Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --exact --bisimulation
-Current working directory: /tmp/invocation-01pizx6f
+Current working directory: /tmp/invocation-7n90_aen
 
 Time for model input parsing: 0.001s.
 
-Time for model construction: 0.182s.
+Time for model construction: 0.190s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -31,7 +31,7 @@ State Labels: 	4 labels
 Choice Labels: 	none
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 0.115s.
+Time for model preprocessing: 0.113s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -48,8 +48,8 @@ Choice Labels: 	none
 
 Model checking property "c2": Pmin=? [F ("finished" & "all_coins_equal_1")] ...
 Result (for initial states): 852021/2097152 (approx. 0.4062752724). Exact solution.
-Time for model checking: 0.226s.
+Time for model checking: 0.236s.
 
 ----------------------------------------
-Wallclock time:	0.548
+Wallclock time:	0.566
 Return code:	0

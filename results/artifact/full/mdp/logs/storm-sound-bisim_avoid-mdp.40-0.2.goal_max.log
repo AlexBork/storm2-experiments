@@ -1,0 +1,55 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani avoid-mdp.jani --janiproperty goal_max --constants N=40,slippery=0.2 --sound --bisimulation
+Benchmark:	avoid-mdp.40-0.2.goal_max
+Configuration:	storm-sound-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 16:31:57 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty goal_max --constants 'N=40,slippery=0.2' --sound --bisimulation
+Current working directory: /tmp/invocation-iway97px
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 54.176s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	13803441
+Transitions: 	77376441
+Choices: 	32974641
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * notbad -> 13264961 item(s)
+   * goal -> 3760 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 38.867s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	12101944
+Transitions: 	70179842
+Choices: 	29787924
+Reward Models:  none
+State Labels: 	3 labels
+   * goal -> 1 item(s)
+   * notbad -> 12101943 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "goal_max": Pmax=? ["notbad" U "goal"] ...
+Result (for initial states): 0.8707093759. Solution bounds: [0.8707085052, 0.8707102466].
+Time for model checking: 16.128s.
+
+----------------------------------------
+Wallclock time:	109.345
+Return code:	0

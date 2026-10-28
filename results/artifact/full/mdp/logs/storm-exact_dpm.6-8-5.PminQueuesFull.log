@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani dpm.jani --janiproperty PminQueuesFull --constants N=6,C=8,TIME_BOUND=5 --exact
+Benchmark:	dpm.6-8-5.PminQueuesFull
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 14:03:43 2026
+Command line arguments: --jani dpm.jani --janiproperty PminQueuesFull --constants 'N=6,C=8,TIME_BOUND=5' --exact
+Current working directory: /tmp/invocation-qu1xsjsm
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 202.216s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	47298156
+Transitions: 	92982264
+Choices: 	54718584
+Markovian St.: 	10628748
+Max. Rate: 	6
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((((((((((6 < 1) | (items1 = 8)) & ((6 < 2) | (items2 = 8))) & ((6 < 3) | (items3 = 8))) & ((6 < 4) | (items4 = 8))) & ((6 < 5) | (items5 = 8))) & ((6 < 6) | (items6 = 8))) & ((6 < 7) | (items7 = 8))) & ((6 < 8) | (items8 = 8))) & ((6 < 9) | (items9 = 8))) & ((6 < 10) | (items10 = 8))) -> 12 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	47298156
+Transitions: 	92982264
+Choices: 	54718584
+Markovian St.: 	10628748
+Max. Rate: 	6
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((((((((((6 < 1) | (items1 = 8)) & ((6 < 2) | (items2 = 8))) & ((6 < 3) | (items3 = 8))) & ((6 < 4) | (items4 = 8))) & ((6 < 5) | (items5 = 8))) & ((6 < 6) | (items6 = 8))) & ((6 < 7) | (items7 = 8))) & ((6 < 8) | (items8 = 8))) & ((6 < 9) | (items9 = 8))) & ((6 < 10) | (items10 = 8))) -> 12 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "PminQueuesFull": Pmin=? [F (((((((((((6 < 1) | (items1 = 8)) & ((6 < 2) | (items2 = 8))) & ((6 < 3) | (items3 = 8))) & ((6 < 4) | (items4 = 8))) & ((6 < 5) | (items5 = 8))) & ((6 < 6) | (items6 = 8))) & ((6 < 7) | (items7 = 8))) & ((6 < 8) | (items8 = 8))) & ((6 < 9) | (items9 = 8))) & ((6 < 10) | (items10 = 8)))] ...
+
+----------------------------------------
+Wallclock time:	239.925
+Return code:	-9

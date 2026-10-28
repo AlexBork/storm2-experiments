@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>prism-default - mer.100-0.1.prob_max.absolute-005</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>mer.100-0.1.prob_max.absolute-005</h1>
+<p class="sub">prism-default &middot; absolute-005 &middot; <a href="index.html">back to the table</a></p>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>23.847 s</td></tr><tr><th>result</th><td>0.15665745234375003</td></tr><tr><th>difference</th><td>4.89e-07</td></tr><tr><th>states</th><td>592,264</td></tr></table>
+<p class="sub">prism-default_mer.100-0.1.prob_max.absolute-005.log</p>
+<pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel mer.100-0.1.prob_max.tra,sta,lab mer.100-0.1.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	mer.100-0.1.prob_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 21:51:08 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'mer.100-0.1.prob_max.tra,sta,lab' mer.100-0.1.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from &quot;mer.100-0.1.prob_max.tra&quot;, &quot;mer.100-0.1.prob_max.sta&quot;, &quot;mer.100-0.1.prob_max.lab&quot;...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      &quot;reach&quot; &quot;avoid&quot;
+
+Parsing properties file &quot;mer.100-0.1.prob_max.pctl&quot;...
+
+1 property:
+(1) Pmaxmin=? [ F &quot;reach&quot; ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ F &quot;reach&quot; ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 6.065 seconds.
+
+Type:        IMDP
+States:      592264 (1 initial)
+Transitions: 4280481
+Choices:     4145848
+Max/avg:     7/7.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 14 iterations and 2.957 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 48 iterations and 7.698 seconds.
+target=373622, yes=378522, no=111496, maybe=102246
+Starting value iteration (maxmin)...
+Iteration 38: 5.07 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 42 iterations, 31756998 multiplications and 5.655 seconds.
+Probabilistic reachability took 5.658 seconds.
+
+Value in the initial state: 0.15665745234375003
+
+Time for model checking: 17.111 seconds.
+
+Result: 0.15665745234375003 (+/- 4.893808593919857E-6 estimated; rel err 3.123891344269713E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	23.847
+Return code:	0
+</pre>
+</body></html>

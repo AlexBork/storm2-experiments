@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani avoid-mdp.jani --janiproperty time_min --constants N=15,slippery=0.2 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	avoid-mdp.15-0.2.time_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 20:35:06 2026
+Command line arguments: --jani avoid-mdp.jani --janiproperty time_min --constants 'N=15,slippery=0.2' --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-79kned85
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.621s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	404101 (60 nodes)
+Transitions: 	2211765 (991 nodes)
+Choices: 	956701
+Reward Models:  none
+Variables: 	rows: 14 meta variables (26 DD variables), columns: 14 meta variables (26 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (27 nodes)
+   * goal
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.192s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	58
+Transitions: 	194
+Choices: 	112
+Reward Models:  none
+State Labels: 	4 labels
+   * ((start & (dx = 14)) & (dy = 14)) -> 1 item(s)
+   * goal -> 1 item(s)
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F "goal"] ...
+Result (for initial states): 71.00002578. Solution bounds: [70.99995478, 71.00009678].
+Time for model checking: 0.000s.
+
+----------------------------------------
+Wallclock time:	1.055
+Return code:	0

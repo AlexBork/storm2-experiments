@@ -1,0 +1,97 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g mer.prism mer.props --prop prob_max -const n=100,x=0.1 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	mer.100-0.1.prob_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 18:24:23 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g mer.prism mer.props --prop prob_max -const 'n=100,x=0.1' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "mer.prism"...
+
+Type:        MDP
+Modules:     arbiter user1 user2 property loops
+Actions:     [] [u1_request_comm] [u1_grant_comm] [u1_deny_comm] [u2_request_comm] [u2_grant_comm] [u2_deny_comm] [u1_rescind_drive] [u2_rescind_drive] [u1_request_drive] [u1_grant_drive] [u1_deny_drive] [u2_request_drive] [u2_grant_drive] [u2_deny_drive] [u1_cancel_comm] [u2_cancel_comm] [u1_cancel_drive] [u2_cancel_drive]
+Variables:   s r k commUser driveUser gc dc gd dd s1 r1 rescind1 s2 r2 rescind2 e u
+Labels:      "err_G"
+
+Parsing properties file "mer.props"...
+
+1 property:
+(1) "prob_max": Pmax=? [ F "err_G" ]
+
+---------------------------------------------------------------------
+
+Model checking: "prob_max": Pmax=? [ F "err_G" ]
+Model constants: n=100,x=0.1
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: n=100,x=0.1
+
+Computing reachable states...
+
+Reachability (BFS): 1029 iterations in 2.14 seconds (average 0.002080, setup 0.00)
+
+Time for model construction: 2.219 seconds.
+
+Type:        MDP
+States:      592264 (1 initial)
+Transitions: 2333054
+
+Transition matrix: 28827 nodes (6 terminal), 2333054 minterms, vars: 35r/35c/22nd
+
+Prob0A: 14 iterations in 0.09 seconds (average 0.006429, setup 0.00)
+
+Prob1E: 38 iterations in 0.12 seconds (average 0.003158, setup 0.00)
+
+yes = 378522, no = 111496, maybe = 102246
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 63.437 seconds, found 93446 MECs.
+Time for building MEC quotient: 253.374 seconds.
+
+Quotient MDP:
+States:      93448 (1 initial)
+Transitions: 695753
+
+Transition matrix: 6333555 nodes (6 terminal), 695753 minterms, vars: 35r/35c/58nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=93448, nc=236048, nnz=255545, k=5] [3.2 MB]
+Creating vector for yes... [730.1 KB]
+Creating vector for maybe... [730.1 KB]
+Allocating iteration vectors... [4 x 730.1 KB]
+TOTAL: [7.5 MB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 9.6469E-07
+Iterative method (interval iteration): 82 iterations in 16.89 seconds (average 0.001341, setup 16.78)
+
+Value in the initial state: 0.21739131237171203
+
+Time for model checking: 334.987 seconds.
+
+Result: 0.21739131237171203
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	339.061
+Return code:	0

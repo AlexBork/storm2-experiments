@@ -1,0 +1,83 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g sensor.4.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	sensor.4.max_success
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 16:30:04 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g sensor.4.prism sensor.props --prop max_success -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "sensor.4.prism"...
+
+Type:        MDP
+Modules:     sensor1 sensor2 sensor3 sensor4 channel proc
+Actions:     [] [s1_to_c] [ack1_0] [noack1] [detect1] [ack1_1] [ack1_2] [s2_to_c] [ack2_0] [noack2] [detect2] [ack2_1] [ack2_2] [s3_to_c] [ack3_0] [noack3] [detect3] [ack3_1] [ack3_2] [s4_to_c] [ack4_0] [noack4] [detect4] [ack4_1] [ack4_2] [process] [extract] [data] [alert] [stop] [work] [done] [crash]
+Variables:   y1 msg1 y2 msg2 y3 msg3 y4 msg4 c who what cb1 cb2 cbs x count
+Rewards:     "working" "success" "failure"
+
+Parsing properties file "sensor.props"...
+
+1 property:
+(1) "max_success": Pmax=? [ F x=1 ]
+
+---------------------------------------------------------------------
+
+Model checking: "max_success": Pmax=? [ F x=1 ]
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+
+Warning: Update 2 of command 7 of module "sensor1" doesn't do anything ("(y1'=4) & (msg1'=3)", line 27, column 53)
+
+Warning: Update 2 of command 10 of module "sensor1" doesn't do anything ("(y1'=6)", line 31, column 53)
+
+Warning: Update 2 of command 7 of module "sensor2" doesn't do anything ("(y2'=4) & (msg2'=3)", line 27, column 53)
+
+Warning: Update 2 of command 10 of module "sensor2" doesn't do anything ("(y2'=6)", line 31, column 53)
+
+Warning: Update 2 of command 7 of module "sensor3" doesn't do anything ("(y3'=4) & (msg3'=3)", line 27, column 53)
+
+Warning: Update 2 of command 10 of module "sensor3" doesn't do anything ("(y3'=6)", line 31, column 53)
+
+Warning: Update 2 of command 7 of module "sensor4" doesn't do anything ("(y4'=4) & (msg4'=3)", line 27, column 53)
+
+Warning: Update 2 of command 10 of module "sensor4" doesn't do anything ("(y4'=6)", line 31, column 53)
+
+Computing reachable states...
+
+Reachability (BFS): 52 iterations in 0.43 seconds (average 0.008269, setup 0.00)
+
+Time for model construction: 0.556 seconds.
+
+Type:        MDP
+States:      572452 (1 initial)
+Transitions: 2767656
+
+Transition matrix: 36745 nodes (6 terminal), 2767656 minterms, vars: 38r/38c/35nd
+
+Prob0A: 16 iterations in 0.22 seconds (average 0.013750, setup 0.00)
+
+Prob1E: 80 iterations in 1.87 seconds (average 0.023375, setup 0.00)
+
+yes = 147268, no = 117172, maybe = 308012
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 222.644 seconds, found 145318 MECs.
+
+----------------------------------------
+Wallclock time:	901.323
+Return code:	None
+Computation aborted after 901.323 seconds since the time limit of 900 seconds was exceeded.

@@ -1,0 +1,42 @@
+wrote 2 invocations (2 configurations x 1 benchmarks x 1 repetition(s)) to inv-smoke.json
+  index:       /opt/storm2-experiments/pomdp/benchmarks/index-smoke.json
+  time limit:  60s
+  log dir:     experiments/smoke/logs (created)
+  repetitions: 1
+
+Gathering execution data for logfiles in experiments/smoke/logs ...
+WARN: no data for storm config 'cut10000'
+WARN: no data for storm config 'cut20000'
+WARN: no data for storm config 'cut30000'
+WARN: no data for storm config 'cut40000'
+WARN: no data for storm config 'cut50000'
+WARN: no data for storm config 'cut60000'
+WARN: no data for storm config 'cut70000'
+WARN: no data for storm config 'cut80000'
+WARN: no data for storm config 'cut90000'
+WARN: no data for storm config 'cut200000'
+WARN: no data for storm config 'cut300000'
+WARN: no data for storm config 'cut400000'
+WARN: no data for storm config 'cut500000'
+WARN: no data for storm config 'cut600000'
+WARN: no data for storm config 'cut700000'
+WARN: no data for storm config 'cut800000'
+WARN: no data for storm config 'cut900000'
+WARN: no data for storm config 'cut1000000'
+WARN: no data for storm config 'cut2000000'
+WARN: no data for storm config 'cut3000000'
+WARN: no data for storm config 'cut4000000'
+WARN: no data for storm config 'cut5000000'
+WARN: no data for storm config 'cut6000000'
+WARN: no data for storm config 'cut7000000'
+WARN: no data for storm config 'cut8000000'
+WARN: no data for storm config 'cut9000000'
+WARN: no data for storm config 'cut10000000'
+WARN: no data for storm config 'cut20000000'
+WARN: no data for storm config 'cut30000000'
+WARN: no data for storm config 'cut40000000'
+WARN: no data for storm config 'cut50000000'
+WARN: no data for storm config 'discr005s'
+Generated experiments/smoke/results/html/index.html and 2 run pages.
+Generated aggregate plots for 1 instances in experiments/smoke/results/plots
+Generated results for 1 instances in experiments/smoke/results

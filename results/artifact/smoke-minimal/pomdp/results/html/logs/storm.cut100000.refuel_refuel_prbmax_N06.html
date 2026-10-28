@@ -14,7 +14,7 @@
 <dt>Configuration</dt><dd>storm.cut100000</dd>
 <dt>Status</dt><dd>successful</dd>
 <dt>Result</dt><dd>≥ 0.67219</dd>
-<dt>Wall-clock time (s)</dt><dd>0.266</dd>
+<dt>Wall-clock time (s)</dt><dd>0.209</dd>
 <dt>Time limit (s)</dt><dd>60.0</dd>
 <dt>Return codes</dt><dd>[0]</dd>
 <dt>Source log</dt><dd>experiments/smoke/logs/cut100000_refuel_refuel_prbmax_N06.log</dd>
@@ -34,9 +34,9 @@ Decision diagram memory:	4 GiB
 Output:
 Storm-POMDP 2.0.0
 
-Date: Mon Oct 26 22:16:06 2026
+Date: Wed Oct 28 08:25:24 2026
 Command line arguments: --prism refuel.prism --prop refuel.props prbmax -const N=6 --timemem --statistics --sound --belief-exploration unfold --size-threshold 100000
-Current working directory: /tmp/invocation-1ezly5hw
+Current working directory: /tmp/invocation-3yl1inw5
 
 Time for model input parsing: 0.001s.
 
@@ -67,20 +67,20 @@ Analyzing property &#x27;Pmax=? [&quot;notbad&quot; U &quot;goal&quot;]&#x27;
 Computing an under-approximation via belief MDP unfolding...
 Belief exploration stopped early: 100003 beliefs discovered, 82871 beliefs explored.
 Constructed belief MDP: 100001 states, 184188 choices, 327457 transitions.
-Time for exploring beliefs: 155ms.
-Time for building the belief MDP: 24ms.
-Time for analyzing the belief MDP: 16ms.
+Time for exploring beliefs: 126ms.
+Time for building the belief MDP: 21ms.
+Time for analyzing the belief MDP: 15ms.
 
 Result: ≥ 0.67219
-Time for POMDP analysis: 0.217s.
+Time for POMDP analysis: 0.181s.
 
 Performance statistics:
-  * peak memory usage: 136MB
-  * CPU time: 0.227s
-  * wallclock time: 0.225s
+  * peak memory usage: 137MB
+  * CPU time: 0.179s
+  * wallclock time: 0.189s
 
 ----------------------------------------
-Wallclock time:	0.266
+Wallclock time:	0.209
 Return code:	0
 </pre>
 <details><summary>Parsed run metadata</summary><pre>
@@ -96,7 +96,7 @@ Return code:	0
   &quot;time-limit&quot;: 60.0,
   &quot;log-dir&quot;: &quot;experiments/smoke/logs&quot;,
   &quot;log&quot;: &quot;experiments/smoke/logs/cut100000_refuel_refuel_prbmax_N06.log&quot;,
-  &quot;wallclock-time&quot;: 0.266,
+  &quot;wallclock-time&quot;: 0.209,
   &quot;timeout&quot;: false,
   &quot;execution-error&quot;: false,
   &quot;return-codes&quot;: [
@@ -161,12 +161,12 @@ Return code:	0
     &quot;states&quot;: 100001,
     &quot;choices&quot;: 184188,
     &quot;transitions&quot;: 327457,
-    &quot;expl-time&quot;: 0.155,
-    &quot;build-time&quot;: 0.024,
-    &quot;chk-time&quot;: 0.016
+    &quot;expl-time&quot;: 0.126,
+    &quot;build-time&quot;: 0.021,
+    &quot;chk-time&quot;: 0.015
   },
   &quot;result&quot;: &quot;≥ 0.67219&quot;,
-  &quot;total-chk-time&quot;: 0.217
+  &quot;total-chk-time&quot;: 0.181
 }
 </pre></details>
 </body>

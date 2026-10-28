@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.false.jani --janiproperty deadline --constants delay=36,deadline=800 --exact --bisimulation
+Benchmark:	firewire.false-36-800.deadline
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 12:14:04 2026
+Command line arguments: --jani firewire.false.jani --janiproperty deadline --constants 'delay=36,deadline=800' --exact --bisimulation
+Current working directory: /tmp/invocation-q4e6gk5f
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 3.078s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	212268
+Transitions: 	481788
+Choices: 	478752
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8))) -> 2 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.589s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	31745
+Transitions: 	54128
+Choices: 	53942
+Reward Models:  time
+State Labels: 	2 labels
+   * (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8))) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "deadline": Pmin=? [true Urew{"time"}<=800 (((s1 = 8) & (s2 = 7)) | ((s1 = 7) & (s2 = 8)))] ...
+Result (for initial states): 481/512 (approx. 0.939453125)
+Time for model checking: 14.618s.
+
+----------------------------------------
+Wallclock time:	18.463
+Return code:	0

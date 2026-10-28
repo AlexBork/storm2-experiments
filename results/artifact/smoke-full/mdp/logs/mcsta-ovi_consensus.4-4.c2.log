@@ -21,7 +21,7 @@ consensus.4.jani:variables[12]: info: Expanding variable "pc4" into 4 locations 
 consensus.4.jani: info: Need 16 bytes per state.
 consensus.4.jani: info: Explored 43136 states for K=4.
 
-Peak memory usage: 96 MB
+Peak memory usage: 95 MB
 Analysis results for consensus.4.jani
 Experiment K=4
 
@@ -30,7 +30,7 @@ Experiment K=4
   States:     43136
   Choices:    115840
   Branches:   144352
-  Rate:       331815 states/s
+  Rate:       345088 states/s
   Time:       0.1 s
 
 + Property c2
@@ -47,5 +47,5 @@ Experiment K=4
 
 
 ----------------------------------------
-Wallclock time:	0.723
+Wallclock time:	0.737
 Return code:	0

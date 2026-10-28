@@ -1,0 +1,52 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta brp-pta-mdp.jani --props Emin --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	brp-pta.64-12-32-256.Emin
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta brp-pta-mdp.jani --props Emin --experiment N=64,MAX=12,TD=32,TIME_BOUND=256 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+brp-pta-mdp.jani:model: info: brp-pta is an MDP model.
+brp-pta-mdp.jani: info: Need 40 bytes per state.
+brp-pta-mdp.jani: info: Explored 56784036 states for N=64, MAX=12, TD=32, TIME_BOUND=256.
+brp-pta-mdp.jani:properties[19]: warning: Computing minimum expected reward in property "Emin" without checking for zero-reward end components.
+
+Peak memory usage: 15111 MB
+Analysis results for brp-pta-mdp.jani
+Experiment N=64, MAX=12, TD=32, TIME_BOUND=256
+
++ State space exploration
+  State size: 40 bytes
+  States:     56784036
+  Choices:    63799460
+  Branches:   64044036
+  Rate:       1123324 states/s
+  Time:       53.0 s
+
++ Property Emin
+  Value:  127.7757614077903
+  Bounds: [127.77571634714394, 127.77580646843667]
+  Time:   22.6 s
+
+  + Precomputations
+    Max. prob. 1 states:          56784036
+    Time for max. prob. 1 states: 3.0 s
+
+  + Optimistic value iteration
+    Total iterations:  71
+    Verif. attempts:   1
+    Verif. iterations: 2
+    Final epsilon:     1E-06
+    Time:              19.7 s
+
+
+----------------------------------------
+Wallclock time:	75.895
+Return code:	0

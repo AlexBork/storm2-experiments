@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani airport-mdp.jani --janiproperty time_min --constants DMAX=250,PMAX=250 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	airport-mdp.250-250.time_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 13:04:15 2026
+Command line arguments: --jani airport-mdp.jani --janiproperty time_min --constants 'DMAX=250,PMAX=250' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-ldvmu9b8
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 2.536s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	1860992 (845 nodes)
+Transitions: 	13877006 (1461103 nodes)
+Choices: 	2738496
+Reward Models:  none
+Variables: 	rows: 10 meta variables (31 DD variables), columns: 10 meta variables (31 DD variables), nondeterminism: 5 meta variables (5 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (32 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F ((p = 0) & (d = 0))] ...
+Result (for initial states): 581.9853681
+Time for model checking: 4.301s.
+
+----------------------------------------
+Wallclock time:	7.362
+Return code:	0

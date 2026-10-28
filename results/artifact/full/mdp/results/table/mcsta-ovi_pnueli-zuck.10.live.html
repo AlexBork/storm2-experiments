@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mcsta-ovi - pnueli-zuck.10.live</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>pnueli-zuck.10.live</h1>
+<p class="sub">mcsta-ovi &middot; qcomp &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>1</code></p>
+<p class="sub">reference result: <code>1</code></p>
+<table class="meta"><tr><th>status</th><td>memout</td></tr><tr><th>wallclock time</th><td>91.380 s</td></tr></table>
+<p class="sub">mcsta-ovi_pnueli-zuck.10.live.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/modest mcsta pnueli-zuck.10.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	pnueli-zuck.10.live
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta pnueli-zuck.10.jani --props live --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+pnueli-zuck.10.jani:model: info: pnueli-zuck.10 is an MDP model.
+pnueli-zuck.10.jani:variables[0]: info: Expanding variable &quot;p0&quot; into 16 locations in automaton &quot;process0&quot;.
+pnueli-zuck.10.jani:variables[1]: info: Expanding variable &quot;p1&quot; into 16 locations in automaton &quot;process1&quot;.
+pnueli-zuck.10.jani:variables[2]: info: Expanding variable &quot;p2&quot; into 16 locations in automaton &quot;process2&quot;.
+pnueli-zuck.10.jani:variables[3]: info: Expanding variable &quot;p3&quot; into 16 locations in automaton &quot;process3&quot;.
+pnueli-zuck.10.jani:variables[4]: info: Expanding variable &quot;p4&quot; into 16 locations in automaton &quot;process4&quot;.
+pnueli-zuck.10.jani:variables[5]: info: Expanding variable &quot;p5&quot; into 16 locations in automaton &quot;process5&quot;.
+pnueli-zuck.10.jani:variables[6]: info: Expanding variable &quot;p6&quot; into 16 locations in automaton &quot;process6&quot;.
+pnueli-zuck.10.jani:variables[7]: info: Expanding variable &quot;p7&quot; into 16 locations in automaton &quot;process7&quot;.
+pnueli-zuck.10.jani:variables[8]: info: Expanding variable &quot;p8&quot; into 16 locations in automaton &quot;process8&quot;.
+pnueli-zuck.10.jani:variables[9]: info: Expanding variable &quot;p9&quot; into 16 locations in automaton &quot;process9&quot;.
+pnueli-zuck.10.jani: info: Need 24 bytes per state.
+pnueli-zuck.10.jani: error: Out of memory.
+
+----------------------------------------
+Wallclock time:	91.380
+Return code:	0
+</pre>
+</body></html>

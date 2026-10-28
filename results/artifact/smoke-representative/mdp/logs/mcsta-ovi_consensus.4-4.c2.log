@@ -30,7 +30,7 @@ Experiment K=4
   States:     43136
   Choices:    115840
   Branches:   144352
-  Rate:       324331 states/s
+  Rate:       337000 states/s
   Time:       0.1 s
 
 + Property c2
@@ -47,5 +47,5 @@ Experiment K=4
 
 
 ----------------------------------------
-Wallclock time:	0.669
+Wallclock time:	0.778
 Return code:	0

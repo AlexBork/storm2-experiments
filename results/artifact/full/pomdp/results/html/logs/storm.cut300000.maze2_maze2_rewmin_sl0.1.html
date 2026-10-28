@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut300000.maze2_maze2_rewmin_sl0.1</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut300000.maze2_maze2_rewmin_sl0.1</h1>
+<dl>
+<dt>Benchmark</dt><dd>maze2_maze2_rewmin_sl0.1</dd>
+<dt>Configuration</dt><dd>storm.cut300000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≤ 6.324786406</dd>
+<dt>Wall-clock time (s)</dt><dd>1.678</dd>
+<dt>Time limit (s)</dt><dd>900.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/logs/cut300000_maze2_maze2_rewmin_sl0.1.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 300000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000
+Benchmark:	maze2_maze2_rewmin_sl0.1
+Configuration:	cut300000
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Wed Oct 28 00:17:22 2026
+Command line arguments: --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000
+Current working directory: /tmp/invocation-8emf1ojp
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 0.008s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	15
+Transitions: 	91
+Choices: 	54
+Observations: 	8
+Reward Models:  (default)
+State Labels: 	3 labels
+   * deadlock -&gt; 0 item(s)
+   * init -&gt; 1 item(s)
+   * goal -&gt; 1 item(s)
+Choice Labels: 	5 labels
+   * east -&gt; 13 item(s)
+   * west -&gt; 13 item(s)
+   * done -&gt; 1 item(s)
+   * north -&gt; 13 item(s)
+   * south -&gt; 13 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Rmin=? [F &quot;goal&quot;]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 300001 beliefs discovered, 247698 beliefs explored.
+Constructed belief MDP: 300001 states, 1147696 choices, 1917852 transitions.
+Time for exploring beliefs: 1086ms.
+Time for building the belief MDP: 189ms.
+Time for analyzing the belief MDP: 213ms.
+
+Result: ≤ 6.324786406
+Time for POMDP analysis: 1.593s.
+
+Performance statistics:
+  * peak memory usage: 485MB
+  * CPU time: 1.512s
+  * wallclock time: 1.605s
+
+----------------------------------------
+Wallclock time:	1.678
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut300000.maze2_maze2_rewmin_sl0.1&quot;,
+  &quot;benchmark-id&quot;: &quot;maze2_maze2_rewmin_sl0.1&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut300000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 300000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism maze2-sl.prism --prop maze2.props rewmin -const sl=0.1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 300000&quot;
+  ],
+  &quot;time-limit&quot;: 900.0,
+  &quot;log-dir&quot;: &quot;experiments/logs&quot;,
+  &quot;log&quot;: &quot;experiments/logs/cut300000_maze2_maze2_rewmin_sl0.1.log&quot;,
+  &quot;wallclock-time&quot;: 1.678,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 300000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;maze2_maze2_rewmin_sl0.1&quot;,
+    &quot;benchmark-set&quot;: &quot;maze2&quot;,
+    &quot;name&quot;: &quot;maze2&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;sl&quot;: 0.1
+      },
+      &quot;file&quot;: &quot;models/maze2/maze2-sl.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;rewmin&quot;,
+      &quot;file&quot;: &quot;models/maze2/maze2.props&quot;,
+      &quot;type&quot;: &quot;rew&quot;,
+      &quot;dir&quot;: &quot;min&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 300000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut300000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 300000
+  },
+  &quot;size-threshold&quot;: 300000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.008,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 15,
+    &quot;transitions&quot;: 91,
+    &quot;choices&quot;: 54,
+    &quot;observations&quot;: 8
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 300001,
+    &quot;choices&quot;: 1147696,
+    &quot;transitions&quot;: 1917852,
+    &quot;expl-time&quot;: 1.086,
+    &quot;build-time&quot;: 0.189,
+    &quot;chk-time&quot;: 0.213
+  },
+  &quot;result&quot;: &quot;≤ 6.324786406&quot;,
+  &quot;total-chk-time&quot;: 1.593
+}
+</pre></details>
+</body>
+</html>

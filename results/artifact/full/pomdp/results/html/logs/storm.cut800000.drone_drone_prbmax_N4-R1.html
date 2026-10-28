@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>storm.cut800000.drone_drone_prbmax_N4-R1</title>
+<link rel="stylesheet" href="../results.css">
+</head>
+<body>
+<p><a href="../index.html">← Results</a></p>
+<h1>storm.cut800000.drone_drone_prbmax_N4-R1</h1>
+<dl>
+<dt>Benchmark</dt><dd>drone_drone_prbmax_N4-R1</dd>
+<dt>Configuration</dt><dd>storm.cut800000</dd>
+<dt>Status</dt><dd>successful</dd>
+<dt>Result</dt><dd>≥ 0.8484285331</dd>
+<dt>Wall-clock time (s)</dt><dd>5.273</dd>
+<dt>Time limit (s)</dt><dd>900.0</dd>
+<dt>Return codes</dt><dd>[0]</dd>
+<dt>Source log</dt><dd>experiments/logs/cut800000_drone_drone_prbmax_N4-R1.log</dd>
+</dl>
+<h2>Invocation</h2>
+<pre>/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism drone.prism --prop drone.props prbmax -const N=4,R=1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000</pre>
+<p>Storm-pomdp. Under-approximation with cut-offs, size threshold 800000</p>
+<h2>Log</h2>
+<pre>Command:	/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism drone.prism --prop drone.props prbmax -const N=4,R=1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000
+Benchmark:	drone_drone_prbmax_N4-R1
+Configuration:	cut800000
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm-POMDP 2.0.0
+
+Date: Wed Oct 28 01:04:36 2026
+Command line arguments: --prism drone.prism --prop drone.props prbmax -const &#x27;N=4,R=1&#x27; --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000
+Current working directory: /tmp/invocation-x0jvkekf
+
+Time for model input parsing: 0.001s.
+
+WARN  (FormulaParserGrammar.cpp:344): Identifier `R&#x27; coincides with a reserved keyword or operator. Property expressions using the variable or constant &#x27;R&#x27; will not be parsed correctly.
+Time for model construction: 0.012s.
+
+-------------------------------------------------------------- 
+Model type: 	POMDP (sparse)
+States: 	1226
+Transitions: 	6533
+Choices: 	3026
+Observations: 	384
+Reward Models:  none
+State Labels: 	4 labels
+   * deadlock -&gt; 25 item(s)
+   * init -&gt; 1 item(s)
+   * notbad -&gt; 1177 item(s)
+   * goal -&gt; 25 item(s)
+Choice Labels: 	6 labels
+   * placement -&gt; 1 item(s)
+   * adv -&gt; 600 item(s)
+   * east -&gt; 600 item(s)
+   * north -&gt; 600 item(s)
+   * south -&gt; 600 item(s)
+   * west -&gt; 600 item(s)
+-------------------------------------------------------------- 
+Analyzing property &#x27;Pmax=? [&quot;notbad&quot; U &quot;goal&quot;]&#x27;
+Computing an under-approximation via belief MDP unfolding...
+Belief exploration stopped early: 800001 beliefs discovered, 313335 beliefs explored.
+Constructed belief MDP: 799195 states, 1747272 choices, 4712332 transitions.
+Time for exploring beliefs: 3628ms.
+Time for building the belief MDP: 639ms.
+Time for analyzing the belief MDP: 567ms.
+
+Result: ≥ 0.8484285331
+Time for POMDP analysis: 5.165s.
+
+Performance statistics:
+  * peak memory usage: 932MB
+  * CPU time: 4.930s
+  * wallclock time: 5.180s
+
+----------------------------------------
+Wallclock time:	5.273
+Return code:	0
+</pre>
+<details><summary>Parsed run metadata</summary><pre>
+{
+  &quot;id&quot;: &quot;storm.cut800000.drone_drone_prbmax_N4-R1&quot;,
+  &quot;benchmark-id&quot;: &quot;drone_drone_prbmax_N4-R1&quot;,
+  &quot;tool&quot;: &quot;storm&quot;,
+  &quot;configuration-id&quot;: &quot;cut800000&quot;,
+  &quot;invocation-note&quot;: &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 800000&quot;,
+  &quot;commands&quot;: [
+    &quot;/opt/storm2-experiments/pomdp/bin/storm-pomdp --prism drone.prism --prop drone.props prbmax -const N=4,R=1 --timemem --statistics --sound --belief-exploration unfold --size-threshold 800000&quot;
+  ],
+  &quot;time-limit&quot;: 900.0,
+  &quot;log-dir&quot;: &quot;experiments/logs&quot;,
+  &quot;log&quot;: &quot;experiments/logs/cut800000_drone_drone_prbmax_N4-R1.log&quot;,
+  &quot;wallclock-time&quot;: 5.273,
+  &quot;timeout&quot;: false,
+  &quot;execution-error&quot;: false,
+  &quot;return-codes&quot;: [
+    0
+  ],
+  &quot;notes&quot;: [
+    &quot;Storm-pomdp. Under-approximation with cut-offs, size threshold 800000&quot;
+  ],
+  &quot;benchmark&quot;: {
+    &quot;id&quot;: &quot;drone_drone_prbmax_N4-R1&quot;,
+    &quot;benchmark-set&quot;: &quot;drone&quot;,
+    &quot;name&quot;: &quot;drone&quot;,
+    &quot;model&quot;: {
+      &quot;file-parameters&quot;: {},
+      &quot;open-parameters&quot;: {
+        &quot;N&quot;: 4,
+        &quot;R&quot;: 1
+      },
+      &quot;file&quot;: &quot;models/drone/drone.prism&quot;,
+      &quot;formalism&quot;: &quot;prism&quot;,
+      &quot;type&quot;: &quot;pomdp&quot;
+    },
+    &quot;property&quot;: {
+      &quot;id&quot;: &quot;prbmax&quot;,
+      &quot;file&quot;: &quot;models/drone/drone.props&quot;,
+      &quot;type&quot;: &quot;prb&quot;,
+      &quot;dir&quot;: &quot;max&quot;
+    }
+  },
+  &quot;configuration&quot;: {
+    &quot;tool&quot;: &quot;storm&quot;,
+    &quot;notes&quot;: [
+      &quot;Storm-pomdp&quot;,
+      &quot;Under-approximation with cut-offs, size threshold 800000&quot;
+    ],
+    &quot;supported-obj-types&quot;: [
+      &quot;prb&quot;,
+      &quot;rew&quot;
+    ],
+    &quot;supported-model-types&quot;: [
+      &quot;pomdp&quot;
+    ],
+    &quot;supported-model-formalisms&quot;: [
+      &quot;prism&quot;
+    ],
+    &quot;id&quot;: &quot;cut800000&quot;,
+    &quot;family&quot;: &quot;cutoff&quot;,
+    &quot;size-threshold&quot;: 800000
+  },
+  &quot;size-threshold&quot;: 800000,
+  &quot;not-supported&quot;: false,
+  &quot;memout&quot;: false,
+  &quot;expected-error&quot;: false,
+  &quot;model-building-time&quot;: 0.012,
+  &quot;input-model&quot;: {
+    &quot;states&quot;: 1226,
+    &quot;transitions&quot;: 6533,
+    &quot;choices&quot;: 3026,
+    &quot;observations&quot;: 384
+  },
+  &quot;belief-mdp-incomplete&quot;: true,
+  &quot;belief-mdp&quot;: {
+    &quot;states&quot;: 799195,
+    &quot;choices&quot;: 1747272,
+    &quot;transitions&quot;: 4712332,
+    &quot;expl-time&quot;: 3.628,
+    &quot;build-time&quot;: 0.639,
+    &quot;chk-time&quot;: 0.567
+  },
+  &quot;result&quot;: &quot;≥ 0.8484285331&quot;,
+  &quot;total-chk-time&quot;: 5.165
+}
+</pre></details>
+</body>
+</html>

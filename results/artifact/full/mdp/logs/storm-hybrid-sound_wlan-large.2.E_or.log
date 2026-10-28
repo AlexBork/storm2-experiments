@@ -1,0 +1,25 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan-large-mdp.jani --janiproperty E_or --constants K=2 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	wlan-large.2.E_or
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:00:41 2026
+Command line arguments: --jani wlan-large-mdp.jani --janiproperty E_or --constants K=2 --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-9ssf9kmg
+
+Time for model input parsing: 0.015s.
+
+WARN  (storm-cli.cpp:27): The model checking query does not seem to be supported for the selected engine. Storm will try to solve the query, but you will most likely get an error for at least one of the provided properties.
+Using Sylvan with 4 parallel threads.
+ERROR (DdJaniModelBuilder.cpp:2415): The symbolic JANI model builder currently does not support assignment levels.
+ERROR (storm-cli.cpp:49): An exception caused Storm to terminate. The message of the exception is: WrongFormatException: The symbolic JANI model builder currently does not support assignment levels.
+
+----------------------------------------
+Wallclock time:	0.076
+Return code:	1

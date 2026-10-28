@@ -1,0 +1,49 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop time_min -const N=40,slippery=0.2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	avoid-mdp.40-0.2.time_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 19:20:58 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop time_min -const 'N=40,slippery=0.2' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "avoid-mdp.prism"...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [done]
+Variables:   start turn dx dy ax ay dir ax2 ay2 dir2
+Labels:      "goal" "traps" "notbad"
+Rewards:     "time"
+
+Parsing properties file "avoid-mdp.props"...
+
+2 properties:
+(1) "goal_max": Pmax=? [ "notbad" U "goal" ]
+(2) "time_min": R{"time"}min=? [ F "goal" ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_min": R{"time"}min=? [ F "goal" ]
+Model constants: N=40,slippery=0.2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: N=40,slippery=0.2
+
+Computing reachable states... 483705 964887 1451381 1951287 2366467 2890261 3346608 3827127 4285905 4749521 5200160 5638093 6112569 6586910 7055878 7506844 7965068 8383967 8861952 9346265 9835824 10243054 10706090 11222608 11675920 12071535 12592785 13057816 13436938 13929358 14354837 14697747 15161572 15560937 15944839 16393014 16841868 17254786 17681630 18152129 18643139 19071370 19494655
+----------------------------------------
+Wallclock time:	129.932
+Return code:	-9

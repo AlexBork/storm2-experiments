@@ -1,0 +1,53 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani firewire.true.jani --janiproperty time_min --constants delay=36,deadline=200 --exact --bisimulation
+Benchmark:	firewire.true-36-200.time_min
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:42:46 2026
+Command line arguments: --jani firewire.true.jani --janiproperty time_min --constants 'delay=36,deadline=200' --exact --bisimulation
+Current working directory: /tmp/invocation-1_jl2cok
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 111.845s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	6931981
+Transitions: 	15782932
+Choices: 	15669366
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * done -> 192 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 26.235s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	31745
+Transitions: 	54128
+Choices: 	53942
+Reward Models:  time
+State Labels: 	2 labels
+   * done -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_min": R{"time"}min=? [F "done"] ...
+Result (for initial states): 553/4 (approx. 138.25). Exact solution.
+Time for model checking: 0.089s.
+
+----------------------------------------
+Wallclock time:	142.814
+Return code:	0

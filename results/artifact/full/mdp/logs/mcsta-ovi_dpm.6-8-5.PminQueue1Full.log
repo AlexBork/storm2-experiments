@@ -1,0 +1,47 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta dpm.jani --props PminQueue1Full --experiment N=6,C=8,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	dpm.6-8-5.PminQueue1Full
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta dpm.jani --props PminQueue1Full --experiment N=6,C=8,TIME_BOUND=5 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+dpm.jani:model: info: dpm is an MA model.
+dpm.jani: info: Need 16 bytes per state.
+dpm.jani: info: Explored 42594012 states for N=6, C=8, TIME_BOUND=5.0.
+
+Peak memory usage: 13892 MB
+Analysis results for dpm.jani
+Experiment N=6, C=8, TIME_BOUND=5.0
+
++ State space exploration
+  State size: 16 bytes
+  States:     42594012
+  Choices:    48736566
+  Branches:   82748790
+  Rate:       1503760 states/s
+  Time:       30.4 s
+
++ Property PminQueue1Full
+  Probability: 0.013115174937500251
+  Bounds:      [0.013115170597025466, 0.013115179277975035]
+  Time:        8.5 s
+
+  + Optimistic value iteration
+    Total iterations:  24
+    Verif. attempts:   1
+    Verif. iterations: 2
+    Final epsilon:     1E-06
+    Time:              8.5 s
+
+
+----------------------------------------
+Wallclock time:	39.121
+Return code:	0

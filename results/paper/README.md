@@ -9,15 +9,14 @@ The logs and results of the runs that Figures 6 to 9 of the paper show. These ru
 | `imdp/` | `logs/` and `results/` of the interval MDPs, 156 runs |
 | `pomdp/` | `logs/` and `results/` of the POMDPs, 665 runs, of which the figure shows the 646 of the 34 configurations other than `mdp` |
 
-Build the figures of the paper from `data/` in the container of the experiments
-(see the [README](../../README.md#loading-the-container)), from `$ARTIFACT_DIR`, with
+Create the figures of the paper from the logs here (see
+[Step 4](../../README.md#step-4-create-the-figures-from-logs) of the README) with
 
 ```bash
-docker run --rm -e HOST_UID=$(id -u) -v "$PWD/results/paper:/paper:ro" -v "$PWD:/out" storm2-experiments \
-    sh -c 'docker/build_figures.sh /paper/data && cp docker/plots/latex/main.pdf /out/paper.pdf && chown $HOST_UID /out/paper.pdf'
+$ARTIFACT_DIR/scripts/4_figures.sh $ARTIFACT_DIR/results/paper
 ```
 
-which writes them to `paper.pdf` in `$ARTIFACT_DIR`.
+which writes them to `paper-figures.pdf` in the current directory.
 
 The csv files in `data/` are those that `experiments/docker/common/postprocess.py`
 writes for the logs here, e.g. from `experiments/mdp`:

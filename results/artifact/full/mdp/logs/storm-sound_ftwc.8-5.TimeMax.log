@@ -1,0 +1,58 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani ftwc.jani --janiproperty TimeMax --constants N=8,TIME_BOUND=5 --sound
+Benchmark:	ftwc.8-5.TimeMax
+Configuration:	storm-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 13:22:09 2026
+Command line arguments: --jani ftwc.jani --janiproperty TimeMax --constants 'N=8,TIME_BOUND=5' --sound
+Current working directory: /tmp/invocation-bjzzv5h2
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 0.024s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	10299
+Transitions: 	26983
+Choices: 	12635
+Markovian St.: 	4951
+Max. Rate: 	2.0307
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1])) -> 1059 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 0.000s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	10299
+Transitions: 	26983
+Choices: 	12635
+Markovian St.: 	4951
+Max. Rate: 	2.0307
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1])) -> 1059 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "TimeMax": Tmax=? [F (((workstations_up[0] = 0) | switches_down[0]) & ((workstations_up[1] = 0) | switches_down[1]))] ...
+Result (for initial states): 1995675.964
+Time for model checking: 6.710s.
+
+----------------------------------------
+Wallclock time:	6.803
+Return code:	0

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani pnueli-zuck.5.jani --janiproperty live --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	pnueli-zuck.5.live
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 19:05:53 2026
+Command line arguments: --jani pnueli-zuck.5.jani --janiproperty live --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-ula2yn5h
+
+Time for model input parsing: 0.004s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.678s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	307523 (169 nodes)
+Transitions: 	1886851 (5441 nodes)
+Choices: 	1753715
+Reward Models:  none
+Variables: 	rows: 10 meta variables (25 DD variables), columns: 10 meta variables (25 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (26 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "live": Pmax=? [F (p1 = 10)] ...
+Result (for initial states): 1
+Time for model checking: 0.112s.
+
+----------------------------------------
+Wallclock time:	0.983
+Return code:	0

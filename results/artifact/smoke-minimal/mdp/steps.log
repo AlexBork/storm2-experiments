@@ -1,0 +1,15 @@
+wrote 10 invocations (10 configurations x 1 benchmarks x 1 repetition(s)) to inv-smoke.json
+  index:       /opt/storm2-experiments/mdp/benchmarks/index-smoke.json
+  ignored:     1 meta configuration(s): storm-sound-best
+  time limit:  60s
+  log dir:     experiments/smoke/logs (created)
+  repetitions: 1
+read 10 executions of 1 benchmarks in 11 configurations from experiments/smoke/logs
+  0 incorrect, 0 no-result, 0 memout, 0 timeout, 10 ok
+  13.7 s of wallclock time in total, i.e. 0m 13s when run sequentially
+  column states-sparse-bisim: preprocessing state count and time from storm-sound-bisim
+  column time-exact-bisim: preprocessing time from storm-exact-bisim
+  meta configuration storm-sound-best: best of storm-sound, storm-sound-bisim, storm-hybrid-sound, storm-sound-ddbisim, storm-exact, storm-exact-bisim
+  1 of 1 benchmarks are supported by every configuration
+wrote results.json, scatter.csv, quantile.csv and quantile-intersect.csv to experiments/smoke/results, and the same csv files for the model checking time only with the suffix -checking
+wrote the html table to experiments/smoke/results/table/index.html

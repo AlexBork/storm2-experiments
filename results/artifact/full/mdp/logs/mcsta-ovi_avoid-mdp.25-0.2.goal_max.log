@@ -1,0 +1,47 @@
+Command:	/opt/storm2-experiments/mdp/bin/modest mcsta avoid-mdp.jani --props goal_max --experiment N=25,slippery=0.2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+Benchmark:	avoid-mdp.25-0.2.goal_max
+Configuration:	mcsta-ovi
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+The Modest Toolset (www.modestchecker.net), version v3.1.315-g0a0763b358+0a0763b358a23abf4f42ba92c1c3fc1888a4db99.
+Command: modest mcsta avoid-mdp.jani --props goal_max --experiment N=25,slippery=0.2 --unsafe --store-mode Memory --alg OptimisticValueIteration --width 1e-6 --relative-width
+
+
+
+
+avoid-mdp.jani:model: info: avoid-mdp is an MDP model.
+avoid-mdp.jani: info: Need 16 bytes per state.
+avoid-mdp.jani: info: Explored 2049851 states for N=25, slippery=0.2.
+
+Peak memory usage: 1189 MB
+Analysis results for avoid-mdp.jani
+Experiment N=25, slippery=0.2
+
++ State space exploration
+  State size: 16 bytes
+  States:     2049851
+  Choices:    4746751
+  Branches:   11133139
+  Rate:       691116 states/s
+  Time:       3.2 s
+
++ Property goal_max
+  Probability: 0.6220982941045041
+  Bounds:      [0.6220982496109151, 0.6220983385980932]
+  Time:        1.5 s
+
+  + Optimistic value iteration
+    Total iterations:  55
+    Verif. attempts:   1
+    Verif. iterations: 10
+    Final epsilon:     1E-06
+    Time:              1.5 s
+
+
+----------------------------------------
+Wallclock time:	4.942
+Return code:	0

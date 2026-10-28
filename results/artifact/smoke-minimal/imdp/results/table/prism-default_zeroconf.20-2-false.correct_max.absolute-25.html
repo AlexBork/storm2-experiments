@@ -25,7 +25,7 @@ table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
 
 <h1>zeroconf.20-2-false.correct_max.absolute-25</h1>
 <p class="sub">prism-default &middot; absolute-25 &middot; <a href="index.html">back to the table</a></p>
-<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>27.034 s</td></tr><tr><th>result</th><td>2.291711051761493E-9</td></tr><tr><th>difference</th><td>1.44e-14</td></tr><tr><th>states</th><td>89,586</td></tr></table>
+<table class="meta"><tr><th>status</th><td>ok</td></tr><tr><th>wallclock time</th><td>27.061 s</td></tr><tr><th>result</th><td>2.291711051761493E-9</td></tr><tr><th>difference</th><td>1.44e-14</td></tr><tr><th>states</th><td>89,586</td></tr></table>
 <p class="sub">prism-default_zeroconf.20-2-false.correct_max.absolute-25.log</p>
 <pre>Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel zeroconf.20-2-false.correct_max.tra,sta,lab zeroconf.20-2-false.correct_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
 Benchmark:	zeroconf.20-2-false.correct_max.absolute-25
@@ -40,8 +40,8 @@ PRISM
 =====
 
 Version: 4.10.1
-Date: Mon Oct 26 22:15:06 UTC 2026
-Hostname: b8f1c29e7dad
+Date: Wed Oct 28 08:24:57 UTC 2026
+Hostname: 4cbe696db2b0
 Memory limits: cudd=1g, java(heap)=8g
 Command line: prism -importmodel 'zeroconf.20-2-false.correct_max.tra,sta,lab' zeroconf.20-2-false.correct_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 8g
 
@@ -64,7 +64,7 @@ Warning: Switching to explicit engine to allow model checking of interval model.
 
 Building model (engine:explicit)...
 
-Time for model construction: 0.757 seconds.
+Time for model construction: 0.922 seconds.
 
 Type:        IMDP
 States:      89586 (1 initial)
@@ -74,17 +74,17 @@ Max/avg:     4/4.00
 
 Starting probabilistic reachability...
 Starting Prob0 (max)...
-Prob0 (max) took 101 iterations and 2.602 seconds.
+Prob0 (max) took 101 iterations and 2.744 seconds.
 Starting Prob1 (max)...
-Prob1 (max) took 998 iterations and 22.048 seconds.
+Prob1 (max) took 998 iterations and 21.764 seconds.
 target=2991, yes=25575, no=26132, maybe=37879
 Starting value iteration (maxmin)...
-Value iteration (maxmin, with Gauss-Seidel) took 52 iterations, 10126896 multiplications and 1.203 seconds.
-Probabilistic reachability took 1.204 seconds.
+Value iteration (maxmin, with Gauss-Seidel) took 52 iterations, 10126896 multiplications and 1.121 seconds.
+Probabilistic reachability took 1.123 seconds.
 
 Value in the initial state: 2.291711051761493E-9
 
-Time for model checking: 25.92 seconds.
+Time for model checking: 25.709 seconds.
 
 Result: 2.291711051761493E-9 (+/- 6.2274364895364975E-6 estimated; rel err 2717.3742015817666)
 
@@ -94,7 +94,7 @@ Note: There was 1 warning during computation.
 
 
 ----------------------------------------
-Wallclock time:	27.034
+Wallclock time:	27.061
 Return code:	0
 </pre>
 </body></html>

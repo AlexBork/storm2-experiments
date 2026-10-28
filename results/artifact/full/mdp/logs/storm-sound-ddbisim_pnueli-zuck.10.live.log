@@ -1,0 +1,25 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	pnueli-zuck.10.live
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 16:34:38 2026
+Command line arguments: --jani pnueli-zuck.10.jani --janiproperty live --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-jxdehw3f
+
+Time for model input parsing: 0.018s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.470s.
+
+
+----------------------------------------
+Wallclock time:	901.142
+Return code:	None
+Computation aborted after 901.142 seconds since the time limit of 900 seconds was exceeded.

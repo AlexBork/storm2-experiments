@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani zeroconf.jani --janiproperty correct_max --constants N=20,K=2,reset=false --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	zeroconf.20-2-false.correct_max
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 17:14:15 2026
+Command line arguments: --jani zeroconf.jani --janiproperty correct_max --constants 'N=20,K=2,reset=false' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-mwgy9j2w
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 1.304s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	88858 (4307 nodes)
+Transitions: 	203550 (30024 nodes)
+Choices: 	161320
+Reward Models:  none
+Variables: 	rows: 24 meta variables (58 DD variables), columns: 24 meta variables (58 DD variables), nondeterminism: 7 meta variables (7 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (59 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "correct_max": Pmax=? [F ((l = 4) & (ip = 1))] ...
+Result (for initial states): 2.011957689e-05
+Time for model checking: 0.504s.
+
+----------------------------------------
+Wallclock time:	2.174
+Return code:	0

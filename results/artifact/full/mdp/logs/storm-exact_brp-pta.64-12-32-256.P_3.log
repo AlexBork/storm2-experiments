@@ -1,0 +1,37 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani brp-pta-mdp.jani --janiproperty P_3 --constants N=64,MAX=12,TD=32,TIME_BOUND=256 --exact
+Benchmark:	brp-pta.64-12-32-256.P_3
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 13:57:51 2026
+Command line arguments: --jani brp-pta-mdp.jani --janiproperty P_3 --constants 'N=64,MAX=12,TD=32,TIME_BOUND=256' --exact
+Current working directory: /tmp/invocation-z5h6umd0
+
+Time for model input parsing: 0.002s.
+
+Time for model construction: 189.478s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	26503204
+Transitions: 	33763204
+Choices: 	33518628
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (s_nok_seen & (i > 8)) -> 25410 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "P_3": Pmax=? [F (s_nok_seen & (i > 8))] ...
+
+----------------------------------------
+Wallclock time:	279.845
+Return code:	-9

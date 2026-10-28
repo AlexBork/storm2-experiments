@@ -1,0 +1,77 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel consensus.4-4.c2.tra,sta,lab consensus.4-4.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	consensus.4-4.c2.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:42:24 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'consensus.4-4.c2.tra,sta,lab' consensus.4-4.c2.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "consensus.4-4.c2.tra", "consensus.4-4.c2.sta", "consensus.4-4.c2.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "consensus.4-4.c2.pctl"...
+
+1 property:
+(1) Pminmax=? [ F "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pminmax=? [ F "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 0.591 seconds.
+
+Type:        IMDP
+States:      43136 (1 initial)
+Transitions: 214976
+Choices:     172544
+Max/avg:     4/4.00
+
+Starting probabilistic reachability...
+Starting Prob0 (min)...
+Prob0 (min) took 111 iterations and 1.251 seconds.
+Starting Prob1 (min)...
+Prob1 (min) took 2078 iterations and 20.284 seconds.
+target=4, yes=455, no=23292, maybe=19389
+Starting value iteration (minmax)...
+Iteration 304: 5.01 sec so far
+Iteration 631: 10.03 sec so far
+Iteration 1000: 15.03 sec so far
+Iteration 1327: 20.04 sec so far
+Iteration 1699: 25.05 sec so far
+Iteration 1980: 30.06 sec so far
+Iteration 2263: 35.06 sec so far
+Iteration 2626: 40.07 sec so far
+Value iteration (minmax, with Gauss-Seidel) took 2746 iterations, 266933168 multiplications and 41.82 seconds.
+Probabilistic reachability took 41.823 seconds.
+
+Value in the initial state: 0.9278796032733795
+
+Time for model checking: 63.417 seconds.
+
+Result: 0.9278796032733795 (+/- 9.946701092777843E-6 estimated; rel err 1.071981866794766E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	64.535
+Return code:	0

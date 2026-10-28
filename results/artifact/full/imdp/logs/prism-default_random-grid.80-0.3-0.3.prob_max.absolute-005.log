@@ -1,0 +1,106 @@
+Command:	/opt/storm2-experiments/imdp/bin/prism -importmodel random-grid.80-0.3-0.3.prob_max.tra,sta,lab random-grid.80-0.3-0.3.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+Benchmark:	random-grid.80-0.3-0.3.prob_max.absolute-005
+Configuration:	prism-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 23:27:32 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=1g, java(heap)=32g
+Command line: prism -importmodel 'random-grid.80-0.3-0.3.prob_max.tra,sta,lab' random-grid.80-0.3-0.3.prob_max.pctl -maxiters 1000000 -epsilon 1e-6 -absolute -javamaxmem 32g
+
+Importing model from "random-grid.80-0.3-0.3.prob_max.tra", "random-grid.80-0.3-0.3.prob_max.sta", "random-grid.80-0.3-0.3.prob_max.lab"...
+
+Type:        IMDP (auto-detected)
+Variables:   s
+Labels:      "reach" "avoid"
+
+Parsing properties file "random-grid.80-0.3-0.3.prob_max.pctl"...
+
+1 property:
+(1) Pmaxmin=? [ !"avoid" U "reach" ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmaxmin=? [ !"avoid" U "reach" ]
+
+Warning: Switching to explicit engine to allow model checking of interval model.
+
+Building model (engine:explicit)...
+
+Time for model construction: 21.558 seconds.
+
+Type:        IMDP
+States:      512000 (1 initial)
+Transitions: 9100800
+Choices:     3072000
+Max/avg:     6/6.00
+
+Starting probabilistic reachability...
+Starting Prob0 (max)...
+Prob0 (max) took 121 iterations and 45.411 seconds.
+Starting Prob1 (max)...
+Prob1 (max) took 205 iterations and 78.657 seconds.
+target=1, yes=160, no=12720, maybe=499120
+Starting value iteration (maxmin)...
+Iteration 6: 5.23 sec so far
+Iteration 12: 10.45 sec so far
+Iteration 18: 15.68 sec so far
+Iteration 24: 21.00 sec so far
+Iteration 30: 26.39 sec so far
+Iteration 36: 31.77 sec so far
+Iteration 42: 37.30 sec so far
+Iteration 48: 42.85 sec so far
+Iteration 54: 48.39 sec so far
+Iteration 60: 53.99 sec so far
+Iteration 66: 59.61 sec so far
+Iteration 72: 65.27 sec so far
+Iteration 78: 70.94 sec so far
+Iteration 84: 76.55 sec so far
+Iteration 90: 82.19 sec so far
+Iteration 96: 87.77 sec so far
+Iteration 102: 93.36 sec so far
+Iteration 108: 98.98 sec so far
+Iteration 114: 104.57 sec so far
+Iteration 120: 110.20 sec so far
+Iteration 126: 115.81 sec so far
+Iteration 132: 121.38 sec so far
+Iteration 138: 126.96 sec so far
+Iteration 144: 132.47 sec so far
+Iteration 150: 137.96 sec so far
+Iteration 156: 143.49 sec so far
+Iteration 162: 149.03 sec so far
+Iteration 168: 154.56 sec so far
+Iteration 174: 160.08 sec so far
+Iteration 180: 165.60 sec so far
+Iteration 186: 171.10 sec so far
+Iteration 192: 176.62 sec so far
+Iteration 198: 182.14 sec so far
+Iteration 204: 187.66 sec so far
+Iteration 210: 193.19 sec so far
+Iteration 216: 198.74 sec so far
+Iteration 222: 204.29 sec so far
+Value iteration (maxmin, with Gauss-Seidel) took 226 iterations, 2006375116 multiplications and 208.072 seconds.
+Probabilistic reachability took 208.074 seconds.
+
+Value in the initial state: 0.1275447218037982
+
+Time for model checking: 332.85 seconds.
+
+Result: 0.1275447218037982 (+/- 9.010498583095217E-6 estimated; rel err 7.06457974557038E-5)
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	355.026
+Return code:	0

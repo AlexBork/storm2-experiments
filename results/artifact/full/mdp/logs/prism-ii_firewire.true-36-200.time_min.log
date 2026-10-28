@@ -1,0 +1,102 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_min -const delay=36,deadline=200 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	firewire.true-36-200.time_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 17:29:15 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g firewire.true.prism firewire.true.props --prop time_min -const 'delay=36,deadline=200' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "firewire.true.prism"...
+
+Type:        MDP
+Modules:     wire12 node1 wire21 node2 timer
+Actions:     [] [snd_req12] [snd_ack12] [snd_idle12] [time] [rec_req12] [rec_ack12] [rec_idle12] [rec_idle21] [rec_req21] [rec_ack21] [snd_req21] [snd_ack21] [snd_idle21]
+Variables:   w12 y1 y2 x1 s1 w21 z1 z2 x2 s2 t
+Labels:      "done"
+Rewards:     "time" "time_sending"
+
+Parsing properties file "firewire.true.props"...
+
+5 properties:
+(1) "elected": P>=1 [ F "done" ]
+(2) "time_max": R{"time"}max=? [ F "done" ]
+(3) "time_min": R{"time"}min=? [ F "done" ]
+(4) "time_sending": R{"time_sending"}max=? [ F "done" ]
+(5) "deadline": Pmin=? [ F (((s1=8)&(s2=7))|((s1=7)&(s2=8)))&(t<=deadline) ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_min": R{"time"}min=? [ F "done" ]
+Model constants: deadline=200,delay=36
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: deadline=200,delay=36
+
+Computing reachable states... 522507 1050392 1550948 2039249 2590993 3048007 3499463 3891643 4345206 4751842 5176360 5568617 5983684 6407913 6826186 6932041 states
+Reachable states exploration and model construction done in 45.685 secs.
+Sorting reachable states list...
+
+Time for model construction: 53.821 seconds.
+
+Type:        MDP
+States:      6932041 (1 initial)
+Transitions: 15783244
+Choices:     15669678
+Max/avg:     3/2.26
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 168 iterations and 16.282 seconds.
+target=252, inf=0, rest=6931789
+For Rmin, checking for zero-reward ECs...
+Time for checking for zero-reward ECs: 1.098 seconds, no zero-reward ECs found, proceeding normally.
+Computing upper bound(s) for Rmin using the Dijkstra Sweep for Monotone Pessimistic Initialization algorithm...
+Calculating incoming choices relation for Markov decision process...  done (0.754 seconds)
+Time for computing upper bound(s) for Rmin using the DSI-MP algorithm: 9.897 seconds.
+Upper bound for min expectation (Dijkstra Sweep MPI): 159.0
+Starting Prob1 (min)...
+Prob1 (min) took 421 iterations and 32.866 seconds.
+Relevant sub-MDP is contracting, proceed...
+Starting interval iteration (min, with Power method)...
+Iteration 19: max relative diff=11.2307692308, 5.29 sec so far
+Iteration 38: max relative diff=3.96875, 10.53 sec so far
+Iteration 57: max relative diff=2.11764705882, 15.80 sec so far
+Iteration 76: max relative diff=1.27142857143, 21.05 sec so far
+Iteration 95: max relative diff=0.766666666667, 26.31 sec so far
+Iteration 114: max relative diff=0.45871559633, 31.58 sec so far
+Iteration 133: max relative diff=0.256916996047, 36.84 sec so far
+Iteration 152: max relative diff=0.0927835051546, 42.10 sec so far
+Max relative diff between upper and lower bound on convergence: 0
+Interval iteration (min, with Power method) took 167 iterations, 5271435160 multiplications and 46.363 seconds.
+Maximum finite value in solution vector at end of interval iteration: 159.0
+Expected reachability took 106.596 seconds.
+
+Value in the initial state: 138.25
+
+Time for model checking: 108.309 seconds.
+
+Result: 138.25 (exact floating point)
+
+---------------------------------------------------------------------
+
+Note: There were 2 warnings during computation.
+
+
+----------------------------------------
+Wallclock time:	162.631
+Return code:	0

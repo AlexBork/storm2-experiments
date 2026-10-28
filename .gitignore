@@ -1,4 +1,4 @@
-# The artifact, see scripts/5_create_artifact.sh; the files of the experiments are
+# The artifact, see scripts/6_create_artifact.sh; the files of the experiments are
 # ignored by experiments/.gitignore
 storm2-artifact.zip
 .venv

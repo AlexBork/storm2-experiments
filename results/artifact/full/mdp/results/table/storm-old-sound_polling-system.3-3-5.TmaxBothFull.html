@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>storm-old-sound - polling-system.3-3-5.TmaxBothFull</title>
+<style>
+body { font-family: -apple-system, system-ui, sans-serif; margin: 1.5rem; color: #222; }
+h1 { font-size: 1.3rem; margin-bottom: 0.2rem; }
+h2 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; }
+.sub { color: #666; font-size: 0.85rem; margin: 0.2rem 0; }
+a { color: #1a5fb4; }
+
+pre { background: #f6f6f6; border: 1px solid #ddd; border-radius: 4px;
+       padding: 0.7rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.35; }
+table.meta { border-collapse: collapse; font-size: 0.85rem; margin-bottom: 0.5rem; }
+table.meta th { text-align: left; padding: 0.15rem 0.8rem 0.15rem 0; color: #666;
+                 font-weight: normal; vertical-align: top; }
+table.meta td { padding: 0.15rem 0; font-family: ui-monospace, monospace;
+                 word-break: break-all; max-width: 60rem; }
+.bad { color: #c01c28; }
+
+</style>
+</head>
+<body>
+
+<h1>polling-system.3-3-5.TmaxBothFull</h1>
+<p class="sub">storm-old-sound &middot; maqvbs &middot; <a href="index.html">back to the table</a></p>
+<p class="sub">reference result: <code>656520718285914541189633/104245454153608704</code></p>
+<p class="sub">reference result: <code>6297835.466</code></p>
+<table class="meta"><tr><th>status</th><td>no-result</td></tr><tr><th>wallclock time</th><td>0.062 s</td></tr></table>
+<p class="sub">storm-old-sound_polling-system.3-3-5.TmaxBothFull.log</p>
+<pre>Command:	/opt/storm2-experiments/mdp/bin/storm-old --jani polling-system.3.jani --janiproperty TmaxBothFull --constants C=3,TIME_BOUND=5 --sound
+Benchmark:	polling-system.3-3-5.TmaxBothFull
+Configuration:	storm-old-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 1.6.2
+
+Date: Tue Oct 27 14:23:12 2026
+Command line arguments: --jani polling-system.3.jani --janiproperty TmaxBothFull --constants 'C=3,TIME_BOUND=5' --sound
+Current working directory: /tmp/invocation-slovanib
+
+ERROR (VariableSet.cpp:197): Unable to retrieve unknown variable 'C'.
+ERROR (storm.cpp:23): An exception caused Storm to terminate. The message of the exception is: InvalidArgumentException: Unable to retrieve unknown variable 'C'.
+
+----------------------------------------
+Wallclock time:	0.062
+Return code:	1
+</pre>
+</body></html>

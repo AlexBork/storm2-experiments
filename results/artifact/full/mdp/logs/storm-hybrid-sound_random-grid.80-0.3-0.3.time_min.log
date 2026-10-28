@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani random-grid.jani --janiproperty time_min --constants N=80,pover=0.3,pstay=0.3 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	random-grid.80-0.3-0.3.time_min
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 11:25:55 2026
+Command line arguments: --jani random-grid.jani --janiproperty time_min --constants 'N=80,pover=0.3,pstay=0.3' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-sk2wwtrw
+
+Time for model input parsing: 0.000s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.426s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	512000 (13 nodes)
+Transitions: 	9100789 (831 nodes)
+Choices: 	3071995
+Reward Models:  none
+Variables: 	rows: 6 meta variables (24 DD variables), columns: 6 meta variables (24 DD variables), nondeterminism: 3 meta variables (3 DD variables)
+Labels: 	2
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (25 nodes)
+-------------------------------------------------------------- 
+
+Model checking property "time_min": Tmin=? [F (((x = 80) & (y = 80)) & (z = 80))] ...
+Result (for initial states): 237.9001774
+Time for model checking: 3.403s.
+
+----------------------------------------
+Wallclock time:	3.936
+Return code:	0

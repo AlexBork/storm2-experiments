@@ -1,0 +1,99 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop goal_max -const N=25,slippery=0.2 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	avoid-mdp.25-0.2.goal_max
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 19:09:11 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g avoid-mdp.prism avoid-mdp.props --prop goal_max -const 'N=25,slippery=0.2' -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "avoid-mdp.prism"...
+
+Type:        MDP
+Modules:     master drone agent agent2
+Actions:     [placement] [north] [south] [east] [west] [adv] [done]
+Variables:   start turn dx dy ax ay dir ax2 ay2 dir2
+Labels:      "goal" "traps" "notbad"
+Rewards:     "time"
+
+Parsing properties file "avoid-mdp.props"...
+
+2 properties:
+(1) "goal_max": Pmax=? [ "notbad" U "goal" ]
+(2) "time_min": R{"time"}min=? [ F "goal" ]
+
+---------------------------------------------------------------------
+
+Model checking: "goal_max": Pmax=? [ "notbad" U "goal" ]
+Model constants: N=25,slippery=0.2
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Building model (engine:symbolic)...
+Model constants: N=25,slippery=0.2
+
+Computing reachable states...
+
+Reachability (BFS): 104 iterations in 0.09 seconds (average 0.000865, setup 0.00)
+
+Time for model construction: 0.115 seconds.
+
+Type:        MDP
+States:      3122501 (1 initial)
+Transitions: 17743285
+
+Transition matrix: 779 nodes (6 terminal), 17743285 minterms, vars: 26r/26c/7nd
+
+Prob0A: 98 iterations in 0.12 seconds (average 0.001224, setup 0.00)
+
+Prob1E: 2916 iterations in 5.29 seconds (average 0.001814, setup 0.00)
+
+yes = 2500, no = 1176100, maybe = 1943901
+
+Computing remaining probabilities...
+Engine: Sparse
+
+Building quotient MDP, collapsing maximal end components as well as yes and no states...
+Time for computing maximal end components: 0.384 seconds, found 1 MECs.
+Time for building MEC quotient: 23.775 seconds.
+
+Quotient MDP:
+States:      943904 (1 initial)
+Transitions: 5881363
+
+Transition matrix: 4051013 nodes (6 terminal), 5881363 minterms, vars: 26r/26c/34nd
+Note: Interval iteration is configured to enforce monotonicity from below.
+
+Building sparse matrix... [n=943904, nc=2425551, nnz=5518647, k=125000] [76.0 MB]
+Creating vector for yes... [7.2 MB]
+Creating vector for maybe... [7.2 MB]
+Allocating iteration vectors... [4 x 7.2 MB]
+TOTAL: [119.2 MB]
+
+Starting iterations (interval iteration)...
+Max relative diff between upper and lower bound on convergence: 6.44576E-07
+Iterative method (interval iteration): 73 iterations in 4.61 seconds (average 0.013973, setup 3.59)
+
+Value in the initial state: 0.6220983132032882
+
+Time for model checking: 35.661 seconds.
+
+Result: 0.6220983132032882
+
+---------------------------------------------------------------------
+
+Note: There was 1 warning during computation.
+
+
+----------------------------------------
+Wallclock time:	36.493
+Return code:	0

@@ -10,7 +10,7 @@ The Storm website [www.stormchecker.org](https://www.stormchecker.org/) provides
 
 ### Playing with Storm
 
-Use the Docker image `storm2-tools` of the artifact, which `scripts/1_load.sh` loads together with the image of the experiments (see the [README](README.md#loading-the-container)), so no network access is needed. It is built from `notebooks/Dockerfile` on the official image of Stormpy 2.0, `movesrwth/stormpy:2.0.0`, and contains the command-line tools of Storm 2.0, Stormpy 2.0 and the Jupyter environment of the notebooks. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
+Use the Docker image `storm2-tools` of the artifact, which `scripts/1_load.sh` loads together with the image of the experiments (see the [README](README.md#step-1-load-the-docker-images)), so no network access is needed. It is built from `notebooks/Dockerfile` on the official image of Stormpy 2.0, `movesrwth/stormpy:2.0.0`, and contains the command-line tools of Storm 2.0, Stormpy 2.0 and the Jupyter environment of the notebooks. Run Storm in it on the files in `examples/`, which the following command makes available as `/examples` in the container, from `$ARTIFACT_DIR`:
 
 ```bash
 cd $ARTIFACT_DIR

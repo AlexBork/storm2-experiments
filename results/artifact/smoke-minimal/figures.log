@@ -1,0 +1,19 @@
+Rc files read (in order):
+  /etc/LatexMk
+Latexmk: Run number 1 of rule 'pdflatex'
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Getting log file 'main.log'
+Latexmk: Run number 2 of rule 'pdflatex'
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Getting log file 'main.log'
+Latexmk: Summary of warnings from last run of *latex:
+  Latex found 2 multiply defined reference(s)
+Latexmk: ====Problematic refs and citations with line #s in .tex file:
+  Label `scatterlegendfalse' multiply defined
+  Label `scatterlegendfalse' multiply defined
+
+wrote docker/plots/latex/main.pdf

@@ -1,0 +1,39 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani csma.3-4.jani --janiproperty time_max --exact
+Benchmark:	csma.3-4.time_max
+Configuration:	storm-exact
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 18:27:39 2026
+Command line arguments: --jani csma.3-4.jani --janiproperty time_max --exact
+Current working directory: /tmp/invocation-zzw1fv8a
+
+Time for model input parsing: 0.003s.
+
+Time for model construction: 10.632s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (sparse)
+States: 	1460287
+Transitions: 	2396727
+Choices: 	1471059
+Reward Models:  time
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * all_delivered -> 13 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "time_max": R{"time"}max=? [F "all_delivered"] ...
+Result (for initial states): 166122942688484522122222831070293418963831808920856249617133764705825669222172375796788473650081795725931645/1422063199867123919195021167725985101479111788846785036704887421368371275362579041459447439142249285287936 (approx. 116.8182558). Exact solution.
+Time for model checking: 11.575s.
+
+----------------------------------------
+Wallclock time:	22.649
+Return code:	0

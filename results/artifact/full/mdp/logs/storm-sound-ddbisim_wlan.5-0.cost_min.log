@@ -1,0 +1,25 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani wlan.5.jani --janiproperty cost_min --constants COL=0 --sound --bisimulation --engine dd-to-sparse --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	wlan.5-0.cost_min
+Configuration:	storm-sound-ddbisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 11:45:52 2026
+Command line arguments: --jani wlan.5.jani --janiproperty cost_min --constants COL=0 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-47gib0x_
+
+Time for model input parsing: 0.008s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 2.167s.
+
+
+----------------------------------------
+Wallclock time:	901.170
+Return code:	None
+Computation aborted after 901.170 seconds since the time limit of 900 seconds was exceeded.

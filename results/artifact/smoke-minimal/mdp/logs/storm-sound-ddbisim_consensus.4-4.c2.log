@@ -9,14 +9,14 @@ Decision diagram memory:	4 GiB
 Output:
 Storm 2.0.0
 
-Date: Mon Oct 26 22:15:01 2026
+Date: Wed Oct 28 08:24:51 2026
 Command line arguments: --jani consensus.4.jani --janiproperty c2 --constants K=4 --sound --bisimulation --engine dd-to-sparse '--sylvan:threads' 2 '--sylvan:maxmem' 4096
-Current working directory: /tmp/invocation-47c2akq_
+Current working directory: /tmp/invocation-cy17a0kr
 
 Time for model input parsing: 0.001s.
 
 Using Sylvan with 2 parallel threads.
-Time for model construction: 0.137s.
+Time for model construction: 0.249s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (symbolic)
@@ -32,7 +32,7 @@ Labels: 	4
    * finished
 -------------------------------------------------------------- 
 
-Time for model preprocessing: 0.340s.
+Time for model preprocessing: 0.776s.
 
 -------------------------------------------------------------- 
 Model type: 	MDP (sparse)
@@ -55,5 +55,5 @@ Result (for initial states): 0.406275273. Solution bounds: [0.4062748668, 0.4062
 Time for model checking: 0.033s.
 
 ----------------------------------------
-Wallclock time:	0.638
+Wallclock time:	1.430
 Return code:	0

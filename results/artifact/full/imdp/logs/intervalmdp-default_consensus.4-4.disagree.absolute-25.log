@@ -1,0 +1,21 @@
+Command:	/opt/storm2-experiments/imdp/scripts/intervalmdp.sh --precision 1e-6 consensus.4-4.disagree
+Benchmark:	consensus.4-4.disagree.absolute-25
+Configuration:	intervalmdp-default
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+setup done
+read file
+solved it!
+Initial state 0: 4.3465329279282425e-23
+Iterations: 157
+Maximum Bellman residual: 8.203306415821565e-7
+Time for reading: 0.622834213s
+Time for solving: 6.920228472s
+
+----------------------------------------
+Wallclock time:	7.971
+Return code:	0

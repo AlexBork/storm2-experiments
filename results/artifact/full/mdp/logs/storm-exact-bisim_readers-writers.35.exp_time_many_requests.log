@@ -1,0 +1,56 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani readers-writers.35.jani --janiproperty exp_time_many_requests --exact --bisimulation
+Benchmark:	readers-writers.35.exp_time_many_requests
+Configuration:	storm-exact-bisim
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 16:39:44 2026
+Command line arguments: --jani readers-writers.35.jani --janiproperty exp_time_many_requests --exact --bisimulation
+Current working directory: /tmp/invocation-ch0wqnu5
+
+Time for model input parsing: 0.001s.
+
+Time for model construction: 33.447s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1128974
+Transitions: 	2280981
+Choices: 	1128974
+Markovian St.: 	228553
+Max. Rate: 	350
+Reward Models:  none
+State Labels: 	3 labels
+   * deadlock -> 0 item(s)
+   * init -> 1 item(s)
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) > (280 / 10)) -> 37918 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Time for model preprocessing: 5.599s.
+
+-------------------------------------------------------------- 
+Model type: 	Markov Automaton (sparse)
+States: 	1053825
+Transitions: 	2185151
+Choices: 	1053825
+Markovian St.: 	190552
+Max. Rate: 	350
+Reward Models:  none
+State Labels: 	2 labels
+   * (((p_lan_w + p_w) + (p_lan_r + p_r)) > (280 / 10)) -> 1 item(s)
+   * init -> 1 item(s)
+Choice Labels: 	none
+-------------------------------------------------------------- 
+
+Model checking property "exp_time_many_requests": Tmin=? [F (((p_lan_w + p_w) + (p_lan_r + p_r)) > (280 / 10))] ...
+
+----------------------------------------
+Wallclock time:	901.548
+Return code:	None
+Computation aborted after 901.548 seconds since the time limit of 900 seconds was exceeded.

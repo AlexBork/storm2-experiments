@@ -1,0 +1,66 @@
+Command:	/opt/storm2-experiments/mdp/bin/prism -javamaxmem 32g wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+Benchmark:	wlan-mec.3-0.time_min
+Configuration:	prism-ii
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+PRISM
+=====
+
+Version: 4.10.1
+Date: Tue Oct 27 11:23:12 UTC 2026
+Hostname: 05b66b061eb6
+Memory limits: cudd=8g, java(heap)=32g
+Command line: prism -javamaxmem 32g wlan-mec.3.prism wlan-mec.props --prop time_min -const COL=0 -maxiters 1000000 -intervaliter -heuristic speed -ddextraactionvars 100 -cuddmaxmem 8g
+
+Parsing PRISM model file "wlan-mec.3.prism"...
+
+Type:        MDP
+Modules:     mecs medium station1 station2
+Actions:     [] [send1] [send2] [finish1] [finish2] [time]
+Variables:   mecs_circle col c1 c2 x1 s1 slot1 backoff1 bc1 x2 s2 slot2 backoff2 bc2
+Rewards:     "collisions" "time" "cost"
+
+Parsing properties file "wlan-mec.props"...
+
+2 properties:
+(1) "cost_min": R{"cost"}min=? [ F s1=12&s2=12 ]
+(2) "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+
+---------------------------------------------------------------------
+
+Model checking: "time_min": R{"time"}min=? [ F s1=12&s2=12 ]
+Model constants: COL=0
+
+Warning: Switching to sparse engine and (backwards) Gauss Seidel (default for heuristic=speed).
+
+Warning: Switching to explicit engine to allow interval iteration on Rmin operator.
+
+Building model (engine:explicit)...
+Model constants: COL=0
+
+Computing reachable states... 534056 963020 states
+Reachable states exploration and model construction done in 5.384 secs.
+Sorting reachable states list...
+
+Time for model construction: 6.087 seconds.
+
+Type:        MDP
+States:      963020 (1 initial)
+Transitions: 3875498
+Choices:     2200320
+Max/avg:     4/2.28
+Building reward structure...
+
+Starting expected reachability (min)...
+Starting Prob1 (max)...
+Prob1 (max) took 413 iterations and 6.018 seconds.
+target=10, inf=0, rest=963010
+For Rmin, checking for zero-reward ECs...
+
+----------------------------------------
+Wallclock time:	19.360
+Return code:	-9

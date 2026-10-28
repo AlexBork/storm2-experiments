@@ -1,0 +1,40 @@
+Command:	/opt/storm2-experiments/mdp/bin/storm --jani resource-gathering.jani --janiproperty expsteps --constants B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100 --engine hybrid --sound --sylvan:threads 4 --sylvan:maxmem 8192
+Benchmark:	resource-gathering.1300-100-100.expsteps
+Configuration:	storm-hybrid-sound
+Repetition:	1
+Time limit:	900
+Memory limit:	32 GiB
+Cores:	4
+Decision diagram memory:	8 GiB
+Output:
+Storm 2.0.0
+
+Date: Tue Oct 27 15:42:36 2026
+Command line arguments: --jani resource-gathering.jani --janiproperty expsteps --constants 'B=1300,GOLD_TO_COLLECT=100,GEM_TO_COLLECT=100' --engine hybrid --sound '--sylvan:threads' 4 '--sylvan:maxmem' 8192
+Current working directory: /tmp/invocation-_i7m2k4y
+
+Time for model input parsing: 0.001s.
+
+Using Sylvan with 4 parallel threads.
+Time for model construction: 0.840s.
+
+-------------------------------------------------------------- 
+Model type: 	MDP (symbolic)
+States: 	958801 (52 nodes)
+Transitions: 	3325201 (779 nodes)
+Choices: 	3080401
+Reward Models:  none
+Variables: 	rows: 10 meta variables (26 DD variables), columns: 10 meta variables (26 DD variables), nondeterminism: 4 meta variables (4 DD variables)
+Labels: 	3
+   * deadlock -> 0 state(s) (1 nodes)
+   * init -> 1 state(s) (27 nodes)
+   * success
+-------------------------------------------------------------- 
+
+Model checking property "expsteps": Tmin=? [F "success"] ...
+Result (for initial states): 1292.592606
+Time for model checking: 2.845s.
+
+----------------------------------------
+Wallclock time:	4.037
+Return code:	0
