@@ -1,7 +1,7 @@
 # Notebooks for the FM tutorial
 
 This folder contains material for the Storm tutorial at [FM 2026](https://conf.researchr.org/home/fm-2026): the Jupyter notebooks, the model files they use, and the slides.
-It is a copy of `tutorial_orchard/` of the [stormpyter repository](https://github.com/volkm/stormpyter/tree/stormpy2) (branch `stormpy2`, commit `c47a454`), with a `Dockerfile` that builds on the Stormpy 2.0 image.
+It is a copy of `tutorial_orchard/` of the [stormpyter repository](https://github.com/stormchecker/stormpyter/tree/306df8b/tutorial_orchard) (commit `306df8b` of `master`), with a `Dockerfile` that builds on the Stormpy 2.0 image.
 
 ## Versions
 The notebooks in this folder use [Stormpy](https://github.com/stormchecker/stormpy) 2.0 and [stormvogel](https://github.com/stormchecker/stormvogel) 0.13.

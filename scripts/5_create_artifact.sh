@@ -1,12 +1,12 @@
 #!/bin/sh
-# Create the artifact zip, by default storm2-experiments-artifact.zip in the current
+# Create the artifact zip, by default storm2-artifact.zip in the current
 # directory: the committed files of the repository, including those of the
 # submodules storm/ and stormpy/, plus the saved images experiments/storm2-experiments.tar.gz
 # (see scripts/4_build_docker.sh), the Modest Toolset zips and the compressed
 # interval MDPs.
 #   scripts/5_create_artifact.sh [FILE]
 set -eu
-out=$(realpath "${1:-storm2-experiments-artifact.zip}")
+out=$(realpath "${1:-storm2-artifact.zip}")
 cd "$(dirname "$0")/.."
 image=experiments/storm2-experiments.tar.gz
 large="$image experiments/imdp/benchmarks.tar.xz experiments/docker/modest/*.zip"
@@ -35,10 +35,14 @@ if [ "$(stat -c %Y $image)" -lt "$(git log -1 --format=%ct -- experiments exampl
   exit 1
 fi
 
-# Run from the parent so that everything is below storm2-experiments/ in the zip;
-# the already compressed files are stored as they are, and links as links (-y),
-# e.g. benchmarks/models of mdp to examples/mdp_benchmarks
-repo=$(basename "$PWD")
+# Run from a temporary directory with a link storm2-artifact to the repository, so
+# that everything is below storm2-artifact/ in the zip; the already compressed files
+# are stored as they are, and links as links (-y), e.g. benchmarks/models of mdp to
+# examples/mdp_benchmarks
+top=storm2-artifact
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+ln -s "$PWD" "$tmp/$top"
 # The committed files without .gitmodules, which is of no use without git
 files() { git ls-files --recurse-submodules | grep -vx '\.gitmodules'; }
 # shellcheck disable=SC2086
@@ -46,7 +50,7 @@ echo "== $(date): writing $(files | wc -l) committed files and $(du -ch $large |
 rm -f "$out"
 # shellcheck disable=SC2086
 { files; ls $large; } \
-  | sed "s|^|$repo/|" | (cd .. && zip -q -y -n .gz:.xz:.zip "$out" -@)
+  | sed "s|^|$top/|" | (cd "$tmp" && zip -q -y -n .gz:.xz:.zip "$out" -@)
 echo "== $(date): testing $out"
 unzip -tq "$out"
 echo "== $(date): done, $(du -h "$out" | cut -f1) in $out"

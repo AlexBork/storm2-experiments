@@ -1,6 +1,6 @@
 # Results in the paper
 
-The logs and results of the runs that Figures 6 to 9 of the paper show:
+The logs and results of the runs that Figures 6 to 9 of the paper show. These runs used a beta version of Storm 2.0, commit [`276d4fe0a5`](https://github.com/stormchecker/storm/commit/276d4fe0a56ee61952e4d5e04ce5f69c19f216eb) of the Storm repository, which the logs show as `Storm 1.14.0 (dev)`:
 
 | Path | Contents |
 | --- | --- |

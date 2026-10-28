@@ -1,5 +1,5 @@
 # The artifact, see scripts/5_create_artifact.sh; the files of the experiments are
 # ignored by experiments/.gitignore
-storm2-experiments-artifact.zip
+storm2-artifact.zip
 .venv
 .idea

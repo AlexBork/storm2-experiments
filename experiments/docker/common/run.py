@@ -251,13 +251,24 @@ def boost_enabled():
     return None
 
 
+def governor(cpu):
+    """The frequency governor of a CPU, None if unknown, e.g. in the virtual machine of
+    Docker Desktop on macOS."""
+    path = Path(f"/sys/devices/system/cpu/cpu{cpu}/cpufreq/scaling_governor")
+    return path.read_text().strip() if path.is_file() else None
+
+
 def physical_cores(cpus):
-    """The number of physical cores the given CPUs (hardware threads) belong to."""
+    """The number of physical cores the given CPUs (hardware threads) belong to; every
+    CPU counts as a core if the topology is unknown, e.g. in a virtual machine."""
     cores = set()
     for cpu in cpus:
         topology = Path(f"/sys/devices/system/cpu/cpu{cpu}/topology")
-        cores.add(((topology / "physical_package_id").read_text().strip(),
-                   (topology / "core_id").read_text().strip()))
+        try:
+            cores.add(((topology / "physical_package_id").read_text().strip(),
+                       (topology / "core_id").read_text().strip()))
+        except OSError:
+            cores.add(("cpu", str(cpu)))
     return len(cores)
 
 
@@ -315,10 +326,9 @@ def run_pinned(selected, counts, args):
         args.cores_per_run, jobs, False, cgroups,
         util.parse_int_list(args.cores) if args.cores else None)
     for number, cores in enumerate(assignment, start=1):
-        governors = {Path(f"/sys/devices/system/cpu/cpu{c}/cpufreq/scaling_governor")
-                     .read_text().strip() for c in cores}
-        print(f"worker {number}: cores {','.join(map(str, cores))}, governor {'/'.join(governors)}")
-        if governors != {"performance"}:
+        governors = {governor(c) or "unknown" for c in cores}
+        print(f"worker {number}: cores {','.join(map(str, cores))}, governor {'/'.join(sorted(governors))}")
+        if governors - {"performance", "unknown"}:
             print("  for stable timings run: sudo cpupower frequency-set -g performance")
     if boost_enabled():
         print("boost: enabled\n  for stable timings run: sudo cpupower set --turbo-boost 0")
